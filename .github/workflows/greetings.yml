@@ -13,4 +13,4 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: "Please be clear and detailed with the problem you have faced."
-        pr-message: "Hello, we are setting up automated actions for PRs and direct push commits on the master branch. This is to ensure that the main branch does not break."
+        pr-message: "Hello, we are setting up automated actions for PRs and direct push commits on the master branch. This is to ensure that the main branch does not break. Your changes will be accepted only after it has passed all the automated actions."
