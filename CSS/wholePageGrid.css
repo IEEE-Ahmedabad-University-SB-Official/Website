@@ -1,0 +1,24 @@
+*{
+    padding         : 0;
+    margin          : 0;
+    box-sizing      : border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+.container{
+    height          : 100%;
+    width           : 100%;
+    min-width       : 1485px;
+    /* background-color: rgb(247, 183, 104); */
+    position: relative;
+    overflow-x: hidden;
+}
+.HerogridContainer{
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5%;
+}
+    

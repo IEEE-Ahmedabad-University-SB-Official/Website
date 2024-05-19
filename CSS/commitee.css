@@ -1,0 +1,24 @@
+.card img{
+    /* width: 450px; */
+    height: 350px;
+}
+
+.content{
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+  
+.card:hover img {
+    opacity: 0.5;
+}
+  
+.card:hover .content {
+   opacity: 1;
+}
+  
