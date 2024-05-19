@@ -1,6 +1,6 @@
 # Website
 
-![Ahmedabd University Logo](/README%20Pictures/AHDUNI%20Logo.jpg "Ahmedabad University")
+[![Ahmedabd University Logo](/README%20Pictures/AHDUNI%20Logo.jpg "Ahmedabad University")](https://ahduni.edu.in/)
 
 **Owner** :- [IEEE Ahmedabad University Student Branch](https://github.com/IEEE-Ahmedabad-University-SB-Official)  
 **Development Started** :- 11 May 2024
