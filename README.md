@@ -1,10 +1,16 @@
 # Website
 
+![Ahmedabd University Logo](/README%20Pictures/AHDUNI%20Logo.jpg "Ahmedabad University")
+
 **Owner** :- [IEEE Ahmedabad University Student Branch](https://github.com/IEEE-Ahmedabad-University-SB-Official)  
 **Development Started** :- 11 May 2024
 
 This repo is for the development, testing and deployment of IEEE AU SB official website.
 All the necessary information can be found in this file.
+
+## About
+
+IEEE AU SB did not really have a good website for online reference for different individual / companies. Hence we decided to build a new, modern and sleek website to represent our student chapter on an online platform.
 
 ## Collaborators
 
