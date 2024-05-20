@@ -1,6 +1,7 @@
 # Website
 
 [![Ahmedabd University Logo](/README%20Pictures/AHDUNI%20Logo.jpg "Ahmedabad University")](https://ahduni.edu.in/)
+![IEEE Ahmedabad University Student Chapter Logo](/README%20Pictures/Logo.png "IEEE Ahmedabad University Student Chapter")
 
 **Owner** :- [IEEE Ahmedabad University Student Branch](https://github.com/IEEE-Ahmedabad-University-SB-Official)  
 **Development Started** :- 11 May 2024
@@ -24,7 +25,7 @@ IEEE AU SB did not really have a good website for online reference for different
 
 - **Front End** :- HTML / CSS / React JS
 - **Back End** :- NodeJS, Express JS, MySQL
-- **API** :- To be Decided
+- **APIs** :- To be Decided
 
 ## Database
 
