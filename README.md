@@ -31,7 +31,7 @@ IEEE AU SB did not really have a good website for online reference for different
 
 Database in use is MySQL.
 
-### Tables
+### Tables Created
 
 1. Members
     - ID
