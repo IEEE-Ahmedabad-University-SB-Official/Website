@@ -24,35 +24,6 @@ IEEE AU SB did not really have a good website for online reference for different
 ## Tech Stack
 
 - **Front End** :- HTML / CSS / React JS
-- **Back End** :- NodeJS, Express JS, MySQL
+- **Back End** :- NodeJS, Express JS
+- **Database** :- MySQL
 - **APIs** :- To be Decided
-
-## Database
-
-Database in use is MySQL.
-
-### Tables Created
-
-1. Members
-    - ID
-    - Profile_Image
-    - Enrollment_Number
-    - Name
-    - Email
-    - Contact_Number
-    - Join_Year
-    - Programme
-    - Department
-    - Position
-    - Leave_Date
-
-2. Events
-    - ID
-    - EventName
-    - EventDescription
-    - Speaker
-    - EventDate
-    - EventTime
-    - Venue
-    - RegistrationLink
-    - Event Poster
