@@ -1,4 +1,4 @@
-# Website
+# IEEE Ahmedabad University Student Chapter Website
 
 [![Ahmedabd University Logo](/README%20Pictures/AHDUNI%20Logo%20VerticalStack.jpg "Ahmedabad University")](https://ahduni.edu.in/)
 ![IEEE Ahmedabad University Student Chapter Logo](/README%20Pictures/Logo.png "IEEE Ahmedabad University Student Chapter")
