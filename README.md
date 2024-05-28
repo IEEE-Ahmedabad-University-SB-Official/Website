@@ -2,7 +2,7 @@
 
 [![Ahmedabd University Logo](/Images/AU_logo.webp "Ahmedabad University")](https://ahduni.edu.in/)
   
-![IEEE Ahmedabad University Student Chapter Logo](/README%20Pictures/Logo.png "IEEE Ahmedabad University Student Chapter")
+![IEEE Ahmedabad University Student Chapter Logo](/Images/IEEE%20Logo%20Blue.png "IEEE Ahmedabad University Student Chapter")
 
 **Owner** :- [IEEE Ahmedabad University Student Branch](https://github.com/IEEE-Ahmedabad-University-SB-Official)  
 **Development Started** :- 11 May 2024
