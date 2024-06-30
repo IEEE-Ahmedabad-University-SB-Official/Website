@@ -1,0 +1,229 @@
+.contactUsSection {
+    display: grid;
+    height: 50em;
+    width: 100%;
+}
+
+.contactUsMainClass {
+    height: 100%;
+}
+
+.MapSection {
+    height: 60%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MapSection iframe {
+    width: 95vw;
+    height: 60vh;
+}
+
+.contactUsCard {
+    height: 100%;
+    width: 75%;
+    position: absolute;
+    top: 70%;
+    display: flex;
+    flex-direction: row;
+    box-shadow: -1em 1em 0.9em 0em rgba(0, 0, 0, 0.603);
+    /* border-left: 0.2em solid #047BB3; */
+}
+
+.userFormContactUs {
+    height: 100%;
+    width: 70%;
+    background-color: white;
+    padding: 1em;
+}
+
+.contactUsForm {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 25% 25% 30% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-areas: "a a a a"
+        "b b c c"
+        "d d d d"
+        "e e e e";
+
+    padding: 3%;
+    column-gap: 2%;
+    row-gap: 1%;
+}
+
+#HeaderFormContactus {
+    grid-area: a;
+    font-family: Poppins;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #047BB3;
+    border: none;
+}
+
+#nameInput {
+    grid-area: b;
+}
+
+.contactUsForm input,
+textarea {
+    border: none;
+    border-bottom: 1px solid #2f2f2f95;
+    font-family: Poppins;
+    color: #2f2f2fd7;
+
+}
+
+.contactUsForm input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.contactUsForm p {
+    font-family: Poppins;
+    color: #2f2f2f91;
+    margin-bottom: 10px;
+}
+
+#nameInput input {
+    height: 30%;
+    width: 85%;
+}
+
+#mailInput {
+    grid-area: c;
+
+}
+
+#mailInput input {
+    height: 30%;
+    width: 85%;
+}
+
+#writeUsMessage {
+    grid-area: d;
+
+}
+
+#writeUsMessage textarea {
+    height: 40%;
+    width: 93%;
+    overflow: scroll;
+}
+
+#sendButton {
+    grid-area: e;
+    display: flex;
+    align-items: center;
+}
+
+#sendButton button {
+    height: 3.5em;
+    width: 7em;
+    border: none;
+    background-color: #047BB3;
+    color: white;
+    font-family: Poppins;
+    font-size: 0.9em;
+    transition: all 0.2s;
+}
+
+#sendButton button:hover {
+    border: 1px solid #047BB3;
+    color: #047BB3;
+    background-color: transparent;
+}
+
+.ourDetailsSection {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 30%;
+    gap: 13%;
+    padding: 5%;
+    font-family: Poppins;
+    align-items: center;
+    background-color: #00000093;
+    position: absolute;
+    right: 0;
+    z-index: 3;
+}
+
+.ourDetailsImage {
+    height: 100%;
+    width: 30%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.headerOurDetails {
+    color: white;
+    /* color : #047BB3; */
+    font-size: 2em;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-weight: 600;
+    height: 20%;
+    width: 100%;
+}
+
+.contentOurDetails {
+    height: 100%;
+    width: 100%;
+}
+
+#ourDetailsList {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    height: 100%;
+    width: 100%;
+}
+
+#ourDetailsList a {
+    display: flex;
+    flex-direction: row;
+    gap: 12%;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-family: Poppins;
+    height: 15%;
+    width: 100%;
+    transition: all 0.4s;
+}
+
+#ourDetailsList a:hover {
+    transform: scale(1.04);
+}
+
+#ourDetailsList a:active,
+a:visited,
+a:link {
+    text-decoration: none;
+    text-decoration-color: none;
+}
+
+#addressOurDetail,
+#emailOurDetail,
+#linkedInOurDetail,
+#InstagramOurDetail {
+    display: flex;
+    flex-direction: row;
+    gap: 12%;
+    align-items: center;
+    color: white;
+    font-family: Poppins;
+    height: 15%;
+    width: 100%;
+}  
+    
+ 

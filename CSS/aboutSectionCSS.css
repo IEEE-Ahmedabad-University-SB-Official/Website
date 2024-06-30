@@ -1,0 +1,95 @@
+.aboutSection{
+    display: grid;
+    margin-top : 3rem;
+    
+}
+
+.aboutCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+
+}
+.aboutImage{
+    display: inline;
+    width :  42%;
+    height : 70%;
+    /* background-color: black; */
+    overflow-y: auto;
+    
+}
+.aboutImage img{
+    height : 98%;
+    width  : 80%;
+    border-top-left-radius: 0.6em;
+    border-top-right-radius: 0.6em;
+    border-bottom-left-radius: 0.6em;
+    border-bottom-right-radius: 10em;
+    box-shadow: 10px 10px 0px 0px #047BB3;
+}
+.aboutText{
+    width : 48%;
+    height : 70%;
+    /* background-color: rgb(63, 63, 141); */
+    display: flex;
+    flex-direction: column;
+    gap : 1%;
+
+}
+.aboutSectionHeadingText{
+    display: flex;
+    font-size: 1.5rem;
+    /* background-color: blanchedalmond; */
+    
+
+}
+.aboutSectionHeadingText p{
+    color : #047bb3;
+    font-family: roboto;
+    font-weight: 500;
+    font-size : 1.5em; 
+    justify-self: center;
+}
+.aboutWelcomeText{
+    font-family: poppins;
+    font-size: 2em;
+    font-weight: 500;
+    color: #2f2f2f;
+    transition: all 0.1s ease-in 0s;
+    /* display: inline-block; */
+}
+
+.aboutWelcomeText:hover{
+    display: inline;
+    border-bottom: 3px solid #2f2f2f9f;
+}
+.aboutDescriptionText{
+    padding-top : 20px;
+    font-family: poppins;
+    font-size: 1.1em;
+    color: #2f2f2f;
+    text-align: justify;
+}
+
+
+#designcircle1 img {
+    
+    position: absolute;
+    height : 9em;
+    top : 0%;
+    left: 2%;
+}
+#designcircle2 img {
+    position: absolute;
+    height : 9em;
+    top : 75%;
+    /* right: 5%; */
+    
+}
+
+
+
+  

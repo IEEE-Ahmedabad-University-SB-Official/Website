@@ -1,0 +1,225 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    /* background-color: #007bff; */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    color: black;
+}
+
+.adminbtn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.adminbtn:hover {
+    background-color: gray;
+}
+
+h1 {
+    text-align: center;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Form CSS */
+#member-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  
+  #member-form label {
+    font-weight: bold;
+  }
+  
+  #member-form input,
+  #member-form textarea,
+  #member-form select {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #member-form button {
+    grid-column: span 2;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #member-form button:hover {
+    background-color: #45a049;
+  }
+  
+  #image-upload {
+    grid-column: span 2;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  #image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+  }
+  
+
+#member-data-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: auto;
+}
+
+#member-data-table th,
+#member-data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#member-data-table th {
+    background-color: rgba(0, 0, 0, 0.559);
+    color: white;
+}
+
+#member-data-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th.leave-date, td.leave-date {
+    width: 100px;
+  }
+
+#add-member-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #28a745;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-member-button:hover {
+    background-color: #1f8b38;
+    font-size: 1rem;
+}
+
+.clientbtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.clientbtn:hover {
+    background-color: gray;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header-container h1 {
+    flex-grow: 1;
+    text-align: center;
+    /* margin-top: 1rem; */
+}
+
+.header-container .adminbtn {
+    position: absolute;
+    left: 0;
+    margin-left: 10%;
+    /* Adjust as needed for padding from the left */
+}
+
+/* .linkColumn{
+    max-width: 80px;
+    width: 10px;
+    object-fit: cover-;
+} */
+
+.linkIcon{
+    /* width: 52px; */
+    /* color: #28a745; */
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
