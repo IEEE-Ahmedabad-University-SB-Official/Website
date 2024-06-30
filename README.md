@@ -33,12 +33,12 @@ IEEE AU SB did not really have a good website for online reference for different
 
 ### Frontend
 
-- [ ] Set proper folder structure
+- [x] Set proper folder structure
 - [x] Build all the required pages in **HTML**
 - [x] Style them with **CSS**
 - [x] Add **JS** for logic if required
 - [x] Ensure smooth transition and working of links
-- [ ] Add the images and fill details of all IEEE Members
+- [x] Add the images and fill details of all IEEE Members
 - [ ] Get the design approved by faculty head
 - [ ] Documentation of Code
 - [ ] Integrate with **Backend**
@@ -47,13 +47,13 @@ IEEE AU SB did not really have a good website for online reference for different
 
 - [x] Decide on **Framework**
 - [x] Make clear plans on data flow and pipeline
-- [ ] Finalise the **APIs** that will be used
-- [ ] Set Proper Folder Structure
-- [ ] Connect with **Database**
-- [ ] Connect with **Frontend**
-- [ ] Ensure **CRUD** occurs smoothly
-- [ ] Ensure **Database Security**
-- [ ] Ensure API keys are **hidden** / **not easily accessible**
+- [x] Finalise the **APIs** that will be used
+- [x] Set Proper Folder Structure
+- [x] Connect with **Database**
+- [x] Connect with **Frontend**
+- [x] Ensure **CRUD** occurs smoothly
+- [x] Ensure **Database Security**
+- [x] Ensure API keys are **hidden** / **not easily accessible**
 - [ ] Ensure the user is not able to reach a protected page by filling in the address in the address bar
 - [ ] Exception Handling done
 - [ ] Documentation of Code
@@ -64,13 +64,13 @@ IEEE AU SB did not really have a good website for online reference for different
 ### Database
 
 - [x] Select which database to use
-- [ ] Create the necessary
-  - [ ] Tables
+- [x] Create the necessary
+  - [x] Tables
   - [ ] Views
   - [ ] Procedures
   - [ ] Functions
   - [ ] Triggers
-- [ ] Connect Databse with Backend
+- [x] Connect Databse with Backend
 - [ ] Document the final database. Include:
   - ER Diagram
   - **Tables** and **Views** created and for each table specify columnwise
