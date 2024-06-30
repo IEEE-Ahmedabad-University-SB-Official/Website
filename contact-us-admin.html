@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 1rem;
+        }
+
+        .header-container h1 {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .header-container .adminbtn {
+            position: absolute;
+            left: 0;
+            margin-left: 10%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #member-data-table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        #member-data-table th,
+        #member-data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #member-data-table th {
+            background-color: rgba(0, 0, 0, 0.559);
+            color: white;
+        }
+
+        #member-data-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .adminbtn {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .adminbtn:hover {
+            background-color: gray;
+        }
+
+        .download-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #28a745;
+            font-size: 1rem;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: #1f8b38;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <button class="adminbtn" onclick="window.location.href='admin.html'">Admin page</button>
+        <h1>Contact Us Details</h1>
+    </div>
+
+    <table id="member-data-table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody id="member-data-body">
+            <!-- Table data will be dynamically populated here -->
+        </tbody>
+    </table>
+    <button class="download-btn" onclick="downloadExcel()">Download Excel</button>
+
+
+    <script>
+        // Function to format date in "DD-MM-YYYY" format
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero based
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        }
+
+        // Fetch and display contact us details data
+        async function displayContactDetails() {
+            try {
+                const response = await fetch('http://localhost:3000/contact-us');
+                const data = await response.json();
+
+                const tableBody = document.getElementById('member-data-body');
+                tableBody.innerHTML = '';
+
+                data.forEach(contact => {
+                    const row = document.createElement('tr');
+                    const formattedDate = formatDate(contact.sentDate);
+
+                    row.innerHTML = `
+                        <td>${contact.id}</td>
+                        <td>${contact.name}</td>
+                        <td>${contact.email}</td>
+                        <td>${contact.message}</td>
+                        <td>${formattedDate}</td>
+                        <td>${contact.sentTime}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching contact details:', error);
+                alert('An error occurred while fetching contact details. Please try again later.');
+            }
+        }
+
+        // Function to download updates table data as Excel file
+        function downloadExcel() {
+            const table = document.getElementById('member-data-table');
+            const rows = table.querySelectorAll('tr');
+            let csv = [];
+            for (let i = 0; i < rows.length; i++) {
+                const row = [], cols = rows[i].querySelectorAll('td, th');
+                for (let j = 0; j < cols.length; j++) {
+                    // Encapsulate field in double quotes if it contains commas
+                    let field = cols[j].innerText;
+                    if (field.includes(',')) {
+                        field = `"${field}"`;
+                    }
+                    row.push(field);
+                }
+                csv.push(row.join(','));
+            }
+            const csvContent = csv.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'contact-us-form-details.csv';
+            link.click();
+        }
+
+
+
+        // Call displayContactDetails function when the page loads
+        window.onload = displayContactDetails;
+    </script>
+</body>
+
+</html>
