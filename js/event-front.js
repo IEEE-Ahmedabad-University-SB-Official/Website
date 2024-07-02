@@ -15,51 +15,59 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Fetch events from the server
     axios
         .get("http://localhost:3000/events")
         .then((response) => {
             let events = response.data;
             const currentDate = new Date();
 
-            // Separate upcoming and past events
             const upcomingEvents = events.filter(event => new Date(event.eventDate) >= currentDate);
             const pastEvents = events.filter(event => new Date(event.eventDate) < currentDate);
 
-            // Sort upcoming events by date (earliest first)
             upcomingEvents.sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
-
-            // Sort past events by date (latest first)
             pastEvents.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
 
-            // Append sorted upcoming events
-            upcomingEvents.forEach((event) => {
-                const upcomingCard = createUpcomingEventCard(event);
-                upcomingCardContainer.appendChild(upcomingCard);
-            });
+            if (upcomingEvents.length === 0) {
+                displayNoEventMessage(upcomingCardContainer);
+                hideUpcomingArrows();
+            } else {
+                showUpcomingArrows();
+                upcomingEvents.forEach((event) => {
+                    const upcomingCard = createUpcomingEventCard(event);
+                    upcomingCardContainer.appendChild(upcomingCard);
+                });
+            }
 
-            // Append sorted past events
-            pastEvents.forEach((event) => {
-                const pastSlide = createPastEventSlide(event);
-                swiperWrapper.appendChild(pastSlide);
-            });
+            if (pastEvents.length === 0) {
+                displayNoEventMessage(swiperWrapper);
+                hidePastArrows();
+            } else {
+                showPastArrows();
+                pastEvents.forEach((event) => {
+                    const pastSlide = createPastEventSlide(event);
+                    swiperWrapper.appendChild(pastSlide);
+                });
 
-            // Initialize Swiper after slides are added
-            new Swiper(".mySwiper", {
-                effect: "cards",
-                grabCursor: true,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                simulateTouch: false,
-                slidesPerView: 1,
-                centeredSlides: true,
-                slideToClickedSlide: true,
-            });
+                new Swiper(".mySwiper", {
+                    effect: "cards",
+                    grabCursor: true,
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    simulateTouch: false,
+                    slidesPerView: 1,
+                    centeredSlides: true,
+                    slideToClickedSlide: true,
+                });
+            }
         })
         .catch((error) => {
-            console.error("There was an error!", error);
+            console.error("There was an error in database connection!", error);
+            displayNoEventMessage(upcomingCardContainer);
+            displayNoEventMessage(swiperWrapper);
+            hidePastArrows();
+            hideUpcomingArrows();
         });
 
     function createUpcomingEventCard(event) {
@@ -92,20 +100,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="check">
                     <div class="card-speaker-div">
                         <div class="upcomingEventCard-content">
-                            <img src="Images/speaker.png" width="24px">
+                            <img src="Images/speaker.png" width="20px">
                             <p class="upcomingEventCard-content-data">${event.speaker}</p>
                         </div>
                     </div>
 
                     <div class="card-time-div">
                         <div class="upcomingEventCard-content">
-                            <img src="Images/event-time.png" width="24px">
+                            <img src="Images/event-time.png" width="20px">
                             <p class="upcomingEventCard-content-data"> ${event.eventTime}</p>
                         </div>
                     </div>
                     <div class="card-veneu-div">
                         <div class="upcomingEventCard-content">
-                            <img src="Images/venue.png" width="24px">
+                            <img src="Images/venue.png" width="20px">
                             <p class="upcomingEventCard-content-data" >${event.venue}</p>
                         </div>
                     </div>
@@ -138,6 +146,49 @@ document.addEventListener("DOMContentLoaded", function () {
         return slide;
     }
 
+    function displayNoEventMessage(container) {
+        container.innerHTML = ''; // Clear any existing content
+        
+        const noEventDiv = document.createElement("div");
+        noEventDiv.classList.add("no-event-message");
+        
+        if(container.id === "swiper-wrapper") {
+            noEventDiv.innerHTML = "<p>No Past event found</p>";
+        } else if(container.id === "upcoming-card-container") {
+            noEventDiv.innerHTML = "<p>No Upcoming event found</p>";
+        }
+        
+        container.appendChild(noEventDiv);
+    }
+    
+
+    function hideUpcomingArrows() {
+        const arrows = document.querySelectorAll(".arrow");
+        arrows.forEach((arrow) => {
+            arrow.style.display = "none";
+        });
+    }
+
+    function showUpcomingArrows() {
+        const arrows = document.querySelectorAll(".arrow");
+        arrows.forEach((arrow) => {
+            arrow.style.display = "block";
+        });
+    }
+    function hidePastArrows() {
+        const arrows = document.querySelectorAll(".swiper-button-next, .swiper-button-prev");
+        arrows.forEach((arrow) => {
+            arrow.style.display = "none";
+        });
+    }
+
+    function showPastArrows() {
+        const arrows = document.querySelectorAll(".swiper-button-next, .swiper-button-prev");
+        arrows.forEach((arrow) => {
+            arrow.style.display = "block";
+        });
+    }
+
     function showModal(event) {
         document.getElementById("modal-image").src = `uploads/events/${event.eventPoster}`;
         modalDetail.innerHTML = `
@@ -151,21 +202,21 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         modal.style.display = "block";
         const modalContent = document.querySelector(".modal-content");
-        modalContent.classList.remove("zoomOut", "fadeOut"); // Remove previous animation classes
+        modalContent.classList.remove("zoomOut", "fadeOut");
         modalContent.classList.add("zoomIn");
-        document.body.style.overflow = "hidden"; // Disable scrolling
+        document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
         const modalContent = document.querySelector(".modal-content");
-        modalContent.classList.remove("zoomIn"); // Remove the zoom-in animation class
-        modalContent.classList.add("zoomOut"); // Add the zoom-out animation class
-        modal.classList.add("fadeOut"); // Add fade-out animation to modal
+        modalContent.classList.remove("zoomIn");
+        modalContent.classList.add("zoomOut");
+        modal.classList.add("fadeOut");
         setTimeout(() => {
             modal.style.display = "none";
-            modal.classList.remove("fadeOut"); // Remove fade-out animation class
-            document.body.style.overflow = ""; // Re-enable scrolling
-        }, 500); // Match this delay to the animation duration
+            modal.classList.remove("fadeOut");
+            document.body.style.overflow = "";
+        }, 500);
     }
 
     function formatDate(dateString) {
@@ -183,7 +234,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const rightArrows = document.querySelectorAll(".arrow.right");
     const cardWidth = 770; // Set this to the width of your cards
 
-    // Event listeners for left and right arrows
     leftArrows.forEach((leftArrow) => {
         leftArrow.addEventListener("click", function () {
             const cardContainer = leftArrow.parentElement.querySelector(".card-container");

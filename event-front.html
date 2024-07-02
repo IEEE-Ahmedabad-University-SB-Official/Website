@@ -272,3 +272,277 @@
 </body>
 
 </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container{
+            width: 80%;
+            margin: auto;
+        }
+        
+        .eventContainer h1 {
+            text-align: center;
+        }
+
+        .eventContainer {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .arrow img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .arrow.left {
+            left: 0;
+        }
+
+        .arrow.right {
+            right: 0;
+        }
+
+        .card-container {
+            display: flex;
+            margin: 0 50px;
+            -webkit-overflow-scrolling: touch;
+            /* Smooth scrolling for iOS */
+            scrollbar-width: none;
+            /* Firefox */
+            overflow-x: scroll;
+            /* Hide the scroll bar */
+        }
+
+        .card-container::-webkit-scrollbar {
+            display: none;
+            /* Hide the scroll bar for Chrome, Safari, and Opera */
+        }
+
+        .card {
+            width: 70%;
+            min-width: 300px;
+            flex-shrink: 0;
+            border-radius: 0 40px 0 40px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            background-color: rgba(128, 128, 128, 0.154);
+            margin-right: 1rem;
+        }
+
+        .img {
+            margin: 0;
+        }
+
+        .img2 {
+            width: 300px;
+            object-fit: cover;
+            padding: 0.9rem;
+            border-bottom-left-radius: 40px;
+        }
+
+        .content {
+            padding: 20px;
+            width: 100%;
+
+        }
+
+        .eventName {
+            margin: 0;
+            color: #333;
+        }
+
+        .para p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .link {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .link:hover {
+            background-color: #0056b3;
+        }
+
+        .adminbtn {
+            display: block;
+            margin: 1rem auto;
+            padding: 10px 20px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .adminbtn:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Upcoming Events</h1>
+        <div class="container">
+            <div class="arrow left"><img src="/assets/left-arrow.png" alt="Left Arrow"></div>
+            <div class="card-container" id="upcoming-card-container">
+                <!-- Upcoming events will be dynamically added here -->
+            </div>
+            <div class="arrow right"><img src="/assets/right-arrow.png" alt="Right Arrow"></div>
+        </div>
+        <img src="Images/venue.png">
+
+        <h1>Past Events</h1>
+        <div class="container">
+            <div class="arrow left"><img src="/assets/left-arrow.png" alt="Left Arrow"></div>
+            <div class="card-container" id="past-card-container">
+                <!-- Past events will be dynamically added here -->
+            </div>
+            <div class="arrow right"><img src="/assets/right-arrow.png" alt="Right Arrow"></div>
+        </div>
+
+        <button class="adminbtn" onclick="window.location.href='event-admin.html'">Admin page</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const upcomingCardContainer = document.getElementById("upcoming-card-container");
+            const pastCardContainer = document.getElementById("past-card-container");
+            const leftArrows = document.querySelectorAll(".arrow.left");
+            const rightArrows = document.querySelectorAll(".arrow.right");
+            const cardWidth = 760; // Adjust this according to your card width
+
+            // Fetch events from the server
+            axios.get('http://localhost:3000/events')
+                .then(response => {
+                    const events = response.data;
+                    const currentDate = new Date();
+
+                    events.forEach(event => {
+                        const eventDate = new Date(event.eventDate);
+                        const UpcomingCard = createUpcomingEventCard(event);
+                        const pastCard = createPastEventCard(event);
+
+                        if (eventDate >= currentDate) {
+                            upcomingCardContainer.appendChild(UpcomingCard);
+                        } else {
+                            pastCardContainer.appendChild(pastCard);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
+
+            function createUpcomingEventCard(event) {
+                const card = document.createElement("div");
+                const eventDate = new Date(event.eventDate);
+                const dateString = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear();
+
+                card.classList.add("card");
+                card.innerHTML = `
+            <div class="img">
+                <img class="img2" src="uploads/events/${event.eventPoster}" alt="">
+            </div>
+            <div class="content">
+                <h2>${event.eventName}</h2>
+                <div class="para">
+                    <p>${event.eventDescription}</p>
+                </div>
+                <p>Speaker: ${event.speaker}</p>
+                <p>Date: ${dateString}</p>
+                <p>Time: ${event.eventTime}</p>
+                <p>Venue: ${event.venue}</p>
+                <a href="${event.registrationLink}">Register Now</a>
+            </div>
+        `;
+                return card;
+            }
+            function createPastEventCard(event) {
+                const card = document.createElement("div");
+                const eventDate = new Date(event.eventDate);
+                const dateString = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear();
+
+                card.classList.add("card");
+                card.innerHTML = `
+            <div class="img">
+                <img class="img2" src="uploads/events/${event.eventPoster}" alt="">
+            </div>
+            <div class="content">
+                <h2>${event.eventName}</h2>
+                <div class="para">
+                    <p>${event.eventDescription}</p>
+                </div>
+                <p>Speaker: ${event.speaker}</p>
+                <p>Date: ${dateString}</p>
+                <p>Time: ${event.eventTime}</p>
+                <p>Venue: ${event.venue}</p>
+                <a href="${event.instaPostLink}">Know more</a>
+            </div>
+        `;
+                return card;
+            }
+
+            // Event listeners for left and right arrows
+            leftArrows.forEach(leftArrow => {
+                leftArrow.addEventListener("click", function () {
+                    const cardContainer = leftArrow.parentElement.querySelector(".card-container");
+                    cardContainer.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                });
+            });
+
+            rightArrows.forEach(rightArrow => {
+                rightArrow.addEventListener("click", function () {
+                    const cardContainer = rightArrow.parentElement.querySelector(".card-container");
+                    cardContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -272,22 +272,22 @@
     .heroSection,
     .achievementsSection {
         margin-top: unset !important;
-        margin-bottom: unset !important;
-        margin-bottom: 70px !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 70px !important; */
        
     }
     .aboutSection,
     .past-event-container,
     .wrapper {
         margin-top: unset !important;
-        margin-bottom: unset !important;
-        margin-bottom: 140px !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 140px !important; */
     }
 
     .contactUsSection {
         margin-top: unset !important;
-        margin-bottom: unset !important;
-        margin-bottom: 40px !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 40px !important; */
     }
 }
 
@@ -394,20 +394,25 @@
     .heroSection,
     .achievementsSection {
         margin-top: unset !important;
-        margin-bottom: unset !important;
-        margin-bottom: 70px !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 70px !important; */
        
     }
-    .aboutSection,
+    .aboutSection{
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        /* margin-bottom: 140px !important; */
+    }
+    
     .past-event-container,
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 140px !important;
+        margin-bottom: 2rem !important;
     }
 
     .contactUsSection {
-        margin-top: unset !important;
+        margin-top: 5rem !important;
         margin-bottom: unset !important;
         margin-bottom: 100px !important;
     }

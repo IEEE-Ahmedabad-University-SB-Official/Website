@@ -73,8 +73,10 @@
     font-weight: 800;
     margin-left: 2rem;
     color : #2f2f2f;
-    text-shadow: #ffffff 33px 35px 1.1px,    #767676 33px 35px 1.1px,    #767676 33px 35px 1.1px,
-                #767676 33px 35px 1.1px,   #767676 33px 35px 1.1px,    #767676 33px 35px 1.1px;
+    text-shadow: 
+    8px 8px rgba(128, 128, 128, 0.4),
+    16px 16px rgba(128, 128, 128, 0.2);
+
     -webkit-font-smoothing: antialiased;
 }
 

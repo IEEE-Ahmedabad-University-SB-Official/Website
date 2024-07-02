@@ -5,6 +5,13 @@ body {
     overflow-x: hidden;
 }
 
+.upcomingEventText{
+    /* color: red; */
+    text-transform: uppercase;
+    /* margin-left: 2.5rem; */
+    text-align: center;
+}
+
 .eventContainer h1 {
     text-align: center;
 }
@@ -270,4 +277,24 @@ body {
 
 .fadeOut {
     animation: fadeOut 0.5s forwards;
+}
+
+.no-event-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333; /* Adjust the color as needed */
+    background-color: #f9f9f9; /* Adjust the background color as needed */
+    border: 1px solid #ccc; /* Adjust the border style as needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adjust the box shadow as needed */
+}
+
+.card-container, .swiper-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
 }

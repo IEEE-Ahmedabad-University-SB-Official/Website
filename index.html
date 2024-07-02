@@ -13,6 +13,7 @@
     <link   rel="stylesheet" href="./CSS/mediaQuery.css">
     <link   rel="stylesheet" href="./CSS/mediaQuery.-Laptop.css">
     <link   rel="stylesheet" href="./CSS/backgroundAnimation.css">
+    <link rel="stylesheet" href="CSS/au-slider.css">
     <link   rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -56,7 +57,7 @@
                 <!-- <img src="./Images/HeroSection1.jpg" alt=""> -->
                 <div class="videoHeroSection">
                     <video autoplay muted loop id="myVideo">
-                        <source src="./Images/grid3.mp4" type="video/mp4">
+                        <source src="./video/grid3.mp4" type="video/mp4">
                     </video>
                     <img class="imageBackGround" src="./Images/pattern.png">
     
@@ -101,10 +102,13 @@
                 </div>
                 <div class="heroContent">
                     <div class="Heading">
-                        <p id="headingText">IEEE AUSB<p id="subheadingText">Institute Of Electrical And Electronics Engineers<br><span>Ahmedabad
-                            University Student Branch</span></p></p>
-                        
+                        <p id="headingText">IEEE AUSB
+                        <p id="subheadingText">Institute Of Electrical And Electronics Engineers<br>
+                    <div class="typing-container">
+                        <span id="typing-text"></span><span id="cursor">|</span>
                     </div>
+                </div>
+                        
                     <!-- <div class="image-Slider-HeroSection">
                         <div class="slide-hero-container">
                             <div class="carousel">
@@ -215,9 +219,130 @@
         </div>
     </section>
 
+    <!-- image slider -->
+    <section>
+        <h1 style="text-align: center; font-size: 2.5rem;">Glimpse of Ahmedabad University</h1>
+        <div class="cont s--inactive">
+            <!-- cont inner start -->
+            <div class="cont__inner">
+                <!-- el start -->
+                <div class="el">
+                    <div class="el__overflow">
+                        <div class="el__inner">
+                            <div class="el__bg"></div>
+                            <div class="el__preview-cont">
+                                <h2 class="el__heading">Section 1</h2>
+                            </div>
+                            <div class="el__content">
+                                <div class="el__text">Ahmedabad University Campus</div>
+                                <div class="el__close-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el__index">
+                        <div class="el__index-back">1</div>
+                        <div class="el__index-front">
+                            <div class="el__index-overlay" data-index="1">1</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- el end -->
+                <!-- el start -->
+                <div class="el">
+                    <div class="el__overflow">
+                        <div class="el__inner">
+                            <div class="el__bg"></div>
+                            <div class="el__preview-cont">
+                                <h2 class="el__heading">Section 2</h2>
+                            </div>
+                            <div class="el__content">
+                                <div class="el__text">School of Engineering and Applied Sciences</div>
+                                <div class="el__close-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el__index">
+                        <div class="el__index-back">2</div>
+                        <div class="el__index-front">
+                            <div class="el__index-overlay" data-index="2">2</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- el end -->
+                <!-- el start -->
+                <div class="el">
+                    <div class="el__overflow">
+                        <div class="el__inner">
+                            <div class="el__bg"></div>
+                            <div class="el__preview-cont">
+                                <h2 class="el__heading">Section 3</h2>
+                            </div>
+                            <div class="el__content">
+                                <div class="el__text">School of Arts and Sciences</div>
+                                <div class="el__close-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el__index">
+                        <div class="el__index-back">3</div>
+                        <div class="el__index-front">
+                            <div class="el__index-overlay" data-index="3">3</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- el end -->
+                <!-- el start -->
+                <div class="el">
+                    <div class="el__overflow">
+                        <div class="el__inner">
+                            <div class="el__bg"></div>
+                            <div class="el__preview-cont">
+                                <h2 class="el__heading">Section 4</h2>
+                            </div>
+                            <div class="el__content">
+                                <div class="el__text">Amsom Heritage Building</div>
+                                <div class="el__close-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el__index">
+                        <div class="el__index-back">4</div>
+                        <div class="el__index-front">
+                            <div class="el__index-overlay" data-index="4">4</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- el end -->
+                <!-- el start -->
+                <div class="el">
+                    <div class="el__overflow">
+                        <div class="el__inner">
+                            <div class="el__bg"></div>
+                            <div class="el__preview-cont">
+                                <h2 class="el__heading">Section 5</h2>
+                            </div>
+                            <div class="el__content">
+                                <div class="el__text">University Centre</div>
+                                <div class="el__close-btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el__index">
+                        <div class="el__index-back">5</div>
+                        <div class="el__index-front">
+                            <div class="el__index-overlay" data-index="5">5</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- el end -->
+            </div>
+            <!-- cont inner end -->
+        </div>
+    </section>
+
     <!--Upcoming Event  -->
     <div class="wrapper" style="margin-bottom: 4rem;">
-        <h1 style="text-align: center; margin: 2rem;">Upcoming Events</h1>
+        <h1 class="upcomingEventText">Upcoming Events</h1>
         <div class="eventContainer">
             <div class="arrow left"><img src="/Images/left-arrow.png" alt="Left Arrow"></div>
             <div class="card-container" id="upcoming-card-container">
@@ -242,11 +367,11 @@
     <div class="past-event-container">
         <div class="container">
             <div class="head">
-                <h1>Past Events</h1>
+                <h1 class="past-event-head">Past Events</h1>
             </div>
             <div class="past-content">
                 <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper" id="swiper-wrapper">
                         <!-- Dynamic content will be inserted here -->
                     </div>
                 </div>
@@ -477,6 +602,9 @@
 
     <script src="js/past-vishv.js"></script>
     <script src="js/theme-logic.js"></script>
+
+    <script src="js/au-slider.js"></script>
+    <script src="js/typing.js"></script>
     
     
     

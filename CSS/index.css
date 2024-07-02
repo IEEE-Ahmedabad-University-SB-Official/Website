@@ -35,6 +35,27 @@
     z-index      : -999          ;
 }
 
+.typing-container {
+    font-size: 24px;
+    font-family     : Poppins;
+    font-weight     : 400;
+    letter-spacing  : 0.150em;
+}
+
+#cursor {
+    animation: cursor-blink 0.7s infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+
 /* ============ NavBar============ */
 
 
@@ -226,7 +247,7 @@ nav{
     /* align-self      : flex-start; */
     /* position        : absolute; */
     /* top             : 55%; */
-    padding-left    : 19px;
+    /* padding-left    : 19px; */
     letter-spacing  : 0.150em;
     width: 100%;
 }
@@ -247,20 +268,11 @@ nav{
     from{width : 0%}
     to { width: 100% }
 }
+
 .normal-text{
     position        : -webkit-sticky;
 }
-.typingAnimatedText{
-    font-family     : Montserrat;
-    font-weight     : 850;
-    font-size       : 15em ;
-    overflow-x      : hidden;
-    /* overflow-y   : none;  */
-    border-right    : 3px solid rgb(255, 255, 255);
-    white-space     : nowrap;
-    width           : 0%;
-     
-}
+
 .imageCard{
     height          : 100%   ;
     /* background-color: blue; */
@@ -516,10 +528,11 @@ nav{
     top : 10%;
     left: 2%;
 }
+
 #designcircle2 img {
     position: absolute;
     height : 9em;
-    top : 75%;
+    top : 70%;
     /* right: 5%; */
     
 }
@@ -609,6 +622,7 @@ nav{
 
 .contactUsMainClass {
     height: 100%;
+    margin-top: 2rem;
 }
 
 .MapSection {
@@ -626,7 +640,7 @@ nav{
 }
 
 .contactUsCard {
-    height: 45vh;
+    height: 55vh;
     width: 75vw;
     position: absolute;
     top: 45%;
@@ -938,9 +952,9 @@ body.darkTheme .wrapper h1{
 
 body.darkTheme .head h1{
     color: white;
-    text-shadow: #000000 33px 33px 1.1px,    #999999 33px 33px 1.1px,    #999999 33px 33px 1.1px,
-    #999999 33px 33px 1.1px,   #999999 33px 33px 1.1px,    #999999 33px 33px 1.1px;
-
+    text-shadow: 
+    8px 8px rgba(128, 128, 128, 0.4),
+    16px 16px rgba(128, 128, 128, 0.2);
 }
 
 body.darkTheme .userFormContactUs, 

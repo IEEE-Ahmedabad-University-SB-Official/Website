@@ -248,46 +248,46 @@
             transform: scale(1.06);
         }
 
-        .theme-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 0.4rem 0.8rem;
-    flex-direction: row;
-    margin-right: 4%;
-    margin-top: 0.5rem;
-    cursor: pointer;
-    background-color: white;
-}
+        .theme-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 0.4rem 0.8rem;
+            flex-direction: row;
+            margin-right: 4%;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            background-color: white;
+        }
 
-.theme-div button{
-    margin-left: 0.5rem;
-    background-color: transparent;
-    border: none;
-    color: white;
-    text-transform: uppercase;
-    color: black;
-    cursor: pointer;
-}
+        .theme-div button {
+            margin-left: 0.5rem;
+            background-color: transparent;
+            border: none;
+            color: white;
+            text-transform: uppercase;
+            color: black;
+            cursor: pointer;
+        }
 
-.theme-div button:hover{
-    color: black;
-}
+        .theme-div button:hover {
+            color: black;
+        }
 
-.bottom-div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
+        .bottom-div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
 
-.bottom-div h4 {
-    margin: 0;
-    flex: 1;
-    text-align: center;
-}
+        .bottom-div h4 {
+            margin: 0;
+            flex: 1;
+            text-align: center;
+        }
 
         /* for black logo */
         /* .navSection.scrolled #IEEE-LOGO img {
@@ -350,14 +350,36 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        body.darkTheme .theme-div{
+        body.darkTheme .theme-div {
             background-color: black;
             border: 1px solid white;
         }
 
-        body.darkTheme .theme-div button{
+        body.darkTheme .theme-div button {
             color: white;
             cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+
+            .achivement-div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .achivement-div:nth-of-type(odd) {
+                flex-direction: column;
+            }
+
+            /* Styles for alternating divs */
+            .achivement-div:nth-of-type(even) {
+                flex-direction: column;
+            }
+
+            .achi-text{
+                text-align: center;
+            }
         }
     </style>
 </head>
