@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achivements</title>
+    <!-- <link rel="stylesheet" href="./CSS/event-page.css"> -->
+    <link rel="stylesheet" href="/CSS/footerSection.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <script src="js/get-updates.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .heading a {
+            margin: 0;
+            margin-left: 2rem;
+            font-size: 24px;
+            font-weight: 600;
+            text-decoration: none;
+            color: black;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .heading a::after {
+            /* text-decoration: underline; */
+            /* border-bottom: solid black; */
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: black;
+            transition: width 0.3s, left 0.3s;
+            width: 0;
+        }
+
+        .heading a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .heading h1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .achivement-div {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .achi-img img {
+            width: 360px;
+            margin: 0;
+            border-radius: 0px 20px 0px 20px;
+        }
+
+        .achi-text {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            flex-grow: 1;
+            margin-left: 2rem;
+        }
+
+        .head {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .achivement-div:nth-of-type(odd) {
+            flex-direction: row;
+        }
+
+        /* Styles for alternating divs */
+        .achivement-div:nth-of-type(even) {
+            flex-direction: row-reverse;
+        }
+
+
+        .achivement-div:nth-child(even) .achi-img img {
+            border-radius: 20px 0px 20px 0px;
+            margin-left: 2rem;
+            margin-right: 0;
+        }
+
+        .achivement-div:nth-child(odd) .achi-img img {
+            border-radius: 0px 20px 0px 20px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 2rem 0;
+        }
+
+        .navSection {
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            background-color: #2f2f2f;
+            transition: background 0.3s, backdrop-filter 0.3s;
+            z-index: 1000;
+        }
+
+        nav {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10%;
+        }
+
+        .navAnchors {
+            height: 100%;
+            width: 50%;
+            margin-left: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: auto 0;
+            margin-right: 2rem;
+        }
+
+        .navAnchors a {
+            display: flex;
+            gap: 0.5em;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            text-decoration: none;
+            text-decoration-color: white;
+            color: white;
+            font-size: 1.02em;
+            font-family: Poppins;
+            font-weight: 400;
+            padding-bottom: 5px;
+            transition: border-bottom 0s;
+            transition: transform 0.2s;
+        }
+
+        .navAnchors a i {
+            color: white;
+        }
+
+        .navAnchors a:hover {
+            border-bottom: solid white;
+            transform: scale(1.06);
+        }
+
+        .navAnchors a.active {
+            border-bottom: solid white;
+            transform: scale(1.06);
+            /* font-weight: bold; */
+        }
+
+        #IEEE-LOGO {
+            height: 100%;
+            width: 20%;
+            margin-left: 1rem;
+
+        }
+
+        #IEEE-LOGO img {
+            height: 100%;
+            width: 80%;
+        }
+
+        #IEEE-LOGO-phone {
+            display: none;
+        }
+
+
+        /* Blurred background effect on scroll */
+        .navSection.scrolled {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.2);
+            /* Slightly more opaque background when scrolled */
+            /* color: black; */
+        }
+
+        .navSection.scrolled a,
+        .navSection.scrolled i {
+            color: black;
+        }
+
+        .fa-solid {
+            color: black;
+        }
+
+        .navSection.scrolled .navAnchors a:hover {
+            border-bottom: solid black;
+            transform: scale(1.06);
+        }
+
+        .navSection.scrolled .navAnchors a.active {
+            border-bottom: solid black;
+            transform: scale(1.06);
+        }
+
+        .theme-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.4rem 0.8rem;
+    flex-direction: row;
+    margin-right: 4%;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    background-color: white;
+}
+
+.theme-div button{
+    margin-left: 0.5rem;
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    color: black;
+    cursor: pointer;
+}
+
+.theme-div button:hover{
+    color: black;
+}
+
+.bottom-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.bottom-div h4 {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+        /* for black logo */
+        /* .navSection.scrolled #IEEE-LOGO img {
+            filter: invert(1);
+        } */
+
+        body.darkTheme {
+            background-color: black;
+        }
+
+        body.darkTheme .navSection {
+            background-color: transparent;
+        }
+
+        body.darkTheme .container {
+            color: white;
+        }
+
+        body.darkTheme .container img {
+            border: 1px solid white;
+        }
+
+        body.darkTheme .paragraph {
+            color: rgba(255, 255, 255, 0.553);
+            transition: 0.2s;
+        }
+
+        body.darkTheme .paragraph:hover {
+            color: rgba(255, 255, 255, 0.853);
+        }
+
+        body.darkTheme .navSection.scrolled .navAnchors a:hover {
+            border-bottom: solid white;
+        }
+
+        body.darkTheme .navSection.scrolled .navAnchors a.active {
+            border-bottom: solid white;
+        }
+
+        body.darkTheme .navSection.scrolled a,
+        body.darkTheme .navSection.scrolled i {
+            color: white;
+        }
+
+        body.darkTheme .footerSection {
+            background-color: black;
+            border-top: 1px solid white;
+        }
+
+        body.darkTheme .footerClass {
+            background-color: black;
+        }
+
+        body.darkTheme .imgs,
+        body.darkTheme .copyrightSection {
+            background-color: black;
+        }
+
+        body.darkTheme #socialLinks a {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.darkTheme .theme-div{
+            background-color: black;
+            border: 1px solid white;
+        }
+
+        body.darkTheme .theme-div button{
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navSection" id="navBar">
+        <nav>
+            <div class="navClass" id="IEEE-LOGO">
+                <img src="Images/IEEE-LOGO-WHITE.png" alt="ieee-logo" id="default-logo">
+                <img src="Images/logo.png" alt="ieee-logo" id="scrolled-logo" style="display: none;">
+            </div>
+
+            <div class="navAnchors">
+                <a href="index.html" id="home-link"><i class="fa-solid fa-house" style="font-size: 0.8rem;"></i>Home</a>
+                <a href="achivement-page.html" id="achivement-link"><i class="fa-solid fa-trophy"
+                        style="font-size: 0.8rem;"></i>Achievements</a>
+                <a href="event-page.html" id="events-link"><i class="fa-solid fa-calendar-days"
+                        style="font-size: 0.8rem;"></i>Events</a>
+                <a href="member-front.html" id="committee-link"><i class="fa-solid fa-users"
+                        style="font-size: 0.8rem;"></i>Committee</a>
+                <a href="index.html#contactUs"><i class="fa-solid fa-phone" style="font-size: 0.8rem;"></i>Contact
+                    Us</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1 style="text-align: center;">Achivements</h1>
+        <div class="achivement-div">
+            <div class="achi-img">
+                <img src="./Images/aboutAu3.jpg" alt="">
+            </div>
+            <div class="achi-text">
+                <p class="head">Lorem ipsum dolor sit amet.</p>
+                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi porro
+                    tempore voluptatibus eveniet sequi? Provident, quisquam. Iusto sapiente earum laborum exercitationem
+                    nemo soluta doloremque incidunt unde, neque ut! Odio, numquam quo illo nemo impedit ut ipsam soluta
+                    ipsum alias, voluptatibus earum consequuntur rerum quae nam. Dolorem provident, accusamus, officiis
+                    sit modi, labore laudantium magni dolores placeat tempora cum! Repellendus aperiam laudantium et
+                    nostrum consectetur fugit. Placeat, perspiciatis repellendus.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="achivement-div">
+            <div class="achi-img">
+                <img src="./Images/aboutAu3.jpg" alt="">
+            </div>
+            <div class="achi-text">
+                <p class="head">Lorem ipsum dolor sit amet.</p>
+                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi porro
+                    tempore voluptatibus eveniet sequi? Provident, quisquam. Iusto sapiente earum laborum exercitationem
+                    nemo soluta doloremque incidunt unde, neque ut! Odio, numquam quo illo nemo impedit ut ipsam soluta
+                    ipsum alias, voluptatibus earum consequuntur rerum quae nam. Dolorem provident, accusamus, officiis
+                    sit modi, labore laudantium magni dolores placeat tempora cum! Repellendus aperiam laudantium et
+                    nostrum consectetur fugit. Placeat, perspiciatis repellendus.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="achivement-div">
+            <div class="achi-img">
+                <img src="./Images/aboutAu3.jpg" alt="">
+            </div>
+            <div class="achi-text">
+                <p class="head">Lorem ipsum dolor sit amet.</p>
+                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi porro
+                    tempore voluptatibus eveniet sequi? Provident, quisquam. Iusto sapiente earum laborum exercitationem
+                    nemo soluta doloremque incidunt unde, neque ut! Odio, numquam quo illo nemo impedit ut ipsam soluta
+                    ipsum alias, voluptatibus earum consequuntur rerum quae nam. Dolorem provident, accusamus, officiis
+                    sit modi, labore laudantium magni dolores placeat tempora cum! Repellendus aperiam laudantium et
+                    nostrum consectetur fugit. Placeat, perspiciatis repellendus.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="achivement-div">
+            <div class="achi-img">
+                <img src="./Images/aboutAu3.jpg" alt="">
+            </div>
+            <div class="achi-text">
+                <p class="head">Lorem ipsum dolor sit amet.</p>
+                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi porro
+                    tempore voluptatibus eveniet sequi? Provident, quisquam. Iusto sapiente earum laborum exercitationem
+                    nemo soluta doloremque incidunt unde, neque ut! Odio, numquam quo illo nemo impedit ut ipsam soluta
+                    ipsum alias, voluptatibus earum consequuntur rerum quae nam. Dolorem provident, accusamus, officiis
+                    sit modi, labore laudantium magni dolores placeat tempora cum! Repellendus aperiam laudantium et
+                    nostrum consectetur fugit. Placeat, perspiciatis repellendus.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="achivement-div">
+            <div class="achi-img">
+                <img src="./Images/aboutAu3.jpg" alt="">
+            </div>
+            <div class="achi-text">
+                <p class="head">Lorem ipsum dolor sit amet.</p>
+                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi porro
+                    tempore voluptatibus eveniet sequi? Provident, quisquam. Iusto sapiente earum laborum exercitationem
+                    nemo soluta doloremque incidunt unde, neque ut! Odio, numquam quo illo nemo impedit ut ipsam soluta
+                    ipsum alias, voluptatibus earum consequuntur rerum quae nam. Dolorem provident, accusamus, officiis
+                    sit modi, labore laudantium magni dolores placeat tempora cum! Repellendus aperiam laudantium et
+                    nostrum consectetur fugit. Placeat, perspiciatis repellendus.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="achivement-div">
+            <div class="achi-img">
+                <img src="./Images/aboutAu3.jpg" alt="">
+            </div>
+            <div class="achi-text">
+                <p class="head">Lorem ipsum dolor sit amet.</p>
+                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi porro
+                    tempore voluptatibus eveniet sequi? Provident, quisquam. Iusto sapiente earum laborum exercitationem
+                    nemo soluta doloremque incidunt unde, neque ut! Odio, numquam quo illo nemo impedit ut ipsam soluta
+                    ipsum alias, voluptatibus earum consequuntur rerum quae nam. Dolorem provident, accusamus, officiis
+                    sit modi, labore laudantium magni dolores placeat tempora cum! Repellendus aperiam laudantium et
+                    nostrum consectetur fugit. Placeat, perspiciatis repellendus.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="achivement-div">
+            <div class="achi-img">
+                <img src="./Images/aboutAu3.jpg" alt="">
+            </div>
+            <div class="achi-text">
+                <p class="head">Lorem ipsum dolor sit amet.</p>
+                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eligendi porro
+                    tempore voluptatibus eveniet sequi? Provident, quisquam. Iusto sapiente earum laborum exercitationem
+                    nemo soluta doloremque incidunt unde, neque ut! Odio, numquam quo illo nemo impedit ut ipsam soluta
+                    ipsum alias, voluptatibus earum consequuntur rerum quae nam. Dolorem provident, accusamus, officiis
+                    sit modi, labore laudantium magni dolores placeat tempora cum! Repellendus aperiam laudantium et
+                    nostrum consectetur fugit. Placeat, perspiciatis repellendus.</p>
+            </div>
+        </div>
+    </div>
+
+    <!--footer Section  -->
+    <section class=" FooterSection">
+        <div class="textContent">
+            <div class="footerSection" id="footer">
+                <div class="footerClass">
+                    <div class="OurGoalsSection">
+                        <div id="headerOurGoals">
+                            <p>Our Goals</p>
+                        </div>
+                        <div id="OurGoalsDescription">
+                            <p>Lorem ipsum dolor sit ameto molestiae e enim quisquam at dolor quidem, alias aut
+                                consectetur vel tempora repudiandae nulla voluptas architecto omnis, dicta
+                                necessitatibus, autem nostrum! Enim in corporis consequatur sunt. Soluta, asperiores
+                                quibusdam similique vitae dicta rerum in?</p>
+                        </div>
+                        <div id="socialLinks">
+                            <a href="mailto:ieee.sb@ahduni.edu.in"><i class="fas fa-envelope"
+                                    style="color: #ffffff;"></i></a>
+                            <a
+                                href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+                                    class="fab fa-instagram" style="color: #ffffff;"></i></a>
+                            <a href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/"><i
+                                    class="fab fa-linkedin" style="color: #ffffff;"></i></a>
+                        </div>
+                    </div>
+                    <div class="VerticallineFooter">
+                        <div></div>
+                    </div>
+                    <div class="siteMap">
+                        <div id="SiteMapHeader">
+                            <p>Site map</p>
+                        </div>
+                        <div id="SiteMapContent">
+                            <a href="#Home">Home</a>
+                            <a href="#aboutUs">About Us</a>
+                            <a href="#achievement">Achievements</a>
+                            <a href="#upcomingEvents">Upcoming Events</a>
+                            <a href="#pastEvent">Past Events</a>
+                            <a href="#">Committee</a>
+                        </div>
+                    </div>
+                    <div class="ContactUsSection">
+                        <div class="ContactUsHeader">
+                            <p>Contact Us</p>
+                        </div>
+                        <div class="ContactUsContent">
+                            <div id="emailSection">
+                                <i class="fas fa-envelope" style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <a href="mailto:ieee.sb@ahduni.edu.in">Email: ieee.sb@ahduni.edu.in</a>
+                            </div>
+                            <div id="addressSection">
+                                <i class="fas fa-map-marker-alt" style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <p>Address:<br>Ahmedabad University<br>Navrangpura<br>Ahmedabad-380009</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="GetUpdates">
+                        <div class="GetUpdatesHeader">
+                            <p>Get Updates</p>
+                        </div>
+                        <div class="GetUpdatesContent">
+                            <div id="yourNameButton">
+                                <form>
+                                    <div><i class="fas fa-user" style="color: #2f2f2f;"></i></div>
+                                    <input type="text" placeholder="Your name">
+                                </form>
+                            </div>
+                            <div id="yourEmailButton">
+                                <form>
+                                    <div><i class="fas fa-envelope" style="color: #2f2f2f;"></i></div>
+                                    <input type="email" placeholder="Your email">
+                                </form>
+                            </div>
+                            <div id="Submitbutton">
+                                <button type="button" onclick="submitForm()">Get Updates &#x2192;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="imgs">
+                <img class="ieee-footer" src="/Images/IEEE-LOGO-WHITE.png" alt="">
+                <img class="au-footer" src="./Images/AU_logo.webp" alt="">
+            </div>
+        </div>
+        <div class="copyrightSection">
+            <hr class="nav-line3">
+            <div class="bottom-div">
+                <h4>&copy; IEEE AU SB 2024. All Rights Reserved | Developed by CSE Team, IEEE AU SB</h4>
+                <div class="theme-div">
+                    <img id="theme-icon" src="/Images/moon-icon.svg" alt="Theme Icon">
+                    <button id="theme-toggle">dark</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+<script src="js/theme-logic.js"></script>
+<script src="js/navbar-scroll.js"></script>
+<script>
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const currentPath = window.location.pathname.split('/').pop(); // Get the current file name
+        const navLinks = document.querySelectorAll('.navAnchors a');
+
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href').split('/').pop(); // Get the href file name
+            if (currentPath === linkPath) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #fff;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            background-color: #212121;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .swiper-container {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 330px;
+            background-color: #fff;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.5s, filter 0.5s;
+            pointer-events: none;
+        }
+
+        .swiper-slide-active {
+            transform: scale(1.1);
+            filter: blur(0px);
+            pointer-events: auto;
+        }
+
+        .swiper-slide:not(.swiper-slide-active) {
+            filter: blur(5px);
+        }
+
+        .picture {
+            /* width: 297px; */
+            /* height: 410px; */
+            overflow: hidden;
+            padding: 5%;
+
+
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* padding: 1rem; */
+        }
+
+        .detail {
+            /* padding: 25px 20px; */
+            font-weight: 600;
+            text-align: center;
+            /* padding: 1rem; */
+
+
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        span {
+            display: block;
+            font-size: 16px;
+            color: #f44336;
+        }
+
+        button{
+            margin: 1rem;
+            margin-top: 0.25rem;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="picture">
+                    <img src="Images/ROBO-AI.jpg"
+                        alt="">
+                </div>
+                <div class="detail">
+                    <button>Know more</button>
+                </div>
+            </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".swiper-container", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 20,
+                stretch: 0,
+                depth: 350,
+                modifier: 1,
+                slideShadows: true
+            },
+            pagination: {
+                el: ".swiper-pagination"
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+        });
+
+    </script>
+</body>
+
+</html>
