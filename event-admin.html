@@ -86,3 +86,92 @@
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Upload</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="./css/homepage.css">
+</head>
+
+<body>
+  <div class="header-container">
+    <button class="adminbtn" onclick="window.location.href='admin.html'">Admin page</button>
+    <h1>Event-admin Page</h1>
+  </div>
+  
+
+  <div id="event-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="event-form" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="eventId" id="eventId">
+
+        <label for="eventName">Event Name:</label>
+        <input type="text" name="eventName" id="eventName" required>
+
+        <label for="eventDescription">Event Description:</label>
+        <textarea name="eventDescription" id="eventDescription" required></textarea>
+        
+        <label for="speaker">Speaker Name:</label>
+        <input type="text" name="speaker" id="speaker" required>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" name="eventDate" id="eventDate" required>
+
+        <label for="eventTime">Event Time:</label>
+        <input type="time" name="eventTime" id="eventTime" required>
+
+        <label for="venue">Venue:</label>
+        <input type="text" name="venue" id="venue" required>
+
+        <label for="registrationLink">Registration Link:</label>
+        <input type="url" name="registrationLink" id="registrationLink" required>
+
+        <label for="instaPostLink">Instagram post Link:</label>
+        <input type="url" name="instaPostLink" id="instaPostLink" required>
+
+        <div id="image-upload">
+          <label for="eventPoster">Event Poster:</label>
+          <input type="file" name="eventPoster" id="eventPoster" accept="image/*">
+          <input type="hidden" name="oldEventPoster" id="oldEventPoster">
+          <div id="image-preview"></div>
+        </div>
+
+        <button type="submit">Add Event</button>
+      </form>
+    </div>
+  </div>
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Speaker</th>
+        <th>Time</th>
+        <th>Venue</th>
+        <th>Registration Link</th>
+        <th>Instagram Post</th>
+        <th>Poster</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="add-event-button">Add Event</button>
+  <button class="clientbtn" onclick="window.location.href='../event-front.html'">client page</button>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="/js/event.js"></script>
+</body>
+
+</html>
