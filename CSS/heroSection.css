@@ -1,5 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #heroSection{
-    height : 100%;
+    height : 100vh;
     width  : 100%;
     /* position: relative; */
 }
@@ -8,6 +14,7 @@
     height : 100%;
     width  : 100%;
     position: relative;
+
 }
 
 #heroSection video{
@@ -18,15 +25,16 @@
 
 /* ============ NavBar============ */
 .navSection{
-    padding-top: 1%;
-    padding-left: 1%;
+    /* padding-top: 1%; */
+    padding:1rem 1rem ;
     position: absolute;
-    top : 0%;
-    height  : 10%;
+    top : 0;
+    /* height  : 10%; */
     width: 100%;
     /* background-color: black; */
     display: flex;
     align-items: center;
+    justify-content: center;
     
 }
 nav{
@@ -35,28 +43,41 @@ nav{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 10%;
 }
 
 #IEEE-LOGO{
     height : 100%;
-    width  : 28%;
-    /* margin-right : 20%; */
+    width  : 20%;
+    margin-left : 1rem;
+    /* margin-top: 1rem; */
 
 }
 #IEEE-LOGO img{
     height : 100%;
     width  : 80%;
 }
+#IEEE-LOGO-phone{
+    display: none;
+}
 
 .navAnchors{
     height: 100%;
-    width : 50%;
+    width : 60%;
+    margin-left: 0;
+    padding: 0;
     display: flex;
-    flex-direction: row;
-    gap     : 11%;
-    align-items: center;
+    justify-content: space-around;
+    align-items:flex-end;
+    margin: auto;
 }
+
 .navAnchors a{
+    display: flex;
+    gap : 0.5em;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
     text-decoration: none;
     text-decoration-color: white;
     color: white;
@@ -67,6 +88,11 @@ nav{
     transition: border-bottom 0s ;
     transition: transform 0.2s;
 }
+
+.navAnchors a i{
+    color : white;
+}
+
 .navAnchors a:hover{
     border-bottom: solid white;
     transform: scale(1.06);
@@ -76,7 +102,7 @@ nav{
 
 /* ===============Line============= */
 .Verticalline{
-    height: 100%;
+    height: 800px;
     width : 25px;
     position: absolute;
     left    : 3.2%;
@@ -146,8 +172,7 @@ nav{
     font-size       : 1000% ;
     align-self      : flex-start;
     position        : absolute;
-    top             : 29%;
-
+    top: 20%;
 }
 .Heading #subheadingText{
     font-family     : Poppins;
@@ -166,6 +191,7 @@ nav{
     width: 65%;
     white-space: nowrap;
     overflow: hidden;
+    margin-top: 1rem;
     animation: 
          4s steps(35) infinite alternate typing ,
         .4s step-end infinite alternate cursor;

@@ -1,0 +1,678 @@
+/* for-phone-only */
+@media (max-width: 599px) {}
+
+
+/* for-tablet-portrait-up */
+@media (min-width: 600px) {}
+
+
+/* for-desktop-landscape-up */
+@media (min-width: 900px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .Verticalline {
+        height: 40vw !important;
+        left: 44px;
+        top: 15vh;
+    }
+
+    .circles {
+        top: 15vh;
+        left: 39px;
+        height: 40vw;
+
+    }
+
+    .circles .circle {
+        height: 0.75rem;
+        width: 0.75rem;
+    }
+
+    .heroSection {
+        margin-bottom: 0vh;
+        width: 100vw;
+    }
+
+    .navAnchors {
+        margin-right: 2vw;
+        font-size: 0.70rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navAnchors i {
+        font-size: 1em !important;
+    }
+
+    .heroContent {
+        top: 15vh;
+    }
+
+    .heroContent .Heading {
+        top: 10vw;
+        margin-bottom: 0;
+        height: 0 !important;
+    }
+
+    .heroContent .Heading #headingText {
+        position: unset;
+        font-size: 10vw;
+    }
+
+    .heroContent .Heading #subheadingText {
+        position: unset;
+        font-size: 1.5vw;
+    }
+
+    .aboutSection {
+        margin-bottom: 6vh;
+    }
+
+    .aboutSectionHeadingText,
+    .aboutWelcomeText,
+    .aboutDescriptionText {
+        font-size: 0.8rem;
+    }
+
+    .aboutWelcomeText {
+        font-size: 1.3rem;
+    }
+
+    .achievementsSection {
+        margin-bottom: 20vh;
+    }
+
+    /* Decide for margin bottom for the upcoming event */
+    .past-event-container {
+        margin-bottom: 20vh;
+    }
+
+    .past-event-container .head h1 {
+        font-size: 10vw;
+    }
+
+    .contactUsForm p {
+        font-size: 0.7rem;
+    }
+
+    #sendButton button {
+        height: 40px;
+        width: 120px;
+        font-size: 0.8rem;
+    }
+
+    .headerOurDetails {
+        font-size: 1.3rem;
+    }
+
+    #ourDetailsList a {
+        font-size: 0.8rem;
+    }
+
+    .footerClass {
+        display: flex;
+        justify-content: space-around;
+        font-size: 0.7rem;
+    }
+
+    .footerClass form input,
+    #Submitbutton {
+        width: 100%;
+    }
+
+    .heroSection,
+    .achievementsSection {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 70px !important;
+       
+    }
+    .aboutSection,
+    .past-event-container,
+    .wrapper {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 100px !important;
+    }
+
+    .contactUsSection{
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 0px !important;
+    }
+}
+
+
+/* for-desktop-up */
+@media (min-width: 1200px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .Verticalline {
+        height: 40vw !important;
+        left: 44px;
+        top: 15vh;
+    }
+
+    .circles {
+        top: 15vh;
+        left: 39px;
+        height: 40vw;
+
+    }
+
+    .circles .circle {
+        height: 0.75rem;
+        width: 0.75rem;
+    }
+
+    .heroSection {
+        margin-bottom: 0vh;
+        width: 100vw;
+    }
+
+    .navAnchors {
+        margin-right: 2vw;
+        font-size: 0.70rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    .navAnchors i {
+        font-size: 1em !important;
+    }
+
+    .heroContent {
+        top: 15vh;
+    }
+
+    .heroContent .Heading {
+        top: 10vw;
+        margin-bottom: 0;
+        height: 0 !important;
+    }
+
+    .heroContent .Heading #headingText {
+        position: unset;
+        font-size: 10vw;
+    }
+
+    .heroContent .Heading #subheadingText {
+        position: unset;
+        font-size: 1.5vw;
+    }
+
+    .aboutSection {
+        margin-bottom: 6vh;
+    }
+
+    .aboutSectionHeadingText,
+    .aboutWelcomeText,
+    .aboutDescriptionText {
+        font-size: 0.8rem;
+    }
+
+    .aboutWelcomeText {
+        font-size: 1.3rem;
+    }
+
+    .achievementsSection {
+        margin-bottom: 20vh;
+    }
+
+    /* Decide for margin bottom for the upcoming event */
+    .past-event-container {
+        margin-bottom: 20vh;
+    }
+
+    .past-event-container .head h1 {
+        font-size: 10vw;
+    }
+
+    .contactUsForm p {
+        font-size: 1rem;
+    }
+
+    #sendButton button {
+        height: 40px;
+        width: 120px;
+        font-size: 1rem;
+    }
+
+    .headerOurDetails {
+        font-size: 1.3rem;
+    }
+
+    #ourDetailsList a {
+        font-size: 0.8rem;
+    }
+
+    .footerClass {
+        display: flex;
+        justify-content: space-around;
+        font-size: 0.9rem;
+    }
+
+    .footerClass form input,
+    #Submitbutton {
+        width: 100%;
+    }
+
+
+    .heroSection,
+    .achievementsSection {
+        margin-top: unset !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 70px !important; */
+       
+    }
+    .aboutSection,
+    .past-event-container,
+    .wrapper {
+        margin-top: unset !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 140px !important; */
+    }
+
+    .contactUsSection {
+        margin-top: unset !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 40px !important; */
+    }
+}
+
+/* //Done  */
+/* for-medium-desktop-up */
+@media (min-width: 1400px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .Verticalline {
+        height: 40vw !important;
+        left: 55px;
+        top: 15vh;
+    }
+
+    .circles {
+        top: 15vh;
+        left: 48.5px;
+        height: 40vw;
+
+    }
+
+    .circles .circle {
+        height: 0.9rem;
+        width: 0.9rem;
+    }
+
+    .heroSection {
+        margin-bottom: 0vh;
+        width: 100vw;
+    }
+
+    .navAnchors {
+        margin-right: 2vw;
+        font-size: 0.78rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navAnchors i {
+        font-size: 1em !important;
+    }
+
+    .heroContent {
+        top: 15vh;
+    }
+
+    .heroContent .Heading {
+        top: 10vw;
+        margin-bottom: 0;
+        height: 0 !important;
+    }
+
+    .heroContent .Heading #headingText {
+        position: unset;
+        font-size: 10vw;
+    }
+
+    .heroContent .Heading #subheadingText {
+        position: unset;
+        font-size: 1.5vw;
+    }
+
+    .aboutSection {
+        margin-bottom: 6vh;
+    }
+
+    .aboutSectionHeadingText,
+    .aboutWelcomeText,
+    .aboutDescriptionText {
+        font-size: 1.1rem;
+    }
+
+    .aboutWelcomeText {
+        font-size: 1.9rem;
+    }
+
+    .achievementsSection {
+        margin-bottom: 20vh;
+    }
+
+    /* Decide for margin bottom for the upcoming event */
+    .past-event-container {
+        margin-bottom: 20vh;
+    }
+
+    .footerClass {
+        display: flex;
+        justify-content: space-around;
+        font-size: 0.8rem;
+    }
+
+    .footerClass form input,
+    #Submitbutton {
+        width: 100%;
+    }
+
+
+    
+    .heroSection,
+    .achievementsSection {
+        margin-top: unset !important;
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 70px !important; */
+       
+    }
+    .aboutSection{
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        /* margin-bottom: 140px !important; */
+    }
+    
+    .past-event-container,
+    .wrapper {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .contactUsSection {
+        margin-top: 5rem !important;
+        margin-bottom: unset !important;
+        margin-bottom: 100px !important;
+    }
+}
+
+
+/* //Done */
+/* for-big-desktop-up */
+@media (min-width: 1800px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .Verticalline {
+        height: 40vw !important;
+        left: 52px;
+        top: 15vh;
+    }
+
+    .circles {
+        top: 15vh;
+        left: 45px;
+        height: 40vw;
+
+    }
+
+    .circles .circle {
+        height: 1rem;
+        width: 1rem;
+    }
+
+    .heroSection {
+        margin-bottom: 0vh;
+        width: 100vw;
+    }
+
+    .navAnchors {
+        margin-right: 2vw;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navAnchors i {
+        font-size: 1em !important;
+    }
+
+    .heroContent {
+        top: 15vh;
+    }
+
+    .heroContent .Heading {
+        top: 20%;
+        margin-bottom: 0;
+    }
+
+    .heroContent .Heading #headingText {
+        position: unset;
+        font-size: 10vw;
+    }
+
+    .heroContent .Heading #subheadingText {
+        position: unset;
+        font-size: 1.5vw;
+    }
+
+    .aboutSection {
+        margin-bottom: 6vh;
+    }
+
+    .aboutSectionHeadingText,
+    .aboutWelcomeText,
+    .aboutDescriptionText {
+        font-size: 1.2rem;
+    }
+
+    .aboutWelcomeText {
+        font-size: 1.9rem;
+    }
+
+    .achievementsSection {
+        margin-bottom: 20vh;
+    }
+
+    /* Decide for margin bottom for the upcoming event */
+    .past-event-container {
+        margin-bottom: 20vh;
+    }
+
+    .footerClass {
+        display: flex;
+        justify-content: space-around;
+        font-size: 1rem;
+    }
+
+    .footerClass form input,
+    #Submitbutton {
+        width: 100%;
+    }
+
+    .heroSection,
+    .achievementsSection {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 100px !important;
+       
+    }
+    .aboutSection,
+    .past-event-container,
+    .wrapper {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 250px !important;
+    }
+
+    .contactUsSection {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 200px !important;
+    }
+}
+
+
+/* //Done */
+/* for-big-desktop-up */
+@media (min-width: 2000px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .Verticalline {
+        height: 40vw !important;
+        left: 65px;
+        top: 15vh;
+    }
+
+    .circles {
+        top: 15vh;
+        left: 55px;
+        height: 40vw;
+
+    }
+
+    .circles .circle {
+        height: 1.4rem;
+        width: 1.4rem;
+    }
+
+    .heroSection {
+        margin-bottom: 20vh;
+        width: 100vw;
+    }
+
+    .navAnchors {
+        margin-right: 2vw;
+        font-size: 1.3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navAnchors i {
+        font-size: 1em !important;
+    }
+
+    .heroContent {
+        top: 15vh;
+    }
+
+    .heroContent .Heading {
+        top: 20%;
+        margin-bottom: 0;
+    }
+
+    .heroContent .Heading #headingText {
+        position: unset;
+        font-size: 10vw;
+    }
+
+    .heroContent .Heading #subheadingText {
+        position: unset;
+        font-size: 1.5vw;
+    }
+
+    .aboutSection {
+        margin-bottom: 6vh;
+    }
+
+    .aboutSectionHeadingText,
+    .aboutWelcomeText,
+    .aboutDescriptionText {
+        font-size: 1.8rem;
+    }
+
+    .achievementsSection {
+        margin-bottom: 20vh;
+    }
+
+    /* Decide for margin bottom for the upcoming event */
+    .past-event-container {
+        margin-bottom: 20vh;
+    }
+
+    .footerClass {
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.3rem;
+    }
+
+    .footerClass form input,
+    #Submitbutton {
+        width: 100%;
+    }
+
+    .heroSection,
+    .achievementsSection {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 300px !important;
+       
+    }
+    .aboutSection,
+    .past-event-container,
+    .wrapper {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 300px !important;
+    }
+
+    .contactUsSection {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 250px !important;
+    }
+}
+
+@media (min-width : 3000px){
+    .heroSection,
+    .achievementsSection {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 330px !important;
+       
+    }
+    .aboutSection,
+    .past-event-container,
+    .wrapper {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 300px !important;
+    }
+
+    .contactUsSection {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 250px !important;
+    }
+}

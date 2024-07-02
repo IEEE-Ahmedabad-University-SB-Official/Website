@@ -1,0 +1,196 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: black;
+    padding: 8px 20px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.15s;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    background-color: rgba(11, 90, 247, 0.352);
+    border-radius: 10px;
+}
+
+.nav-line1 {
+    width: 80%;
+    margin: 0.4rem auto 0.4rem;
+}
+
+.nav-line2 {
+    width: 80%;
+    margin: 0.4rem auto 0.7rem;
+}
+
+.heading {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.option {
+    width: 80%;
+}
+
+.hidden {
+    display: none;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card:hover img {
+    opacity: 0.25;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s;
+}
+
+.card-content {
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: white;
+}
+
+.card:hover .card-content {
+    opacity: 1;
+    color: black;
+}
+
+.card-content h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.faculty,
+.obs,
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.faculty .card {
+    width: 300px;
+}
+
+.obs .card {
+    width: 250px;
+    border: 5px solid yellow;
+}
+
+.frow,
+.srow,
+.team {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.frow .card,
+.srow .card,
+.team .card {
+    width: 200px;
+}
+
+.team .team-data .team-head .card{
+    border: 5px solid red;
+}
+
+.team .team-data .team-member  .card{
+    border: 5px solid skyblue;
+}
+
+.obs,
+.team {
+    display: flex;
+    flex-direction: column;
+}
+
+.obs .obscard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.team-member{
+    display: flex;
+
+}
+
+.faculty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-black nav {
+    height: 70px;
+}
+

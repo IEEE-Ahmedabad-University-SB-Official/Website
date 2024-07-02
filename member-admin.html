@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Upload</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="./css/members.css">
+</head>
+
+<body>
+  <div class="header-container">
+    <button class="adminbtn" onclick="window.location.href='admin.html'">Admin page</button>
+    <h1>Member-admin Page</h1>
+  </div>
+
+  <div id="member-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="member-form" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="memberId" id="memberId">
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="enrollment_number">Enrollment Number:</label>
+        <input type="text" name="enrollment_number" id="enrollment_number" required>
+
+        <label for="contact_number">Contact Number:</label>
+        <input type="text" name="contact_number" id="contact_number" required>
+
+        <label for="join_year">Join Year:</label>
+        <input type="year" name="join_year" id="join_year" required>
+
+        <label for="programme">programme:</label>
+        <input type="text" name="programme" id="programme">
+
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="CSE">CSE</option>
+            <option value="Logistics">Logistics</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Robotics">Robotics</option>
+            <option value="Technical">Technical</option>
+            <option value="Content">Content</option>
+            <option value="Graphics">Graphics</option>
+            <option value="OBs">OBs</option>
+        </select>
+
+        <label for="position">Position:</label>
+        <select id="position" name="position" required>
+            <option value="Head">Head</option>
+            <option value="Member">Member</option>
+        </select>
+
+        <label for="instagram">Instagram Profile:</label>
+        <input type="url" name="instagramProfile" id="instagramProfile">
+
+        <label for="linkedin">LinkedIn Profile:</label>
+        <input type="url" name="linkedinProfile" id="linkedinProfile">
+
+        <label for="leave_date">Leave Date:</label>
+        <input type="date" name="leave_date" id="leave_date">
+
+
+        <div id="image-upload">
+          <label for="profile_image">Profile Image:</label>
+          <input type="file" name="profile_image" id="profile_image" accept="image/*">
+          <input type="hidden" name="oldProfileImage" id="oldProfileImage">
+          <div id="image-preview"></div>
+        </div>
+
+        <button type="submit">Upload Member</button>
+      </form>
+    </div>
+  </div>
+
+  <table id="member-data-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Enrollment number</th>
+        <th>Contact Number</th>
+        <th>Join Year</th>
+        <th>programme</th>
+        <th>Department</th>
+        <th>Position</th>
+        <th style="text-align: center; font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></th>
+        <th style="text-align: center; font-size: 1.5rem;"><i class="fa-brands fa-linkedin"></i></th>
+        <th class="leave_date">Leave date</th>
+        <th>Profile Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="add-member-button">Add Member</button>
+  <button class="clientbtn" onclick="window.location.href='member-front.html'">Client Page</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
+
+  <script src="/js/members.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1322 @@
+
+/* For pHONE AND TABLET */
+@media screen and (max-width : 499px) {
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
+        height: auto;
+        width: 100vw;
+    }
+
+    .container {
+        /* height: 100vh; */
+        width: 100vw;
+        /* overflow: hidden; */
+    }
+
+    /* ===== hEROsECTION ===== */
+    .heroSection {
+        all: unset;
+        width: 100vw;
+        height: 70vh;
+        margin-bottom: 1vh;
+        display: grid;
+
+    }
+
+    .HerogridContainer {
+        display: flex;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    #heroSection {
+        display: flex;
+        flex-direction: column;
+        height: 70vh;
+        width: 100vh;
+        position: relative;
+        object-fit: contain;
+        object-position: center;
+        justify-content: center;
+
+    }
+
+    .videoHeroSection {
+        position: absolute;
+        overflow: hidden;
+        height: 70vh;
+        width: 100vw;
+
+    }
+
+    #myVideo {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        overflow: hidden;
+        clip-path: circle(63.0% at 49% 30%);
+    }
+
+    .navSection {
+        padding-top: 1%;
+        padding-left: 1%;
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        height: 10%;
+        width: 100%;
+        background-color: white;
+        box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.433);
+        display: flex;
+        align-items: center;
+        z-index: 10;
+
+    }
+
+    .navAnchors {
+        height: 100%;
+        width: 100vw;
+        gap: 5%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .navAnchors a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #2f2f2f;
+        font-size: 3vw;
+        font-family: Poppins;
+        font-weight: 400;
+        padding-bottom: 5px;
+    }
+
+    .navAnchors a i {
+        color: #2f2f2f !important;
+    }
+
+    .circles,
+    .Verticalline {
+        display: none;
+    }
+
+    .heroContent {
+        all: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 0;
+        width: 70vw;
+    }
+
+    #IEEE-LOGO {
+        display: none;
+    }
+
+    #IEEE-LOGO-phone {
+        display: unset;
+
+    }
+
+    #IEEE-LOGO-phone img {
+        /* background-color: rgb(157, 0, 255); */
+        position: absolute;
+        top: 0;
+        height: 9vh;
+        width: auto;
+        padding: 10px;
+    }
+
+    .Heading {
+        position: absolute;
+        width: 100vw;
+        top: 16vh;
+        left : 0;
+    }
+
+    .heroContent .Heading #headingText {
+        all: unset;
+        font-family: Montserrat;
+        font-weight: 1000;
+        font-size: 20vw;
+        width: 100vw;
+        text-align: center;
+        position: relative;
+        overflow: none;
+        padding-right: none;
+        display: grid;
+
+    }
+
+    .heroContent .Heading #subheadingText {
+
+        all: unset;
+        font-family: Poppins;
+        font-weight: 400;
+        letter-spacing: 0.150em;
+        width: 100vw;
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    .heroContent .Heading #subheadingText span {
+        all: unset;
+        text-align: right;
+    }
+
+    /* image0-slider */
+    .image-Slider-HeroSection {
+        display: none;
+    }
+
+
+    /* ======= About Section ======= */
+
+    .aboutSection {
+        all: unset;
+        /* height         : 80vh; */
+        width: 100vw;
+        display: flex;
+        flex-direction: column-reverse;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        margin-bottom: 10vh;
+        position: unset;
+
+    }
+
+    .aboutCard {
+        all: unset;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .aboutImage {
+        all: unset;
+
+        width: 92vw;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        padding-top: 5vh;
+        position: relative
+    }
+
+    #aboutImage {
+        /* all: unset; */
+        position: static;
+        height: 50vh;
+        width: 92vw;
+        border-bottom-right-radius: 0.6em;
+        ;
+        box-shadow: none;
+    }
+
+    .aboutSectionHeadingText {
+        margin: unset;
+        display: flex;
+        justify-content: start;
+    }
+
+    .aboutText {
+        width: 92vw;
+
+    }
+
+    .aboutWelcomeText {
+        display: flex;
+        justify-content: start;
+        padding-top: 0.9vh;
+        color: #2f2f2fdc;
+        font-size: 7vw;
+    }
+
+    .aboutDescriptionText {
+        font-size: 3.4vw;
+        padding-top: 0.9vh;
+        text-align: left;
+        color: #2f2f2fc6;
+    }
+
+    .designCircle {
+        display: none;
+
+    }
+
+    /* ===== achievementsSection ===== */
+
+    .achievementsSection {
+        /* background-color: pink; */
+        height: 3.2%;
+        width: 100%;
+        margin-bottom: 7%;
+    }
+
+    .Achievements-Bar {
+        position: static !important;
+        flex-direction: row;
+        width: 100vw;
+        overflow: none;
+    }
+
+    .flex-card {
+        position: static !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flex-item {
+        position: static !important;
+        height: 40vw;
+        width: 40vw;
+        box-shadow: inset 5px 5px 10px 2px #00000023;
+        justify-content: center;
+    }
+
+    .flex-item img {
+        position: static !important;
+        height: 20vw;
+    }
+
+    .flex-item h2 {
+        font-family: Montserrat;
+        font-weight: normal;
+        font-size: 8vw;
+
+    }
+
+    .flex-card h3 {
+        font-family: Poppins;
+        letter-spacing: 1px;
+        font-size: 4vw;
+        margin-top: 3vh;
+    }
+
+    /* =======  UpcomingEventsSection ======*/
+
+    .upcomingEventsSection {
+        /* background-color: pink; */
+        height: auto;
+        width: 100vw;
+        gap: 5%;
+        margin-bottom: 7%;
+    }
+
+    .upcomingEventCard {
+        height: unset;
+        width: 100vw;
+        margin: unset;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5vh;
+
+    }
+
+    .verticalPartEventCard {
+        display: flex;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8vw;
+    }
+
+    #CardHeadingContainer {
+        height: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #CardHeadingContainer p {
+        font-family: Poppins;
+        font-size: 6vw;
+        font-weight: 600;
+        /* color: #2f2f2f; */
+        color: #047BB3;
+
+    }
+    
+    .upcomingEventMainSection {
+        height: unset;
+        padding: 0;
+        margin: 0;
+        width: 70vw;
+        display: flex;
+        flex-direction: column-reverse;
+        border: none;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.431);
+        border-radius: 8vw;
+        padding: unset;
+    }
+
+    #upcomingEventContainer {
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+    }
+
+    .UpcomingEventDescriptionClass {
+        display: flex;
+        flex-direction: column;
+        all: unset;
+        width: 70vw;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #UpcomingEventHeader {
+        display: flex;
+        width: auto;
+        align-items: center;
+    }
+
+    #UpcomingEventHeader p {
+        all: unset;
+        padding-top: 30vw;
+        font-size: 5vw;
+        font-family: Poppins;
+        color: #2f2f2fea;
+        left: 0vw;
+        padding-top: 2vh;
+    }
+
+    #UpcomingEventDescription p {
+        display: none;
+    }
+
+    #UpcomingEventDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5vh !important;
+        padding-top: 1vh;
+    }
+
+    #UpcomingEventDetails p {
+
+        font-size: 2vw;
+        font-family: Poppins;
+        color: #2f2f2fea;
+    }
+
+    #UpccomimgEventRegistor button {
+        margin-top: 2%;
+        height: 6vh;
+        width: 70vw;
+        font-size: 1.5vh;
+        background-color: #047BB3;
+        color: white;
+        border: none;
+        border-radius: 0.2em;
+        transition: all 0.2s;
+        border-bottom-left-radius: 8vw;
+        border-bottom-right-radius: 8vw;
+
+    }
+
+
+    #imageContainer {
+        width: 70vw;
+        display: flex;
+        justify-content: unset;
+        justify-content: center;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    #imageContainer img {
+        width: 70vw;
+        height: 50vh;
+        border-top-left-radius: 7vw;
+        border-top-right-radius: 7vw;
+    }
+
+    #forwardButtonContainer,
+    #backButtonContainer {
+        display: none;
+    }
+
+    #CardMainContent {
+        height: unset;
+    }
+
+    #DotsContainer {
+        display: none;
+    }
+
+
+    /* ===== Past Event Section ==== */
+    .pastEventsSection {
+        height: auto;
+        width: 100vw;
+        margin-bottom: 7%;
+    }
+
+    .text-center {
+        width: 100vw;
+        font-size: 6vw;
+        font-weight: 600;
+    }
+
+    .pastEventInfo {
+        padding: 5vw;
+    }
+
+    .pastEventInfo #eventDate {
+        font-size: 3vw;
+    }
+
+    .pastEventInfo #textHeading {
+        font-size: 8vw;
+    }
+
+    .pastEventInfo #textDescription {
+        font-size: 2vw;
+        width: 80vw;
+        margin-bottom: 3vh;
+    }
+
+    .pastEventInfo #knowMoreButton {
+        height: 5vh;
+        width: 80vw;
+        font-size: 3vw;
+    }
+
+    /* Contact Us Section */
+    .contactUsSection{
+        display : none;
+    }
+    
+
+    /* Footer Section */
+    .FooterSection{
+        height : auto;
+        width : 100vw;
+    }
+    .footerSection{
+        height : auto;
+        width  : 100vw;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .footerClass{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap : 6vh;
+    }
+    .OurGoalsSection{
+        display: flex;
+        flex-direction: column;
+        height : auto;
+        width  : 30%;
+        gap : 8%;
+    }
+    
+    #headerOurGoals{
+        display: none;
+    }
+    #headerOurGoals::after{
+        display: none;
+    
+    }
+    #OurGoalsDescription{
+        display: none;
+    }
+    #socialLinks{
+        display: flex;
+        flex-direction: row ;
+        justify-content: center;
+        gap : 4vw;
+    }
+    #socialLinks a{
+        height :10vw;
+        width  : 10vw;
+        background-color: #404040;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    #socialLinks i{
+        height: auto;
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #socialLinks a:hover{
+        border-bottom: 1px solid white;
+    }
+    .VerticallineFooter{
+        display: none;
+    }
+    .VerticallineFooter div{
+        display: none;
+    }
+    .siteMap{
+        flex-direction: column;
+        gap : 5vh;
+    }
+    .siteMap p{
+        font-size: 1.2em;
+        font-weight: 600;
+        color : rgba(255, 255, 255, 0.818);
+        padding-bottom : 3px;
+        position: relative;
+    }
+    .siteMap p::after{
+        width  : 100%;
+    }
+    #SiteMapHeader{
+        text-align: center;
+    }
+    #SiteMapContent{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        gap : 4vh;
+    }
+    .siteMap a{
+        font-size : 0.9em;
+        display: inline;
+        transition: all 0.3s;
+        text-align: center;
+        
+    }
+    .ContactUsSection{
+        display: flex;
+        flex-direction: column;
+        gap : 5vh;
+    }
+    .ContactUsHeader p{
+        font-size: 1.2em;
+        text-align: center;
+    }
+    .ContactUsHeader p::after{
+        width  : 100%;
+    }
+    .GetUpdates{
+        gap: 5vh;
+    }
+    .GetUpdatesHeader p{
+        text-align: center;
+    }
+    .GetUpdatesHeader p::after{
+        width  : 100%;
+    }
+
+    .AULogo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .AULogo img{
+        height: 10em;
+        width : 23em;
+    }
+    .copyrightSection{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: poppins;
+        color : #2f2f2f;
+        font-weight: 300;
+        font-size:1em
+    
+    }
+
+    #SiteMapHeader p ,.ContactUsHeader p, .GetUpdatesHeader p{
+        width : 100vw;
+        font-size: 7vw;
+        font-weight: normal;
+        color: #888888;
+    }
+    .ContactUsSection,.GetUpdates{
+        align-items: center
+    }
+
+}
+
+
+/* For TABLET */
+@media screen and (max-width : 899px) {
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
+        height: auto;
+        width: 100vw;
+    }
+
+    .container {
+        /* height: 100vh; */
+        width: 100vw;
+        /* overflow: hidden; */
+    }
+
+    /* ===== hEROsECTION ===== */
+    .heroSection {
+        all: unset;
+        width: 100vw;
+        height: 70vh;
+        margin-bottom: 1vh;
+        display: grid;
+
+    }
+
+    .HerogridContainer {
+        display: flex;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    #heroSection {
+        display: flex;
+        flex-direction: column;
+        height: 70vh;
+        width: 100vh;
+        position: relative;
+        object-fit: contain;
+        object-position: center;
+        justify-content: center;
+
+    }
+
+    .videoHeroSection {
+        position: absolute;
+        overflow: hidden;
+        height: 70vh;
+        width: 100vw;
+
+    }
+
+    #myVideo {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        overflow: hidden;
+        clip-path: circle(63.0% at 49% 30%);
+    }
+
+    .navSection {
+        padding-top: 1%;
+        padding-left: 1%;
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        height: 10%;
+        width: 100%;
+        background-color: white;
+        box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.433);
+        display: flex;
+        align-items: center;
+        z-index: 10;
+
+    }
+
+    .navAnchors {
+        height: 100%;
+        width: 100vw;
+        gap: 5%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .navAnchors a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #2f2f2f;
+        font-size: 3vw;
+        font-family: Poppins;
+        font-weight: 400;
+        padding-bottom: 5px;
+    }
+
+    .navAnchors a i {
+        color: #2f2f2f !important;
+        
+    }
+
+    .circles,
+    .Verticalline {
+        display: none;
+    }
+
+    .heroContent {
+        all: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 0;
+        width: 70vw;
+    }
+
+    #IEEE-LOGO {
+        display: none;
+    }
+
+    #IEEE-LOGO-phone {
+        display: unset;
+
+    }
+
+    #IEEE-LOGO-phone img {
+        /* background-color: rgb(157, 0, 255); */
+        position: absolute;
+        top: 0;
+        height: 9vh;
+        width: auto;
+        padding: 10px;
+    }
+
+    .Heading {
+        position: absolute;
+        width: 100vw;
+        top: 16vh;
+        left : 0;
+    }
+
+    .heroContent .Heading #headingText {
+        all: unset;
+        font-family: Montserrat;
+        font-weight: 1000;
+        font-size: 20vw;
+        width: 100vw;
+        text-align: center;
+        position: relative;
+        overflow: none;
+        padding-right: none;
+        display: grid;
+
+    }
+
+    .heroContent .Heading #subheadingText {
+
+        all: unset;
+        font-family: Poppins;
+        font-weight: 400;
+        letter-spacing: 0.150em;
+        width: 100vw;
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    .heroContent .Heading #subheadingText span {
+        all: unset;
+        text-align: right;
+    }
+
+    /* image0-slider */
+    .image-Slider-HeroSection {
+        display: none;
+    }
+
+
+    /* ======= About Section ======= */
+
+    .aboutSection {
+        all: unset;
+        /* height         : 80vh; */
+        width: 100vw;
+        display: flex;
+        flex-direction: column-reverse;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        margin-bottom: 10vh;
+        position: unset;
+
+    }
+
+    .aboutCard {
+        all: unset;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .aboutImage {
+        all: unset;
+
+        width: 92vw;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        padding-top: 5vh;
+        position: relative
+    }
+
+    #aboutImage {
+        /* all: unset; */
+        position: static;
+        height: 50vh;
+        width: 92vw;
+        border-bottom-right-radius: 0.6em;
+        ;
+        box-shadow: none;
+    }
+
+    .aboutSectionHeadingText {
+        margin: unset;
+        display: flex;
+        justify-content: start;
+    }
+
+    .aboutText {
+        width: 92vw;
+
+    }
+
+    .aboutWelcomeText {
+        display: flex;
+        justify-content: start;
+        padding-top: 0.9vh;
+        color: #2f2f2fdc;
+        font-size: 7vw;
+    }
+
+    .aboutDescriptionText {
+        font-size: 3.4vw;
+        padding-top: 0.9vh;
+        text-align: left;
+        color: #2f2f2fc6;
+    }
+
+    .designCircle {
+        display: none;
+
+    }
+
+    /* ===== achievementsSection ===== */
+
+    .achievementsSection {
+        /* background-color: pink; */
+        height: 3.2%;
+        width: 100%;
+        margin-bottom: 7%;
+    }
+
+    .Achievements-Bar {
+        position: static !important;
+        flex-direction: row;
+        width: 100vw;
+        overflow: none;
+    }
+
+    .flex-card {
+        position: static !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flex-item {
+        position: static !important;
+        height: 40vw;
+        width: 40vw;
+        box-shadow: inset 5px 5px 10px 2px #00000023;
+        justify-content: center;
+    }
+
+    .flex-item img {
+        position: static !important;
+        height: 20vw;
+    }
+
+    .flex-item h2 {
+        font-family: Montserrat;
+        font-weight: normal;
+        font-size: 8vw;
+
+    }
+
+    .flex-card h3 {
+        font-family: Poppins;
+        letter-spacing: 1px;
+        font-size: 4vw;
+        margin-top: 3vh;
+    }
+
+    /* =======  UpcomingEventsSection ======*/
+
+    .upcomingEventsSection {
+        /* background-color: pink; */
+        height: auto;
+        width: 100vw;
+        gap: 5%;
+        margin-bottom: 7%;
+    }
+
+    .upcomingEventCard {
+        height: unset;
+        width: 100vw;
+        margin: unset;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5vh;
+
+    }
+
+    .verticalPartEventCard {
+        display: flex;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8vw;
+    }
+
+    #CardHeadingContainer {
+        height: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #CardHeadingContainer p {
+        font-family: Poppins;
+        font-size: 6vw;
+        font-weight: 600;
+        /* color: #2f2f2f; */
+        color: #047BB3;
+
+    }
+    
+    .upcomingEventMainSection {
+        height: unset;
+        padding: 0;
+        margin: 0;
+        width: 70vw;
+        display: flex;
+        flex-direction: column-reverse;
+        border: none;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.431);
+        border-radius: 8vw;
+        padding: unset;
+    }
+
+    #upcomingEventContainer {
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+    }
+
+    .UpcomingEventDescriptionClass {
+        display: flex;
+        flex-direction: column;
+        all: unset;
+        width: 70vw;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #UpcomingEventHeader {
+        display: flex;
+        width: auto;
+        align-items: center;
+    }
+
+    #UpcomingEventHeader p {
+        all: unset;
+        padding-top: 30vw;
+        font-size: 5vw;
+        font-family: Poppins;
+        color: #2f2f2fea;
+        left: 0vw;
+        padding-top: 2vh;
+    }
+
+    #UpcomingEventDescription p {
+        display: none;
+    }
+
+    #UpcomingEventDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5vh !important;
+        padding-top: 1vh;
+    }
+
+    #UpcomingEventDetails p {
+
+        font-size: 2vw;
+        font-family: Poppins;
+        color: #2f2f2fea;
+    }
+
+    #UpccomimgEventRegistor button {
+        margin-top: 2%;
+        height: 6vh;
+        width: 70vw;
+        font-size: 1.5vh;
+        background-color: #047BB3;
+        color: white;
+        border: none;
+        border-radius: 0.2em;
+        transition: all 0.2s;
+        border-bottom-left-radius: 8vw;
+        border-bottom-right-radius: 8vw;
+
+    }
+
+
+    #imageContainer {
+        width: 70vw;
+        display: flex;
+        justify-content: unset;
+        justify-content: center;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    #imageContainer img {
+        width: 70vw;
+        height: 50vh;
+        border-top-left-radius: 7vw;
+        border-top-right-radius: 7vw;
+    }
+
+    #forwardButtonContainer,
+    #backButtonContainer {
+        display: none;
+    }
+
+    #CardMainContent {
+        height: unset;
+    }
+
+    #DotsContainer {
+        display: none;
+    }
+
+
+    /* ===== Past Event Section ==== */
+    .pastEventsSection {
+        height: auto;
+        width: 100vw;
+        margin-bottom: 7%;
+    }
+
+    .text-center {
+        width: 100vw;
+        font-size: 6vw;
+        font-weight: 600;
+    }
+
+    .pastEventInfo {
+        padding: 5vw;
+    }
+
+    .pastEventInfo #eventDate {
+        font-size: 3vw;
+    }
+
+    .pastEventInfo #textHeading {
+        font-size: 8vw;
+    }
+
+    .pastEventInfo #textDescription {
+        font-size: 2vw;
+        width: 80vw;
+        margin-bottom: 3vh;
+    }
+
+    .pastEventInfo #knowMoreButton {
+        height: 5vh;
+        width: 80vw;
+        font-size: 3vw;
+    }
+
+    /* Contact Us Section */
+    .contactUsSection{
+        display : none;
+    }
+    
+
+    /* Footer Section */
+    .FooterSection{
+        height : auto;
+        width : 100vw;
+    }
+    .footerSection{
+        height : auto;
+        width  : 100vw;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .footerClass{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap : 6vh;
+    }
+    .OurGoalsSection{
+        display: flex;
+        flex-direction: column;
+        height : auto;
+        width  : 30%;
+        gap : 8%;
+    }
+    
+    #headerOurGoals{
+        display: none;
+    }
+    #headerOurGoals::after{
+        display: none;
+    
+    }
+    #OurGoalsDescription{
+        display: none;
+    }
+    #socialLinks{
+        display: flex;
+        flex-direction: row ;
+        justify-content: center;
+        gap : 4vw;
+    }
+    #socialLinks a{
+        height :10vw;
+        width  : 10vw;
+        background-color: #404040;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    #socialLinks i{
+        height: auto;
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #socialLinks a:hover{
+        border-bottom: 1px solid white;
+    }
+    .VerticallineFooter{
+        display: none;
+    }
+    .VerticallineFooter div{
+        display: none;
+    }
+    .siteMap{
+        flex-direction: column;
+        gap : 5vh;
+    }
+    .siteMap p{
+        font-size: 1.2em;
+        font-weight: 600;
+        color : rgba(255, 255, 255, 0.818);
+        padding-bottom : 3px;
+        position: relative;
+    }
+    .siteMap p::after{
+        width  : 100%;
+    }
+    #SiteMapHeader{
+        text-align: center;
+    }
+    #SiteMapContent{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        gap : 4vh;
+    }
+    .siteMap a{
+        font-size : 0.9em;
+        display: inline;
+        transition: all 0.3s;
+        text-align: center;
+        
+    }
+    .ContactUsSection{
+        display: flex;
+        flex-direction: column;
+        gap : 5vh;
+    }
+    .ContactUsHeader p{
+        font-size: 1.2em;
+        text-align: center;
+    }
+    .ContactUsHeader p::after{
+        width  : 100%;
+    }
+    .GetUpdates{
+        gap: 5vh;
+    }
+    .GetUpdatesHeader p{
+        text-align: center;
+    }
+    .GetUpdatesHeader p::after{
+        width  : 100%;
+    }
+
+    .AULogo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .AULogo img{
+        height: 10em;
+        width : 23em;
+    }
+    .copyrightSection{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: poppins;
+        color : #2f2f2f;
+        font-weight: 300;
+        font-size:1em
+    
+    }
+
+    #SiteMapHeader p ,.ContactUsHeader p, .GetUpdatesHeader p{
+        width : 100vw;
+        font-size: 7vw;
+        font-weight: normal;
+        color: #888888;
+    }
+    .ContactUsSection,.GetUpdates{
+        align-items: center
+    }
+
+}

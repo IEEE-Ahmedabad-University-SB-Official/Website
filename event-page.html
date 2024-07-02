@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="./CSS/event-page.css">
+    <link rel="stylesheet" href="/CSS/footerSection.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- fonts -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <script src="js/get-updates.js"></script>
+
+</head>
+
+<body>
+    <div class="navSection" id="navBar">
+        <nav>
+            <div class="navClass" id="IEEE-LOGO">
+                <img src="Images/IEEE-LOGO-WHITE.png" alt="ieee-logo" id="default-logo">
+                <img src="Images/logo.png" alt="ieee-logo" id="scrolled-logo" style="display: none;">
+            </div>
+
+            <div class="navAnchors">
+                <a href="index.html" id="home-link"><i class="fa-solid fa-house" style="font-size: 0.8rem;"></i>Home</a>
+                <a href="achivement-page.html" id="achivement-link"><i class="fa-solid fa-trophy" style="font-size: 0.8rem;"></i>Achievements</a>
+                <a href="event-page.html" id="events-link"><i class="fa-solid fa-calendar-days" style="font-size: 0.8rem;"></i>Events</a>
+                <a href="member-front.html" id="committee-link"><i class="fa-solid fa-users" style="font-size: 0.8rem;"></i>Committee</a>
+                <a href="index.html#contactUs"><i class="fa-solid fa-phone" style="font-size: 0.8rem;"></i>Contact Us</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="heading">
+        <h1>Events</h1>
+    </div>
+
+
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        <ul class="timeline"></ul>
+    </div>
+
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-container">
+                <div class="div-img">
+                    <img id="modalEventImage" src="" alt="Event Image">
+                </div>
+                <div class="modal-div">
+                    <div class="modal-eventname">
+                        <h3 id="modalEventName"></h3>
+                    </div>
+                    <div class="div-text">
+                        <p id="modalEventDescription"></p>
+                        <p><strong>Speaker:</strong> <span id="modalSpeaker"></span></p>
+                        <p><strong>Date:</strong> <span id="modalEventDate"></span></p>
+                        <p><strong>Time:</strong> <span id="modalEventTime"></span></p>
+                        <p><strong>Place:</strong> <span id="modalVenue"></span></p>
+                        <a href="" id="modalInstaPost" target="_blank">Instagram Post</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    
+
+    <!--footer Section  -->
+    <section class=" FooterSection">
+        <div class="textContent">
+            <div class="footerSection" id="footer">
+                <div class="footerClass">
+                    <div class="OurGoalsSection">
+                        <div id="headerOurGoals">
+                            <p>Our Goals</p>
+                        </div>
+                        <div id="OurGoalsDescription">
+                            <p>Lorem ipsum dolor sit ameto molestiae e enim
+                                quisquam at dolor quidem, alias aut
+                                consectetur vel tempora repudiandae nulla
+                                voluptas architecto omnis, dicta
+                                necessitatibus, autem nostrum! Enim in
+                                corporis consequatur sunt. Soluta,
+                                asperiores
+                                quibusdam similique vitae dicta rerum in?
+                            </p>
+                        </div>
+                        <div id="socialLinks">
+                            <a href="mailto:ieee.sb@ahduni.edu.in"><i
+                                    class="fas fa-envelope"
+                                    style="color: #ffffff;"></i></a>
+                            <a
+                                href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+                                    class="fab fa-instagram"
+                                    style="color: #ffffff;"></i></a>
+                            <a
+                                href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/"><i
+                                    class="fab fa-linkedin"
+                                    style="color: #ffffff;"></i></a>
+                        </div>
+                    </div>
+                    <div class="VerticallineFooter">
+                        <div></div>
+                    </div>
+                    <div class="siteMap">
+                        <div id="SiteMapHeader">
+                            <p>Site map</p>
+                        </div>
+                        <div id="SiteMapContent">
+                            <a href="#Home">Home</a>
+                            <a href="#aboutUs">About Us</a>
+                            <a href="#achievement">Achievements</a>
+                            <a href="#upcomingEvents">Upcoming Events</a>
+                            <a href="#pastEvent">Past Events</a>
+                            <a href="#">Committee</a>
+                        </div>
+                    </div>
+                    <div class="ContactUsSection">
+                        <div class="ContactUsHeader">
+                            <p>Contact Us</p>
+                        </div>
+                        <div class="ContactUsContent">
+                            <div id="emailSection">
+                                <i class="fas fa-envelope"
+                                    style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <a href="mailto:ieee.sb@ahduni.edu.in">Email:
+                                    ieee.sb@ahduni.edu.in</a>
+                            </div>
+                            <div id="addressSection">
+                                <i class="fas fa-map-marker-alt"
+                                    style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <p>Address:<br>Ahmedabad
+                                    University<br>Navrangpura<br>Ahmedabad-380009
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="GetUpdates">
+                        <div class="GetUpdatesHeader">
+                            <p>Get Updates</p>
+                        </div>
+                        <div class="GetUpdatesContent">
+                            <div id="yourNameButton">
+                                <form>
+                                    <div><i class="fas fa-user"
+                                            style="color: #2f2f2f;"></i>
+                                    </div>
+                                    <input type="text"
+                                        placeholder="Your name">
+                                </form>
+                            </div>
+                            <div id="yourEmailButton">
+                                <form>
+                                    <div><i class="fas fa-envelope"
+                                            style="color: #2f2f2f;"></i>
+                                    </div>
+                                    <input type="email"
+                                        placeholder="Your email">
+                                </form>
+                            </div>
+                            <div id="Submitbutton">
+                                <button type="button"
+                                    onclick="submitForm()">Get Updates
+                                    &#x2192;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="imgs">
+                <img class="ieee-footer" src="/Images/IEEE-LOGO-WHITE.png"
+                    alt="">
+                <img class="au-footer" src="./Images/AU_logo.webp" alt="">
+            </div>
+        </div>
+        <div class="copyrightSection">
+            <hr class="nav-line3">
+            <div class="bottom-div">
+                <h4>&copy; IEEE AU SB 2024. All Rights Reserved | Developed by CSE Team, IEEE AU SB</h4>
+                <div class="theme-div">
+                    <img id="theme-icon" src="/Images/moon-icon.svg" alt="Theme Icon">
+                    <button id="theme-toggle">dark</button>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <script>
+        async function fetchEvents() {
+            const response = await fetch('http://localhost:3000/events-check');
+            const events = await response.json();
+            const timelineList = document.querySelector('.timeline');
+
+            // Sort events by date in ascending order
+            events.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
+
+            // Add the events to the timeline
+            events.forEach(event => {
+                const eventDate = new Date(event.eventDate);
+                const dateString = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear();
+
+                const eventCard = document.createElement('li');
+                eventCard.classList.add('timeline-event');
+
+                // const eventSocialMediaLink = event.instaPostLink;
+
+                const cardContent = `
+                <div class="event-card">
+                    <img src="uploads/events/${event.eventPoster}" alt="${event.eventName} Poster">
+                    <div class="event-card-details">
+                        <h3>${event.eventName}</h3>
+                        <p>${event.eventDescription.length > 100 ? event.eventDescription.substring(0, 100) + '...' : event.eventDescription}</p>
+                        <p>${event.eventTime}</p>
+                        <p>${event.speaker}</p>
+                        <p>${event.venue}</p>
+                        <button class="know-more" onclick="openModal('${event.eventName}', '${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n'))}', '${event.eventPoster}', '${event.speaker}', '${dateString}', '${event.eventTime}', '${event.venue}', '${event.instaPostLink}')">Know More</button>
+                    </div>
+                </div>
+                <div class="event-date">${dateString}</div>
+            `;
+
+                eventCard.innerHTML = cardContent;
+                timelineList.appendChild(eventCard);
+            });
+        }
+
+        function openModal(eventName, eventDescription, eventPoster, speaker, eventDate, eventTime, venue, instaPostLink) {
+            document.getElementById('modalEventName').innerText = eventName;
+            document.getElementById('modalEventImage').src = `uploads/events/${eventPoster}`;
+            document.getElementById('modalEventDescription').innerText = decodeURIComponent(eventDescription).replace(/\\n/g, '\n');
+            document.getElementById('modalSpeaker').innerText = speaker;
+            document.getElementById('modalEventDate').innerText = eventDate;
+            document.getElementById('modalEventTime').innerText = eventTime;
+            document.getElementById('modalVenue').innerText = venue;
+            document.getElementById('modalInstaPost').href = instaPostLink;
+
+            document.getElementById('eventModal').style.display = 'flex';
+        }
+
+        document.getElementById('modalClose').onclick = function () {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('eventModal')) {
+                document.getElementById('eventModal').style.display = 'none';
+            }
+        }
+
+        fetchEvents();
+    </script>
+</body>
+<script src="js/theme-logic.js"></script>
+<script src="js/navbar-scroll.js"></script>
+<script>
+    
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname.split('/').pop(); // Get the current file name
+        const navLinks = document.querySelectorAll('.navAnchors a');
+
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href').split('/').pop(); // Get the href file name
+            if (currentPath === linkPath) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    });
+</script>
+
+</html>
