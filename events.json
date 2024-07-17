@@ -1,0 +1,108 @@
+{
+    "events":[
+        {
+            "name": "Inspiring Live Talk Show by Falguni Vasvada",
+            "description": "We were honored to host Dr. Vasavada, Associate Professor and Chairperson of Online Programs at MICA, for an enlightening talk show at Ahmedabad University. Dr. Vasavada shared her insights and experiences on women's empowerment, gender issues, and combating body shaming, aligning with our values of inclusivity and equity. Attendees had the unique opportunity to interact with a distinguished marketing and advertising expert, gaining valuable takeaways from her inspiring journey.",
+            "speakerName": "Falguni Vasvada",
+            "eventDate": "27-09-2023",
+            "eventTime": {
+                "startTime": "15:00",
+                "endTime": "16:30"
+            },
+            "venue": "GICT 135",
+            "registrationLink": null,
+            "instagramPostLink": null
+        },
+        {
+            "name": "Billion Reasons to Build",
+            "description": "IEEE Ahmedabad University branch collaborated with Push Protocol to host this incredible event. The full day event was a whirlwind of innovation and inspiration. The energy of over 450 students at the event was electrifying and their passion for technology is contagious and it’s the driving force for our tech future.",
+            "speakerName": null,
+            "eventDate": "01-10-2023",
+            "eventTime": {
+                "startTime": "10:00",
+                "endTime": "17:00"
+            },
+            "venue": "GICT Auditorium",
+            "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSdVEE56YL6k0o4gOcC3GHZkLVpXLSWlyO7mSSsLQIKSQ2O4LA/viewform",
+            "instagramPostLink": "https://www.instagram.com/reel/CyTjIVxp2Jp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        },
+        {
+            "name": "Two-Wheeler Safety and Mobility Technologies",
+            "description": "Wheeler Safety & Mobility Technology an event organised by IEEE ITSS and Ahmedabad University where Experts of various fields had insightful talks, discussions on innovative approaches and ideas to improve road safety.",
+            "speakerName": null,
+            "eventDate": ["03-11-2023", "04-11-2023"],
+            "eventTime": {
+                "startTime": "10:30",
+                "endTime": "21:30"
+            },
+            "venue": "Ahmedabad University",
+            "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSdVEE56YL6k0o4gOcC3GHZkLVpXLSWlyO7mSSsLQIKSQ2O4LA/viewform",
+            "instagramPostLink": "https://www.instagram.com/reel/CyTjIVxp2Jp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        },
+        {
+            "name": "The Importance of Soft Skills",
+            "description": "\"The Importance of Soft Skills\" by renowned Image Coach and NLP Master Practitioner, Sandhya Anantani included the following:\n\t(1) Talk on soft skills\n\t(2) Hands on activities\n\t(3) Personal Interaction",
+            "speakerName": "Sandhya Anantani",
+            "eventDate": "28-02-2024",
+            "eventTime": {
+                "startTime": "16:00",
+                "endTime": "17:30"
+            },
+            "venue": "GICT 200",
+            "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLScuXjjW9TVMnM0xugUIAG254577E2qFU4qlA8rUbrYkcakjbw/closedform",
+            "instagramPostLink": "https://www.instagram.com/p/C4DXMGIpukx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        },
+        {
+            "name": "Pitch Your Start Ideas",
+            "description": "",
+            "speakerName": "",
+            "eventDate": "",
+            "eventTime": {
+                "startTime": "",
+                "endTime": ""
+            },
+            "venue": "",
+            "registrationLink": "",
+            "instagramPostLink": ""
+        },
+        {
+            "name": "",
+            "description": "",
+            "speakerName": "",
+            "eventDate": "",
+            "eventTime": {
+                "startTime": "",
+                "endTime": ""
+            },
+            "venue": "",
+            "registrationLink": "",
+            "instagramPostLink": ""
+        },
+        {
+            "name": "",
+            "description": "",
+            "speakerName": "",
+            "eventDate": "",
+            "eventTime": {
+                "startTime": "",
+                "endTime": ""
+            },
+            "venue": "",
+            "registrationLink": "",
+            "instagramPostLink": ""
+        },
+        {
+            "name": "",
+            "description": "",
+            "speakerName": "",
+            "eventDate": "",
+            "eventTime": {
+                "startTime": "",
+                "endTime": ""
+            },
+            "venue": "",
+            "registrationLink": "",
+            "instagramPostLink": ""
+        }
+    ]
+}
