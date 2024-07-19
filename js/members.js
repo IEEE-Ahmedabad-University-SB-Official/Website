@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentProfileImage = null;
   const departmentDropdown = document.getElementById('department');
   const positionDropdown = document.getElementById('position');
+  const loader = document.getElementById('loader');
+
 
   btn.addEventListener('click', function () {
     modal.style.display = 'block';
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function fetchData() {
-    axios.get('http://localhost:3000/members')
+    axios.get('https://ieee-vishv-1.onrender.com/api/members/allMembers')
       .then(response => {
         renderData(response.data);
       })
@@ -106,13 +108,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       tr.appendChild(linkedinTd);
 
+      console.log("saas",`${row._id}`);
+
       // Add remaining columns: leave date, profile image, and action buttons
       tr.innerHTML += `
           <td class="leave-date">${formattedLeaveDate}</td> <!-- Display formatted leave_date -->
-          <td><img src="./uploads/members/${row.profile_image}" alt="profile image" style="width: 100px; height: auto;"></td>
+          <td><img src="${row.profile_image}" alt="profile image" style="width: 100px; height: auto;"></td>
           <td>
-            <button onclick="editMember(${row.id})">Edit</button>
-            <button onclick="deleteMember(${row.id})">Delete</button>
+            <button onclick="editMember('${row._id}')">Edit</button>
+            <button onclick="deleteMember('${row._id}')">Delete</button>
           </td>
         `;
 
@@ -132,47 +136,54 @@ document.addEventListener("DOMContentLoaded", function () {
     return `${day}-${month}-${year}`;
   }
 
-
-
-  window.editMember = function (id) {
-    axios.get(`http://localhost:3000/member/${id}`)
+  window.editMember = function(id) {
+    axios.post(`https://ieee-vishv-1.onrender.com/api/members/update/${id}`)
       .then(response => {
-        const member = response.data;
-        let dateString = '';
-
-        if (member.leave_date) {
-          const leaveDate = new Date(member.leave_date);
-          leaveDate.setDate(leaveDate.getDate() + 1); // Add 1 day to the leave date
-          dateString = leaveDate.toISOString().split('T')[0];
+        const member = response.data.member;
+  
+        // Ensure 'member' is correctly accessed from response.data
+        if (member) {
+          // Update form fields with member details
+          document.getElementById('memberId').value = member._id; // Check if it's _id or id based on your API response
+          document.getElementById('name').value = member.name;
+          document.getElementById('enrollment_number').value = member.enrollment_number;
+          document.getElementById('email').value = member.email;
+          document.getElementById('contact_number').value = member.contact_number;
+          document.getElementById('join_year').value = member.join_year;
+          document.getElementById('programme').value = member.programme;
+          document.getElementById('department').value = member.department;
+          // Update position options based on selected department
+          updatePositionOptions(member.department);
+          document.getElementById('position').value = member.position;
+          document.getElementById('instagramProfile').value = member.instagramProfile;
+          document.getElementById('linkedinProfile').value = member.linkedinProfile;
+          document.getElementById('oldProfileImage').value = member.profile_image;
+  
+          // Set leave date if available
+          let dateString = '';
+          if (member.leave_date) {
+            const leaveDate = new Date(member.leave_date);
+            leaveDate.setDate(leaveDate.getDate() + 1); // Add 1 day to the leave date
+            dateString = leaveDate.toISOString().split('T')[0];
+          }
+          document.getElementById('leave_date').value = dateString;
+  
+          // Display current profile image
+          if (member.profile_image) {
+            currentProfileImage = member.profile_image;
+            const img = document.createElement('img');
+            img.src = `${member.profile_image}`;
+            img.style.maxWidth = '100%';
+            img.style.maxHeight = '200px';
+            imagePreview.innerHTML = '';
+            imagePreview.appendChild(img);
+          }
+  
+          // Display the modal for editing
+          modal.style.display = 'block';
+        } else {
+          console.error('No member data found in response.');
         }
-
-        document.getElementById('memberId').value = member.id;
-        document.getElementById('name').value = member.name;
-        document.getElementById('enrollment_number').value = member.enrollment_number;
-        document.getElementById('email').value = member.email;
-        document.getElementById('contact_number').value = member.contact_number;
-        document.getElementById('join_year').value = member.join_year;
-        document.getElementById('programme').value = member.programme;
-        document.getElementById('department').value = member.department;
-        // Update position options based on selected department
-        updatePositionOptions(member.department);
-        document.getElementById('position').value = member.position;
-        document.getElementById('instagramProfile').value = member.instagramProfile;
-        document.getElementById('linkedinProfile').value = member.linkedinProfile;
-        document.getElementById('oldProfileImage').value = member.profile_image;
-        document.getElementById('leave_date').value = dateString || ''; // Set leave date value or empty string if it doesn't exist
-
-        if (member.profile_image) {
-          currentProfileImage = member.profile_image;
-          const img = document.createElement('img');
-          img.src = `./uploads/members/${member.profile_image}`;
-          img.style.maxWidth = '100%';
-          img.style.maxHeight = '200px';
-          imagePreview.innerHTML = '';
-          imagePreview.appendChild(img);
-        }
-
-        modal.style.display = 'block';
       })
       .catch(error => console.error('Error fetching member details:', error));
   };
@@ -190,7 +201,13 @@ document.addEventListener("DOMContentLoaded", function () {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/member/${id}`)
+
+        // Show loader and disable interactions
+        
+        loader.style.display = 'block';
+        document.body.classList.add('disable-interaction');
+
+        axios.delete(`https://ieee-vishv-1.onrender.com/api/members/member/${id}`)
           .then(response => {
             fetchData();
             Swal.fire(
@@ -200,6 +217,10 @@ document.addEventListener("DOMContentLoaded", function () {
             );
           })
           .catch(error => console.error('Error deleting member:', error));
+
+          // Hide loader and enable interactions
+          loader.style.display = 'none';
+          document.body.classList.remove('disable-interaction');
       }
     });
   };
@@ -224,15 +245,24 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     const formData = new FormData(this);
     const memberId = formData.get('memberId');
-    const url = memberId ? `http://localhost:3000/update-member/${memberId}` : 'http://localhost:3000/upload-member';
+    const url = memberId ? `https://ieee-vishv-1.onrender.com/api/members/update/${memberId}` : 'https://ieee-vishv-1.onrender.com/api/members/upload';
 
     if (!imageUpload.files.length && currentProfileImage) {
       formData.append('profile_image', currentProfileImage);
     }
+    
+    // Show loader and disable interactions
+    loader.style.display = 'block';
+    document.body.classList.add('disable-interaction');
 
     axios.post(url, formData)
       .then(response => {
         const message = memberId ? 'updated' : 'added';
+
+        // Hide loader and enable interactions
+        loader.style.display = 'none';
+        document.body.classList.remove('disable-interaction');
+
         Swal.fire({
           title: capitalizeFirstLetter(message) + '!',
           text: `Your member has been ${message}.`,
@@ -253,6 +283,10 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         } else {
           console.error('Error uploading member:', error);
+
+          // Hide loader and enable interactions
+          loader.style.display = 'none';
+          document.body.classList.remove('disable-interaction');
         }
       });
   });
@@ -275,73 +309,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch members data (example using Axios)
   async function fetchMembers() {
     try {
-      const response = await axios.get('/api/members'); // Adjust the URL to your actual API endpoint
+      const response = await axios.get('https://ieee-vishv-1.onrender.com/api/members/allMembers'); // Adjust the URL to your actual API endpoint
       members = response.data;
-      displayPage(currentPage);
-      updatePaginationControls();
+      // displayPage(currentPage);
+      // updatePaginationControls();
     } catch (error) {
       console.error('Error fetching members:', error);
     }
   }
 
-  // Function to display a specific page of members
-  function displayPage(page) {
-    tableBody.innerHTML = ""; // Clear the table body
-    const start = (page - 1) * itemsPerPage;
-    const end = page * itemsPerPage;
-    const pageMembers = members.slice(start, end);
-
-    pageMembers.forEach((member, index) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${start + index + 1}</td>
-        <td>${member.name}</td>
-        <td>${member.email}</td>
-        <td>${member.enrollment_number}</td>
-        <td>${member.contact_number}</td>
-        <td>${member.join_year}</td>
-        <td>${member.programme}</td>
-        <td>${member.department}</td>
-        <td>${member.position}</td>
-        <td><a href="${row.instagramProfile}" target="_blank" class="icon" id="instagram">
-        <i class="fa-brands fa-instagram"></i></a></td>
-        <td><a href="${row.linkedinProfile}" target="_blank" class="icon" id="linkedin">
-        <i class="fa-brands fa-linkedin"></i></a></td>
-
-        <td class="leave_date">${member.leave_date}</td>
-        <td><img src="${member.profile_image}" alt="${member.name}" width="50"></td>
-        <td>
-          <button class="edit-btn" data-id="${member.id}">Edit</button>
-          <button class="delete-btn" data-id="${member.id}">Delete</button>
-        </td>
-      `;
-      tableBody.appendChild(row);
-    });
-  }
-
-  // Function to update the state of pagination controls
-  function updatePaginationControls() {
-    prevPageBtn.disabled = currentPage === 1;
-    nextPageBtn.disabled = currentPage === Math.ceil(members.length / itemsPerPage);
-  }
-
-  // Event listeners for pagination buttons
-  prevPageBtn.addEventListener("click", function () {
-    if (currentPage > 1) {
-      currentPage--;
-      displayPage(currentPage);
-      updatePaginationControls();
-    }
-  });
-
-  nextPageBtn.addEventListener("click", function () {
-    if (currentPage < Math.ceil(members.length / itemsPerPage)) {
-      currentPage++;
-      displayPage(currentPage);
-      updatePaginationControls();
-    }
-  });
-
+  
   // Fetch and display members data on page load
   fetchMembers();
 });

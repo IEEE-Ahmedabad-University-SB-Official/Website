@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../Images/ieee-favicon.ico">
+    <title>Admin file</title>
+    <style>
+        h1{
+            margin-top: 0;
+        }
+        .text{
+            background-image: url("../Images/3425081.jpg");
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .eventAdminBtn , .memberAdminBtn{
+            display: block;
+            margin: 1rem auto;
+            padding: 10px 20px;
+            background-color: rgba(255, 0, 0, 0.611);
+            border: 2px solid rgba(0, 0, 0, 0.605);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .eventAdminBtn:hover, .memberAdminBtn:hover{
+            background-color: rgba(255, 0, 0, 0.711);
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.495);
+        }
+
+        .mainPageBtn{
+            display: block;
+            margin: 1rem auto;
+            padding: 10px 20px;
+            background-color: navy;
+            border: 2px solid rgba(0, 0, 0, 0.605);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .mainPageBtn:hover{
+            background-color: transparent;
+            border: 2px solid navy;
+            color: navy;
+        }
+        @media (max-width: 1024px) {
+            .text{
+                font-size: 140px;
+            }
+        }
+
+        .loader-container{
+            height: 95vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+    .loader {
+    width: 50px;
+    aspect-ratio: 1;
+    color: rgb(0, 132, 255);
+    border: 2px solid;
+    display: grid;
+    box-sizing: border-box;
+    animation: l1 4s infinite linear;
+    }
+    .loader::before,
+    .loader::after {
+    content: "";
+    grid-area: 1/1;
+    margin: auto;
+    width: 70.7%;
+    aspect-ratio: 1;
+    border: 2px solid;
+    box-sizing: content-box;
+    animation: inherit;
+    }
+    .loader::after {
+    width: 50%;
+    aspect-ratio: 1;
+    border: 2px solid;
+    animation-duration: 2s;
+    }
+    @keyframes l1{
+    100% {transform:rotate(1turn)}
+    }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.7s;
+            animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container hidden">
+        <h1 class="text">IEEE</h1>
+
+        <div class="events">
+            <button class="eventAdminBtn" onclick="window.location.href='event-admin.html'">Event Admin Page</button>
+        </div>
+        <div class="members">
+            <button class="memberAdminBtn" onclick="window.location.href='member-admin.html'">Member Admin page</button>
+        </div>
+        <div class="updates">
+            <button class="memberAdminBtn" onclick="window.location.href='get-updates-admin.html'">Get updates details</button>
+        </div>
+        <div class="contact-us">
+            <button class="memberAdminBtn" onclick="window.location.href='contact-us-admin.html'">Contact us details</button>
+        </div>
+        <div class="add-admin">
+            <button class="memberAdminBtn" onclick="window.location.href='user-admin.html'">Add admin</button>
+        </div>
+        <div class="main-page">
+            <button class="mainPageBtn" onclick="window.location.href='../index.html'">IEEE website main page</button>
+        </div>
+    </div>
+    <script>
+        if (!sessionStorage.getItem('ieee-login-userId')) {
+          window.location.href = '../login.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('.loader-container').classList.add('hidden');
+                const container = document.querySelector('.container');
+                container.classList.remove('hidden');
+                container.classList.add('fade-in');
+            }, 1500); // 1 second delay
+        });
+    </script> 
+</body>
+</html>

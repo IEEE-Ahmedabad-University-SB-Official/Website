@@ -46,7 +46,8 @@
     display: grid;
     grid-template-rows: 25% 25% 30% 20%;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-areas: "a a a a"
+    grid-template-areas: 
+        "a a a a"
         "b b c c"
         "d d d d"
         "e e e e";

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     axios
-        .get("http://localhost:3000/events")
+        .get("https://ieee-vishv-1.onrender.com/api/events/events")
         .then((response) => {
             let events = response.data;
             const currentDate = new Date();
@@ -80,10 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
             "-" +
             eventDate.getFullYear();
 
-        card.classList.add("card");
+        card.classList.add("cardDiv");
         card.innerHTML = `
             <div class="img">
-                <img class="img2" src="uploads/events/${event.eventPoster}" alt="">
+                <img class="img2" src="${event.eventPoster}" alt="">
             </div>
             <div class="content">
                 <div class="card-date-div">
@@ -129,10 +129,10 @@ document.addEventListener("DOMContentLoaded", function () {
         slide.classList.add("swiper-slide");
         slide.innerHTML = `
             <div class="picture">
-                <img src="uploads/events/${event.eventPoster}" alt="">
+                <img src="${event.eventPoster}" alt="">
             </div>
             <div class="detail">
-                <h2 style="margin-bottom: 0.75rem; text-align: center;">${event.eventName}</h2>
+                <h2 style="margin-bottom: 0.75rem; text-align: center; padding: 0 1rem;">${event.eventName}</h2>
                 <button class="know-more-btn" data-event-id="${event.id}">Know more</button>
             </div>
         `;
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function showUpcomingArrows() {
         const arrows = document.querySelectorAll(".arrow");
         arrows.forEach((arrow) => {
-            arrow.style.display = "block";
+            arrow.style.display = "flex";
         });
     }
     function hidePastArrows() {
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showModal(event) {
-        document.getElementById("modal-image").src = `uploads/events/${event.eventPoster}`;
+        document.getElementById("modal-image").src = `${event.eventPoster}`;
         modalDetail.innerHTML = `
             <h2>${event.eventName}</h2>
             <p>${event.eventDescription}</p>
@@ -232,11 +232,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const leftArrows = document.querySelectorAll(".arrow.left");
     const rightArrows = document.querySelectorAll(".arrow.right");
-    const cardWidth = 770; // Set this to the width of your cards
 
     leftArrows.forEach((leftArrow) => {
         leftArrow.addEventListener("click", function () {
             const cardContainer = leftArrow.parentElement.querySelector(".card-container");
+            const cardWidth = cardContainer.querySelector(".cardDiv").offsetWidth; // Calculate card width dynamically
             cardContainer.scrollBy({ left: -cardWidth, behavior: "smooth" });
         });
     });
@@ -244,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
     rightArrows.forEach((rightArrow) => {
         rightArrow.addEventListener("click", function () {
             const cardContainer = rightArrow.parentElement.querySelector(".card-container");
+            const cardWidth = cardContainer.querySelector(".cardDiv").offsetWidth; // Calculate card width dynamically
             cardContainer.scrollBy({ left: cardWidth, behavior: "smooth" });
         });
     });

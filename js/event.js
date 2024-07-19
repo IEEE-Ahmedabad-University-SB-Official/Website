@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const imagePreview = document.getElementById('image-preview');
   const imageUpload = document.getElementById('eventPoster');
   const dataTable = document.getElementById('data-table').querySelector('tbody');
+  const loader = document.getElementById('loader');
   let currentPoster = null;
 
   btn.addEventListener('click', function () {
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function fetchData() {
-    axios.get('http://localhost:3000/events')
+    axios.get('https://ieee-vishv-1.onrender.com/api/events/events')
       .then(response => {
         renderData(response.data);
       })
@@ -54,10 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${row.venue}</td>
         <td><a href="${row.registrationLink}" target="_blank">Register Here</a></td>
         <td><a href="${row.instaPostLink}" target="_blank">Instagram Post</a></td>
-        <td><img src="./uploads/events/${row.eventPoster}" alt="event poster" style="width: 100px; height: auto;"></td>
+        <td><img src="${row.eventPoster}" alt="event poster" style="width: 100px; height: auto;"></td>
         <td>
-          <button onclick="editEvent(${row.id})">Edit</button>
-          <button onclick="deleteEvent(${row.id})">Delete</button>
+          <button onclick="editEvent('${row._id}')">Edit</button>
+          <button onclick="deleteEvent('${row._id}')">Delete</button>
         </td>
       `;
       dataTable.appendChild(tr);
@@ -65,20 +66,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.editEvent = function (id) {
-    axios.get(`http://localhost:3000/event/${id}`)
+    axios.post(`https://ieee-vishv-1.onrender.com/api/events/update/${id}`)
       .then(response => {
-        const event = response.data;
+        const event = response.data.event; // Assuming response.data has a structure like { message: 'Event updated successfully', event: updatedEvent }
         let dateString = '';
 
         if (event.eventDate) {
           const eventDate = new Date(event.eventDate);
-          eventDate.setDate(eventDate.getDate() + 1); // Add 1 day to the leave date
+          eventDate.setDate(eventDate.getDate() + 1); // Adjust date handling as needed
           dateString = eventDate.toISOString().split('T')[0];
         }
 
-        // const eventDate = new Date(event.eventDate);
-        // const dateString = eventDate.toISOString().split('T')[0];
-        document.getElementById('eventId').value = event.id;
+        document.getElementById('eventId').value = event._id;
         document.getElementById('eventName').value = event.eventName;
         document.getElementById('eventDescription').value = event.eventDescription;
         document.getElementById('speaker').value = event.speaker;
@@ -92,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.eventPoster) {
           currentPoster = event.eventPoster;
           const img = document.createElement('img');
-          img.src = `./uploads/events/${event.eventPoster}`;
+          img.src = `${event.eventPoster}`;
           img.style.maxWidth = '100%';
           img.style.maxHeight = '200px';
           imagePreview.innerHTML = '';
@@ -115,19 +114,35 @@ document.addEventListener("DOMContentLoaded", function () {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/event/${id}`)
+        
+        // Show loader and disable interactions
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+        document.body.classList.add('disable-interaction');
+  
+        axios.delete(`https://ieee-vishv-1.onrender.com/api/events/event/${id}`)
           .then(response => {
             fetchData();
+            // Hide loader and enable interactions
+            loader.style.display = 'none';
+            document.body.classList.remove('disable-interaction');
             Swal.fire(
               'Deleted!',
               'Your event has been deleted.',
               'success'
             );
           })
-          .catch(error => console.error('Error deleting event:', error));
+          .catch(error => {
+            console.error('Error deleting event:', error);
+            
+            // Hide loader and enable interactions
+            loader.style.display = 'none';
+            document.body.classList.remove('disable-interaction');
+          });
       }
     });
   };
+  
 
   imageUpload.addEventListener('change', function () {
     const file = this.files[0];
@@ -151,46 +166,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const eventId = formData.get('eventId');
 
     if (!imageUpload.files.length && currentPoster) {
-        formData.append('eventPoster', currentPoster);
+      formData.append('eventPoster', currentPoster);
     }
+
+    // Show loader and disable interactions
+    loader.style.display = 'block';
+    document.body.classList.add('disable-interaction');
+
+    const handleResponse = response => {
+      // Hide loader and enable interactions
+      loader.style.display = 'none';
+      document.body.classList.remove('disable-interaction');
+
+      Swal.fire({
+        title: eventId ? 'Updated!' : 'Added!',
+        text: eventId ? 'Your event has been updated.' : 'Your event has been added.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        closeModal(); // Close modal after SweetAlert is closed
+        fetchData(); // Reload the event data
+      });
+    };
+
+    const handleError = error => {
+      console.error(eventId ? 'Error updating event:' : 'Error uploading event:', error);
+      // Hide loader and enable interactions
+      loader.style.display = 'none';
+      document.body.classList.remove('disable-interaction');
+    };
 
     if (eventId) {
-        axios.post(`http://localhost:3000/update/${eventId}`, formData)
-            .then(response => {
-                Swal.fire({
-                    title: 'Updated!',
-                    text: 'Your event has been updated.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    closeModal(); // Close modal after SweetAlert is closed
-                    fetchData(); // Reload the event data
-                });
-            })
-            .catch(error => console.error('Error updating event:', error));
+      axios.post(`https://ieee-vishv-1.onrender.com/api/events/update/${eventId}`, formData)
+        .then(handleResponse)
+        .catch(handleError);
     } else {
-        axios.post('http://localhost:3000/upload', formData)
-            .then(response => {
-                Swal.fire({
-                    title: 'Added!',
-                    text: 'Your event has been added.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    closeModal(); // Close modal after SweetAlert is closed
-                    fetchData(); // Reload the event data
-                });
-            })
-            .catch(error => console.error('Error uploading event:', error));
+      axios.post('https://ieee-vishv-1.onrender.com/api/events/upload', formData)
+        .then(handleResponse)
+        .catch(handleError);
     }
-});
-
-
-
+  });
 
   fetchData();
 });
-
-
-
-

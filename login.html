@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        background: url("https://www.codingnepalweb.com/demos/create-glassmorphism-login-form-html-css/hero-bg.jpg"), #000;
+        background-position: center;
+        background-size: cover;
+        padding: 0 1rem;
+        overflow-y: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper {
+        width: 400px;
+        border-radius: 8px;
+        padding: 30px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .input-field {
+        position: relative;
+        border-bottom: 2px solid #ccc;
+        margin: 15px 0;
+    }
+
+    .input-field label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 16px;
+        pointer-events: none;
+        transition: 0.15s ease;
+    }
+
+    .input-field input {
+        width: 100%;
+        height: 40px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #fff;
+        padding-right: 40px; /* Add space for the icon */
+    }
+
+    .input-field input:focus~label,
+    .input-field input:valid~label {
+        font-size: 0.8rem;
+        top: 10px;
+        transform: translateY(-120%);
+    }
+
+    .input-field .show-password {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .wrapper a {
+        color: #efefef;
+        text-decoration: none;
+    }
+
+    .wrapper a:hover {
+        text-decoration: underline;
+    }
+
+    button {
+        background: #fff;
+        color: #000;
+        font-weight: 600;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 3px;
+        font-size: 16px;
+        border: 2px solid transparent;
+        transition: 0.3s ease;
+    }
+
+    button:hover {
+        color: #fff;
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .register {
+        text-align: center;
+        margin-top: 30px;
+        color: #fff;
+    }
+
+    .loader {
+        width: 100px;
+        --b: 10px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        padding: 2px;
+        background: conic-gradient(#0000 10%, white) content-box;
+        -webkit-mask:
+            repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+            radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
+        -webkit-mask-composite: destination-in;
+        mask-composite: intersect;
+        animation: l4 1s infinite steps(10);
+    }
+
+    @keyframes l4 {
+        to {
+            transform: rotate(1turn)
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="loader"></div>
+
+    <div class="wrapper hidden">
+        <form id="loginForm" action="#">
+            <h2>IEEE Admin Login</h2>
+            <div class="input-field">
+                <input type="text" id="username" required>
+                <label>Enter your username</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" required>
+                <label>Enter your password</label>
+                <span class="show-password" onclick="togglePassword()">👀</span>
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('https://ieee-vishv-1.onrender.com/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    sessionStorage.setItem('ieee-login-userId', result.userId);
+                    window.location.href = 'html-admin/admin.html'; // Redirect to admin.html
+
+                } else {
+                    alert('Invalid credentials');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                document.querySelector('.loader').classList.add('hidden');
+                const container = document.querySelector('.wrapper');
+                container.classList.remove('hidden');
+                container.classList.add('fade-in');
+            }, 1000); // 1 second delay
+        });
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.querySelector('.show-password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.textContent = '🙈'; // Change icon to indicate password is visible
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.textContent = '👀'; // Change icon back to indicate password is hidden
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTNSTRR7NE"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NTNSTRR7NE');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../Images/ieee-favicon.ico">
+    <title>Committee</title>
+    <link rel="stylesheet" href="../CSS/commitee-page.css">
+    <link rel="stylesheet" href="../CSS/footerSection.css">
+    <link rel="stylesheet" href="/CSS/mediaQuery.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="navSection" id="navBar">
+        <nav>
+            <div class="navClass" id="IEEE-LOGO">
+                <img src="../Images/IEEE-LOGO-WHITE.png" alt="ieee-logo" id="default-logo">
+                <img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721140813/Logo_ttvlys.png" alt="ieee-logo" id="scrolled-logo" style="display: none;">
+            </div>
+
+            <div class="navAnchors">
+                <a href="../index.html"><i class="fa-solid fa-house"></i>Home</a>
+                <a href="achivement-page.html"><i class="fa-solid fa-trophy"></i>Achievements</a>
+                <a href="event-page.html"><i class="fa-solid fa-calendar-days"></i>Events</a>
+                <a href="commitee-page.html"><i class="fa-solid fa-users"></i>Committee</a>
+                <a href="../index.html#contactUs"><i class="fa-solid fa-phone"></i>Contact Us</a>
+                <div class="dropdown">
+                    <button class="dropbtn" id="theme-button">
+                        <img class="theme-icon" src="../Images/theme.png" alt="theme-icon" >
+                        <span id="theme-text">Theme</span>
+                        <!-- <i id="theme-icon" class="fa-solid"></i> -->
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="theme-dropdown">
+                        <a href="#" id="dark-theme">
+                            <img src="../Images/moon-icon.svg" alt="Dark Theme Icon" style="width: 16px; height: 16px;"> Dark
+                            <span class="tick-mark" id="tick-dark">&#10003;</span>
+                        </a>
+                        <a href="#" id="light-theme">
+                            <img src="../Images/sun-icon.svg" alt="Light Theme Icon" style="width: 16px; height: 16px;"> Light
+                            <span class="tick-mark" id="tick-light">&#10003;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="heading">
+        <h1>IEEE committee Members</h1>
+    </div>
+
+    
+    <hr class="nav-line1">
+
+    <div class="navbar">
+        <a href="#obs">OBs</a>
+        <a href="#cse">CSE</a>
+        <a href="#content">Content</a>
+        <a href="#graphics">Graphics</a>
+        <a href="#logistics">Logistics</a>
+        <a href="#ras">RAS</a>
+        <a href="#socialmedia">Social Media</a>
+        <a href="#technical">Technical</a>
+    </div>
+    <hr class="nav-line2">
+
+    <div class="container">
+        <div class="option">
+            <div id="ieeeSection" class="ieee">
+
+                <hr class="nav-line4">
+
+                <!-- OBs Section -->
+                <div class="obs" id="obs">
+                    <h1>Faculty</h1>
+                    <div class="faculty">
+                        <div id="obsFaculty"></div>
+                    </div>
+                </div>
+
+                <hr class="nav-line4">
+
+                <div class="obs" id="obs">
+                    <h1>OBs</h1>
+                    <div class="obscard">
+                        <div class="frow">
+                            <div id="obsChairperson"></div>
+                            <div id="obsCoChairperson"></div>
+                        </div>
+                        <div class="srow">
+                            <div id="obsSecretary"></div>
+                            <div id="obsJointSecretary"></div>
+                            <div id="obsTreasurer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="nav-line4">
+
+
+                <!-- CSE Team -->
+                <div id="cse" class="team">
+                    <h1>CSE Team</h1>
+                    <div class="team-data" id="cseTeam"></div>
+                </div>
+
+                <hr class="nav-line4">
+
+                <!-- Content Team -->
+                <div id="content" class="team">
+                    <h1>Content Team</h1>
+                    <div class="team-data" id="contentTeam"></div>
+                </div>
+
+                <hr class="nav-line4">
+
+                <!-- Graphics Team -->
+                <div id="graphics" class="team">
+                    <h1>Graphics Team</h1>
+                    <div class="team-data" id="graphicsTeam"></div>
+                </div>
+
+                <hr class="nav-line4">
+
+                <!-- Logistics Team -->
+                <div id="logistics" class="team">
+                    <h1>Logistics Team</h1>
+                    <div class="team-data" id="logisticsTeam"></div>
+                </div>
+
+                <hr class="nav-line4">
+
+                <!-- RAS Team -->
+                <div id="ras" class="team">
+                    <h1>RAS Team</h1>
+                    <div class="team-data" id="rasTeam"></div>
+                </div>
+
+                <hr class="nav-line4">
+
+                <!-- Social Media Team -->
+                <div id="socialmedia" class="team">
+                    <h1>Social Media Team</h1>
+                    <div class="team-data" id="socialmediaTeam"></div>
+                </div>
+
+                <hr class="nav-line4">
+
+                <!-- Technical Team -->
+                <div id="technical" class="team">
+                    <h1>Technical Team</h1>
+                    <div class="team-data" id="technicalTeam"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--footer Section  -->
+    <section class=" FooterSection">
+        <div class="textContent">
+            <div class="footerSection" id="footer">
+                <div class="footerClass">
+                    <div class="OurGoalsSection">
+                        <div id="headerOurGoals">
+                            <p>Our Goals</p>
+                        </div>
+                        <div id="OurGoalsDescription">
+                            <p>Lorem ipsum dolor sit ameto molestiae e enim
+                                quisquam at dolor quidem, alias aut
+                                consectetur vel tempora repudiandae nulla
+                                voluptas architecto omnis, dicta
+                                necessitatibus, autem nostrum! Enim in
+                                corporis consequatur sunt. Soluta,
+                                asperiores
+                                quibusdam similique vitae dicta rerum in?
+                            </p>
+                        </div>
+                        <div id="socialLinks">
+                            <a href="mailto:ieee.sb@ahduni.edu.in"><i
+                                    class="fas fa-envelope"
+                                    style="color: #ffffff;"></i></a>
+                            <a
+                                href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+                                    class="fab fa-instagram"
+                                    style="color: #ffffff;"></i></a>
+                            <a
+                                href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/"><i
+                                    class="fab fa-linkedin"
+                                    style="color: #ffffff;"></i></a>
+                        </div>
+                    </div>
+                    <div class="VerticallineFooter">
+                        <div></div>
+                    </div>
+                    <div class="siteMap">
+                        <div id="SiteMapHeader">
+                            <p>Site map</p>
+                        </div>
+                        <div id="SiteMapContent">
+                            <a href="#Home">Home</a>
+                            <a href="#aboutUs">About Us</a>
+                            <a href="achivement-page.html">Achievements</a>
+                            <a href="event-page.html">Events</a>
+                            <a href="commitee-page.html">Committee</a>
+                            <a href="../index.html#contactUs">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="ContactUsSection">
+                        <div class="ContactUsHeader">
+                            <p>Contact Us</p>
+                        </div>
+                        <div class="ContactUsContent">
+                            <div id="emailSection">
+                                <i class="fas fa-envelope"
+                                    style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <a href="mailto:ieee.sb@ahduni.edu.in">Email:
+                                    ieee.sb@ahduni.edu.in</a>
+                            </div>
+                            <div id="addressSection">
+                                <i class="fas fa-map-marker-alt"
+                                    style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <p>Address:<br>Ahmedabad
+                                    University<br>Navrangpura<br>Ahmedabad-380009
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="GetUpdates">
+                        <div class="GetUpdatesHeader">
+                            <p>Get Updates</p>
+                        </div>
+                        <div class="GetUpdatesContent">
+                            <div id="yourNameButton">
+                                <form>
+                                    <div><i class="fas fa-user"
+                                            style="color: #2f2f2f;"></i>
+                                    </div>
+                                    <input type="text"
+                                        placeholder="Your name">
+                                </form>
+                            </div>
+                            <div id="yourEmailButton">
+                                <form>
+                                    <div><i class="fas fa-envelope"
+                                            style="color: #2f2f2f;"></i>
+                                    </div>
+                                    <input type="email"
+                                        placeholder="Your email">
+                                </form>
+                            </div>
+                            <div id="Submitbutton">
+                                <button type="button"
+                                    onclick="submitForm()">Get Updates
+                                    &#x2192;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="imgs">
+                <img class="ieee-footer" src="../Images/IEEE-LOGO-WHITE.png"
+                    alt="">
+                <img class="au-footer" src="../Images/AU_logo.webp" alt="">
+            </div>
+        </div>
+        <div class="copyrightSection">
+            <hr class="nav-line3">
+            <div class="bottom-div">
+                <h4>&copy; IEEE AU SB 2024. All Rights Reserved | Developed by 
+                    <a href="https://www.linkedin.com/in/vishv-boda-806ab5289/">Vishv Boda</a> & 
+                    <a href="https://www.linkedin.com/in/deeppatelDW1631/">Deep Patel</a>, IEEE AU SB
+                </h4>                 <!-- <div class="theme-div">
+                    <img id="theme-icon" src="../Images/moon-icon.svg" alt="Theme Icon">
+                    <button id="theme-toggle">dark</button>
+                </div> -->
+            </div>
+            
+        </div>
+    </section>
+
+
+    <script src="../js/member-front-fetch.js"></script>
+    <script src="../js/get-updates.js"></script>
+    <script src="../js/navbar-scroll.js"></script>
+    <script src="../js/theme-logic.js"></script>
+</body>
+
+</html>

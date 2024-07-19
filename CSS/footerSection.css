@@ -352,8 +352,19 @@ a:visited {
     /* color: #2f2f2f !important; */
     margin: 5px;
     padding-top: 1rem;
-    color: rgba(255, 255, 255, 0.509);
-    font-weight: 100;
+    /* color: rgba(255, 255, 255, 0.509); */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: 'poppins';
+}
+
+.copyrightSection h4 a{
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: underline;
+}
+
+.copyrightSection h4:hover{
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .FooterSection * p,a{
@@ -365,3 +376,5 @@ a:visited {
 .FooterSection *:hover {
     color: white;
 }
+
+

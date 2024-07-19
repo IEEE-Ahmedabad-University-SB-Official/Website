@@ -1,13 +1,6 @@
-/* for-phone-only */
-@media (max-width: 599px) {}
-
-
-/* for-tablet-portrait-up */
-@media (min-width: 600px) {}
-
 
 /* for-desktop-landscape-up */
-@media (min-width: 900px) {
+@media (min-width: 1024px) and (max-width: 1199px) {
 
     html,
     body {
@@ -71,6 +64,11 @@
 
     .aboutSection {
         margin-bottom: 6vh;
+    }
+    
+    #typing-text , #subheadingText{
+        font-size: 1.2vw !important;
+        margin-left: 10px;
     }
 
     .aboutSectionHeadingText,
@@ -137,19 +135,19 @@
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 100px !important;
+        /* margin-bottom: 100px !important; */
     }
 
     .contactUsSection{
-        margin-top: unset !important;
+        margin-top: 100px !important;
         margin-bottom: unset !important;
-        margin-bottom: 0px !important;
+        margin-bottom: 240px !important;
     }
 }
 
 
 /* for-desktop-up */
-@media (min-width: 1200px) {
+@media (min-width: 1200px) and (max-width: 1399px) {
 
     html,
     body {
@@ -272,8 +270,8 @@
     .heroSection,
     .achievementsSection {
         margin-top: unset !important;
-        /* margin-bottom: unset !important; */
-        /* margin-bottom: 70px !important; */
+        margin-bottom: unset !important;
+        margin-bottom: 70px !important;
        
     }
     .aboutSection,
@@ -286,9 +284,10 @@
 
     .contactUsSection {
         margin-top: unset !important;
-        /* margin-bottom: unset !important; */
-        /* margin-bottom: 40px !important; */
+        margin-bottom: unset !important;
+        margin-bottom: 140px !important;
     }
+    
 }
 
 /* //Done  */
@@ -393,28 +392,29 @@
     
     .heroSection,
     .achievementsSection {
-        margin-top: unset !important;
+        /* margin-top: unset !important; */
         /* margin-bottom: unset !important; */
-        /* margin-bottom: 70px !important; */
+        /* margin-bottom: 90px !important; */
        
     }
     .aboutSection{
-        margin-top: unset !important;
-        margin-bottom: unset !important;
-        /* margin-bottom: 140px !important; */
+        /* margin-top: unset !important; */
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 100px !important; */
     }
     
     .past-event-container,
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 2rem !important;
+        margin-bottom: 4rem !important;
     }
 
     .contactUsSection {
         margin-top: 5rem !important;
         margin-bottom: unset !important;
-        margin-bottom: 100px !important;
+        margin-bottom: 8rem !important;
+        
     }
 }
 
@@ -520,21 +520,25 @@
     .achievementsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 100px !important;
+        margin-bottom: 190px !important;
        
     }
-    .aboutSection,
+    .aboutSection{
+        margin-top: unset !important;
+        margin-bottom: unset !important;
+        margin-bottom: 80px !important;
+    }
     .past-event-container,
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 250px !important;
+        margin-bottom: 280px !important;
     }
 
     .contactUsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 200px !important;
+        margin-bottom: 350px !important;
     }
 }
 
@@ -636,21 +640,22 @@
     .achievementsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 300px !important;
+        margin-bottom: 130px !important;
        
     }
+
     .aboutSection,
     .past-event-container,
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 300px !important;
+        margin-bottom: 220px !important;
     }
 
     .contactUsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 250px !important;
+        margin-bottom: 520px !important;
     }
 }
 
@@ -673,6 +678,6 @@
     .contactUsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 250px !important;
+        margin-bottom: 490px !important;
     }
 }
