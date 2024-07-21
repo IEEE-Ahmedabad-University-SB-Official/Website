@@ -1,8 +1,10 @@
 # IEEE AU SB Website
 
-[![Ahmedabad University](./Images/AU_logo.webp "Ahmedabad University Logo")](https://ahduni.edu.in/)
+[![Ahmedabd University Logo](/Images/AU_logo.webp "Ahmedabad University")](https://ahduni.edu.in/)
+  
+![IEEE Ahmedabad University Student Chapter Logo](/Images/Logo.png "IEEE Ahmedabad University Student Chapter")
 
-![IEEE Ahmedabad University Student Chapter Logo](./Images/Logo.png "IEEE Ahmedabad University Student Chapter Logo")
+**Owner** :- [IEEE Ahmedabad University Student Branch](https://github.com/IEEE-Ahmedabad-University-SB-Official)  
 
 Welcome to the IEEE AU SB Website repository! This repository contains the source code for the **IEEE Ahmedabad University Student Branch** website.
 
@@ -10,14 +12,14 @@ Welcome to the IEEE AU SB Website repository! This repository contains the sourc
 
 The IEEE AU SB website is a platform for the student branch to showcase its activities, achievements, and events. The website is designed to be user-friendly and informative, providing easy access to information about the student branch and its activities.
 
-### Goals
+## Goals
 
 * To provide a centralized platform for the student branch to share information and updates
 * To showcase the achievements and activities of the student branch
 * To facilitate communication and collaboration among members
 * To provide a resource for students to learn about IEEE and its activities
 
-### Features
+## Features
 
 ### Navigation Bar
 
@@ -62,15 +64,19 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 * Font Awesome for icons
 * Bootstrap for UI components
 
-## Getting Started
+## Collaboration
 
-**To get started with the website, follow these steps:**
+**To start collaboration:**
 
-1. Clone the repository using `git clone https://github.com/Vishv0407/ieee-vishv.git`
-2. Open the project in your preferred code editor or IDE
-3. Run `npm install` to install the required dependencies
-4. Run `npm start` to start the development server
-5. Open `http://localhost:3000` in your web browser to view the website
+1. Fork the repository.
+2. Clone the repository into your local system.
+3. Open the project in your preferred code editor or IDE
+4. Run `npm install` to install the required dependencies
+5. Run `npm start` to start the development server
+6. Open `http://localhost:3000` in your web browser to view the website
+
+> **NOTE**  
+> Before making a PR for a new major change or feature, it is preffered that first an issue is submitted for the same and discuss about it.
 
 ## License
 
