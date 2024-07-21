@@ -74,6 +74,8 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 4. Run `npm install` to install the required dependencies
 5. Run `npm start` to start the development server
 6. Open `http://localhost:3000` in your web browser to view the website
+7. Develop as normal. Commit and push to the forked repository
+8. Submit a PR request for the changes made
 
 > **NOTE**  
 > Before making a PR for a new major change or feature, it is preffered that first an issue is submitted for the same and discuss about it.
