@@ -82,7 +82,7 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 
 ## License
 
-The IEEE AU SB Website is licensed under the MIT License. See `LICENSE` for details.
+The IEEE AU SB Website is licensed under the GNU V3 License. See `LICENSE` for details.
 
 ## Authors
 
@@ -91,8 +91,8 @@ The IEEE AU SB Website is licensed under the MIT License. See `LICENSE` for deta
 
 ## Acknowledgments
 
-We would like to thank the IEEE Ahmedabad University Student Branch for their support and encouragement.
+We would like to thank the **IEEE Ahmedabad University Student Branch** for their support and encouragement.
 
 ## Need Help or Have Questions?
 
-If you need any support, have questions, or encounter any bugs or issues, please don't hesitate to reach out to us at [ieee.ausb@gmail.com](mailto:ieee.ausb@gmail.com).
+If you need any support, have questions, or encounter any bugs or issues, please don't hesitate to reach out to us at [ieee.sb@ahduni.edu.in](mailto:ieee.sb@ahduni.edu.in).
