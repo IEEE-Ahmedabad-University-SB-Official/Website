@@ -762,7 +762,14 @@ body.darkTheme .theme-div button{
         font-size: 40px;
     }
 
+    .navSection{
+        padding: 0;
+    }
 
+    .navAnchors a.active{
+        transform: scale(1);
+        font-weight:bolder;
+    }
 
 }
 
