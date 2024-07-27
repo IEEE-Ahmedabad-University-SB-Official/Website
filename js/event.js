@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(handleResponse)
         .catch(handleError);
     } else {
-      axios.post('https://ieee-vishv-1.onrender.com/api/events/upload', formData)
+      axios.post('http://ieee-vishv-1.onrender.com/api/events/upload', formData)
         .then(handleResponse)
         .catch(handleError);
     }

@@ -25,7 +25,7 @@ const eventSchema = new mongoose.Schema(
         },
         speaker: {
             type: String,
-            required: true,
+            // required: true,
             trim: true
         },
         venue:{
@@ -40,7 +40,7 @@ const eventSchema = new mongoose.Schema(
         },
         instaPostLink: {
             type: String,
-            required: true,
+            // required: true,
             trim: true
         },
         eventPoster: {

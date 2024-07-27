@@ -1,4 +1,4 @@
 # Environment variables
 .env
-node_modules
 .vscode
+node_modules

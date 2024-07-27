@@ -43,7 +43,10 @@
 
     <!-- Link Swiper's CSS - past events -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        
 
+    </style>
 </head>
 
 <body>
@@ -116,7 +119,20 @@
                 </div>
                 <div class="heroContent">
                     <div class="Heading">
-                        <p id="headingText">IEEE AUSB</p>
+                        <div class="ieee-ausb-div">
+                            <div id="headingTextIEEE" class="letter-heading">
+                                <span class="letter" style="animation-delay: 0s;">I</span>
+                                <span class="letter" style="animation-delay: 0.1s;">E</span>
+                                <span class="letter" style="animation-delay: 0.2s;">E</span>
+                                <span class="letter" style="animation-delay: 0.3s;">E</span>
+                            </div>
+                            <div id="headingTextAUSB" class="letter-heading">
+                                <span class="letter" style="animation-delay: 0.5s;">A</span>
+                                <span class="letter" style="animation-delay: 0.6s;">U</span>
+                                <span class="letter" style="animation-delay: 0.7s;">S</span>
+                                <span class="letter" style="animation-delay: 0.8s;">B</span>
+                            </div>
+                        </div>
                         <p id="subheadingText">Institute Of Electrical And Electronics Engineers<br>
                         <div class="typing-container">
                             <span id="typing-text"></span>
@@ -143,15 +159,7 @@
                     <p>Welcome To IEEE Ahmedabad University!</p>
                 </div>
                 <div class="aboutDescriptionText">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores veniam magni dolores,
-                        voluptatibus natus inventore? Ipsam saepe rem praesentium architecto consectetur ab
-                        earum ipsa iure, cumque error, hic minus quod! Veritatis, alias voluptates. Harum
-                        quisquam voluptas magnam dolores cumque molestiae excepturi debitis fuga vel expedita
-                        maiores dolor exercitationem at asperiores laudantium alias dolorum suscipit voluptatum
-                        atque, voluptates omnis aperiam eligendi. Voluptatem laudantium nobis inventore
-                        repellat, commodi nostrum veritatis! Sunt eligendi adipisci dignissimos iusto animi et
-                        facere sed nisi sit ut corporis esse, ipsum commodi reiciendis molestias nesciunt dolore
-                        modi ullam provident illo id accusamus impedit dolorem non. Mollitia, distinctio
+                    <p>Ahmedabad University is a private, non-profit research university that offers students a liberal education focused on interdisciplinary learning and research thinking. Our liberal arts education molds independent thinkers and compassionate leaders who go on to engage innovatively with the complex challenges of our societies. As a research university, we are committed to the discovery of new ideas, and to the belief that good theory results in good practice. Our academic environment offers students, researchers and faculty the opportunity to participate in a unique learning process, mediated by fieldwork and projects that enable deep creative insight, rigorous analytical experimentation, and fulfilling careers. Ahmedabad University was established in 2009 by the Ahmedabad Education Society to offer a world-class academic experience in one of India’s most vibrant and livable cities. With a centrally located campus and internationally renowned faculty, it offers one of the most stimulating academic environments in the country. As a comprehensive university, Ahmedabad University offers undergraduate, graduate and doctoral studies in areas such as engineering, humanities, management, natural sciences, and social sciences.
                     </p>
                 </div>
             </div>
@@ -170,14 +178,14 @@
         <div class="Section" id="achievementsSection">
             <div class="head">
 
-                <h1>Our Achievements</h1>
+                <!-- <h1>Our Achievements</h1> -->
             </div>
             <div class="Achievements-Bar">
 
                 <div class="flex-card">
                     <div class="flex-item" id="circle1">
                         <img src="./Images/Acheivement.png" alt="">
-                        <h2>35</h2>
+                        <h2>69</h2>
                     </div>
                     <h3>ACHIEVEMENTS</h3>
                 </div>
@@ -191,7 +199,7 @@
                 <div class="flex-card">
                     <div class="flex-item" id="circle1">
                         <img src="./Images/conferences.png" alt="">
-                        <h2>50</h2>
+                        <h2>69</h2>
                     </div>
                     <h3>CONFERENCES</h3>
                 </div>
@@ -363,11 +371,12 @@
         <div class="eventContainer">
             <div class="arrow left"><img src="/Images/left-arrow.png" alt="Left Arrow"></div>
             <div class="card-container" id="upcoming-card-container">
+                <!-- Loader for Upcoming Events -->
+                <div class="event-loader" id="upcoming-loader"></div>
                 <!-- Upcoming events will be dynamically added here -->
             </div>
             <div class="arrow right"><img src="/Images/right-arrow.png" alt="Right Arrow"></div>
         </div>
-
     </div>
 
     <!-- Past Event -->
@@ -379,13 +388,14 @@
             <div class="past-content">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper" id="swiper-wrapper">
+                        <!-- Loader for Past Events -->
+                        <div class="event-loader" id="past-loader"></div>
                         <!-- Dynamic content will be inserted here -->
                     </div>
                 </div>
                 <!-- Add Navigation -->
                 <div class="swiper-button-next" id="swiper-btn"></div>
                 <div class="swiper-button-prev" id="swiper-btn"></div>
-
             </div>
         </div>
 
@@ -493,14 +503,7 @@
                             <p>Our Goals</p>
                         </div>
                         <div id="OurGoalsDescription">
-                            <p>Lorem ipsum dolor sit ameto molestiae e enim
-                                quisquam at dolor quidem, alias aut
-                                consectetur vel tempora repudiandae nulla
-                                voluptas architecto omnis, dicta
-                                necessitatibus, autem nostrum! Enim in
-                                corporis consequatur sunt. Soluta,
-                                asperiores
-                                quibusdam similique vitae dicta rerum in?
+                            <p>At IEEE Ahmedabad University Student Branch (IEEE AU SB), we are dedicated to fostering a vibrant community of innovators, engineers, and tech enthusiasts by promoting technological excellence, facilitating professional growth, building a collaborative network, enhancing learning opportunities, fostering innovation and creativity, and engaging with the community.
                             </p>
                         </div>
                         <div id="socialLinks">
@@ -609,7 +612,6 @@
     <script src="js/au-slider.js"></script>
     <script src="js/typing.js"></script>
 
-    <script src="js/animation.js"></script>
     <script src="js/image-gallery-mobile.js"></script>
 
     <script src="js/bg_matrix_rain.js"></script>

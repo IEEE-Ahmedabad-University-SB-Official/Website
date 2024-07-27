@@ -11,6 +11,11 @@ const ContactUsDetail = require('../models/contact-us'); // Adjust path as neces
 const User = require('../models/user');
 require('dotenv').config();
 
+// import email templates
+
+const contactUsUser = require('../email-templates/contactUsUser');
+const getUpdatesUser = require('../email-templates/getUpdatesUser');
+
 // Configure Cloudinary
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -37,7 +42,13 @@ router.post('/events/upload', async (req, res) => {
         const file = req.files.eventPoster;
 
         // Upload file to Cloudinary
-        const uploadedFile = await cloudinary.uploader.upload(file.tempFilePath);
+
+        const options = {
+            folder:"Events", 
+            quality: 50,
+        };
+        options.resource_type = "auto";
+        const uploadedFile = await cloudinary.uploader.upload(file.tempFilePath, options);
 
 
         // Create event in database
@@ -291,6 +302,20 @@ router.get('/members-front', async (req, res) => {
     }
   });
 
+router.get('/members-by-department', async (req, res) => {
+    const { department } = req.query;
+    try {
+      const results = await Members.find({
+        department: department,
+        leave_date: null  // Assuming 'leave_date' is null for active members, adjust as per your schema
+      }).exec();
+      res.json(results);
+    } catch (err) {
+      console.error('Error fetching members:', err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
 
 // GET: Get a member by ID
 router.get('/members/member/:id', async (req, res) => {
@@ -370,35 +395,42 @@ router.post('/contact-us/enroll', async (req, res) => {
     const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const formattedTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
 
-    const mailOptions = {
+    const mailOptionsAdmin = {
         from: process.env.EMAIL_USER,
-        to: 'vishv0407@gmail.com',
+        to: 'vishvboda0407@gmail.com',
         subject: 'New Contact Us Submission',
         text: `You have a new contact form submission from website:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\nDate: ${formattedDate}\nTime: ${formattedTime}`
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log('Error sending email:', error);
-            res.status(500).json({ message: 'Error occurred' });
-            return;
-        }
-        console.log('Email sent:', info.response);
-        res.json({ message: 'Success' });
-    });
+    const mailOptionsUser = {
+        from: process.env.EMAIL_USER,
+        to: `${email}`,
+        subject: 'Welcome to IEEE AUSB!',
+        html: contactUsUser(`${name}`) // Use the template function to set the HTML body
+    };
 
     try {
-
         // Calculate the row count
         const rowCount = await ContactUsDetail.countDocuments() + 1;
 
         const newContact = new ContactUsDetail({ name, email, message, sentDate: formattedDate, sentTime: formattedTime, rowCount });
         await newContact.save();
+
+        // Send email notification to Admin
+        await transporter.sendMail(mailOptionsAdmin);
+        console.log('Email sent to Admin');
+
+        // Send email notification to User
+        await transporter.sendMail(mailOptionsUser);
+        console.log('Email sent to User');
+
+        res.json({ message: 'Success' });
     } catch (err) {
+        console.error('Error occurred:', err);
         if (err.code === 11000) {
             res.status(400).json({ message: 'Email already exists' });
         } else {
-            res.status(500).json({ message: 'Error occurred' });
+            res.status(500).json({ message: 'Error occurred', error: err.message });
         }
     }
 });
@@ -416,45 +448,56 @@ router.get('/contact-us', async (req, res) => {
 // --------------------------------GET UPDATES-----------------------------------//
 
 // router.post('/updates/enroll', async (req, res) => {
-router.post('/updates/enroll', async (req, res) => {
-    const { name, email } = req.body;
-    const date = new Date();
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-    const formattedTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
-
-    try {
-        // Calculate the row count
-        const rowCount = await GetUpdates.countDocuments() + 1;
-
-        // Insert data into MongoDB with rowCount
-        const newUpdate = new GetUpdates({ name, email, date: formattedDate, time: formattedTime, rowCount });
-        await newUpdate.save();
-
-        // Send email notification
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: 'vishvboda0407@gmail.com',
-            subject: 'New Get Updates submission',
-            text: `I want updates of your events:\n\nName: ${name}\nEmail: ${email} \nDate: ${formattedDate}\nTime: ${formattedTime}`
-        };
-
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending email:', error);
-                return res.status(500).json({ message: 'Error occurred', error: error.message });
-            }
-            console.log('Email sent:', info.response);
-            res.json({ message: 'Success' });
-        });
-
-    } catch (err) {
-        if (err.code === 11000) {
-            return res.status(400).json({ message: 'Email already exists' });
-        }
-        return res.status(500).json({ message: 'Error occurred, please try after some time' });
-    }
-});
+    router.post('/updates/enroll', async (req, res) => {
+        const { name, email } = req.body;
+        const date = new Date();
+        const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+        const formattedTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
     
+        try {
+            // Calculate the row count
+            const rowCount = await GetUpdates.countDocuments() + 1;
+    
+            // Insert data into MongoDB with rowCount
+            const newUpdate = new GetUpdates({ name, email, date: formattedDate, time: formattedTime, rowCount });
+            await newUpdate.save();
+    
+            // Send email notification to Admin
+            const mailOptionsAdmin = {
+                from: process.env.EMAIL_USER,
+                to: 'vishvboda0407@gmail.com',
+                subject: 'New Get Updates submission',
+                text: `I want updates of your events:\n\nName: ${name}\nEmail: ${email} \nDate: ${formattedDate}\nTime: ${formattedTime}`
+            };
+    
+            await transporter.sendMail(mailOptionsAdmin);
+            console.log('Email sent to Admin');
+    
+            // Log the HTML content for user email
+            const userEmailContent = getUpdatesUser(name);
+            console.log('User email HTML:', userEmailContent);
+    
+            // Send email notification to User
+            const mailOptionsUser = {
+                from: process.env.EMAIL_USER,
+                to: email,
+                subject: 'Welcome to IEEE AUSB!',
+                html: userEmailContent // Use the template function to set the HTML body
+            };
+    
+            await transporter.sendMail(mailOptionsUser);
+            console.log('Email sent to User');
+    
+            res.json({ message: 'Success' });
+        } catch (err) {
+            if (err.code === 11000) {
+                return res.status(400).json({ message: 'Email already exists' });
+            }
+            console.error('Error occurred:', err);
+            res.status(500).json({ message: 'Error occurred, please try after some time', error: err.message });
+        }
+    });
+
 router.get('/updates', async (req, res) => {
     try {
         const updates = await GetUpdates.find().select('name email date time rowCount');
