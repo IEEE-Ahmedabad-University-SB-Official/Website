@@ -38,6 +38,17 @@ body {
   }
 
   
+.member-instructions{
+  width: 80%;
+  margin: auto;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+
+.member-instructions p{
+  margin: 0.25rem 0;
+}
+
 .header-container {
     /* background-color: #007bff; */
     color: #fff;

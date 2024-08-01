@@ -213,12 +213,14 @@ nav{
     align-items: center;
     width: 100%;
     transition: 0.1s;
+    border-bottom: 0;
 }
 
 
 .dropdown-content a:hover{
-    border-bottom: none;
+    border-bottom: 0;
     transform: scale(1.0);
+    font-weight: bold;
 }
 
 .tick-mark {
@@ -453,34 +455,37 @@ nav{
     border-radius   : 1.15em ;
 }
 
-/* Loader */
+  
+  /* HTML: <div class="loader"></div> */
 .event-loader {
     width: 50px;
     aspect-ratio: 1;
     display: grid;
-    border: 4px solid #0000;
-    border-radius: 50%;
-    border-right-color: #25b09b;
-    animation: l15 1s infinite linear;
-    margin: 0 auto; /* Center the loader */
+    margin: auto;
   }
   .event-loader::before,
   .event-loader::after {    
-    content: "";
+    content:"";
     grid-area: 1/1;
-    margin: 2px;
-    border: inherit;
-    border-radius: 50%;
-    animation: l15 2s infinite;
+    --c:no-repeat radial-gradient(farthest-side,#25b09b 92%,#0000);
+    background: 
+      var(--c) 50%  0, 
+      var(--c) 50%  100%, 
+      var(--c) 100% 50%, 
+      var(--c) 0    50%;
+    background-size: 12px 12px;
+    animation: l12 1s infinite;
   }
-  .event-loader::after {
-    margin: 8px;
-    animation-duration: 3s;
-  }
-  @keyframes l15 { 
-    100% { transform: rotate(1turn) }
+  .event-loader::before {
+    margin: 4px;
+    filter: hue-rotate(45deg);
+    background-size: 8px 8px;
+    animation-timing-function: linear
   }
   
+  @keyframes l12 { 
+    100%{transform: rotate(.5turn)}
+  }
 
 /* About section */
 
@@ -946,7 +951,6 @@ a:link {
 }
 
 
-
 body.darkTheme{
     background-color: black;
 }
@@ -1076,6 +1080,9 @@ body.darkTheme .eventContainer .link:hover{
     color: white;
 }
 
+body.darkTheme .para p{
+    color: rgb(146, 146, 146);
+}
 body.darkTheme .cardDiv{
     background-color: rgb(27, 28, 29);
     border: 1px solid rgba(255, 255, 255, 0.377);

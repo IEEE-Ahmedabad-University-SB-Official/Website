@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showLoader(pastLoader);
 
     axios
-        .get("https://ieee-vishv-1.onrender.com/api/events/events")
+        .get("https://ieee-vishv-1.onrender.com/api/events")
         .then((response) => {
             let events = response.data;
             const currentDate = new Date();
@@ -126,24 +126,39 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="card-speaker-div">
                         <div class="upcomingEventCard-content">
                             <img src="Images/speaker.png" width="20px" alt="Speaker">
-                            <p class="upcomingEventCard-content-data">${event.speaker}</p>
+                            <p>${event.speaker}</p>
                         </div>
                     </div>
                 `;
             }
         
             // Include the time and venue sections (they are always displayed)
-            cardHTML += `
+            if(event.startTime === event.endTime){
+                cardHTML += `
                     <div class="card-time-div">
                         <div class="upcomingEventCard-content">
                             <img src="Images/event-time.png" width="20px" alt="Time">
-                            <p class="upcomingEventCard-content-data">${event.eventTime}</p>
+                            <p>${event.startTime}</p>
                         </div>
                     </div>
+                `
+            }
+            else{
+                cardHTML += `
+                    <div class="card-time-div">
+                        <div class="upcomingEventCard-content">
+                            <img src="Images/event-time.png" width="20px" alt="Time">
+                            <p>${event.startTime} - ${event.endTime}</p>
+                        </div>
+                    </div>
+                `
+            }   
+
+            cardHTML += `
                     <div class="card-venue-div">
                         <div class="upcomingEventCard-content">
                             <img src="Images/venue.png" width="20px" alt="Venue">
-                            <p class="upcomingEventCard-content-data">${event.venue}</p>
+                            <p>${event.venue}</p>
                         </div>
                     </div>
                 </div>
@@ -231,9 +246,18 @@ document.addEventListener("DOMContentLoaded", function () {
             <h2>${event.eventName}</h2>
             <p>${event.eventDescription}</p>
             <p>Date: ${formatDate(event.eventDate)}</p>
-            <p>Time: ${event.eventTime}</p>
+            `
+        if(event.startTime === event.endTime){
+            modalContentHTML += `<p>Time: ${event.startTime}</p>`
+        }
+        else{
+            modalContentHTML += `<p>Time: ${event.startTime} - ${event.endTime}</p>`
+        }   
+        
+        modalContentHTML += `
             <p>Venue: ${event.venue}
         `;
+        
     
         // Conditionally include the speaker section if event.speaker is not null
         if (event.speaker) {

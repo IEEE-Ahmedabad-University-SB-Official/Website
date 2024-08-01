@@ -17,40 +17,44 @@
     <h1>Event-admin Page</h1>
   </div>
   
+  <div id="loader" class="loader"></div>
   
   <div id="event-modal" class="modal">
-    <div id="loader" class="loader"></div>
     <div class="modal-content">
       <span class="close">&times;</span>
       <form id="event-form" method="post" enctype="multipart/form-data">
         <input type="hidden" name="eventId" id="eventId">
 
-        <label for="eventName">Event Name:</label>
+        <label for="eventName">Event Name<span style="color: red;">*</span> :</label>
         <input type="text" name="eventName" id="eventName" required>
 
-        <label for="eventDescription">Event Description:</label>
+        <label for="eventDescription">Event Description<span style="color: red;">*</span> :</label>
         <textarea name="eventDescription" id="eventDescription" required></textarea>
         
         <label for="speaker">Speaker Name:</label>
         <input type="text" name="speaker" id="speaker">
 
-        <label for="eventDate">Event Date:</label>
+        <label for="eventDate">Event Date<span style="color: red;">*</span> :</label>
         <input type="date" name="eventDate" id="eventDate" required>
 
-        <label for="eventTime">Event Time:</label>
-        <input type="time" name="eventTime" id="eventTime" required>
+        <label for="startTime">Event start Time<span style="color: red;">*</span> :</label>
+        <input type="time" name="startTime" id="startTime" >
 
-        <label for="venue">Venue:</label>
+        <label for="endTime">Event end Time<span style="color: red;">*</span> :</label>
+        <input type="time" name="endTime" id="endTime" >
+
+
+        <label for="venue">Venue<span style="color: red;">*</span> :</label>
         <input type="text" name="venue" id="venue" required>
 
-        <label for="registrationLink">Registration Link:</label>
+        <label for="registrationLink">Registration Link<span style="color: red;">*</span> :</label>
         <input type="url" name="registrationLink" id="registrationLink" required>
 
         <label for="instaPostLink">Instagram post Link:</label>
         <input type="url" name="instaPostLink" id="instaPostLink" >
 
         <div id="image-upload">
-          <label for="eventPoster">Event Poster:</label>
+          <label for="eventPoster">Event Poster<span style="color: red;">*</span> :</label>
           <input type="file" name="eventPoster" id="eventPoster" accept="image/*">
           <input type="hidden" name="oldEventPoster" id="oldEventPoster">
           <div id="image-preview"></div>
@@ -79,6 +83,24 @@
     <tbody></tbody>
   </table>
 
+  <div class="event-instructions">
+    <p>
+      "Add Event" - fill form to add new event
+    </p>
+    <p>
+      "Edit" - fill form to edit existing event
+    </p>  
+    <p>
+      "Delete" - delete event from list
+    </p>
+    <p>
+      If any event has no two time (00:00 to 00:00) then, you need to enter same start time in "Event start Time" and "Event End Time".
+    </p>
+    <p>
+      "Speaker name" and "InstaPostlink" are optional fields
+    </p>
+  </div>
+
   <button id="add-event-button">Add Event</button>
   <!-- <button class="clientbtn" onclick="window.location.href='../event-front.html'">client page</button> -->
 
@@ -88,7 +110,7 @@
   <script src="../js/event.js"></script>
   <script>
     if (!sessionStorage.getItem('ieee-login-userId')) {
-      window.location.href = '../login.html';
+      window.location.href = './login.html';
     }
   </script>
 </body>

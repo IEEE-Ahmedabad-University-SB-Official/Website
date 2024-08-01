@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function fetchData() {
-    axios.get('https://ieee-vishv-1.onrender.com/api/members/allMembers')
+    axios.get('https://ieee-vishv-1.onrender.com/api/members')
       .then(response => {
         renderData(response.data);
       })
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loader.style.display = 'block';
         document.body.classList.add('disable-interaction');
 
-        axios.delete(`https://ieee-vishv-1.onrender.com/api/members/member/${id}`)
+        axios.delete(`https://ieee-vishv-1.onrender.com/api/member/${id}`)
           .then(response => {
             fetchData();
             Swal.fire(
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch members data (example using Axios)
   async function fetchMembers() {
     try {
-      const response = await axios.get('https://ieee-vishv-1.onrender.com/api/members/allMembers'); // Adjust the URL to your actual API endpoint
+      const response = await axios.get('https://ieee-vishv-1.onrender.com/api/members'); // Adjust the URL to your actual API endpoint
       members = response.data;
       // displayPage(currentPage);
       // updatePaginationControls();

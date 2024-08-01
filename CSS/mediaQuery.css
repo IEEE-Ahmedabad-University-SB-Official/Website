@@ -452,7 +452,7 @@
         width: fit-content;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(0, 0, 0, 0.15);
-
+        border-radius: 30px 30px 30px 30px;
     }
 
     .card-date-div{
@@ -467,8 +467,8 @@
     }
 
     .img2{
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 40px ;
+        margin-top: 0.5rem;
+        border-radius: 20px;
     }
 
     .link{
@@ -935,7 +935,7 @@
         all: unset;
         grid-area: a;
         font-family: Poppins;
-        font-size: 1.25rem;
+        font-size: 1.175rem;
         font-weight: 500;
         color: #047BB3;
         border: none;

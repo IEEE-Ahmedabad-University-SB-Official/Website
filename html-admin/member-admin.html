@@ -24,29 +24,29 @@
       <form id="member-form" method="post" enctype="multipart/form-data">
         <input type="hidden" name="memberId" id="memberId">
 
-        <label for="name">Name:</label>
+        <label for="name">Name<span style="color: red;">*</span> :</label>
         <input type="text" name="name" id="name" required>
 
-        <label for="email">Email:</label>
+        <label for="email">Email<span style="color: red;">*</span> :</label>
         <input type="email" name="email" id="email" required>
 
-        <label for="enrollment_number">Enrollment Number:</label>
+        <label for="enrollment_number">Enrollment Number<span style="color: red;">*</span> :</label>
         <input type="text" name="enrollment_number" id="enrollment_number" required>
 
-        <label for="contact_number">Contact Number:</label>
-        <input type="text" name="contact_number" id="contact_number" required>
+        <label for="contact_number">Contact Number<span style="color: red;">*</span> :</label>
+        <input type="number" name="contact_number" id="contact_number" >
 
-        <label for="join_year">Join Year:</label>
-        <input type="year" name="join_year" id="join_year" required>
+        <label for="join_year">Join Year<span style="color: red;">*</span> :</label>
+        <input type="number" name="join_year" id="join_year" required min="2000" max="2100">
 
-        <label for="programme">programme:</label>
+        <label for="programme">programme<span style="color: red;">*</span> :</label>
         <input type="text" name="programme" id="programme">
 
-        <label for="department">Department:</label>
+        <label for="department">Department<span style="color: red;">*</span> :</label>
         <select id="department" name="department" required>
             <option value="CSE">CSE</option>
             <option value="Logistics">Logistics</option>
-            <option value="Social media">Social Media</option>
+            <option value="Socialmedia">Social Media</option>
             <option value="RAS">Robotics</option>
             <option value="Technical">Technical</option>
             <option value="Content">Content</option>
@@ -54,24 +54,24 @@
             <option value="OBs">OBs</option>
         </select>
 
-        <label for="position">Position:</label>
+        <label for="position">Position<span style="color: red;">*</span> :</label>
         <select id="position" name="position" required>
             <option value="Head">Head</option>
             <option value="Member">Member</option>
         </select>
 
-        <label for="instagram">Instagram Profile:</label>
+        <label for="instagram">Instagram Profile<span style="color: red;">*</span> :</label>
         <input type="url" name="instagramProfile" id="instagramProfile">
 
-        <label for="linkedin">LinkedIn Profile:</label>
+        <label for="linkedin">LinkedIn Profile<span style="color: red;">*</span> :</label>
         <input type="url" name="linkedinProfile" id="linkedinProfile">
 
-        <label for="leave_date">Leave Date:</label>
+        <label for="leave_date">Leave Date<span style="color: red;">*</span> :</label>
         <input type="date" name="leave_date" id="leave_date">
 
 
         <div id="image-upload">
-          <label for="profile_image">Profile Image:</label>
+          <label for="profile_image">Profile Image<span style="color: red;">*</span> :</label>
           <input type="file" name="profile_image" id="profile_image" accept="image/*">
           <input type="hidden" name="oldProfileImage" id="oldProfileImage">
           <div id="image-preview"></div>
@@ -103,6 +103,26 @@
     <tbody></tbody>
   </table>
 
+  <div class="member-instructions">
+    <p>
+      "Add Member" - fill form to add new member/faculty details
+    </p>
+    <p>
+      "Edit" - fill form to edit existing member's details
+    </p>  
+    <p>
+      "Delete" - delete member details from list
+    </p>
+    <p>
+      If there is no "linkedinProfile" of any member then add "instagramProfile" in linkedinProfile section
+    </p>
+    <p>
+      for Faculty,<br>
+      - You need to select "Department" as "CSE" and "Position" as "Faculty"<br>
+      - In "instagramProfile" and "linkedinProfile" of Faculty ypu need to enter faculty's profile page or resume or professor's University profile link
+    </p>
+  </div>
+
   <button id="add-member-button">Add Member</button>
   <!-- <button class="clientbtn" onclick="window.location.href='member-front.html'">Client Page</button> -->
 
@@ -113,7 +133,7 @@
   <script src="../js/members.js"></script>
   <script>
     if (!sessionStorage.getItem('ieee-login-userId')) {
-      window.location.href = '../login.html';
+      window.location.href = './login.html';
     }
   </script>
 </body>

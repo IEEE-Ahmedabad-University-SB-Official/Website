@@ -9,7 +9,7 @@ async function submitContactForm() {
     const message = document.getElementById('messageText').value;
 
     if (name === 'admin' && email === 'admin' && message === 'khul ja simsim') {
-        window.location.href = '../login.html';
+        window.location.href = '../html-admin/login.html';
         return;
     }
 

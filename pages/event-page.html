@@ -30,8 +30,10 @@
     <div class="navSection" id="navBar">
         <nav>
             <div class="navClass" id="IEEE-LOGO">
-                <img src="../Images/IEEE-LOGO-WHITE.png" alt="ieee-logo" id="default-logo">
-                <img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721140813/Logo_ttvlys.png" alt="ieee-logo" id="scrolled-logo" style="display: none;">
+                <a href="../index.html">
+                    <img src="../Images/IEEE-LOGO-WHITE.png" alt="ieee-logo" id="default-logo">
+                    <img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721140813/Logo_ttvlys.png" alt="ieee-logo" id="scrolled-logo" style="display: none;">
+                </a>
             </div>
 
             <div class="navAnchors">
@@ -218,7 +220,7 @@
 
     <script>
         async function fetchEvents() {
-            const response = await fetch('https://ieee-vishv-1.onrender.com/api/events/events');
+            const response = await fetch('https://ieee-vishv-1.onrender.com/api/events');
             const events = await response.json();
             const timelineList = document.querySelector('.timeline');
 
@@ -235,16 +237,25 @@
 
                 // const eventSocialMediaLink = event.instaPostLink;
 
-                const cardContent = `
+                let cardContent = `
                 <div class="event-card">
                     <img src="${event.eventPoster}" alt="${event.eventName} Poster">
                     <div class="event-card-details">
                         <h3>${event.eventName}</h3>
                         <p>${event.eventDescription.length > 100 ? event.eventDescription.substring(0, 100) + '...' : event.eventDescription}</p>
-                        <p>${event.eventTime}</p>
+                        `;
+                    
+                    if(event.startTime === event.endTime){
+                        cardContent += `<p>Time: ${event.startTime}</p>`
+                    }
+                    else{
+                        cardContent += `<p>Time: ${event.startTime} - ${event.endTime}</p>`
+                    }
+
+                    cardContent += `
                         <p>${event.speaker}</p>
                         <p>${event.venue}</p>
-                        <button class="know-more" onclick="openModal('${event.eventName}', '${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n'))}', '${event.eventPoster}', '${event.speaker}', '${dateString}', '${event.eventTime}', '${event.venue}', '${event.instaPostLink}')">Know More</button>
+                        <button class="know-more" onclick="openModal('${event.eventName}', '${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n'))}', '${event.eventPoster}', '${event.speaker}', '${dateString}', '${event.startTime}', '${event.endTime}', '${event.venue}', '${event.instaPostLink}')">Know More</button>
                     </div>
                 </div>
                 <div class="event-date">${dateString}</div>
@@ -255,13 +266,19 @@
             });
         }
 
-        function openModal(eventName, eventDescription, eventPoster, speaker, eventDate, eventTime, venue, instaPostLink) {
+        function openModal(eventName, eventDescription, eventPoster, speaker, eventDate, startTime, endTime, venue, instaPostLink) {
             document.getElementById('modalEventName').innerText = eventName;
             document.getElementById('modalEventImage').src = `${eventPoster}`;
             document.getElementById('modalEventDescription').innerText = decodeURIComponent(eventDescription).replace(/\\n/g, '\n');
             document.getElementById('modalSpeaker').innerText = speaker;
             document.getElementById('modalEventDate').innerText = eventDate;
-            document.getElementById('modalEventTime').innerText = eventTime;
+
+            if(startTime === endTime){
+                document.getElementById('modalEventTime').innerText = startTime;
+            }
+            else{
+                document.getElementById('modalEventTime').innerText = startTime + ' - ' + endTime;
+            }
             document.getElementById('modalVenue').innerText = venue;
             document.getElementById('modalInstaPost').href = instaPostLink;
 

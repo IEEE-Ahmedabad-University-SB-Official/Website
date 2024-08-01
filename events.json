@@ -1,112 +1,99 @@
 {
     "events":[
         {
-            "name": "Inspiring Live Talk Show by Falguni Vasvada",
-            "description": "We were honored to host Dr. Vasavada, Associate Professor and Chairperson of Online Programs at MICA, for an enlightening talk show at Ahmedabad University. Dr. Vasavada shared her insights and experiences on women's empowerment, gender issues, and combating body shaming, aligning with our values of inclusivity and equity. Attendees had the unique opportunity to interact with a distinguished marketing and advertising expert, gaining valuable takeaways from her inspiring journey.",
-            "speakerName": "Falguni Vasvada",
+            "eventName": "Inspiring Live Talk Show by Falguni Vasvada",
+            "eventDescription": "We were honored to host Dr. Vasavada, Associate Professor and Chairperson of Online Programs at MICA, for an enlightening talk show at Ahmedabad University. Dr. Vasavada shared her insights and experiences on women's empowerment, gender issues, and combating body shaming, aligning with our values of inclusivity and equity. Attendees had the unique opportunity to interact with a distinguished marketing and advertising expert, gaining valuable takeaways from her inspiring journey.",
+            "speaker": "Falguni Vasvada",
             "eventDate": "27-09-2023",
-            "eventTime": {
-                "startTime": "15:00",
-                "endTime": "16:30"
-            },
+            "startTime": "15:00",
+            "endTime": "16:30",
             "venue": "GICT 135",
             "registrationLink": null,
             "instagramPostLink": null,
             "poster": null
         },
         {
-            "name": "Billion Reasons to Build",
-            "description": "IEEE Ahmedabad University branch collaborated with Push Protocol to host this incredible event. The full day event was a whirlwind of innovation and inspiration. The energy of over 450 students at the event was electrifying and their passion for technology is contagious and it’s the driving force for our tech future.",
-            "speakerName": null,
+            "eventName": "Billion Reasons to Build",
+            "eventDescription": "IEEE Ahmedabad University branch collaborated with Push Protocol to host this incredible event. The full day event was a whirlwind of innovation and inspiration. The energy of over 450 students at the event was electrifying and their passion for technology is contagious and it’s the driving force for our tech future.",
+            "speaker": null,
             "eventDate": "01-10-2023",
-            "eventTime": {
-                "startTime": "10:00",
-                "endTime": "17:00"
-            },
+            "startTime": "10:00",
+            "endTime": "17:30",
             "venue": "GICT Auditorium",
             "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSdVEE56YL6k0o4gOcC3GHZkLVpXLSWlyO7mSSsLQIKSQ2O4LA/viewform",
             "instagramPostLink": "https://www.instagram.com/reel/CyTjIVxp2Jp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
             "poster": null
         },
         {
-            "name": "Two-Wheeler Safety and Mobility Technologies",
-            "description": "Wheeler Safety & Mobility Technology an event organised by IEEE ITSS and Ahmedabad University where Experts of various fields had insightful talks, discussions on innovative approaches and ideas to improve road safety.",
-            "speakerName": null,
+            "eventName": "Two-Wheeler Safety and Mobility Technologies",
+            "eventDescription": "Wheeler Safety & Mobility Technology an event organised by IEEE ITSS and Ahmedabad University where Experts of various fields had insightful talks, discussions on innovative approaches and ideas to improve road safety.",
+            "speaker": null,
             "eventDate": ["03-11-2023", "04-11-2023"],
-            "eventTime": {
-                "startTime": "10:30",
-                "endTime": "21:30"
-            },
+            "startTime": "10:30",
+            "endTime": "21:30",
             "venue": "Ahmedabad University",
             "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSdVEE56YL6k0o4gOcC3GHZkLVpXLSWlyO7mSSsLQIKSQ2O4LA/viewform",
             "instagramPostLink": "https://www.instagram.com/reel/CyTjIVxp2Jp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
             "poster": null
         },
         {
-            "name": "The Importance of Soft Skills",
-            "description": "\"The Importance of Soft Skills\" by renowned Image Coach and NLP Master Practitioner, Sandhya Anantani included the following:\n\t(1) Talk on soft skills\n\t(2) Hands on activities\n\t(3) Personal Interaction",
-            "speakerName": "Sandhya Anantani",
+            "eventName": "The Importance of Soft Skills",
+            "eventDescription": "\"The Importance of Soft Skills\" by renowned Image Coach and NLP Master Practitioner, Sandhya Anantani included the following:\n\t(1) Talk on soft skills\n\t(2) Hands on activities\n\t(3) Personal Interaction",
+            "speaker": "Sandhya Anantani",
             "eventDate": "28-02-2024",
-            "eventTime": {
-                "startTime": "16:00",
-                "endTime": "17:30"
-            },
+            "startTime": "16:00",
+            "endTime": "17:30",
             "venue": "GICT 200",
             "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLScuXjjW9TVMnM0xugUIAG254577E2qFU4qlA8rUbrYkcakjbw/closedform",
             "instagramPostLink": "https://www.instagram.com/p/C4DXMGIpukx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
             "poster": null
         },
         {
-            "name": "Pitch Your Start Ideas",
-            "description": "IEEE hosted an exciting event that brought together visionaries and innovators to showcase their business ideas dedicated to solving real-world problems aligned with sustainable development goals. The event welcomed participants passionate about making a positive impact through innovation. This gathering of minds underscored the power of collaboration and creativity in tackling some of the world's most pressing issues. The event was a resounding success, and we look forward to seeing the lasting impact of the innovative ideas that were shared.",
-            "speakerName": null,
+            "eventName": "Pitch Your Start Ideas",
+            "eventDescription": "IEEE hosted an exciting event that brought together visionaries and innovators to showcase their business ideas dedicated to solving real-world problems aligned with sustainable development goals. The event welcomed participants passionate about making a positive impact through innovation. This gathering of minds underscored the power of collaboration and creativity in tackling some of the world's most pressing issues. The event was a resounding success, and we look forward to seeing the lasting impact of the innovative ideas that were shared.",
+            "speaker": null,
             "eventDate": "27-03-2024",
-            "eventTime": {
-                "startTime": "16:00",
-                "endTime": "17:30"
-            },
+            "startTime": "16:00",
+            "endTime": "17:30",
             "venue": "GICT 019",
             "registrationLink": "https://forms.gle/iTU2SUWKxYZmFQhk6",
             "instagramPostLink": "https://www.instagram.com/p/C40u693NYe6/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
             "poster": null
         },
         {
-            "name": "Talk by IIT Professors on\n(1) Emerging Memories for Neuromorphic Computing\n(2) Ambient micro-power energy harvesting for batteryless IoT sensing",
-            "description": "Event Description: IEEE AUSB successfully hosted an insightful talk featuring two professors from IIT Gandhinagar. The event covered:\n\t1. Emerging Memories for Neuromorphic Computing\n\t\t- Discussed advancements in memory technologies for brain-like computational systems.\n\t2. Ambient Micro-Power Energy Harvesting for Batteryless IoT Sensing\n\t\tFocused on harvesting ambient energy to enable sustainable, battery-free IoT sensors.",
-            "speakerName": "Prof. Sandip Lashkare and Prof. Madhav Pathak",
+            "eventName": "Talk by IIT Professors on\n(1) Emerging Memories for Neuromorphic Computing\n(2) Ambient micro-power energy harvesting for batteryless IoT sensing",
+            "eventDescription": "Event Description: IEEE AUSB successfully hosted an insightful talk featuring two professors from IIT Gandhinagar. The event covered:\n\t1. Emerging Memories for Neuromorphic Computing\n\t\t- Discussed advancements in memory technologies for brain-like computational systems.\n\t2. Ambient Micro-Power Energy Harvesting for Batteryless IoT Sensing\n\t\tFocused on harvesting ambient energy to enable sustainable, battery-free IoT sensors.",
+            "speaker": "Prof. Sandip Lashkare and Prof. Madhav Pathak",
             "eventDate": "10-04-2024",
-            "eventTime": {
-                "startTime": "15:00",
-                "endTime": "16:30"
-            },
+            "startTime": "15:00",
+            "endTime": "16:30",
             "venue": "GICT 100",
             "registrationLink": null,
             "instagramPostLink": "https://www.instagram.com/p/C5nW1lFJL2C/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
             "poster": null
         },
         {
-            "name": "A 30-day Industrial Training Program with ROBO AI",
-            "description": "The recently concluded ROBO AI 30-day Industrial Training Program was a resounding success! Participants had the opportunity to elevate their skills in Robotics and AI through an intensive curriculum that included live sessions with industry experts, personalized doubt resolution, and engaging hands-on projects. Attendees enhanced their expertise and earned prestigious certifications from Amazon, Microsoft, and Nvidia, significantly boosting their professional credentials.",
-            "speakerName": "MyEquation Team",
+            "eventName": "A 30-day Industrial Training Program with ROBO AI",
+            "eventDescription": "The recently concluded ROBO AI 30-day Industrial Training Program was a resounding success! Participants had the opportunity to elevate their skills in Robotics and AI through an intensive curriculum that included live sessions with industry experts, personalized doubt resolution, and engaging hands-on projects. Attendees enhanced their expertise and earned prestigious certifications from Amazon, Microsoft, and Nvidia, significantly boosting their professional credentials.",
+            "speaker": "MyEquation Team",
             "eventDate": "Batch 1: Starting April 28, 2024\nBatch 2: Starting May 25, 2024",
             "eventTime": {
                 "startTime": null,
                 "endTime": null
             },
+            
             "venue": "Online",
             "registrationLink": "https://bit.ly/ROBOAI_DHA",
             "instagramPostLink": "https://www.instagram.com/p/C53qxQXJKOk/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
             "poster": null
         },
         {
-            "name": "3-Day Robotics and AI Workshop",
-            "description": "IEEE, in collaboration with My Equation, successfully concluded a 3-Day Robotics and AI Workshop exclusively for Ahmedabad University students. This event provided a unique opportunity for participants to dive into the world of robotics, artificial intelligence, and machine learning. Attendees gained hands-on experience and earned prestigious certificates, enhancing their career prospects.\n\nROBOPACK: A 3-day intensive workshop on Robotics and AI\n\nWorkshop Highlights:\n\t- Software Covered: SolidWorks, ROS 2, ANSYS, Altium, KiCad & more\n\t- Career Opportunities: Provided pathways for dream internship opportunities\n\t- Certificates: Participants earned digital authorized certificates",
-            "speakerName": "MyEquation Team",
+            "eventName": "3-Day Robotics and AI Workshop",
+            "eventDescription": "IEEE, in collaboration with My Equation, successfully concluded a 3-Day Robotics and AI Workshop exclusively for Ahmedabad University students. This event provided a unique opportunity for participants to dive into the world of robotics, artificial intelligence, and machine learning. Attendees gained hands-on experience and earned prestigious certificates, enhancing their career prospects.\n\nROBOPACK: A 3-day intensive workshop on Robotics and AI\n\nWorkshop Highlights:\n\t- Software Covered: SolidWorks, ROS 2, ANSYS, Altium, KiCad & more\n\t- Career Opportunities: Provided pathways for dream internship opportunities\n\t- Certificates: Participants earned digital authorized certificates",
+            "speaker": "MyEquation Team",
             "eventDate": "18-07-2024",
-            "eventTime": {
-                "startTime": "19:30",
-                "endTime": null
-            },
+            "startTime": "19:30",
+            "endTime": "19:30",
             "venue": "Online",
             "registrationLink": "https://bit.ly/ROBOPACK_AU",
             "instagramPostLink": "https://www.instagram.com/p/C9KbqrRN-to/?utm_source=ig_web_copy_link",

@@ -45,6 +45,17 @@ display: block;
 opacity: 1; /* Ensure loader is fully visible */
 }
 
+.event-instructions{
+  width: 80%;
+  margin: auto;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+
+.event-instructions p{
+  margin: 0.25rem 0;
+}
+
 .modal-content {
   background-color: #fefefe;
   margin: 10% auto;

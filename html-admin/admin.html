@@ -130,6 +130,9 @@
         <div class="members">
             <button class="memberAdminBtn" onclick="window.location.href='member-admin.html'">Member Admin page</button>
         </div>
+        <div class="achievements">
+            <button class="memberAdminBtn" onclick="window.location.href='achievement-admin.html'">Achievement Admin Page</button>
+        </div>
         <div class="updates">
             <button class="memberAdminBtn" onclick="window.location.href='get-updates-admin.html'">Get updates details</button>
         </div>
@@ -145,7 +148,7 @@
     </div>
     <script>
         if (!sessionStorage.getItem('ieee-login-userId')) {
-          window.location.href = '../login.html';
+          window.location.href = './login.html';
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -154,7 +157,7 @@
                 const container = document.querySelector('.container');
                 container.classList.remove('hidden');
                 container.classList.add('fade-in');
-            }, 1500); // 1 second delay
+            }, 850); // 1 second delay
         });
     </script> 
 </body>

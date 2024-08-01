@@ -269,5 +269,10 @@
       }
       });
     </script>
+    <script>
+      if (!sessionStorage.getItem('ieee-login-userId')) {
+        window.location.href = './login.html';
+      }
+    </script>
   </body>
   </html>

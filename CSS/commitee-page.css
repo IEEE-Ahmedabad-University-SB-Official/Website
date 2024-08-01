@@ -13,7 +13,7 @@
     
 }
 body{
-    background-image: url(../Images/bg.png);
+    background-image: url(../Images/white-bg.jpg);
     object-fit:inherit;
 }
 
@@ -58,7 +58,7 @@ h1 {
     text-align: center;
     margin-top: 20px;
     color: #333;
-    background-color: white;
+    background-color: transparent;
 } 
 
 .navbar {
@@ -313,7 +313,7 @@ h1 {
 
 .team h1, .obs h1 {
     text-align: center;
-    background-color: white;
+    background-color: transparent;
     margin: 1rem 0;
     font-size: 1.8rem;
     color:#2f2f2f;
@@ -1061,9 +1061,6 @@ body.darkTheme .card-box h3, body.darkTheme .position{
     background-color: transparent;
 }
 
-body.darkTheme .social i{
-    filter: invert(100);
-}
 
 /* body.darkTheme
 body.darkTheme
@@ -1275,7 +1272,7 @@ body.darkTheme */
         font-size: 1.15rem;
         padding: 0;
         color: #2f2f2f;
-        background-color: white;
+        background-color: transparent;
         width: fit-content;
         text-align: left;
     }
@@ -1305,7 +1302,7 @@ body.darkTheme */
         margin-top: 1.5rem;
         margin-bottom: 0;
         text-align: left;
-        background-color: white;
+        background-color: transparent;
         width: fit-content;
     }
 
@@ -1323,7 +1320,7 @@ body.darkTheme */
     
     .card-box h3{
         /* text-align: center; */
-        background-color: white;
+        background-color: transparent;
         width: fit-content;
         color: #2f2f2f;
     }

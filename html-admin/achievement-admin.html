@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../Images/ieee-favicon.ico">
+  <title>Achievement Upload</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="../CSS/achivement-admin.css">
+</head>
+
+<body>
+  
+  <div class="header-container">
+    <button class="adminbtn" onclick="window.location.href='admin.html'">Admin page</button>
+    <h1>Achievement Admin Page</h1>
+  </div>
+  
+  <div id="achivement-modal" class="modal">
+    <div id="loader" class="loader"></div>
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="achivement-form" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="achivementId" id="achivementId">
+
+        <label for="achivementName">Achievement Name:</label>
+        <input type="text" name="achievementName" id="achivementName" required>
+
+        <label for="achivementDescription">Achievement Description:</label>
+        <textarea name="achievementDescription" id="achivementDescription" required></textarea>
+
+        <div id="image-upload">
+          <label for="achievementImage">Achievement Image:</label>
+          <input type="file" name="achievementImage" id="achivementImage" accept="image/*">
+          <input type="hidden" name="oldAchivementImage" id="oldAchivementImage">
+          <div id="image-preview"></div>
+        </div>
+
+        <button type="submit">Add Achievement</button>
+      </form>
+    </div>
+  </div>
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Achievement Name</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="add-achivement-button">Add Achievement</button>
+  <!-- <button class="clientbtn" onclick="window.location.href='../achivement-front.html'">client page</button> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="../js/achivement.js"></script>
+  <script>
+    if (!sessionStorage.getItem('ieee-login-userId')) {
+      window.location.href = './login.html';
+    }
+  </script>
+</body>
+
+</html>

@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function fetchData() {
-    axios.get('https://ieee-vishv-1.onrender.com/api/events/events')
+    axios.get('https://ieee-vishv-1.onrender.com/api/events')
       .then(response => {
         renderData(response.data);
       })
@@ -51,7 +51,19 @@ document.addEventListener("DOMContentLoaded", function () {
         <td style="max-width: 280px;">${row.eventDescription}</td>
         <td>${dateString}</td>
         <td>${row.speaker}</td>
-        <td>${row.eventTime}</td>
+        `
+        if(row.startTime === row.endTime){
+          tr.innerHTML += `
+            <td>${row.startTime}</td>
+          `
+        }
+        else{
+          tr.innerHTML += `
+            <td>${row.startTime} - ${row.endTime}</td>
+          `
+        }
+
+        tr.innerHTML += `
         <td>${row.venue}</td>
         <td><a href="${row.registrationLink}" target="_blank">Register Here</a></td>
         <td><a href="${row.instaPostLink}" target="_blank">Instagram Post</a></td>
@@ -82,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('eventDescription').value = event.eventDescription;
         document.getElementById('speaker').value = event.speaker;
         document.getElementById('eventDate').value = dateString;
-        document.getElementById('eventTime').value = event.eventTime;
+        document.getElementById('startTime').value = event.startTime;
+        document.getElementById('endTime').value = event.endTime;
         document.getElementById('venue').value = event.venue;
         document.getElementById('registrationLink').value = event.registrationLink;
         document.getElementById('instaPostLink').value = event.instaPostLink;
@@ -120,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loader.style.display = 'block';
         document.body.classList.add('disable-interaction');
   
-        axios.delete(`https://ieee-vishv-1.onrender.com/api/events/event/${id}`)
+        axios.delete(`https://ieee-vishv-1.onrender.com/api/event/${id}`)
           .then(response => {
             fetchData();
             // Hide loader and enable interactions
@@ -201,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(handleResponse)
         .catch(handleError);
     } else {
-      axios.post('http://ieee-vishv-1.onrender.com/api/events/upload', formData)
+      axios.post('https://ieee-vishv-1.onrender.com/api/events/upload', formData)
         .then(handleResponse)
         .catch(handleError);
     }
