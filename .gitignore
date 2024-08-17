@@ -1,4 +1,3 @@
 # Environment variables
 .env
-.vscode
 node_modules

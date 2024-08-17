@@ -122,7 +122,8 @@ nav{
 
 .navAnchors {
     height: 100%;
-    width: 55%;
+    /* width: 55%; */
+    width: 45%;
     margin-left: 0;
     padding: 0;
     display: flex;
@@ -534,6 +535,7 @@ nav{
     display: flex;
     font-size: 1.5rem;
     /* background-color: blanchedalmond; */
+    position: relative;
     
 
 }
@@ -543,6 +545,7 @@ nav{
     font-weight: 500;
     font-size : 1.5em; 
     justify-self: center;
+    position: relative;
 }
 .aboutWelcomeText{
     font-family: Montserrat;
@@ -579,7 +582,7 @@ nav{
 #designcircle2 img {
     position: absolute;
     height : 9em;
-    top : 70%;
+    bottom : 30%;
     /* right: 5%; */
     
 }
@@ -663,6 +666,46 @@ nav{
 .flex-card h3:hover {
     border-bottom: 1.8px solid #2f2f2f;
 }
+
+/* /why join us */
+
+.join-us-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.join-us-card-light{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    gap: 1rem;
+}
+
+.join-us-card-dark{
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    gap: 1rem;
+    opacity: 0.8;
+}
+
+body.darkTheme .join-us-card-dark{
+    display: flex;
+}
+
+body.darkTheme .join-us-card-light{
+    display: none;
+}
+
 
 /* About us section */
 

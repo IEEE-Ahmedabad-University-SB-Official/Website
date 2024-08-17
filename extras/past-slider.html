@@ -270,7 +270,7 @@
             }
 
             // Fetch events from the server
-            axios.get('http://localhost:3000/events')
+            axios.get('https://ieee-vishv.onrender.com/events')
                 .then(response => {
                     const events = response.data;
                     const currentDate = new Date();

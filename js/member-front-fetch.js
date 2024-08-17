@@ -1,6 +1,6 @@
 async function fetchAllMembers() {
     try {
-        const response = await fetch('https://ieee-vishv-1.onrender.com/api/members');
+        const response = await fetch('https://ieee-vishv.onrender.com/api/members');
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -107,7 +107,7 @@ async function fetchFaculty(department, position, elementId) {
     container.innerHTML = ''; // Clear previous content
 
     try {
-        const response = await fetch(`https://ieee-vishv-1.onrender.com/api/members-front?department=${department}&position=${position}`);
+        const response = await fetch(`https://ieee-vishv.onrender.com/api/members-front?department=${department}&position=${position}`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }

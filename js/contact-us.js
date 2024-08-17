@@ -35,7 +35,7 @@ async function submitContactForm() {
     document.getElementById('contactForm').style.opacity = '0.3'; // Reduce opacity of contact form container 
 
     try {
-        const response = await fetch('https://ieee-vishv-1.onrender.com/api/contact-us/enroll', {
+        const response = await fetch('https://ieee-vishv.onrender.com/api/contact-us/enroll', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

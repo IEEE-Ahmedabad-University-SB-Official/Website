@@ -38,7 +38,7 @@
 
             <div class="navAnchors">
                 <a href="../index.html"><i class="fa-solid fa-house"></i>Home</a>
-                <a href="achivement-page.html"><i class="fa-solid fa-trophy"></i>Achievements</a>
+                <!-- <a href="achivement-page.html"><i class="fa-solid fa-trophy"></i>Achievements</a> -->
                 <a href="event-page.html"><i class="fa-solid fa-calendar-days"></i>Events</a>
                 <a href="commitee-page.html"><i class="fa-solid fa-users"></i>Committee</a>
                 <a href="../index.html#contactUs"><i class="fa-solid fa-phone"></i>Contact Us</a>
@@ -220,7 +220,7 @@
 
     <script>
         async function fetchEvents() {
-            const response = await fetch('https://ieee-vishv-1.onrender.com/api/events');
+            const response = await fetch('https://ieee-vishv.onrender.com/api/events');
             const events = await response.json();
             const timelineList = document.querySelector('.timeline');
 

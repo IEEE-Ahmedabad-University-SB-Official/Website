@@ -286,7 +286,8 @@ nav {
 
 .navAnchors {
     height: 100%;
-    width: 55%;
+    /* width: 55%; */
+    width: 45%;
     margin-left: 0;
     padding: 0;
     display: flex;

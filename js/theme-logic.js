@@ -61,8 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tickDark.classList.add('show');
             tickLight.classList.remove('show');
             localStorage.setItem('ieee-website-theme', 'dark');
-            for (const element of document.getElementsByClassName('imageBackGround')) {
-                element.style.display = 'unset';
+            for (const element of document.getElementsByClassName('aboutSection')) {
+                element.style.backgroundImage = "url('./Images/pattern.png')";
+                element.style.backgroundSize = "contain";
+                element.style.backgroundRepeat = "no-repeat";
+                element.style.backgroundPosition = "center";       
             }
         } else {
             document.body.classList.add('lightTheme');
@@ -70,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tickDark.classList.remove('show');
             tickLight.classList.add('show');
             localStorage.setItem('ieee-website-theme', 'light');
-            for (const element of document.getElementsByClassName('imageBackGround')) {
-                element.style.display = 'none';
+            for (const element of document.getElementsByClassName('aboutSection')) {
+                element.style.backgroundImage = 'none';
             }
         }
     };

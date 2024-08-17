@@ -2,15 +2,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const achievementsContainer = document.querySelector('.container');
 
     function fetchAchievements() {
-        axios.get('https://ieee-vishv-1.onrender.com/api/achievements')
+        axios.get('https://ieee-vishv.onrender.com/api/achievements')
             .then(response => {
-                renderAchievements(response.data);
+                if (response.data.length === 0) {
+                    displayNoAchievements();
+                } else {
+                    renderAchievements(response.data);
+                }
             })
-            .catch(error => console.error('Error fetching achievements:', error));
+            .catch(error => {
+                displayErrorMessage('Error in database connection');
+                console.error('Error fetching achievements:', error);
+            });
     }
 
     function renderAchievements(data) {
-        achievementsContainer.innerHTML = '<h1 style="text-align: center;">Achievements</h1>';
 
         data.forEach(achievement => {
             const achievementDiv = document.createElement('div');
@@ -30,6 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
             achievementsContainer.appendChild(achievementDiv);
             achievementsContainer.appendChild(hrLine);
         });
+    }
+
+    function displayErrorMessage(message) {
+        achievementsContainer.innerHTML = `<div class="error-message">${message}</div>`;
+    }
+
+    function displayNoAchievements() {
+        achievementsContainer.innerHTML = '<div class="no-achievements">No achievements found</div>';
     }
 
     fetchAchievements();

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function fetchData() {
-    axios.get('https://ieee-vishv-1.onrender.com/api/members')
+    axios.get('https://ieee-vishv.onrender.com/api/members')
       .then(response => {
         renderData(response.data);
       })
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.editMember = function(id) {
-    axios.post(`https://ieee-vishv-1.onrender.com/api/members/update/${id}`)
+    axios.post(`https://ieee-vishv.onrender.com/api/members/update/${id}`)
       .then(response => {
         const member = response.data.member;
   
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loader.style.display = 'block';
         document.body.classList.add('disable-interaction');
 
-        axios.delete(`https://ieee-vishv-1.onrender.com/api/member/${id}`)
+        axios.delete(`https://ieee-vishv.onrender.com/api/member/${id}`)
           .then(response => {
             fetchData();
             Swal.fire(
@@ -244,8 +244,9 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     const formData = new FormData(this);
+
     const memberId = formData.get('memberId');
-    const url = memberId ? `https://ieee-vishv-1.onrender.com/api/members/update/${memberId}` : 'https://ieee-vishv-1.onrender.com/api/members/upload';
+    const url = memberId ? `https://ieee-vishv.onrender.com/api/members/update/${memberId}` : 'https://ieee-vishv.onrender.com/api/members/upload';
 
     if (!imageUpload.files.length && currentProfileImage) {
       formData.append('profile_image', currentProfileImage);
@@ -309,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch members data (example using Axios)
   async function fetchMembers() {
     try {
-      const response = await axios.get('https://ieee-vishv-1.onrender.com/api/members'); // Adjust the URL to your actual API endpoint
+      const response = await axios.get('https://ieee-vishv.onrender.com/api/members'); // Adjust the URL to your actual API endpoint
       members = response.data;
       // displayPage(currentPage);
       // updatePaginationControls();

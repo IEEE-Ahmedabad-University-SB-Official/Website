@@ -11,7 +11,9 @@ body {
     font-family: Montserrat;
 }
 
-j
+.page-container{
+    min-height: 100vh;
+}
 .heading {
     display: flex;
     align-items: center;
@@ -116,6 +118,18 @@ hr {
     margin: 2rem 0;
 }
 
+.error-message, .no-achievements{
+    width: 100%;
+    height: 100px;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background-size: auto;
+    border: 1px solid black;
+}
+
 .navSection {
     padding: 0.5rem;
     display: flex;
@@ -140,7 +154,8 @@ nav {
 
 .navAnchors {
     height: 100%;
-    width: 55%;
+    /* width: 55%; */
+    width: 45%;
     margin-left: 0;
     padding: 0;
     display: flex;
@@ -438,6 +453,14 @@ body.darkTheme .theme-div button {
     cursor: pointer;
 }
 
+body.darkTheme h1{
+    color: white;
+}
+
+body.darkTheme .error-message, body.darkTheme .no-achievements{
+    border: 1px solid white;
+}
+
 @media (max-width: 1024px) {
 
     .container{
@@ -498,6 +521,14 @@ body.darkTheme .theme-div button {
         font-weight: bolder;
     }
 
+    .error-message, .no-achievements{
+        width: 80%;
+        margin: auto;
+        font-size: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
 }
 
 @media (min-width : 769px) and (max-width : 1023px) {
@@ -513,6 +544,13 @@ body.darkTheme .theme-div button {
     .navAnchors a.active{
         transform: scale(1);
         font-weight: bolder;
+    }
+    .error-message, .no-achievements{
+        width: 80%;
+        margin: auto;
+        font-size: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
 }
 
