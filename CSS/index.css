@@ -869,7 +869,7 @@ textarea:focus {
     padding: 5%;
     font-family: Montserrat;
     align-items: center;
-    background-color: #00000093;
+    background-color: #000000aa;
     position: absolute;
     right: 0;
     z-index: 3;
@@ -919,7 +919,7 @@ textarea:focus {
     font-size: 1rem !important;
     height: 15%;
     width: 100%;
-    transition: all 0.4s;
+    transition: all 0.25s;
 }
 
 #ourDetailsList a:hover {
@@ -1025,8 +1025,8 @@ body.darkTheme .wrapper h1{
 body.darkTheme .head h1{
     color: white;
     text-shadow: 
-    8px 8px rgba(128, 128, 128, 0.4),
-    16px 16px rgba(128, 128, 128, 0.2);
+    5px 5px rgba(128, 128, 128, 0.4),
+    9px 9px rgba(128, 128, 128, 0.2);
 }
 
 body.darkTheme .userFormContactUs, 
@@ -1224,3 +1224,4 @@ body.darkTheme .dropdown .dropbtn img{
   ::-webkit-scrollbar-thumb:hover {
     background: #f3f3f3; 
   }
+

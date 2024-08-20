@@ -292,7 +292,7 @@
 
 /* //Done  */
 /* for-medium-desktop-up */
-@media (min-width: 1400px) {
+@media (min-width: 1400px) and (max-width: 1799px) {
 
     html,
     body {
@@ -421,7 +421,7 @@
 
 /* //Done */
 /* for-big-desktop-up */
-@media (min-width: 1800px) {
+@media (min-width: 1800px) and (max-width: 1999px)  {
 
     html,
     body {
@@ -545,7 +545,7 @@
 
 /* //Done */
 /* for-big-desktop-up */
-@media (min-width: 2000px) {
+@media (min-width: 2000px) and (max-width: 2999px) {
 
     html,
     body {

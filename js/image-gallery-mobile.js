@@ -1,8 +1,8 @@
 // Get the DOM elements for the image carousel
 const wrapper = document.querySelector(".mobile-wrapper"),
       carousel = document.querySelector(".carousel"),
-      figures = document.querySelectorAll("figure"),
-      buttons = document.querySelectorAll(".button");
+      carouselFigures = document.querySelectorAll(".carousel-figure"),
+      carouselButtons = document.querySelectorAll(".carousel-button");
 
 let imageIndex = 1,
     intervalId,
@@ -21,7 +21,7 @@ autoSlide();
 // A function that updates the carousel display to show the specified image
 const slideImage = () => {
     // Calculate the updated image index
-    imageIndex = imageIndex === figures.length ? 0 : imageIndex < 0 ? figures.length - 1 : imageIndex;
+    imageIndex = imageIndex === carouselFigures.length ? 0 : imageIndex < 0 ? carouselFigures.length - 1 : imageIndex;
     // Update the carousel display to show the specified image
     carousel.style.transform = `translateX(-${imageIndex * 100}%)`;
 };
@@ -38,7 +38,7 @@ const updateClick = (e) => {
 };
 
 // Add event listeners to the navigation buttons
-buttons.forEach((button) => button.addEventListener("click", updateClick));
+carouselButtons.forEach((button) => button.addEventListener("click", updateClick));
 
 // Add mouseover event listener to wrapper element to stop auto sliding
 wrapper.addEventListener("mouseover", () => clearInterval(intervalId));

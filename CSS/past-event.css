@@ -69,10 +69,17 @@
     margin-left: 2rem;
     color : #2f2f2f;
     text-shadow: 
+    5px 5px rgba(128, 128, 128, 0.4),
+    9px 9px rgba(128, 128, 128, 0.2);
+
+    -webkit-font-smoothing: antialiased;
+}
+
+.head .past-event-head{ 
+    text-shadow: 
     8px 8px rgba(128, 128, 128, 0.4),
     16px 16px rgba(128, 128, 128, 0.2);
 
-    -webkit-font-smoothing: antialiased;
 }
 
 .detail {

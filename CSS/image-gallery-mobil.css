@@ -13,7 +13,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
 
   }
-  .mobile-wrapper i.button {
+  .mobile-wrapper i.carousel-button {
     position: absolute;
     top: 87%;
     /* transform: translateY(-50%); */
@@ -29,7 +29,7 @@
     z-index: 100;
     cursor: pointer;
   }
-  .mobile-wrapper .button:active {
+  .mobile-wrapper .carousel-button:active {
     transform: scale(0.94) translateY(-50%);
   }
   .mobile-wrapper i#prev {
@@ -52,7 +52,7 @@
     width: 100%;
     transition: all 0.4s ease;
   }
-  .image-container .carousel figure {
+  .image-container .carousel .carousel-figure {
     min-width: 100%;
     position: relative;
     height: 100%;

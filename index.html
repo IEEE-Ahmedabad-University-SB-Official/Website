@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="./CSS/backgroundAnimation.css">
     <link rel="stylesheet" href="CSS/au-slider.css">
     <link rel="stylesheet" href="./CSS/image-gallery-mobil.css">
+    <link rel="stylesheet" href="./CSS/image-slider.css">
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -49,7 +50,8 @@
     </style>
 </head>
 
-<body>
+<body>  
+
     <!--Hero Section  -->
     <section class="heroSection" id="Home">
         <div class="HerogridContainer">
@@ -179,27 +181,33 @@
             </div>
             <div class="Achievements-Bar">
 
-                <div class="flex-card">
-                    <div class="flex-item" id="circle1">
-                        <img src="./Images/Acheivement.png" alt="">
-                        <h2>12+</h2>
+                <a href="./pages/achivement-page.html">
+                    <div class="flex-card">
+                        <div class="flex-item" id="circle1">
+                            <img src="./Images/Acheivement.png" alt="">
+                            <h2>12+</h2>
+                        </div>
+                        <h3>ACHIEVEMENTS</h3>
                     </div>
-                    <h3>ACHIEVEMENTS</h3>
-                </div>
-                <div class="flex-card">
-                    <div class="flex-item" id="circle1">
-                        <img src="./Images/members.png" alt="">
-                        <h2>33</h2>
+                </a>
+                <a href="./pages/commitee-page.html">
+                    <div class="flex-card">
+                        <div class="flex-item" id="circle1">
+                            <img src="./Images/members.png" alt="">
+                            <h2>33</h2>
+                        </div>
+                        <h3>MEMBERS</h3>
                     </div>
-                    <h3>MEMBERS</h3>
-                </div>
-                <div class="flex-card">
-                    <div class="flex-item" id="circle1">
-                        <img src="./Images/conferences.png" alt="">
-                        <h2>69</h2>
+                </a>
+                <a href="./pages/event-page.html">
+                    <div class="flex-card">
+                        <div class="flex-item" id="circle1">
+                            <img src="./Images/conferences.png" alt="">
+                            <h2>34+</h2>
+                        </div>
+                        <h3>EVENTS</h3>
                     </div>
-                    <h3>CONFERENCES</h3>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -235,161 +243,65 @@
         
     </div>
 
-    <!-- image slider -->
-    <section class="au-slider">
+    <section class="laptop-gallery-video-section">
         <div class="head">
-            <h1 style="text-align: center; font-size: 2.5rem;">Glimpse of Ahmedabad University</h1>
+            <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">Glimpse of Ahmedabad University</h1>
         </div>
-        <div class="cont s--inactive">
-            <!-- cont inner start -->
-            <div class="cont__inner">
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">CAMPUS</h2>
-                            </div>
-                            <div class="el__content">
-                                <div class="el__text">Ahmedabad University Campus</div>
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="el__index">
-                        <div class="el__index-back">1</div>
-                        <div class="el__index-front">
-                            <div class="el__index-overlay" data-index="1">1</div>
-                        </div>
-                    </div> -->
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">SEAS</h2>
-                            </div>
-                            <div class="el__content">
-                                <div class="el__text">School of Engineering and Applied Sciences</div>
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="el__index">
-                        <div class="el__index-back">2</div>
-                        <div class="el__index-front">
-                            <div class="el__index-overlay" data-index="2">2</div>
-                        </div>
-                    </div> -->
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">SAS</h2>
-                            </div>
-                            <div class="el__content">
-                                <div class="el__text">School of Arts and Sciences</div>
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="el__index">
-                        <div class="el__index-back">3</div>
-                        <div class="el__index-front">
-                            <div class="el__index-overlay" data-index="3">3</div>
-                        </div>
-                    </div> -->
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">AMSOM</h2>
-                            </div>
-                            <div class="el__content">
-                                <div class="el__text">Amsom Heritage Building</div>
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="el__index">
-                        <div class="el__index-back">4</div>
-                        <div class="el__index-front">
-                            <div class="el__index-overlay" data-index="4">4</div>
-                        </div>
-                    </div> -->
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">UC</h2>
-                            </div>
-                            <div class="el__content">
-                                <div class="el__text">University Centre</div>
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="el__index">
-                        <div class="el__index-back">5</div>
-                        <div class="el__index-front">
-                            <div class="el__index-overlay" data-index="5">5</div>
-                        </div>
-                    </div> -->
-                </div>
-                <!-- el end -->
+        <div class="laptop-main-gallery">
+            <video class="laptop-gallery-video" src="./Images/au video.mp4" type="video/mp4" autoplay loop muted></video>
+            <div class="laptop-gallery-images">
+                <figure>
+                    <img src="./Images/seas.png" alt="SEAS">
+                    <figcaption>School of Engineering & Applied Sciences</figcaption>
+                </figure>
+                <figure>
+                    <img src="./Images/sas.jpeg" alt="SAS">
+                    <figcaption>School of Arts & Sciences</figcaption>
+                </figure>
+                <figure>
+                    <img src="./Images/amsom.jpeg" alt="AMSOM">
+                    <figcaption>Amrut Mody School of Management</figcaption>
+                </figure>
+                <figure>
+                    <img src="./Images/uc.jpg" alt="UC">
+                    <figcaption>University Centre</figcaption>
+                </figure>
             </div>
-            <!-- cont inner end -->
         </div>
     </section>
-
+    
     <!-- image gallery for mobile tablet -->
     <section class="mobile-tablet-image-section">
         <div class="head">
             <h1>Our University</h1>
         </div>
         <section class="mobile-wrapper">
-            <i class="fa-solid fa-arrow-left button" id="prev"></i>
+            <i class="fa-solid fa-arrow-left carousel-button" id="prev"></i>
             <div class="image-container">
                 <div class="carousel">
-                    <figure>
+                    <figure class="carousel-figure">
                         <img src="/Images/seas.png" alt="SEAS Building 1" />
                         <figcaption>SEAS</figcaption>
-                    </figure>
-                    <figure>
+                    </figure >
+                    <figure class="carousel-figure">
                         <img src="/Images/sas.jpeg" alt="SEAS Building 2" />
                         <figcaption>SAS</figcaption>
                     </figure>
-                    <figure>
+                    <figure class="carousel-figure">
                         <img src="/Images/amsom.jpeg" alt="SEAS Building 3" />
                         <figcaption>AMSOM</figcaption>
                     </figure>
-                    <figure>
+                    <figure class="carousel-figure">
                         <img src="/Images/uc.jpg" alt="SEAS Building 4" />
                         <figcaption>UC</figcaption>
                     </figure>
-                    <figure>
+                    <figure class="carousel-figure">
                         <img src="/Images/AU-Campus.jpg" alt="SEAS Building 5" />
                         <figcaption>CAMPUS</figcaption>
                     </figure>
                 </div>
             </div>
-            <i class="fa-solid fa-arrow-right button" id="next"></i>
+            <i class="fa-solid fa-arrow-right carousel-button" id="next"></i>
         </section>
     </section>
 
@@ -482,15 +394,15 @@
 
                                 <li id="emailOurDetail"><a href="mailto:ieee.sb@ahduni.edu.in"><i
                                             class="fas fa-envelope" style="color: #ffffff;"></i>
-                                        <p>Email</p>
+                                        <p>ieee.sb@ahduni.edu.in</p>
                                     </a></li>
                                 <li id="linkedInOurDetail"><a
                                         href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/"><i
-                                            class="fab fa-linkedin" style="color: #ffffff;"></i><p>LinkedIn</p>
+                                            class="fab fa-linkedin" style="color: #ffffff;"></i><p>ahmedabad-university-ieee-sb</p>
                                     </a></li>
                                 <li id=" InstagramOurDetail"><a
                                                 href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
-                                                    class="fab fa-instagram" style="color: #ffffff;"></i><p>Instagram</p>
+                                                    class="fab fa-instagram" style="color: #ffffff;"></i><p>ieee_ausb</p>
                                     </a></li>
                                 <li id=" addressOurDetail"><a href="https://maps.app.goo.gl/bpwXyhJ7oC5nqqLH6"><i
                                                             class="fas fa-map-marker-alt" style="color: #ffffff;"></i>
@@ -637,7 +549,7 @@
     <script src="js/past-vishv.js"></script>
     <script src="js/theme-logic.js"></script>
 
-    <script src="js/au-slider.js"></script>
+    <!-- <script src="js/au-slider.js"></script> -->
     <script src="js/typing.js"></script>
 
     <script src="js/image-gallery-mobile.js"></script>
