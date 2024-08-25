@@ -255,7 +255,8 @@
                     cardContent += `
                         <p>${event.speaker}</p>
                         <p>${event.venue}</p>
-                        <button class="know-more" onclick="openModal('${event.eventName}', '${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n'))}', '${event.eventPoster}', '${event.speaker}', '${dateString}', '${event.startTime}', '${event.endTime}', '${event.venue}', '${event.instaPostLink}')">Know More</button>
+                        <button class="know-more" onclick="openModal(&quot;${event.eventName}&quot;, &quot;${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n').replace(/"/g, '\\"'))}&quot;, &quot;${event.eventPoster}&quot;, &quot;${event.speaker}&quot;, &quot;${dateString}&quot;, &quot;${event.startTime}&quot;, &quot;${event.endTime}&quot;, &quot;${event.venue}&quot;, &quot;${event.instaPostLink}&quot;)">Know More</button>
+
                     </div>
                 </div>
                 <div class="event-date">${dateString}</div>

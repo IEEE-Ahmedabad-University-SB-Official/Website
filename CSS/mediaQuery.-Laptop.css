@@ -128,6 +128,7 @@
         margin-top: unset !important;
         margin-bottom: unset !important;
         margin-bottom: 70px !important;
+        background-color: red;
        
     }
     .aboutSection,
@@ -136,12 +137,16 @@
         margin-top: unset !important;
         margin-bottom: unset !important;
         /* margin-bottom: 100px !important; */
+        background-color: red;
+
     }
 
     .contactUsSection{
         margin-top: 100px !important;
         margin-bottom: unset !important;
         margin-bottom: 240px !important;
+        background-color: red;
+
     }
 }
 
@@ -272,6 +277,7 @@
         margin-top: unset !important;
         margin-bottom: unset !important;
         margin-bottom: 70px !important;
+        background-color: yellow;
        
     }
     .aboutSection,
@@ -280,12 +286,14 @@
         margin-top: unset !important;
         /* margin-bottom: unset !important; */
         /* margin-bottom: 140px !important; */
+        background-color: yellow;
     }
 
     .contactUsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
         margin-bottom: 140px !important;
+        background-color: yellow;
     }
     
 }
@@ -355,7 +363,7 @@
     }
 
     .aboutSection {
-        margin-bottom: 6vh;
+        margin-bottom: 0vh;
     }
 
     .aboutSectionHeadingText,
@@ -388,36 +396,89 @@
         width: 100%;
     }
 
+    .achievementsSection {
+        /* margin-top: 0em !important; */
+        margin-bottom: 4rem !important;
+        /* background-color: green; */
+       
+    }
 
     
-    .heroSection,
-    .achievementsSection {
-        /* margin-top: unset !important; */
-        /* margin-bottom: unset !important; */
-        /* margin-bottom: 90px !important; */
+    .heroSection{
+        /* margin-top: 0em !important; */
+        margin-bottom: 0 !important;
+        /* background-color: green; */
        
     }
     .aboutSection{
         /* margin-top: unset !important; */
         /* margin-bottom: unset !important; */
         /* margin-bottom: 100px !important; */
+        /* background-color: green; */
     }
     
     .past-event-container,
     .wrapper {
-        margin-top: unset !important;
+        /* margin-top: unset !important; */
         margin-bottom: unset !important;
         margin-bottom: 4rem !important;
+        /* background-color: green; */
     }
 
     .contactUsSection {
         margin-top: 5rem !important;
         margin-bottom: unset !important;
         margin-bottom: 8rem !important;
+        /* background-color: green; */
         
     }
 }
 
+@media (min-width: 1600px) and (max-width: 1799px){
+
+    .achievementsSection
+     {
+        /* margin-top: unset !important; */
+        /* margin-bottom: unset !important; */
+        margin-bottom: 6em !important;
+        /* background-color: green; */
+       
+    }
+    .heroSection{
+        margin-bottom: 0em !important;
+    }
+    .join-us-div{
+        margin-bottom: 6em !important;
+        /* margin-top: 10em; */
+    }
+    .aboutSection{
+        /* margin-top: unset !important; */
+        /* margin-bottom: unset !important; */
+        /* margin-bottom: 100px !important; */
+        /* background-color: green; */
+    }
+    
+    .wrapper {
+        margin-top: 8em !important;
+        margin-bottom: unset !important;
+        margin-bottom: 4em !important;
+        /* background-color: green; */
+    }
+    .past-event-container{
+        margin-top: 6em !important;
+        margin-bottom: unset !important;
+        margin-bottom: 7em !important;
+        /* background-color: green; */
+    }
+    .contactUsSection {
+        margin-top: 5rem !important;
+        margin-bottom: unset !important;
+        margin-bottom: 16rem !important;
+        /* background-color: green; */
+        
+    }
+
+}
 
 /* //Done */
 /* for-big-desktop-up */
@@ -521,24 +582,31 @@
         margin-top: unset !important;
         margin-bottom: unset !important;
         margin-bottom: 190px !important;
+        background-color: pink;
        
     }
     .aboutSection{
         margin-top: unset !important;
         margin-bottom: unset !important;
         margin-bottom: 80px !important;
+        background-color: pink;
+
     }
     .past-event-container,
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
         margin-bottom: 280px !important;
+        background-color: pink;
+
     }
 
     .contactUsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
         margin-bottom: 350px !important;
+        background-color: pink;
+
     }
 }
 

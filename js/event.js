@@ -184,6 +184,10 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append('eventPoster', currentPoster);
     }
 
+    formData.eventName = JSON.stringify(formData.eventName);
+    formData.eventDescription = JSON.stringify(formData.eventDescription);
+    formData.venue = JSON.stringify(formData.venue);
+
     // Show loader and disable interactions
     loader.style.display = 'block';
     document.body.classList.add('disable-interaction');

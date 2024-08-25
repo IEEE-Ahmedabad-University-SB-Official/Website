@@ -1078,6 +1078,24 @@
         display: none;
     }
 
+    .no-event-div-text{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .no-event-div-p{
+        font-size: 1.6rem;
+    }
+
+    .no-event-div-text{
+        gap: 0px;
+    }
+
+    .no-event-p{
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+
 }
 
 
