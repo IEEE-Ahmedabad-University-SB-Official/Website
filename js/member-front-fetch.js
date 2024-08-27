@@ -9,7 +9,7 @@ async function fetchAllMembers() {
         // Categorize members based on department and position
         const categorizedMembers = categorizeMembers(members);
 
-        // Render members
+        // Render members asynchronously
         renderMembers(categorizedMembers);
     } catch (error) {
         console.error('Error fetching all members:', error);
@@ -39,7 +39,7 @@ function categorizeMembers(members) {
             else if (member.position === 'Secretary') categorized.obsSecretary.push(member);
             else if (member.position === 'Joint - Secretary') categorized.obsJointSecretary.push(member);
             else if (member.position === 'Treasurer') categorized.obsTreasurer.push(member);
-        } else if(member.position !== 'Faculty'){
+        } else if (member.position !== 'Faculty') {
             const teamKey = `${member.department.toLowerCase()}Team`;
             if (categorized[teamKey]) {
                 categorized[teamKey].push(member);
@@ -142,11 +142,12 @@ async function fetchFaculty(department, position, elementId) {
         container.appendChild(fragment);
     } catch (error) {
         console.error(`Error fetching members for ${department} ${position}:`, error);
-        // Optionally display an error message in the UI
         container.innerHTML = '<p>Failed to load members. Please try again later.</p>';
     }
 }
 
-// Fetch and render all members data
+// Fetch and render all members data asynchronously
 fetchAllMembers();
+
+// Fetch and render faculty data asynchronously
 fetchFaculty('OBs', 'Faculty', 'obsFaculty');

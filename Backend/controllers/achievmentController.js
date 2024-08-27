@@ -19,8 +19,8 @@ exports.uploadAchievement = async (req, res) => {
 
         // Upload file to Cloudinary
         const options = {
-            folder: "achievements",
-            quality: 90,
+            folder: "Achievements",
+            quality: 40,
             resource_type: "auto"
         };
         const uploadedFile = await cloudinary.uploader.upload(file.tempFilePath, options);
@@ -59,8 +59,8 @@ exports.updateAchievement = async (req, res) => {
             const file = req.files.achievementImage;
 
             const options = {
-                folder: "achievements",
-                quality: 90,
+                folder: "Achievements",
+                quality: 40,
                 resource_type: "auto"
             };
             const uploadedFile = await cloudinary.uploader.upload(file.tempFilePath, options);

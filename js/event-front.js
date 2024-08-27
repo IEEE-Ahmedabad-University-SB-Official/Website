@@ -15,12 +15,158 @@ document.addEventListener("DOMContentLoaded", function () {
         loader.style.display = "none";
     }
 
-    span.onclick = function () {
-        closeModal();
-    };
+    function closeModal() {
+        const modalContent = document.querySelector(".modal-content");
+        modalContent.classList.remove("zoomIn");
+        modalContent.classList.add("zoomOut");
+        modal.classList.add("fadeOut");
+        setTimeout(() => {
+            modal.style.display = "none";
+            modal.classList.remove("fadeOut");
+            document.body.style.overflow = "";
+        }, 500);
+    }
 
-    window.onclick = function (event) {
-        if (event.target == modal) {
+    function showModal(event) {
+        // Set the modal image source
+        document.getElementById("modal-image").src = event.eventPoster;
+        
+        // Build the modal details content
+        let modalContentHTML = `
+            <h2>${event.eventName}</h2>
+            <p>${event.eventDescription}</p>
+            <p>Date: ${formatDate(event.eventDate)}</p>
+            <p>Time: ${event.startTime === event.endTime ? event.startTime : `${event.startTime} - ${event.endTime}`}</p>
+            <p>Venue: ${event.venue}
+        `;
+        
+        // Conditionally include the speaker section if event.speaker is not null
+        if (event.speaker) {
+            modalContentHTML += `<p>Speaker: ${event.speaker}</p>`;
+        }
+
+        if (event.instaPostLink) {
+            modalContentHTML += `<a class="link" href="${event.instaPostLink}">Instagram Post</a>`;
+        }
+
+        // Update the modal detail content
+        modalDetail.innerHTML = modalContentHTML;
+        
+        // Display the modal
+        modal.style.display = "block";
+        const modalContent = document.querySelector(".modal-content");
+        modalContent.classList.remove("zoomOut", "fadeOut");
+        modalContent.classList.add("zoomIn");
+        document.body.style.overflow = "hidden";
+    }
+
+    function createUpcomingEventCard(event) {
+        const card = document.createElement("div");
+        const eventDate = new Date(event.eventDate);
+        const dateString = formatDate(event.eventDate);
+        
+        // Build the card's HTML content
+        card.classList.add("cardDiv");
+        card.innerHTML = `
+            <div class="img">
+                <img class="img2" src="${event.eventPoster}" alt="" loading="lazy">
+            </div>
+            <div class="content">
+                <div class="card-date-div">
+                    <div class="upcomingEventCard-content">
+                        <p class="upcomingEventCard-content-heading"></p>
+                        <p class="upcomingEventCard-content-data">${dateString}</p>
+                    </div>
+                </div>
+                <h2>${event.eventName}</h2>
+                <div class="para">
+                    <p>${event.eventDescription}</p>
+                </div>
+                <div class="check">
+                    ${event.speaker ? `
+                        <div class="card-speaker-div">
+                            <div class="upcomingEventCard-content">
+                                <img src="Images/speaker.png" width="20px" alt="Speaker" loading="lazy">
+                                <p>${event.speaker}</p>
+                            </div>
+                        </div>
+                    ` : ''}
+                    <div class="card-time-div">
+                        <div class="upcomingEventCard-content">
+                            <img src="Images/event-time.png" width="20px" alt="Time" loading="lazy">
+                            <p>${event.startTime === event.endTime ? event.startTime : `${event.startTime} - ${event.endTime}`}</p>
+                        </div>
+                    </div>
+                    <div class="card-venue-div">
+                        <div class="upcomingEventCard-content">
+                            <img src="Images/venue.png" width="20px" alt="Venue" loading="lazy">
+                            <p>${event.venue}</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="link" href="${event.registrationLink}">Register Now</a>
+            </div>
+        `;
+        
+        return card;
+    }
+
+    function createPastEventSlide(event) {
+        const slide = document.createElement("div");
+        slide.classList.add("swiper-slide");
+        slide.innerHTML = `
+            <div class="picture">
+                <img src="${event.eventPoster}" alt="" loading="lazy">
+            </div>
+            <div class="detail">
+                <h2 style="margin-bottom: 0.75rem; text-align: center; padding: 0 1rem;">${event.eventName}</h2>
+                <button class="know-more-btn" data-event-id="${event.id}">Know more</button>
+            </div>
+        `;
+
+        slide.querySelector(".know-more-btn").addEventListener("click", () => showModal(event));
+
+        return slide;
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return `${date.getDate().toString().padStart(2, "0")}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getFullYear()}`;
+    }
+
+    function displayNoEventMessage(container) {
+        container.innerHTML = ''; // Clear any existing content
+        
+        const noEventDiv = document.createElement("div");
+        noEventDiv.classList.add("no-event-message");
+        
+        noEventDiv.innerHTML = container.id === "swiper-wrapper"
+            ? "<p>No Past event found</p>"
+            : `
+                <div class="no-event-div">
+                    <p class="no-event-div-p">No Upcoming Event</p>
+                    <div class="no-event-div-text">
+                        <p>Explore Our </p>
+                        <a href="./pages/event-page.html" class="no-event-p">Completed Events >></a>
+                    </div> 
+                </div>
+            `;
+        
+        container.appendChild(noEventDiv);
+    }
+
+    function hideArrows(selector) {
+        document.querySelectorAll(selector).forEach(arrow => arrow.style.display = "none");
+    }
+
+    function showArrows(selector) {
+        document.querySelectorAll(selector).forEach(arrow => arrow.style.display = "flex");
+    }
+
+    span.onclick = closeModal;
+
+    window.onclick = (event) => {
+        if (event.target === modal) {
             closeModal();
         }
     };
@@ -31,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
     axios
         .get("https://ieee-vishv.onrender.com/api/events")
         .then((response) => {
-            let events = response.data;
+            const events = response.data;
             const currentDate = new Date();
 
             const upcomingEvents = events.filter(event => new Date(event.eventDate) >= currentDate);
@@ -45,10 +191,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (upcomingEvents.length === 0) {
                 displayNoEventMessage(upcomingCardContainer);
-                hideUpcomingArrows();
+                hideArrows(".arrow");
             } else {
-                showUpcomingArrows();
-                upcomingEvents.forEach((event) => {
+                showArrows(".arrow");
+                upcomingEvents.forEach(event => {
                     const upcomingCard = createUpcomingEventCard(event);
                     upcomingCardContainer.appendChild(upcomingCard);
                 });
@@ -56,10 +202,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (pastEvents.length === 0) {
                 displayNoEventMessage(swiperWrapper);
-                hidePastArrows();
+                hideArrows(".swiper-button-next, .swiper-button-prev");
             } else {
-                showPastArrows();
-                pastEvents.forEach((event) => {
+                showArrows(".swiper-button-next, .swiper-button-prev");
+                pastEvents.forEach(event => {
                     const pastSlide = createPastEventSlide(event);
                     swiperWrapper.appendChild(pastSlide);
                 });
@@ -84,252 +230,21 @@ document.addEventListener("DOMContentLoaded", function () {
             hideLoader(pastLoader);
             displayNoEventMessage(upcomingCardContainer);
             displayNoEventMessage(swiperWrapper);
-            hidePastArrows();
-            hideUpcomingArrows();
+            hideArrows(".swiper-button-next, .swiper-button-prev");
+            hideArrows(".arrow");
         });
 
-        function createUpcomingEventCard(event) {
-            const card = document.createElement("div");
-            const eventDate = new Date(event.eventDate);
-            const dateString =
-                eventDate.getDate().toString().padStart(2, "0") +
-                "-" +
-                (eventDate.getMonth() + 1).toString().padStart(2, "0") +
-                "-" +
-                eventDate.getFullYear();
-        
-            // Create the card structure
-            card.classList.add("cardDiv");
-            
-            // Start building the card's HTML content
-            let cardHTML = `
-                <div class="img">
-                    <img class="img2" src="${event.eventPoster}" alt="" loading="lazy">
-                </div>
-                <div class="content">
-                    <div class="card-date-div">
-                        <div class="upcomingEventCard-content">
-                            <p class="upcomingEventCard-content-heading"></p>
-                            <p class="upcomingEventCard-content-data">${dateString}</p>
-                        </div>
-                    </div>
-                    <h2>${event.eventName}</h2>
-                    <div class="para">
-                        <p>${event.eventDescription}</p>
-                    </div>
-                    <div class="check">
-            `;
-        
-            // Conditionally include the speaker section if event.speaker is not null
-            if (event.speaker) {
-                cardHTML += `
-                    <div class="card-speaker-div">
-                        <div class="upcomingEventCard-content">
-                            <img src="Images/speaker.png" width="20px" alt="Speaker" loading="lazy">
-                            <p>${event.speaker}</p>
-                        </div>
-                    </div>
-                `;
-            }
-        
-            // Include the time and venue sections (they are always displayed)
-            if(event.startTime === event.endTime){
-                cardHTML += `
-                    <div class="card-time-div">
-                        <div class="upcomingEventCard-content">
-                            <img src="Images/event-time.png" width="20px" alt="Time" loading="lazy">
-                            <p>${event.startTime}</p>
-                        </div>
-                    </div>
-                `
-            }
-            else{
-                cardHTML += `
-                    <div class="card-time-div">
-                        <div class="upcomingEventCard-content">
-                            <img src="Images/event-time.png" width="20px" alt="Time" loading="lazy">
-                            <p>${event.startTime} - ${event.endTime}</p>
-                        </div>
-                    </div>
-                `
-            }   
-
-            cardHTML += `
-                    <div class="card-venue-div">
-                        <div class="upcomingEventCard-content">
-                            <img src="Images/venue.png" width="20px" alt="Venue" loading="lazy">
-                            <p>${event.venue}</p>
-                        </div>
-                    </div>
-                </div>
-                <a class="link" href="${event.registrationLink}">Register Now</a>
-            `;
-        
-            // Set the inner HTML of the card element
-            card.innerHTML = cardHTML;
-        
-            return card;
-        }
-        
-
-    function createPastEventSlide(event) {
-        const slide = document.createElement("div");
-        slide.classList.add("swiper-slide");
-        slide.innerHTML = `
-            <div class="picture">
-                <img src="${event.eventPoster}" alt="" loading="lazy">
-            </div>
-            <div class="detail">
-                <h2 style="margin-bottom: 0.75rem; text-align: center; padding: 0 1rem;">${event.eventName}</h2>
-                <button class="know-more-btn" data-event-id="${event.id}">Know more</button>
-            </div>
-        `;
-
-        slide
-            .querySelector(".know-more-btn")
-            .addEventListener("click", function () {
-                showModal(event);
+    // Handle arrow clicks for scrolling
+    function handleArrowClick(selector, direction) {
+        document.querySelectorAll(selector).forEach((arrow) => {
+            arrow.addEventListener("click", function () {
+                const cardContainer = arrow.parentElement.querySelector(".card-container");
+                const cardWidth = cardContainer.querySelector(".cardDiv").offsetWidth;
+                cardContainer.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
             });
-
-        return slide;
-    }
-
-    function displayNoEventMessage(container) {
-        container.innerHTML = ''; // Clear any existing content
-        
-        const noEventDiv = document.createElement("div");
-        noEventDiv.classList.add("no-event-message");
-        
-        if(container.id === "swiper-wrapper") {
-            noEventDiv.innerHTML = "<p>No Past event found</p>";
-        } else if(container.id === "upcoming-card-container") {
-            noEventDiv.innerHTML = `
-            <div class="no-event-div">
-                <p class="no-event-div-p">No Upcoming Event</p>
-                <div class="no-event-div-text">
-                    <p>Explore Our </p>
-                    <a href="./pages/event-page.html" class="no-event-p">Completed Events >></a>
-                </div> 
-            </div>
-            `
-            ;
-        }
-        
-        container.appendChild(noEventDiv);
-    }
-    
-
-    function hideUpcomingArrows() {
-        const arrows = document.querySelectorAll(".arrow");
-        arrows.forEach((arrow) => {
-            arrow.style.display = "none";
         });
     }
 
-    function showUpcomingArrows() {
-        const arrows = document.querySelectorAll(".arrow");
-        arrows.forEach((arrow) => {
-            arrow.style.display = "flex";
-        });
-    }
-    function hidePastArrows() {
-        const arrows = document.querySelectorAll(".swiper-button-next, .swiper-button-prev");
-        arrows.forEach((arrow) => {
-            arrow.style.display = "none";
-        });
-    }
-
-    function showPastArrows() {
-        const arrows = document.querySelectorAll(".swiper-button-next, .swiper-button-prev");
-        arrows.forEach((arrow) => {
-            arrow.style.display = "block";
-        });
-    }
-
-    function showModal(event) {
-        // Set the modal image source
-        document.getElementById("modal-image").src = `${event.eventPoster}`;
-        
-        // Build the modal details content
-        let modalContentHTML = `
-            <h2>${event.eventName}</h2>
-            <p>${event.eventDescription}</p>
-            <p>Date: ${formatDate(event.eventDate)}</p>
-            `
-        if(event.startTime === event.endTime){
-            modalContentHTML += `<p>Time: ${event.startTime}</p>`
-        }
-        else{
-            modalContentHTML += `<p>Time: ${event.startTime} - ${event.endTime}</p>`
-        }   
-        
-        modalContentHTML += `
-            <p>Venue: ${event.venue}
-        `;
-        
-    
-        // Conditionally include the speaker section if event.speaker is not null
-        if (event.speaker) {
-            modalContentHTML += `<p>Speaker: ${event.speaker}</p>`;
-        }
-
-        if(event.instaPostLink){
-            modalContentHTML += `<a class="link" href="${event.instaPostLink}">Instagram Post</a>`;
-        }
-    
-     
-    
-        // Update the modal detail content
-        modalDetail.innerHTML = modalContentHTML;
-        
-        // Display the modal
-        modal.style.display = "block";
-        const modalContent = document.querySelector(".modal-content");
-        modalContent.classList.remove("zoomOut", "fadeOut");
-        modalContent.classList.add("zoomIn");
-        document.body.style.overflow = "hidden";
-    }
-    
-
-    function closeModal() {
-        const modalContent = document.querySelector(".modal-content");
-        modalContent.classList.remove("zoomIn");
-        modalContent.classList.add("zoomOut");
-        modal.classList.add("fadeOut");
-        setTimeout(() => {
-            modal.style.display = "none";
-            modal.classList.remove("fadeOut");
-            document.body.style.overflow = "";
-        }, 500);
-    }
-
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        return (
-            date.getDate().toString().padStart(2, "0") +
-            "-" +
-            (date.getMonth() + 1).toString().padStart(2, "0") +
-            "-" +
-            date.getFullYear()
-        );
-    }
-
-    const leftArrows = document.querySelectorAll(".arrow.left");
-    const rightArrows = document.querySelectorAll(".arrow.right");
-
-    leftArrows.forEach((leftArrow) => {
-        leftArrow.addEventListener("click", function () {
-            const cardContainer = leftArrow.parentElement.querySelector(".card-container");
-            const cardWidth = cardContainer.querySelector(".cardDiv").offsetWidth; // Calculate card width dynamically
-            cardContainer.scrollBy({ left: -cardWidth, behavior: "smooth" });
-        });
-    });
-
-    rightArrows.forEach((rightArrow) => {
-        rightArrow.addEventListener("click", function () {
-            const cardContainer = rightArrow.parentElement.querySelector(".card-container");
-            const cardWidth = cardContainer.querySelector(".cardDiv").offsetWidth; // Calculate card width dynamically
-            cardContainer.scrollBy({ left: cardWidth, behavior: "smooth" });
-        });
-    });
+    handleArrowClick(".arrow.left", -1);
+    handleArrowClick(".arrow.right", 1);
 });
