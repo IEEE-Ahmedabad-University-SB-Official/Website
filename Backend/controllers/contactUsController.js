@@ -29,7 +29,7 @@ exports.contactUsEnroll =  async (req, res) => {
     const mailOptionsUser = {
         from: process.env.EMAIL_USER,
         to: `${email}`,
-        subject: 'Welcome to IEEE AUSB!',
+        subject: 'Thank you for contacting IEEE AUSB!',
         html: contactUsUser(`${name}`) // Use the template function to set the HTML body
     };
 

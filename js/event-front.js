@@ -35,15 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
         let modalContentHTML = `
             <h2>${event.eventName}</h2>
             <p>${event.eventDescription}</p>
-            <p>Date: ${formatDate(event.eventDate)}</p>
-            <p>Time: ${event.startTime === event.endTime ? event.startTime : `${event.startTime} - ${event.endTime}`}</p>
-            <p>Venue: ${event.venue}
+            <p><span style="font-weight: bold;">Date:</span> ${formatDate(event.eventDate)}</p>
+            <p><span style="font-weight: bold;">Time:</span> ${event.startTime === event.endTime ? event.startTime : `${event.startTime} - ${event.endTime}`}</p>
+            <p><span style="font-weight: bold;">Venue:</span> ${event.venue}</p>
         `;
-        
+
         // Conditionally include the speaker section if event.speaker is not null
         if (event.speaker) {
-            modalContentHTML += `<p>Speaker: ${event.speaker}</p>`;
+            modalContentHTML += `<p><span style="font-weight: bold;">Speaker:</span> ${event.speaker}</p>`;
         }
+
 
         if (event.instaPostLink) {
             modalContentHTML += `<a class="link" href="${event.instaPostLink}">Instagram Post</a>`;

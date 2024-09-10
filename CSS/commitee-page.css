@@ -498,9 +498,6 @@ a:active {
     transition: all 0.3s;
 }
 
-.siteMap a:hover {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.754);
-}
 
 #SiteMapContent{
     display: flex;

@@ -3,13 +3,13 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTNSTRR7NE"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSSTJK4LLK"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-NTNSTRR7NE');
+    gtag('config', 'G-QSSTJK4LLK');
     </script>
 
     <meta charset="UTF-8">
@@ -76,16 +76,16 @@
 
     <div class="modal" id="eventModal">
         <div class="modal-content">
-            <span class="modal-close" id="modalClose">&times;</span>
-            <div class="modal-container">
-                <div class="div-img">
-                    <img id="modalEventImage" src="" alt="Event Image">
-                </div>
-                <div class="modal-div">
-                    <div class="modal-eventname">
-                        <h3 id="modalEventName"></h3>
+            <div class="modal-header">
+                <span class="modal-close" id="modalClose">&times;</span>
+            </div>
+            <div class="modal-content-body">
+                <div class="modal-container">
+                    <div class="div-img">
+                        <img id="modalEventImage" src="" alt="Event Image">
                     </div>
-                    <div class="div-text">
+                    <div class="modal-div">
+                        <h3 id="modalEventName"></h3>
                         <p id="modalEventDescription"></p>
                         <p><strong>Speaker:</strong> <span id="modalSpeaker"></span></p>
                         <p><strong>Date:</strong> <span id="modalEventDate"></span></p>
@@ -95,10 +95,11 @@
                     </div>
                 </div>
             </div>
-
-
+            <div class="modal-footer">
+            </div>
         </div>
     </div>
+    
 
     
 
@@ -198,8 +199,7 @@
                 </div>
             </div>
             <div class="imgs">
-                <img class="ieee-footer" src="../Images/IEEE-LOGO-WHITE.png"
-                    alt="">
+                <img class="ieee-footer" src="../Images/IEEE-LOGO-WHITE.png" alt="">
                 <img class="au-footer" src="../Images/AU_logo.webp" alt="">
             </div>
         </div>
@@ -218,89 +218,12 @@
         </div>
     </section>
 
-    <script>
-        async function fetchEvents() {
-            const response = await fetch('https://ieee-vishv.onrender.com/api/events');
-            const events = await response.json();
-            const timelineList = document.querySelector('.timeline');
-
-            // Sort events by date in ascending order
-            events.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
-
-            // Add the events to the timeline
-            events.forEach(event => {
-                const eventDate = new Date(event.eventDate);
-                const dateString = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear();
-
-                const eventCard = document.createElement('li');
-                eventCard.classList.add('timeline-event');
-
-                // const eventSocialMediaLink = event.instaPostLink;
-
-                let cardContent = `
-                <div class="event-card">
-                    <img src="${event.eventPoster}" alt="${event.eventName} Poster">
-                    <div class="event-card-details">
-                        <h3>${event.eventName}</h3>
-                        <p>${event.eventDescription.length > 100 ? event.eventDescription.substring(0, 100) + '...' : event.eventDescription}</p>
-                        `;
-                    
-                    if(event.startTime === event.endTime){
-                        cardContent += `<p>Time: ${event.startTime}</p>`
-                    }
-                    else{
-                        cardContent += `<p>Time: ${event.startTime} - ${event.endTime}</p>`
-                    }
-
-                    cardContent += `
-                        <p>${event.speaker}</p>
-                        <p>${event.venue}</p>
-                        <button class="know-more" onclick="openModal(&quot;${event.eventName}&quot;, &quot;${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n').replace(/"/g, '\\"'))}&quot;, &quot;${event.eventPoster}&quot;, &quot;${event.speaker}&quot;, &quot;${dateString}&quot;, &quot;${event.startTime}&quot;, &quot;${event.endTime}&quot;, &quot;${event.venue}&quot;, &quot;${event.instaPostLink}&quot;)">Know More</button>
-
-                    </div>
-                </div>
-                <div class="event-date">${dateString}</div>
-            `;
-
-                eventCard.innerHTML = cardContent;
-                timelineList.appendChild(eventCard);
-            });
-        }
-
-        function openModal(eventName, eventDescription, eventPoster, speaker, eventDate, startTime, endTime, venue, instaPostLink) {
-            document.getElementById('modalEventName').innerText = eventName;
-            document.getElementById('modalEventImage').src = `${eventPoster}`;
-            document.getElementById('modalEventDescription').innerText = decodeURIComponent(eventDescription).replace(/\\n/g, '\n');
-            document.getElementById('modalSpeaker').innerText = speaker;
-            document.getElementById('modalEventDate').innerText = eventDate;
-
-            if(startTime === endTime){
-                document.getElementById('modalEventTime').innerText = startTime;
-            }
-            else{
-                document.getElementById('modalEventTime').innerText = startTime + ' - ' + endTime;
-            }
-            document.getElementById('modalVenue').innerText = venue;
-            document.getElementById('modalInstaPost').href = instaPostLink;
-
-            document.getElementById('eventModal').style.display = 'flex';
-        }
-
-        document.getElementById('modalClose').onclick = function () {
-            document.getElementById('eventModal').style.display = 'none';
-        }
-
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('eventModal')) {
-                document.getElementById('eventModal').style.display = 'none';
-            }
-        }
-
-        fetchEvents();
-    </script>
 </body>
+
+<script src="../js/logo-rediect.js"></script>
 <script src="../js/theme-logic.js"></script>
-<script src="../js/navbar-scroll.js"></script>
+<script src="../js/page-navbar-scroll.js"></script>
 <script src="../js/get-updates.js"></script>
+<script src="../js/event-fetch.js"></script>
 
 </html>

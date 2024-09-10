@@ -43,7 +43,7 @@ exports.getUpdatesEnroll = async (req, res) => {
         const mailOptionsUser = {
             from: process.env.EMAIL_USER,
             to: email,
-            subject: 'Welcome to IEEE AUSB!',
+            subject: 'Thank you for connecting to IEEE AUSB!',
             html:  GetUpdatesUser(`${name}`) // Use the template function to set the HTML body
         };
 

@@ -26,12 +26,18 @@ function contactUsUser(name) {
 				justify-content: center;
 				flex-wrap: wrap;
 			}
+				
 			.logos img {
-				width: 25%;
-				/* height: 100px; */
+				height: 70px;  /* Set a fixed height */
+				object-fit: contain;  /* Maintain aspect ratio */
 				margin: 10px;
-				object-fit: contain;
 			}
+
+			.logos .ieee-logo, .logos .au-logo {
+				height: 100px;  /* Same height for both logos */
+				width: auto;    /* Let the width adjust automatically */
+			}
+
 			h2 {
 				color: #333;
 				margin-top: 0;
@@ -53,8 +59,8 @@ function contactUsUser(name) {
 	<body>
 		<div class="container">
 			<div class="logos">
-				<img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/au_logo_jcaotv.png" alt="Ahmedabad University Logo">
-				<img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/ieee_logo_urpxug.png" alt="IEEE Logo">
+				<img class="au-logo" src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/au_logo_jcaotv.png" alt="Ahmedabad University Logo">
+				<img class="ieee-logo" src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/ieee_logo_urpxug.png" alt="IEEE Logo">
 			</div>
 			<h2>Thank you for contacting us!</h2>
 			<p>Dear ${name},</p>

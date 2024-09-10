@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
 }
 
 .laptop-gallery-video {
@@ -13,6 +13,55 @@
     filter: brightness(60%);
     padding: 0 2rem;
 }
+.carousel-link {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent, so figcaption stays styled */
+    display: inline-block; /* Ensure the figure is clickable */
+}
+
+.au-video{
+    position: relative;
+    max-width: fit-content;
+    margin: auto;
+}
+
+
+.tour-tag-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    right: 4%;
+    top: 1.5%;
+    font-size: 1.5rem;
+    /* z-index: 99999; */
+}
+
+.tour-tag-div p{
+    color: white;
+    font-weight: 600;
+    font-family: "Poppins";
+    transition: 0.3s;
+}
+
+.tour-tag-div:hover p{
+    color: black; /* Change link color to black when hovered */
+}
+
+.tour-tag-div img {
+    filter: brightness(100%) invert(100%);
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    transition: filter 0.3s ease; /* Smooth transition for filter */
+}
+
+.tour-tag-div:hover img {
+    filter: brightness(0%) invert(0%); /* On hover: black image */
+}
+
+
 
 
 .laptop-gallery-images {
@@ -89,6 +138,18 @@
         height: 170px;
         border-radius: 1rem;
         overflow: hidden;
+    }
+}
+@media (min-width : 1024px) and (max-width : 1150px) {
+    .tour-tag-div{
+        right: 4%;
+        top: 5%;
+    }
+}
+@media (min-width : 1024px) and (max-width : 1080px) {
+    .tour-tag-div{
+        right: 4%;
+        top: 7%;
     }
 }
 

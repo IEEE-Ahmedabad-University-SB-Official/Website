@@ -9,6 +9,7 @@ body {
     /* color: red; */
     text-transform: uppercase;
     margin-bottom: 2rem;
+    margin-top: 9rem;
     text-align: center;
     font-size: 2.5rem;
     text-transform: uppercase;
@@ -69,11 +70,8 @@ body {
     display: flex;
     margin: 0 50px;
     -webkit-overflow-scrolling: touch;
-    /* Smooth scrolling for iOS */
     scrollbar-width: none;
-    /* Firefox */
     overflow-x: scroll;
-    /* Hide the scroll bar */
 }
 
 .card-container::-webkit-scrollbar {

@@ -14,7 +14,7 @@ exports.uploadEvent = async (req, res) => {
 
         // Upload file to Cloudinary
 
-        const uploadedFile =  await uploadImageToCloudinary(file, "Events" , 40 );
+        const uploadedFile =  await uploadImageToCloudinary(file, "Events" , 10 );
 
 
         // Create event in database
@@ -60,7 +60,7 @@ exports.updateEvent = async (req, res) => {
 
             const options = {
                 folder: "Events",
-                quality: 40,
+                quality: 10,
                 resource_type: "auto"
             };
             const uploadedFile = await cloudinary.uploader.upload(file.tempFilePath, options);

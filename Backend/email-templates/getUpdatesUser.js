@@ -28,10 +28,15 @@ function getUpdatesUser(name) {
                 flex-wrap: wrap;
             }
             .logos img {
-                width: 25%;
-                margin: 10px;
-                object-fit: contain;
-            }
+				height: 100px;  /* Set a fixed height */
+				object-fit: contain;  /* Maintain aspect ratio */
+				margin: 10px;
+			}
+
+			.logos .ieee-logo, .logos .au-logo {
+				height: 70px;  /* Same height for both logos */
+				width: auto;    /* Let the width adjust automatically */
+			}
             h2 {
                 color: #333;
                 margin-top: 0;
@@ -52,9 +57,9 @@ function getUpdatesUser(name) {
     <body>
         <div class="container">
             <div class="logos">
-                <img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/au_logo_jcaotv.png" alt="Ahmedabad University Logo">
-                <img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/ieee_logo_urpxug.png" alt="IEEE Logo">
-            </div>
+				<img class="au-logo" src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/au_logo_jcaotv.png" alt="Ahmedabad University Logo">
+				<img class="ieee-logo" src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721848407/ieee_logo_urpxug.png" alt="IEEE Logo">
+			</div>
             <h2>Welcome to IEEE AUSB!</h2>
             <p>Dear ${name},</p>
             <p>Thank you for showing interest in staying updated about our organization. We're excited to have you on board!</p>

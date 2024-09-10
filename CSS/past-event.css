@@ -49,15 +49,25 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.4);
-    -webkit-backdrop-filter: blur(5px);
+    background-color: white;
     backdrop-filter: blur(5px);
     cursor: pointer;
     transition: 0.2s;
+    color: black;
 }
 .know-more-btn:hover{
-    background-color: black;
+    background-color: rgba(128, 128, 128, 0.27);
+    /* color: black; */
+}
+
+body.darkTheme .know-more-btn{
+    background-color: #000;
     color: white;
+}
+
+body.darkTheme .know-more-btn:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
 }
 
 
@@ -100,6 +110,7 @@
     height: 100%;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.8);
+    font-family: Montserrat;
 }
 
 .modal-content {
@@ -108,7 +119,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 800px;
+    max-width: 900px;
     /* Max width for modal content */
     border-radius: 10px;
 }
@@ -155,14 +166,14 @@
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #6b6b6b;
     color: white;
     text-decoration: none;
     border-radius: 4px;
 }
 
 .modal-detail .link:hover {
-    background-color: #0056b3;
+    background-color: #1a1a1a;
 }
 
 .detail h2{

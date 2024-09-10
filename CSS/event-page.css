@@ -16,6 +16,10 @@ h1 {
     text-align: center;
 }
 
+.ContactUsHeader p{
+    margin: 0;
+    margin-top: 1.2rem;
+}
 .timeline-container {
     display: flex;
     justify-content: center;
@@ -32,6 +36,27 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.timeline-line::before,
+.timeline-line::after {
+    content: '';
+    position: absolute;
+    width: 10px;  /* Diameter of the circle */
+    height: 10px; /* Diameter of the circle */
+    background-color: #a7a7a7;
+    border-radius: 50%; /* Makes it a circle */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-line::before {
+    top: 0; /* Circle at the top of the line */
+}
+
+.timeline-line::after {
+    bottom: 0; /* Circle at the bottom of the line */
+}
+
 
 .timeline {
     display: flex;
@@ -70,7 +95,7 @@ h1 {
 
 .event-card img {
     width: 200px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 5px;
     margin-right: 20px;
 }
@@ -140,14 +165,24 @@ h1 {
 }
 
 .know-more {
-    background-color: #007bff;
+    background-color: #2f2f2f;
     color: white;
     border: none;
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
     text-align: center;
+    width: fit-content;
+    padding:10px 20px ;
+    /* backdrop-filter: blur(5px); */
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.know-more:hover{
+    background-color: white;
+    border:1px solid  #2f2f2f;
+    color: black;
 }
 
 .modal {
@@ -163,6 +198,7 @@ h1 {
     justify-content: center;
     align-items: center;
     z-index: 101;
+    /* transition: 0.3s ease-in-out; */
 }
 
 .modal-container{
@@ -176,6 +212,61 @@ h1 {
     width: 80%;
     max-width: 800px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.zoomIn {
+    animation: zoomIn 0.5s forwards;
+}
+
+.zoomOut {
+    animation: zoomOut 0.5s forwards;
+}
+
+.fadeOut {
+    animation: fadeOut 0.5s forwards;
+}
+from {
+    opacity: 0;
+}
+
+to {
+    opacity: 1;
+}
+
+/* Keyframes for zoomIn animation */
+@keyframes zoomIn {
+from {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+to {
+    transform: scale(1);
+    opacity: 1;
+}
+}
+
+/* Keyframes for zoomOut animation */
+@keyframes zoomOut {
+from {
+    transform: scale(1);
+    opacity: 1;
+}
+
+to {
+    transform: scale(0.5);
+    opacity: 0;
+}
+}
+
+/* Keyframes for fadeOut animation */
+@keyframes fadeOut {
+from {
+    opacity: 1;
+}
+
+to {
+    opacity: 0;
+}
 }
 
 .modal-close {
@@ -210,7 +301,6 @@ h1 {
 
 .modal-eventname{
     display: flex;
-    justify-content: center;
     align-items: center;
     font-size: 1.25rem;
 }
@@ -230,7 +320,21 @@ h1 {
 .modal-div .div-text a:hover{
     background-color: black;
     border: 1px solid white;
-    color: white;
+    color: black;
+}
+
+.modal-div p{
+    margin-bottom: 0;
+}
+
+.modal-div a{
+    color: black;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    width: fit-content;
+    margin-top: 1rem;
 }
 
 .div-text {
@@ -328,7 +432,6 @@ nav {
 .navAnchors a.active {
     border-bottom: solid white;
     transform: scale(1.06);
-    /* font-weight: bold; */
 }
 
 #IEEE-LOGO {
@@ -733,25 +836,69 @@ body.darkTheme .theme-div button{
         margin-top: 0.5rem;
     }
 
-    .modal-content{
-        margin-top: 10%;
-        /* margin-bottom: 5rem; */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Background overlay */
+        overflow: hidden; /* Prevents scrolling outside the modal */
+    }
+    
+    .modal-content {
+        position: relative;
+        margin: auto;
+        width: 80%; /* You can adjust this value */
+        max-width: 600px; /* Set the maximum width */
+        max-height: 80vh; /* Set the maximum height */
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden; /* Hide overflow to ensure scrollable content */
         display: flex;
-        /* justify-content: center;
-        align-items: center; */
         flex-direction: column;
+
+    }
+    
+    .modal-header{
+        padding: 1rem;
+    }
+    
+    
+    .modal-content-body {
+        padding: 1rem;
+        overflow-y: auto; /* Enable vertical scrolling */
+        max-height: calc(80vh - 4rem); /* Adjust height considering header and footer */
+        padding-top: 0;
+    }
+    
+    .modal-close {
+        font-size: 30px;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 
-    .modal-container{
-        display: flex;
-        flex-direction: column;
-        margin-top: 2rem;
-        margin-bottom: 0rem;
+    .modal-div p{
+        margin-bottom: 0.7rem;
     }
 
-    .modal-eventname{
-        margin: 0.5rem 0;
+    .modal-div a{
+        margin-top: 0rem;
     }
+
+    #modalEventName{
+        margin-top: 0.7rem;
+    }
+    
+    .modal-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
 
     .div-text{
         display: flex;
@@ -772,6 +919,14 @@ body.darkTheme .theme-div button{
         font-weight:bolder;
     }
 
+    /* .modal-content{
+        margin-top: 100%;
+        margin-bottom: 100%
+    } */
+
+    /* .modal{
+        padding-top: 100%;
+    } */
 }
 
 
