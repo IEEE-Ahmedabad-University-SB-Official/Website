@@ -569,20 +569,20 @@
     .achievementsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 190px !important;
+        /* margin-bottom: 190px !important; */
        
     }
     .aboutSection{
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 80px !important;
+        /* margin-bottom: 80px !important; */
 
     }
     .past-event-container,
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 280px !important;
+        margin-bottom: 100px !important;
 
     }
 
@@ -692,7 +692,7 @@
     .achievementsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 130px !important;
+        /* margin-bottom: 130px !important; */
        
     }
 
@@ -701,13 +701,17 @@
     .wrapper {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 220px !important;
+        /* margin-bottom: 220px !important; */
+    }
+
+    .past-event-container{
+        margin-bottom: 100px !important;
     }
 
     .contactUsSection {
         margin-top: unset !important;
         margin-bottom: unset !important;
-        margin-bottom: 520px !important;
+        margin-bottom: 300px !important;
     }
 }
 

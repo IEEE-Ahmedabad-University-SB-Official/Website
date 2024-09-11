@@ -71,6 +71,9 @@ body.darkTheme .know-more-btn:hover{
 }
 
 
+.join-us-head{
+    font-size: 2.5rem !important;
+}
 .head h1 {
     font-size: 10rem;
     text-transform: uppercase;
@@ -84,6 +87,8 @@ body.darkTheme .know-more-btn:hover{
 
     -webkit-font-smoothing: antialiased;
 }
+
+
 
 .head .past-event-head{ 
     text-shadow: 

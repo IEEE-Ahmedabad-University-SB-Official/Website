@@ -698,6 +698,14 @@ nav{
     opacity: 0.8;
 }
 
+.join-us-head{
+    text-align: center; 
+    font-size: 2.5rem;
+    text-shadow:
+        3px 3px rgba(128, 128, 128, 0.4),
+        6px 6px rgba(128, 128, 128, 0.2);
+}
+
 body.darkTheme .join-us-card-dark{
     display: flex;
 }

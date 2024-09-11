@@ -637,15 +637,31 @@
     .upcomingEventText {
         margin-left: 0;
         margin-bottom: 1.5rem;
+        margin-top: 0;
         font-size: 2rem;
         font-weight: 800;
         font-family: Montserrat;
         color: #2f2f2f;
         text-shadow:
-            6px 6px rgba(128, 128, 128, 0.4),
-            12px 12px rgba(128, 128, 128, 0.2);
+            3px 3px rgba(128, 128, 128, 0.4),
+            6px 6px rgba(128, 128, 128, 0.2);
     }
 
+
+    .join-us-head{
+        text-align: center; 
+        font-size: 2rem !important;
+        text-shadow:
+            3px 3px rgba(128, 128, 128, 0.4),
+            6px 6px rgba(128, 128, 128, 0.2);
+    }
+
+    .head .past-event-head{ 
+        text-shadow: 
+        3px 3px rgba(128, 128, 128, 0.4),
+        6px 6px rgba(128, 128, 128, 0.2);
+    
+    }
 
     /* ===== Past Event Section ==== */
 
@@ -670,8 +686,8 @@
         margin-left: 0;
         font-size: 800;
         text-shadow:
-            6px 6px rgba(128, 128, 128, 0.4),
-            12px 12px rgba(128, 128, 128, 0.2);
+            3px 3px rgba(128, 128, 128, 0.4),
+            6px 6px rgba(128, 128, 128, 0.2);
     }
 
     .past-event-container .container {

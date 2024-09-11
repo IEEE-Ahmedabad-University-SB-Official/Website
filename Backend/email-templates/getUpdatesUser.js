@@ -1,5 +1,3 @@
-// emailTemplate.js
-
 function getUpdatesUser(name) {
     return `
     <!DOCTYPE html>
@@ -31,12 +29,14 @@ function getUpdatesUser(name) {
 				height: 100px;  /* Set a fixed height */
 				object-fit: contain;  /* Maintain aspect ratio */
 				margin: 10px;
+                margin-left: 0;
 			}
 
 			.logos .ieee-logo, .logos .au-logo {
 				height: 70px;  /* Same height for both logos */
 				width: auto;    /* Let the width adjust automatically */
 			}
+
             h2 {
                 color: #333;
                 margin-top: 0;
@@ -51,6 +51,30 @@ function getUpdatesUser(name) {
 
             .last-div {
                 margin-top: 8px;
+            }
+
+            /* Media query for mobile screens */
+            @media (max-width: 768px) {
+                .container {
+                    width: 90%;
+                    padding: 15px;
+                }
+                .logos {
+                    flex-direction: column;
+                    margin-bottom: 15px;
+                }
+                .logos img {
+                    height: 50px;  /* Adjust height for mobile */
+                }
+                .logos .ieee-logo, .logos .au-logo {
+                    height: 40px;  /* Adjust height for logos */
+                }
+                h2 {
+                    font-size: 1.1em;
+                }
+                p {
+                    font-size: 0.75em;
+                }
             }
         </style>
     </head>
