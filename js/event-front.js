@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
                 </div>
-                <a class="link" href="${event.registrationLink}">Register Now</a>
+                <a target="_blank" class="link" href="${event.registrationLink}">Register Now</a>
             </div>
         `;
         

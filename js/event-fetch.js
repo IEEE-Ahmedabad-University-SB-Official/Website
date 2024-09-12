@@ -8,44 +8,53 @@ async function fetchEvents() {
         events.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
 
         // Add the events to the timeline
-        events.forEach(event => {
-            const eventDate = new Date(event.eventDate);
-            const dateString = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear();
+        // Add the events to the timeline
+events.forEach(event => {
+    const eventDate = new Date(event.eventDate);
+    const dateString = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear();
 
-            const eventCard = document.createElement('li');
-            eventCard.classList.add('timeline-event');
+    const eventCard = document.createElement('li');
+    eventCard.classList.add('timeline-event');
 
-            let cardContent = `
-            <div class="event-card">
-                <img src="${event.eventPoster}" alt="${event.eventName} Poster">
-                <div class="event-card-details">
-                    <h3>${event.eventName}</h3>
-                    <p>${event.eventDescription.length > 100 ? event.eventDescription.substring(0, 100) + '...' : event.eventDescription}</p>
-                    ${event.startTime === event.endTime ? 
-                        `<p><span style="font-weight:600">Time: </span>${event.startTime}</p>` :
-                        `<p><span style="font-weight:600">Time: </span>${event.startTime} - ${event.endTime}</p>`
-                    }
-                    <p><span style="font-weight:600">Speaker: </span>${event.speaker}</p>
-                    <p><span style="font-weight:600">Venue: </span>${event.venue}</p>
-                    <button class="know-more" onclick="openModal(
-                        '${event.eventName}', 
-                        '${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n').replace(/"/g, '\\"'))}', 
-                        '${event.eventPoster}', 
-                        '${event.speaker}', 
-                        '${dateString}', 
-                        '${event.startTime}', 
-                        '${event.endTime}', 
-                        '${event.venue}', 
-                        '${event.instaPostLink}'
-                    )">Know More</button>
-                </div>
-            </div>
-            <div class="event-date">${dateString}</div>
-            `;
+    let cardContent = `
+    <div class="event-card">
+        <img src="${event.eventPoster}" alt="${event.eventName} Poster">
+        <div class="event-card-details">
+            <h3>${event.eventName}</h3>
+            <p>${event.eventDescription.length > 100 ? event.eventDescription.substring(0, 100) + '...' : event.eventDescription}</p>
+            ${event.startTime === event.endTime ? 
+                `<p><span style="font-weight:600">Time: </span>${event.startTime}</p>` :
+                `<p><span style="font-weight:600">Time: </span>${event.startTime} - ${event.endTime}</p>`
+            }
+            <p><span style="font-weight:600">Speaker: </span>${event.speaker}</p>
+            <p><span style="font-weight:600">Venue: </span>${event.venue}</p>
+            <button class="know-more">Know More</button>
+        </div>
+    </div>
+    <div class="event-date">${dateString}</div>
+    `;
 
-            eventCard.innerHTML = cardContent;
-            timelineList.appendChild(eventCard);
-        });
+    eventCard.innerHTML = cardContent;
+    const knowMoreButton = eventCard.querySelector('.know-more');
+
+    // Attach the event listener with closure
+    knowMoreButton.addEventListener('click', () => {
+        openModal(
+            event.eventName,
+            event.eventDescription,
+            event.eventPoster,
+            event.speaker,
+            dateString,
+            event.startTime,
+            event.endTime,
+            event.venue,
+            event.instaPostLink
+        );
+    });
+
+    timelineList.appendChild(eventCard);
+});
+
     } catch (error) {
         console.error('Error fetching events:', error);
     }
@@ -77,7 +86,16 @@ function openModal(eventName, eventDescription, eventPoster, speaker, eventDate,
     document.getElementById('modalEventDate').innerText = eventDate;
     document.getElementById('modalEventTime').innerText = startTime === endTime ? startTime : startTime + ' - ' + endTime;
     document.getElementById('modalVenue').innerText = venue;
-    document.getElementById('modalInstaPost').href = instaPostLink;
+    
+    const instaPostButton = document.getElementById('modalInstaPost');
+    
+    // Check if instaPostLink is null or an empty string
+    if (instaPostLink) {
+        instaPostButton.href = instaPostLink;
+        instaPostButton.style.display = 'inline-block'; // Ensure the button is visible if a link exists
+    } else {
+        instaPostButton.style.display = 'none'; // Hide the button if no link is available
+    }
 
     const modal = document.getElementById('eventModal');
     modal.style.display = 'flex';

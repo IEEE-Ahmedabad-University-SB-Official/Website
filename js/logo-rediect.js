@@ -4,10 +4,10 @@ const auImg = document.querySelector('.au-footer');
 
 // Add click event listener for the IEEE image
 ieeeImg.addEventListener('click', function() {
-    window.location.href = '../index.html'; // Redirect to index.html
+    window.open('../index.html', '_blank'); // Open index.html in a new tab
 });
 
 // Add click event listener for the AU image
 auImg.addEventListener('click', function() {
-    window.location.href = 'https://ahduni.edu.in/'; // Redirect to google.com
+    window.open('https://ahduni.edu.in/', '_blank'); // Open the AU website in a new tab
 });
