@@ -70,10 +70,10 @@ function getUpdatesUser(name) {
                     height: 40px;  /* Adjust height for logos */
                 }
                 h2 {
-                    font-size: 1.1em;
+                    font-size: 1.5em;
                 }
                 p {
-                    font-size: 0.75em;
+                    font-size: 1.1em;
                 }
             }
         </style>

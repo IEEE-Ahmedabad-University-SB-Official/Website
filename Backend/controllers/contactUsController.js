@@ -1,17 +1,39 @@
 const contactUsUser = require('../email-templates/contactUsUser');
 const ContactUsDetail = require('../models/contact-us');
 const nodemailer = require('nodemailer');
-
+const { google } = require('googleapis');
 require('dotenv').config();
 
-// Nodemailer setup
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+// OAuth2 credentials
+const CLIENT_ID = process.env.CLIENT_ID; // Store your Client ID in the .env file
+const CLIENT_SECRET = process.env.CLIENT_SECRET; // Store your Client Secret in the .env file
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN; // Store your Refresh Token in the .env file
+
+// Create an OAuth2 client
+const oAuth2Client = new google.auth.OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    REDIRECT_URI
+);
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+// Function to get the transporter (inside a function so it's executed each time you send an email)
+async function createTransporter() {
+    const accessToken = await oAuth2Client.getAccessToken();
+    
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.SEND_EMAIL,
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        refreshToken: REFRESH_TOKEN,
+        accessToken: accessToken.token, // Access token for sending the email
+      },
+    });
+  }
 
 exports.contactUsEnroll =  async (req, res) => {
     const { name, email, message } = req.body;
@@ -19,18 +41,20 @@ exports.contactUsEnroll =  async (req, res) => {
     const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const formattedTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
 
-    const mailOptionsAdmin = {
-        from: process.env.EMAIL_USER,
-        to: 'vishvboda0407@gmail.com',
-        subject: 'New Contact Us Submission',
-        text: `You have a new contact form submission from website:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\nDate: ${formattedDate}\nTime: ${formattedTime}`
-    };
+    const transporter = await createTransporter();
 
     const mailOptionsUser = {
-        from: process.env.EMAIL_USER,
+        from: process.env.SEND_EMAIL,
         to: `${email}`,
         subject: 'Thank you for contacting IEEE AUSB!',
         html: contactUsUser(`${name}`) // Use the template function to set the HTML body
+    };
+
+    const mailOptionsAdmin = {
+        from: process.env.SEND_EMAIL,
+        to: process.env.SEND_EMAIL,
+        subject: 'New Contact Us Submission',
+        text: `You have a new contact form submission from website:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\nDate: ${formattedDate}\nTime: ${formattedTime}`
     };
 
     try {
