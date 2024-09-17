@@ -96,5 +96,3 @@ We would like to thank the **IEEE Ahmedabad University Student Branch** for thei
 ## Need Help or Have Questions?
 
 If you need any support, have questions, or encounter any bugs or issues, please don't hesitate to reach out to us at [ieee.sb@ahduni.edu.in](mailto:ieee.sb@ahduni.edu.in).
-
-[]
