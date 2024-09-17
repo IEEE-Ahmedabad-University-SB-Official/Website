@@ -14,98 +14,209 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../Images/ieee-favicon.ico">
-    <title>Admin file</title>
+    <title>IEEE Website</title>
     <style>
-        h1{
-            margin-top: 0;
+        /* General styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: black; /* Dark background */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
-        .text{
-            background-image: url("../Images/3425081.jpg");
-            background-size: cover;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            font-size: 200px;
+
+        /* Small squares background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 10px 10px; /* Size of the squares */
+            z-index: -1; /* Place it behind everything */
+        }
+
+        /* Heading */
+        h1 {
+            margin-top: 20px;
+            font-size: 5rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             text-align: center;
-            margin-bottom: 20px;
-        }
-        .eventAdminBtn , .memberAdminBtn{
-            display: block;
-            margin: 1rem auto;
-            padding: 10px 20px;
-            background-color: rgba(255, 0, 0, 0.611);
-            border: 2px solid rgba(0, 0, 0, 0.605);
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
         }
 
-        .eventAdminBtn:hover, .memberAdminBtn:hover{
-            background-color: rgba(255, 0, 0, 0.711);
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.495);
+        /* Profile icon styles */
+        .profile-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1); /* Glassy background */
+            backdrop-filter: blur(10px); /* Glass effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer; /* Pointer cursor */
+            transition: background 0.3s;
         }
 
-        .mainPageBtn{
-            display: block;
-            margin: 1rem auto;
-            padding: 10px 20px;
-            background-color: navy;
-            border: 2px solid rgba(0, 0, 0, 0.605);
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
+        /* Profile icon hover effect */
+        .profile-icon:hover {
+            background: rgba(255, 255, 255, 0.2); /* Slightly brighter on hover */
         }
 
-        .mainPageBtn:hover{
-            background-color: transparent;
-            border: 2px solid navy;
-            color: navy;
+        /* Profile icon content */
+        .profile-icon::before {
+            content: "👨🏻‍💻"; /* Simple user icon */
+            font-size: 1.5rem;
+            color: white;
         }
-        @media (max-width: 1024px) {
-            .text{
-                font-size: 140px;
+
+        /* Container for rows */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Row styles */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Glassy div styles */
+        .glassy-div {
+            flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1); /* Glass effect */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Soft shadow */
+            backdrop-filter: blur(10px); /* Glass blur */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+            cursor: pointer; /* Pointer cursor */
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        /* Hover effect for divs */
+        .glassy-div:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15); /* Slightly more opaque on hover */
+        }
+
+        /* Specific styles for each glassy div */
+        .members {
+            background-color: rgba(70, 130, 180, 0.1); /* Steel blue */
+            border-left: 5px solid #4682b4;
+        }
+
+        .members:hover {
+            background-color: rgba(70, 130, 180, 0.2); /* Brighter on hover */
+        }
+
+        .events {
+            background-color: rgba(255, 99, 71, 0.1); /* Tomato */
+            border-left: 5px solid #ff6347;
+        }
+
+        .events:hover {
+            background-color: rgba(255, 99, 71, 0.2); /* Brighter on hover */
+        }
+
+        .achievements {
+            background-color: rgba(60, 179, 113, 0.1); /* Medium sea green */
+            border-left: 5px solid #3cb371;
+        }
+
+        .achievements:hover {
+            background-color: rgba(60, 179, 113, 0.2); /* Brighter on hover */
+        }
+
+        .contact-us {
+            background-color: rgba(218, 112, 214, 0.1); /* Orchid */
+            border-left: 5px solid #da70d6;
+        }
+
+        .contact-us:hover {
+            background-color: rgba(218, 112, 214, 0.2); /* Brighter on hover */
+        }
+
+        .get-update {
+            background-color: rgba(255, 215, 0, 0.1); /* Gold */
+            border-left: 5px solid #ffd700;
+        }
+
+        .get-update:hover {
+            background-color: rgba(255, 215, 0, 0.2); /* Brighter on hover */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+
+            h1{
+                font-size: 2.5rem;
             }
         }
 
-        .loader-container{
+        /* Loader styles */
+        .loader-container {
             height: 95vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        
-    .loader {
-    width: 50px;
-    aspect-ratio: 1;
-    color: rgb(0, 132, 255);
-    border: 2px solid;
-    display: grid;
-    box-sizing: border-box;
-    animation: l1 4s infinite linear;
-    }
-    .loader::before,
-    .loader::after {
-    content: "";
-    grid-area: 1/1;
-    margin: auto;
-    width: 70.7%;
-    aspect-ratio: 1;
-    border: 2px solid;
-    box-sizing: content-box;
-    animation: inherit;
-    }
-    .loader::after {
-    width: 50%;
-    aspect-ratio: 1;
-    border: 2px solid;
-    animation-duration: 2s;
-    }
-    @keyframes l1{
-    100% {transform:rotate(1turn)}
-    }
+        .loader {
+            width: 50px;
+            aspect-ratio: 1;
+            color: rgb(0, 132, 255);
+            border: 2px solid;
+            display: grid;
+            box-sizing: border-box;
+            animation: l1 4s infinite linear;
+        }
+
+        .loader::before,
+        .loader::after {
+            content: "";
+            grid-area: 1/1;
+            margin: auto;
+            width: 70.7%;
+            aspect-ratio: 1;
+            border: 2px solid;
+            box-sizing: content-box;
+            animation: inherit;
+        }
+
+        .loader::after {
+            width: 50%;
+            aspect-ratio: 1;
+            border: 2px solid;
+            animation-duration: 2s;
+        }
+
+        @keyframes l1 {
+            100% {transform:rotate(1turn)}
+        }
 
         .hidden {
             display: none;
@@ -127,35 +238,47 @@
     </style>
 </head>
 <body>
+    <!-- Loader -->
     <div class="loader-container">
         <div class="loader"></div>
     </div>
 
+    <!-- Content Container -->
     <div class="container hidden">
-        <h1 class="text">IEEE</h1>
+        <!-- Profile Icon -->
+        <div class="profile-icon"></div>
 
-        <div class="events">
-            <button class="eventAdminBtn" onclick="window.location.href='event-admin.html'">Event Admin Page</button>
+        <!-- Heading -->
+        <h1 class="text">IEEE AU SB</h1>
+        
+        <!-- Content Rows -->
+        <div class="row">
+            <div class="glassy-div members">
+                <h2>Members</h2>
+                <p>Information about members of IEEE.</p>
+            </div>
+            <div class="glassy-div events">
+                <h2>Events</h2>
+                <p>Upcoming and past events.</p>
+            </div>
+            <div class="glassy-div achievements">
+                <h2>Achievements</h2>
+                <p>Achievements and milestones.</p>
+            </div>
         </div>
-        <div class="members">
-            <button class="memberAdminBtn" onclick="window.location.href='member-admin.html'">Member Admin page</button>
-        </div>
-        <div class="achievements">
-            <button class="memberAdminBtn" onclick="window.location.href='achievement-admin.html'">Achievement Admin Page</button>
-        </div>
-        <div class="updates">
-            <button class="memberAdminBtn" onclick="window.location.href='get-updates-admin.html'">Get updates details</button>
-        </div>
-        <div class="contact-us">
-            <button class="memberAdminBtn" onclick="window.location.href='contact-us-admin.html'">Contact us details</button>
-        </div>
-        <div class="add-admin">
-            <button class="memberAdminBtn" onclick="window.location.href='user-admin.html'">Add admin</button>
-        </div>
-        <div class="main-page">
-            <button class="mainPageBtn" onclick="window.location.href='../index.html'">IEEE website main page</button>
+        <div class="row">
+            <div class="glassy-div contact-us">
+                <h2>Contact Us Responses</h2>
+                <p>View responses from the contact us form.</p>
+            </div>
+            <div class="glassy-div get-update">
+                <h2>Get Update Responses</h2>
+                <p>Stay updated with the latest responses.</p>
+            </div>
         </div>
     </div>
+
+    <!-- JavaScript -->
     <script>
         if (!sessionStorage.getItem('ieee-login-userId')) {
           window.location.href = './login.html';
@@ -169,6 +292,26 @@
                 container.classList.add('fade-in');
             }, 850); // 1 second delay
         });
-    </script> 
+
+        // Updated click event bindings
+        document.querySelector('.events').onclick = function() {
+            window.location.href = 'event-admin.html';
+        };
+        document.querySelector('.members').onclick = function() {
+            window.location.href = 'member-admin.html';
+        };
+        document.querySelector('.achievements').onclick = function() {
+            window.location.href = 'achievement-admin.html';
+        };
+        document.querySelector('.get-update').onclick = function() {
+            window.location.href = 'get-updates-admin.html';
+        };
+        document.querySelector('.contact-us').onclick = function() {
+            window.location.href = 'contact-us-admin.html';
+        };
+        document.querySelector('.profile-icon').onclick = function() {
+            window.location.href = 'user-admin.html';
+        };
+    </script>
 </body>
 </html>
