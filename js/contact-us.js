@@ -77,3 +77,33 @@ function validateEmail(email) {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(String(email).toLowerCase());
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    var mapSection = document.querySelector('.MapSection');
+    var iframeLoaded = false;
+    var loader = document.getElementById('mapLoader');
+
+    function loadMap() {
+        if (!iframeLoaded && mapSection.getBoundingClientRect().top < window.innerHeight) {
+            var iframe = document.createElement('iframe');
+            iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.6085372802418!2d72.55180577602258!3d23.03814131574564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848d5f86040f%3A0x7a0cc8b624851642!2sAhmedabad%20University!5e0!3m2!1sen!2sin!4v1715959567993!5m2!1sen!2sin";
+            iframe.width = "100%";
+            iframe.height = "400";
+            iframe.style.border = "0";
+            iframe.allowFullscreen = true;
+            iframe.loading = "lazy";
+
+            // Hide loader when iframe loads
+            iframe.onload = function() {
+                loader.style.display = "none";  // Hide loader once map is loaded
+            };
+
+            mapSection.appendChild(iframe);
+            iframeLoaded = true;
+        }
+    }
+
+    window.addEventListener('scroll', loadMap);
+});
+
+

@@ -95,8 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Add Instagram profile icon if it exists
       const instagramTd = document.createElement('td');
       if (row.instagramProfile) {
-        instagramTd.innerHTML = `<a class="linkIcon" href="${row.instagramProfile}" target="_blank" class="icon" id="instagram">
-            <i class="fa-brands fa-instagram"></i></a>`;
+        instagramTd.innerHTML = `<a class="linkIcon" href="${row.instagramProfile}" target="_blank" aria-label="Instagram Profile">
+    <i class="fab fa-instagram"></i>
+</a>`;
       }
       tr.appendChild(instagramTd);
 
@@ -107,8 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <i class="fa-brands fa-linkedin"></i></a>`;
       }
       tr.appendChild(linkedinTd);
-
-      console.log("saas",`${row._id}`);
 
       // Add remaining columns: leave date, profile image, and action buttons
       tr.innerHTML += `

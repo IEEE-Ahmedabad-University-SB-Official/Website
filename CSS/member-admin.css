@@ -261,8 +261,9 @@ th.leave-date, td.leave-date {
 } */
 
 .linkIcon{
-    /* width: 52px; */
-    /* color: #28a745; */
+    width: 41px;
+    height: 40px;
+    color: black;
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
