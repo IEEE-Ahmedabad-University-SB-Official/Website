@@ -176,27 +176,28 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission behavior
     const formData = new FormData(this);
-    // console.log(formData);
-
+  
     const eventId = formData.get('eventId');
-
+  
+    // Append the current poster if no new file is selected
     if (!imageUpload.files.length && currentPoster) {
       formData.append('eventPoster', currentPoster);
     }
-
-    formData.eventName = JSON.stringify(formData.eventName);
-    formData.eventDescription = JSON.stringify(formData.eventDescription);
-    formData.venue = JSON.stringify(formData.venue);
-
+  
+    // Convert necessary fields to strings if needed
+    formData.append('eventName', formData.get('eventName'));
+    formData.append('eventDescription', formData.get('eventDescription'));
+    formData.append('venue', formData.get('venue'));
+  
     // Show loader and disable interactions
     loader.style.display = 'block';
     document.body.classList.add('disable-interaction');
-
+  
     const handleResponse = response => {
       // Hide loader and enable interactions
       loader.style.display = 'none';
       document.body.classList.remove('disable-interaction');
-
+  
       Swal.fire({
         title: eventId ? 'Updated!' : 'Added!',
         text: eventId ? 'Your event has been updated.' : 'Your event has been added.',
@@ -207,24 +208,30 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchData(); // Reload the event data
       });
     };
-
+  
     const handleError = error => {
       console.error(eventId ? 'Error updating event:' : 'Error uploading event:', error);
       // Hide loader and enable interactions
       loader.style.display = 'none';
       document.body.classList.remove('disable-interaction');
     };
-
+  
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    };
+  
     if (eventId) {
-      axios.post(`https://ieee-vishv.onrender.com/api/events/update/${eventId}`, formData)
+      axios.post(`https://ieee-vishv.onrender.com/api/events/update/${eventId}`, formData, config)
         .then(handleResponse)
         .catch(handleError);
     } else {
-      axios.post('https://ieee-vishv.onrender.com/api/events/upload', formData)
+      axios.post('https://ieee-vishv.onrender.com/api/events/upload', formData, config)
         .then(handleResponse)
         .catch(handleError);
     }
   });
-
+  
   fetchData();
 });
