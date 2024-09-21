@@ -285,23 +285,23 @@
             <div class="image-container">
                 <div class="carousel">
                     <figure class="carousel-figure">
-                        <img src="/Images/seas.png" alt="SEAS Building 1" loading="lazy"/>
+                        <img src="/Images/seas.png" alt="Building 1" loading="lazy"/>
                         <figcaption>SEAS</figcaption>
                     </figure >
                     <figure class="carousel-figure">
-                        <img src="/Images/sas.jpeg" alt="SEAS Building 2" />
+                        <img src="/Images/sas.jpeg" alt="Building 2" />
                         <figcaption>SAS</figcaption>
                     </figure>
                     <figure class="carousel-figure">
-                        <img src="/Images/amsom.jpeg" alt="SEAS Building 3" />
+                        <img src="/Images/amsom.jpeg" alt="Building 3" />
                         <figcaption>AMSOM</figcaption>
                     </figure>
                     <figure class="carousel-figure">
-                        <img src="/Images/uc.jpg" alt="SEAS Building 4" />
+                        <img src="/Images/uc.jpg" alt="Building 4" />
                         <figcaption>UC</figcaption>
                     </figure>
                     <figure class="carousel-figure">
-                        <img src="/Images/AU-Campus.jpg" alt="SEAS Building 5" />
+                        <img src="/Images/au campus.png" alt="Building 5" />
                         <figcaption>CAMPUS</figcaption>
                     </figure>
                 </div>
@@ -358,18 +358,18 @@
 
     <!-- Contact Us -->
     <section class="contactUsSection" id="contactUs">
-
         <div class="contactUsMainClass">
             <div class="MapSection">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.6085372802418!2d72.55180577602258!3d23.03814131574564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848d5f86040f%3A0x7a0cc8b624851642!2sAhmedabad%20University!5e0!3m2!1sen!2sin!4v1715959567993!5m2!1sen!2sin"
-                    width="" height="" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <!-- Loader -->
+                <div class="mapLoader" id="mapLoader"></div>
+
+                <!-- Map will be loaded dynamically here through JavaScript -->
                 <div class="contactUsCard">
                     <div class="userFormContactUs">
                         <div id="loader" class="loader"></div>
                         <form action="" class="contactUsForm" id="contactForm">
-                            <div id="HeaderFormContactus">We'd Love To Here From You !</div>
+                            <div id="HeaderFormContactus">We'd Love To Hear From You!</div>
                             <div id="nameInput">
                                 <p>Full name</p>
                                 <input type="text" id="fullName" required>
@@ -386,7 +386,6 @@
                                 <button type="submit">Send</button>
                             </div>
                         </form>
-
                     </div>
                     <img class="ourDetailsImage" src="./Images/auContactUs1.jpg" alt="">
                     <div class="ourDetailsSection">
@@ -395,34 +394,38 @@
                         </div>
                         <div class="contentOurDetails">
                             <ul id="ourDetailsList">
-
-                                <li id="emailOurDetail"><a target="_blank" href="mailto:ieee.sb@ahduni.edu.in"><i
-                                            class="fas fa-envelope" style="color: #ffffff;"></i>
+                                <li id="emailOurDetail">
+                                    <a target="_blank" href="mailto:ieee.sb@ahduni.edu.in">
+                                        <i class="fas fa-envelope" style="color: #ffffff;"></i>
                                         <p>ieee.sb@ahduni.edu.in</p>
-                                    </a></li>
-                                <li id="linkedInOurDetail"><a target="_blank"
-                                        href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/"><i
-                                            class="fab fa-linkedin" style="color: #ffffff;"></i><p>ahmedabad-university-ieee-sb</p>
-                                    </a></li>
-                                <li id="InstagramOurDetail"><a target="_blank"
-                                        href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
-                                            class="fab fa-instagram" style="color: #ffffff;"></i><p>ieee_ausb</p>
-                                    </a></li>
-
-                                <li id="addressOurDetail"><a target="_blank"
-                                        href="https://maps.app.goo.gl/bpwXyhJ7oC5nqqLH6"><i
-                                            class="fas fa-map-marker-alt" style="color: #ffffff;"></i><p>Ahmedabad University</p>
-                                    </a></li>
-                                
-                                
+                                    </a>
+                                </li>
+                                <li id="linkedInOurDetail">
+                                    <a target="_blank" href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/">
+                                        <i class="fab fa-linkedin" style="color: #ffffff;"></i>
+                                        <p>ahmedabad-university-ieee-sb</p>
+                                    </a>
+                                </li>
+                                <li id="InstagramOurDetail">
+                                    <a target="_blank" href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                                        <i class="fab fa-instagram" style="color: #ffffff;"></i>
+                                        <p>ieee_ausb</p>
+                                    </a>
+                                </li>
+                                <li id="addressOurDetail">
+                                    <a target="_blank" href="https://maps.app.goo.gl/bpwXyhJ7oC5nqqLH6">
+                                        <i class="fas fa-map-marker-alt" style="color: #ffffff;"></i>
+                                        <p>Ahmedabad University</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
+
 
     <!-- background animation -->
     <div class="area">
