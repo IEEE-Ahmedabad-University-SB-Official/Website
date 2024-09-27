@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="../CSS/member-admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+
 
 </head>
 
@@ -85,8 +87,15 @@
     </div>
   </div>
 
-  <table id="member-data-table">
-    <thead>
+  <div class="member-count-div">
+    <div class="div1">
+      <p>Number of members:</p>
+      <p id="member-count"></p>
+    </div>
+  </div>
+
+  <div id="member-data-container">
+    <!-- <thead>
       <tr>
         <th>Name</th>
         <th>Email</th>
@@ -103,8 +112,8 @@
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody></tbody>
-  </table>
+    <tbody></tbody> -->
+  </div>
 
   <div class="member-instructions">
     <p>
@@ -126,7 +135,10 @@
     </p>
   </div>
 
-  <button id="add-member-button">Add Member</button>
+  
+  <div class="add-button">
+    <button id="add-member-button">Add Member</button>
+  </div>
   <!-- <button class="clientbtn" onclick="window.location.href='member-front.html'">Client Page</button> -->
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

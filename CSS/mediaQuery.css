@@ -455,10 +455,6 @@
         border-radius: 30px 30px 30px 30px;
     }
 
-    .cardDiv .img{
-        margin: 0.25rem auto;
-    }
-
     .card-date-div{
         display: flex;
         justify-content: center;

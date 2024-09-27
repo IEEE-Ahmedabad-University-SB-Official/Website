@@ -339,10 +339,14 @@ body {
     text-align: center;
     font-size: 1.5rem;
     color: #333;
+    /* Adjust the color as needed */
     background-color: #f9f9f9;
+    /* Adjust the background color as needed */
     border: 1px dashed #ccc;
+    /* Adjust the border style as needed */
     border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Adjust the box shadow as needed */
 }
 
 .no-event-div {

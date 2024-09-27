@@ -216,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove('disable-interaction');
     };
   
+    // Set the appropriate headers to handle file uploads
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
