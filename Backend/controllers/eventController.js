@@ -101,8 +101,9 @@ exports.updateEvent = async (req, res) => {
 
         res.json({ message: 'Event updated successfully', event: updatedEvent });
     } catch (error) {
+
         console.error("Error updating event:", error);
-        res.status(500).json({ error: "Error updating event" });
+        res.status(500).json({ error: "Error updating event", error });
     }
 };
 

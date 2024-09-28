@@ -1,6 +1,8 @@
 async function fetchEvents() {
     try {
         const response = await fetch('https://ieee-vishv.onrender.com/api/events');
+        if (!response.ok) throw new Error('Failed to fetch events');
+        
         const events = await response.json();
         const timelineList = document.querySelector('.timeline');
 
@@ -30,15 +32,16 @@ async function fetchEvents() {
                     <p><span style="font-weight:600">Venue: </span>${event.venue}</p>
                     <button class="know-more" onclick="openModal(
                         '${event.eventName}', 
-                        '${encodeURIComponent(event.eventDescription.replace(/\n/g, '\\n').replace(/"/g, '\\"'))}', 
+                        '${encodeURIComponent(event.eventDescription.replace(/'/g, "%27"))}', 
                         '${event.eventPoster}', 
-                        '${event.speaker ? `<p><span style="font-weight:600">Speaker: </span>${event.speaker}</p>` : ''}', 
+                        '${event.speaker ? `<span >Speaker: </span>${event.speaker}` : ''}', 
                         '${dateString}', 
                         '${event.startTime}', 
                         '${event.endTime}', 
                         '${event.venue}', 
                         '${event.instaPostLink}'
-                    )">Know More</button>
+                        )">Know More</button>
+
                 </div>
             </div>
             <div class="event-date">${dateString}</div>
@@ -59,7 +62,6 @@ function closeModal() {
     modalContent.classList.add("zoomOut");
     modal.classList.add("fadeOut");
     
-    // Re-enable pointer events for the card container
     document.querySelector('.timeline-container').style.pointerEvents = 'auto';
     
     setTimeout(() => {
@@ -74,11 +76,17 @@ function openModal(eventName, eventDescription, eventPoster, speaker, eventDate,
     document.getElementById('modalEventName').innerText = eventName;
     document.getElementById('modalEventImage').src = eventPoster;
     document.getElementById('modalEventDescription').innerText = decodeURIComponent(eventDescription).replace(/\\n/g, '\n');
-    document.getElementById('modalSpeaker').innerText = speaker;
+    document.getElementById('modalSpeaker').innerHTML = speaker;
     document.getElementById('modalEventDate').innerText = eventDate;
     document.getElementById('modalEventTime').innerText = startTime === endTime ? startTime : startTime + ' - ' + endTime;
     document.getElementById('modalVenue').innerText = venue;
-    document.getElementById('modalInstaPost').href = instaPostLink;
+    
+    if (instaPostLink) {
+        document.getElementById('modalInstaPost').href = instaPostLink;
+        document.getElementById('modalInstaPost').style.display = 'inline-block';
+    } else {
+        document.getElementById('modalInstaPost').style.display = 'none';
+    }
 
     const modal = document.getElementById('eventModal');
     modal.style.display = 'flex';
@@ -88,21 +96,16 @@ function openModal(eventName, eventDescription, eventPoster, speaker, eventDate,
     modalContent1.classList.add("zoomIn");
     document.body.style.overflow = "hidden";
 
-    // Disable pointer events for the card container
     document.querySelector('.timeline-container').style.pointerEvents = 'none';
 }
 
-
-
 document.getElementById('modalClose').onclick = function () {
     closeModal();
-    // document.getElementById('eventModal').style.display = 'none'; 
 }
 
 window.onclick = function (event) {
     if (event.target == document.getElementById('eventModal')) {
         closeModal();
-        // document.getElementById('eventModal').style.display = 'none'; 
     }
 }
 

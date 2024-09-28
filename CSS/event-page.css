@@ -506,7 +506,13 @@ nav {
     transition: 0.1s;
 }
 
+#headerOurGoals p{
+    margin-bottom: 0;
+}
 
+#OurGoalsDescription p{
+    margin-top: 3px;
+}
 .dropdown-content a:hover{
     border-bottom: none;
     transform: scale(1.0);
@@ -745,6 +751,8 @@ body.darkTheme .theme-div button{
     color: white;
     cursor: pointer;
 }
+
+
 
 @media (max-width: 1024px) {
     .heading h1{
