@@ -81,8 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <h2>${event.eventName}</h2>
                 <div class="para">
-                    <p>${event.eventDescription}</p>
+                    <pre>${event.eventDescription}</pre>
                 </div>
+
                 <div class="check">
                     ${event.speaker ? `
                         <div class="card-speaker-div">
@@ -241,7 +242,11 @@ document.addEventListener("DOMContentLoaded", function () {
             arrow.addEventListener("click", function () {
                 const cardContainer = arrow.parentElement.querySelector(".card-container");
                 const cardWidth = cardContainer.querySelector(".cardDiv").offsetWidth;
-                cardContainer.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+                // Convert 1rem to pixels
+                const remInPixels = parseFloat(getComputedStyle(document.documentElement).fontSize);
+                const totalCardWidth = cardWidth + remInPixels; 
+                cardContainer.scrollBy({ left: direction * totalCardWidth, behavior: "smooth" });
+
             });
         });
     }

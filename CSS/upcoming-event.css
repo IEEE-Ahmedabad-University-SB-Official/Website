@@ -72,6 +72,7 @@ body {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     overflow-x: scroll;
+    /* gap: 1rem */
 }
 
 .card-container::-webkit-scrollbar {
@@ -81,7 +82,7 @@ body {
 
 .cardDiv {
     min-width: 300px;
-    max-width: 760px;
+    max-width: 100%;
     flex-shrink: 0;
     border-radius: 0 40px 0 40px;
     overflow: hidden;
@@ -121,7 +122,7 @@ body {
     color: #333;
 }
 
-.para p {
+.para pre {
     margin: 10px 0;
     color: #666;
 }
@@ -184,7 +185,7 @@ body {
     font-weight: 700;
 }
 
-.para p {
+.para pre {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -193,6 +194,10 @@ body {
     /* Adjust this number to the number of lines you want to display */
     -webkit-line-clamp: 4;
     /* Adjust this number to the number of lines you want to display */
+
+    white-space: pre-wrap; /* Allows wrapping of long lines */
+    font-family: 'Arial';
+
 }
 
 .card-date-div {
