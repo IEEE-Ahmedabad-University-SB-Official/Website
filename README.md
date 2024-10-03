@@ -82,7 +82,7 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 
 ## License
 
-The IEEE AU SB Website is licensed under the GNU V3 License. See `LICENSE` for details.
+The IEEE AU SB Website is licensed under the ***GNU GPL V3 License***. See `LICENSE` for details.
 
 ## Authors
 
