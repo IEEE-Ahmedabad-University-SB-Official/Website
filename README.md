@@ -64,25 +64,9 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 * Font Awesome for icons
 * Bootstrap for UI components
 
-## Collaboration
-
-**To start collaboration:**
-
-1. Fork the repository.
-2. Clone the repository into your local system.
-3. Open the project in your preferred code editor or IDE
-4. Run `npm install` to install the required dependencies
-5. Run `npm start` to start the development server
-6. Open `http://localhost:3000` in your web browser to view the website
-7. Develop as normal. Commit and push to the forked repository
-8. Submit a PR request for the changes made
-
-> **NOTE**  
-> Before making a PR for a new major change or feature, it is preffered that first an issue is submitted for the same and discuss about it.
-
 ## License
 
-The IEEE AU SB Website is licensed under the ***GNU GPL V3 License***. See `LICENSE` for details.
+The IEEE AU SB Website is licensed under the ***GNU GPL V3 License***. See [**LICENSE**](./LICENSE) for details.
 
 ## Authors
 
