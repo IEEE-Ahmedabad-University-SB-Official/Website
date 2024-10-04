@@ -7,7 +7,7 @@ We are open to any kind of improvement or bugfix that you think would work for o
 
 ## Steps For Contribution
 
-1. Ask for the issue to be assigned to you. (Please do not work on an issue that is not assigned to you)
+1. Ask for the issue to be assigned to you, or create a new issue yourself. (Please do not work on an issue that is not assigned to you)
 2. Once the issue is assigned to you, fork the repository.
 3. Make the necessary changes in your forked repository.
 4. Create a pull request to the main repository.
