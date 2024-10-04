@@ -3,7 +3,7 @@
 We are open to any kind of improvement or bugfix that you think would work for our [Website](https://ieeeausb.in)
 
 > **NOTE**  
-> Before making a PR for a new major change or feature, it is preffered that first an issue is submitted for the same and discuss about it.
+>Before making a PR for a new major change or feature, it is preffered that first an issue is submitted for the same and discuss about it.
 
 ## Steps For Contribution
 
