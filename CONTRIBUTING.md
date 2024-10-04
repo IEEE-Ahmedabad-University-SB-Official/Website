@@ -12,3 +12,6 @@ We are open to any kind of improvement or bugfix that you think would work for o
 3. Make the necessary changes in your forked repository.
 4. Create a pull request to the main repository.
 5. Wait for the review and approval of the pull request.
+
+**NOTE**
+Kindly commit your changes in the development branch **ONLY!!!**
