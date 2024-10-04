@@ -23,8 +23,8 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 
 ### Navigation Bar
 
-* Links to home, achievements, events, committee, and contact us pages
-* Theme toggle button to switch between light and dark themes
+* Links to home, events, committee, and contact us pages
+* Theme toggle button to switch between light and dark themes (for desktop only)
 
 ### Events Section
 
@@ -63,6 +63,10 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 * SweetAlert2 for modal windows
 * Font Awesome for icons
 * Bootstrap for UI components
+* NodeJs
+* ExpressJs
+* Cloudinary
+* MongoDB
 
 ## License
 
