@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fetch and render achievements
     function fetchAchievements() {
-        axios.get('https://ieee-vishv.onrender.com/api/achievements')
+        axios.get('https://ieee-au-sb-website.onrender.com/api/achievements')
             .then(response => {
                 renderAchievements(response.data);
             })
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Edit achievement
     window.editAchievement = function (id) {
-        axios.post(`https://ieee-vishv.onrender.com/api/achievements/update/${id}`)
+        axios.post(`https://ieee-au-sb-website.onrender.com/api/achievements/update/${id}`)
             .then(response => {
                 const achievement = response.data.achievement;
                 document.getElementById('achivementId').value = achievement._id;
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 loader.style.display = 'block';
                 document.body.classList.add('disable-interaction');
 
-                axios.delete(`https://ieee-vishv.onrender.com/api/achievement/${id}`)
+                axios.delete(`https://ieee-au-sb-website.onrender.com/api/achievement/${id}`)
                     .then(response => {
                         fetchAchievements();
                         loader.style.display = 'none';
@@ -165,11 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         if (achievementId) {
-            axios.post(`https://ieee-vishv.onrender.com/api/achievements/update/${achievementId}`, formData)
+            axios.post(`https://ieee-au-sb-website.onrender.com/api/achievements/update/${achievementId}`, formData)
                 .then(handleResponse)
                 .catch(handleError);
         } else {
-            axios.post('https://ieee-vishv.onrender.com/api/achievements/upload', formData)
+            axios.post('https://ieee-au-sb-website.onrender.com/api/achievements/upload', formData)
                 .then(handleResponse)
                 .catch(handleError);
         }

@@ -1,6 +1,6 @@
 async function fetchEvents() {
     try {
-        const response = await fetch('https://ieee-vishv.onrender.com/api/events');
+        const response = await fetch('https://ieee-au-sb-website.onrender.com/api/events');
         if (!response.ok) throw new Error('Failed to fetch events');
         
         const events = await response.json();

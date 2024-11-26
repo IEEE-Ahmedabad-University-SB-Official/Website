@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const achievementsContainer = document.querySelector('.container');
 
     function fetchAchievements() {
-        axios.get('https://ieee-vishv.onrender.com/api/achievements')
+        axios.get('https://ieee-au-sb-website.onrender.com/api/achievements')
             .then(response => {
                 if (response.data.length === 0) {
                     displayNoAchievements();
