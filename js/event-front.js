@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showLoader(pastLoader);
 
     axios
-        .get("https://ieee-vishv.onrender.com/api/events")
+        .get("https://ieee-au-sb-website.onrender.com/api/events")
         .then((response) => {
             const events = response.data;
             const currentDate = new Date();
