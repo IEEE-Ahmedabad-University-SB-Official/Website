@@ -1,0 +1,27 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* //Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  position: absolute;
+  background: black;
+  z-index: -1000;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #047bb3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f3f3f3; 
+}
