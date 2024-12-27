@@ -96,4 +96,4 @@ function getUpdatesUser(name) {
     `;
 }
 
-module.exports = getUpdatesUser;
+export default getUpdatesUser;

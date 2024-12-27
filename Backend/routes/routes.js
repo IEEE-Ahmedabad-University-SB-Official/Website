@@ -1,17 +1,12 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const {uploadAchievement, updateAchievement, deleteAchievement, getAchievements} = require('../controllers/achievmentController');
-
-const {uploadEvent, updateEvent, deleteEvent, getEvents} = require('../controllers/eventController');
-
-const {contactUsEnroll, getContactUs} = require('../controllers/contactUsController');
-
-const {getUpdatesEnroll, getUpdates} = require('../controllers/getUpdatesController');
-
-const {uploadMember, updateMember, memberFront, deleteMember, getMembers} = require('../controllers/memberController');
-
-const {adminLogin, getAllAdmins, addAdmin, deleteAdmin} = require('../controllers/adminController');
+import { uploadAchievement, updateAchievement, deleteAchievement, getAchievements } from '../controllers/achievmentController.js';
+import { uploadEvent, updateEvent, deleteEvent, getEvents } from '../controllers/eventController.js';
+import { contactUsEnroll, getContactUs } from '../controllers/contactUsController.js';
+import { getUpdatesEnroll, getUpdates } from '../controllers/getUpdatesController.js';
+import { uploadMember, updateMember, memberFront, deleteMember, getMembers } from '../controllers/memberController.js';
+import { adminLogin, getAllAdmins, addAdmin, deleteAdmin } from '../controllers/adminController.js';
 
 
 // Achievements
@@ -47,5 +42,5 @@ router.get('/getAllAdmins', getAllAdmins);
 router.post('/addAdmin', addAdmin);
 router.delete('/deleteAdmin/:id', deleteAdmin);
 
-module.exports = router;
+export default router;
 

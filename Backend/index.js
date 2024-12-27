@@ -1,19 +1,20 @@
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import dbConnect from './config/database.js';
+import { cloudinaryConnect } from './config/cloudinary.js';
+import allRoutes from './routes/routes.js';
+import fileUpload from 'express-fileupload';
+
+dotenv.config();
+
 const app = express();
-
-const cors = require('cors');
-require('dotenv').config();
-
-const dbConnect = require('./config/database');
-const {cloudinaryConnect} = require('./config/cloudinary');
-const allRoutes = require('./routes/routes');
 
 // Middleware
 app.use(express.json()); // Body parser middleware to parse JSON body
 app.use(express.urlencoded({ extended: true })); // Body parser middleware to parse URL-encoded bodies
 app.use(cors()); // Enable CORS for all routes
 
-const fileUpload = require('express-fileupload');
 app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : '/tmp/',

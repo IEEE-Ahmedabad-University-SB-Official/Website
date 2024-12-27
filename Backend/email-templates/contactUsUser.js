@@ -97,4 +97,4 @@ function contactUsUser(name) {
 	`;
 }
 
-module.exports = contactUsUser;
+export default contactUsUser;

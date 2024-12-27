@@ -1,8 +1,10 @@
-const contactUsUser = require('../email-templates/contactUsUser');
-const ContactUsDetail = require('../models/contact-us');
-const nodemailer = require('nodemailer');
-const { google } = require('googleapis');
-require('dotenv').config();
+import contactUsUser from '../email-templates/contactUsUser.js';
+import ContactUsDetail from '../models/contact-us.js';
+import nodemailer from 'nodemailer';
+import { google } from 'googleapis';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // OAuth2 credentials
 const CLIENT_ID = process.env.CLIENT_ID; // Store your Client ID in the .env file
@@ -35,7 +37,7 @@ async function createTransporter() {
     });
   }
 
-exports.contactUsEnroll =  async (req, res) => {
+export const contactUsEnroll =  async (req, res) => {
     const { name, email, message } = req.body;
     const date = new Date();
     const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
@@ -83,7 +85,7 @@ exports.contactUsEnroll =  async (req, res) => {
     }
 };
 
-exports.getContactUs =  async (req, res) => {
+export const getContactUs =  async (req, res) => {
     try {
         const contacts = await ContactUsDetail.find().select('name email message sentDate sentTime rowCount');
         res.json(contacts);

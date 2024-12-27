@@ -1,6 +1,9 @@
-const Achievements = require('../models/achivements');
-const cloudinary = require('cloudinary').v2;
-require('dotenv').config();
+import Achievements from '../models/achivements.js'; 
+import { v2 as cloudinary } from 'cloudinary';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 // Configure Cloudinary
 cloudinary.config({
@@ -10,7 +13,7 @@ cloudinary.config({
 });
 
 // POST: Create a new achievement with image upload
-exports.uploadAchievement = async (req, res) => {
+export const uploadAchievement = async (req, res) => {
     try {
         const { achievementName, achievementDescription } = req.body;
 
@@ -43,7 +46,7 @@ exports.uploadAchievement = async (req, res) => {
 };
 
 // POST: Update an achievement by ID with image upload
-exports.updateAchievement = async (req, res) => {
+export const updateAchievement = async (req, res) => {
     const { id } = req.params;
     const { achievementName, achievementDescription } = req.body;
 
@@ -93,7 +96,7 @@ exports.updateAchievement = async (req, res) => {
 };
 
 // DELETE: Delete an achievement by ID
-exports.deleteAchievement = async (req, res) => {
+export const deleteAchievement = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -117,7 +120,7 @@ exports.deleteAchievement = async (req, res) => {
 };
 
 // GET: Fetch all achievements
-exports.getAchievements = async (req, res) => {
+export const getAchievements = async (req, res) => {
     try {
         const achievements = await Achievements.find();
 

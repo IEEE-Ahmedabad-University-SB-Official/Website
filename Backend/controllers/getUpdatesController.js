@@ -1,8 +1,10 @@
-const GetUpdates = require('../models/get-updates');
-const nodemailer = require('nodemailer');
-const GetUpdatesUser = require('../email-templates/getUpdatesUser');
-const { google } = require('googleapis');
-require('dotenv').config();
+import GetUpdates from '../models/get-updates.js';
+import nodemailer from 'nodemailer';
+import GetUpdatesUser from '../email-templates/getUpdatesUser.js';
+import { google } from 'googleapis';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // OAuth2 credentials
 const CLIENT_ID = process.env.CLIENT_ID; // Store your Client ID in the .env file
@@ -35,7 +37,7 @@ async function createTransporter() {
     });
   }
 
-exports.getUpdatesEnroll = async (req, res) => {
+export const getUpdatesEnroll = async (req, res) => {
     const { name, email } = req.body;
     const date = new Date();
     const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
@@ -83,7 +85,7 @@ exports.getUpdatesEnroll = async (req, res) => {
     }
 };
 
-exports.getUpdates = async (req, res) => {
+export const getUpdates = async (req, res) => {
     try {
         const updates = await GetUpdates.find().select('name email date time rowCount');
         res.json(updates);
