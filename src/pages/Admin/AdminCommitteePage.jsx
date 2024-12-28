@@ -178,7 +178,7 @@ const AdminCommitteePage = () => {
       )}
 
       {modalVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[1000000]">
           <div className="bg-white w-1/2 mx-auto p-6 rounded-lg max-w-2xl md:w-[90%]">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">Add/Edit Member</h2>
@@ -190,7 +190,7 @@ const AdminCommitteePage = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4 ]">
               <input type="hidden" name="memberId" value={formData.memberId} />
               
               {[
