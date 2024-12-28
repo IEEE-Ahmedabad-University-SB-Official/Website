@@ -55,51 +55,54 @@ const AdminContactUsPage = () => {
     }, []);
 
     return (
-        <div>
-            {/* Header Container */}
-            <div className="flex items-center justify-center relative mt-4 md:flex-row flex-col">
+        <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212]">
+            <div className="flex items-center justify-center relative py-4">
                 <button 
-                    className="bg-black hover:bg-gray-700 text-white py-2 px-5 rounded text-base cursor-pointer md:absolute md:left-[10%] transition-colors"
+                    className="absolute left-[10%] px-5 py-2.5 bg-black text-white rounded border border-gray-400 hover:bg-gray-700 transition"
                     onClick={() => window.location.href = '/admin/dashboard'}
                 >
-                    Admin page
+                    Admin Page
                 </button>
-                <h1 className="flex-grow text-center">Contact Us Details</h1>
+                <h1 className="text-center text-white text-2xl">Contact Form Details</h1>
             </div>
 
-            {/* Table */}
-            <table className="w-4/5 border-collapse mx-auto my-5" id="member-data-table">
-                <thead>
-                    <tr>
-                        <th className="border border-gray-300 p-2 text-left bg-black/55 text-white">No.</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/55 text-white">Name</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/55 text-white">Email</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/55 text-white">Message</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/55 text-white">Date</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/55 text-white">Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {contactDetails.map(contact => (
-                        <tr key={contact.rowCount} className="even:bg-gray-100">
-                            <td className="border border-gray-300 p-2 text-left">{contact.rowCount}</td>
-                            <td className="border border-gray-300 p-2 text-left">{contact.name}</td>
-                            <td className="border border-gray-300 p-2 text-left">{contact.email}</td>
-                            <td className="border border-gray-300 p-2 text-left">{contact.message}</td>
-                            <td className="border border-gray-300 p-2 text-left">{formatDate(contact.sentDate)}</td>
-                            <td className="border border-gray-300 p-2 text-left">{contact.sentTime}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div className="max-w-5xl mx-auto p-5">
+                <div className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg">
+                    <table className="w-full border-collapse" id="member-data-table">
+                        <thead>
+                            <tr>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">No.</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Name</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Email</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Message</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Date</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {contactDetails.map(contact => (
+                                <tr key={contact.rowCount} className="text-gray-300">
+                                    <td className="border border-gray-600 p-3">{contact.rowCount}</td>
+                                    <td className="border border-gray-600 p-3">{contact.name}</td>
+                                    <td className="border border-gray-600 p-3">{contact.email}</td>
+                                    <td className="border border-gray-600 p-3">{contact.message}</td>
+                                    <td className="border border-gray-600 p-3">{formatDate(contact.sentDate)}</td>
+                                    <td className="border border-gray-600 p-3">{contact.sentTime}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
 
-            {/* Download Button */}
-            <button 
-                className="block mx-auto my-5 py-2 px-5 bg-green-600 hover:bg-green-700 text-white rounded text-base cursor-pointer transition-colors"
-                onClick={downloadExcel}
-            >
-                Download Excel
-            </button>
+                    <div className="text-center mt-6">
+                        <button 
+                            className="px-5 py-2.5 bg-green-600 text-white rounded text-base hover:bg-green-700 transition"
+                            onClick={downloadExcel}
+                        >
+                            Download Excel
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

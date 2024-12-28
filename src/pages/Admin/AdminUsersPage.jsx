@@ -73,105 +73,111 @@ const AdminUsersPage = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-5 font-sans text-gray-800">
-      <Toaster position="top-right" />
-
-      <div className="flex justify-between items-center">
+    <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212]">
+      <div className="flex items-center justify-center relative py-4">
         <button 
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm"
-          onClick={() => (window.location.href = "/admin/dashboard")}
+          className="absolute left-[10%] px-5 py-2.5 bg-black text-white rounded border border-gray-400 hover:bg-gray-700 transition"
+          onClick={() => window.location.href = "/admin/dashboard"}
         >
           Admin Dashboard
         </button>
-        <h1 className="text-2xl font-bold mb-5">Admin Management</h1>
+        <h1 className="text-center text-white text-2xl">Admin Management</h1>
       </div>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <table className="w-full border-collapse my-5">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 bg-blue-500 text-white p-3">Username</th>
-              <th className="border border-gray-300 bg-blue-500 text-white p-3">Password</th>
-              <th className="border border-gray-300 bg-blue-500 text-white p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {admins.map((admin) => (
-              <tr key={admin._id}>
-                <td className="border border-gray-300 p-3 text-center">{admin.username}</td>
-                <td className="border border-gray-300 p-3 text-center">{admin.password}</td>
-                <td className="border border-gray-300 p-3 text-center">
-                  <button
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 disabled:opacity-50"
-                    onClick={() => handleDeleteAdmin(admin._id)}
-                    disabled={deletingId === admin._id}
-                  >
-                    {deletingId === admin._id ? "Deleting..." : "Delete"}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className="max-w-3xl mx-auto p-5">
+        <Toaster position="top-right" />
 
-      <div className="text-center my-5">
-        <button 
-          className="bg-green-500 text-white px-5 py-2 rounded hover:bg-green-600 text-base"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Add New Admin
-        </button>
-      </div>
+        {isLoading ? (
+          <div className="flex justify-center">
+            <div className="w-20 h-20 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th className="border border-gray-600 bg-black/60 text-white p-3">Username</th>
+                  <th className="border border-gray-600 bg-black/60 text-white p-3">Password</th>
+                  <th className="border border-gray-600 bg-black/60 text-white p-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {admins.map((admin) => (
+                  <tr key={admin._id} className="text-gray-300">
+                    <td className="border border-gray-600 p-3 text-center">{admin.username}</td>
+                    <td className="border border-gray-600 p-3 text-center">{admin.password}</td>
+                    <td className="border border-gray-600 p-3 text-center">
+                      <button
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 disabled:opacity-50 transition"
+                        onClick={() => handleDeleteAdmin(admin._id)}
+                        disabled={deletingId === admin._id}
+                      >
+                        {deletingId === admin._id ? "Deleting..." : "Delete"}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center animate-fadeIn">
-          <div className="bg-white p-5 rounded-lg w-96 shadow-lg animate-slideIn">
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-bold">Add Admin</h2>
+            <div className="text-center mt-6">
               <button 
-                className="text-2xl hover:text-gray-700"
-                onClick={() => setIsModalOpen(false)}
+                className="px-5 py-2.5 bg-green-600 text-white rounded text-base hover:bg-green-700 transition"
+                onClick={() => setIsModalOpen(true)}
               >
-                &times;
+                Add New Admin
               </button>
             </div>
-            <form className="mt-5" onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block mb-1">Username</label>
-                <input
-                  type="text"
-                  name="username"
-                  value={newAdmin.username}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-1">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={newAdmin.password}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
-              </div>
-              <button 
-                type="submit" 
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:opacity-50 w-full"
-                disabled={isAdding}
-              >
-                {isAdding ? "Adding..." : "Save"}
-              </button>
-            </form>
           </div>
-        </div>
-      )}
+        )}
+
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg w-96 shadow-lg">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold">Add Admin</h2>
+                <button 
+                  className="text-gray-400 text-2xl font-bold hover:text-black"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  &times;
+                </button>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <label className="block font-bold mb-1">Username<span className="text-red-500">*</span>:</label>
+                  <input
+                    type="text"
+                    name="username"
+                    value={newAdmin.username}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block font-bold mb-1">Password<span className="text-red-500">*</span>:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={newAdmin.password}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+                <button 
+                  type="submit" 
+                  className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition disabled:opacity-50"
+                  disabled={isAdding}
+                >
+                  {isAdding ? "Adding..." : "Save"}
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

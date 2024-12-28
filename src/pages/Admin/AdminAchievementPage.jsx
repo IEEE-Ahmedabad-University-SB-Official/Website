@@ -136,125 +136,156 @@ const AdminAchievementPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4">
-      {/* Header */}
+    <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212]">
       <div className="flex items-center justify-center relative py-4">
         <button 
+          className="absolute left-[10%] px-5 py-2.5 bg-black text-white rounded border border-gray-400 hover:bg-gray-700 transition"
           onClick={() => navigate('/admin/dashboard')}
-          className="absolute left-0 px-4 py-2 bg-black text-white rounded hover:bg-opacity-60 transition"
         >
-          Admin page
+          Admin Page
         </button>
-        <h1 className="text-2xl font-bold">Achievement Admin Page</h1>
+        <h1 className="text-center text-white text-2xl">Achievement Admin Page</h1>
       </div>
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-full max-w-2xl">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Add Achievement</h2>
-              <button onClick={closeModal} className="text-2xl">&times;</button>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input type="hidden" name="achievementId" value={formData.achievementId} />
-              
-              <div>
-                <label className="block font-bold mb-1">Achievement Name:</label>
-                <input
-                  type="text"
-                  value={formData.achievementName}
-                  onChange={(e) => setFormData(prev => ({ ...prev, achievementName: e.target.value }))}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-bold mb-1">Achievement Description:</label>
-                <textarea
-                  value={formData.achievementDescription}
-                  onChange={(e) => setFormData(prev => ({ ...prev, achievementDescription: e.target.value }))}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-
-              <div className="border-2 border-dashed p-4 text-center">
-                <label className="block font-bold mb-1">Achievement Image:</label>
-                <input
-                  type="file"
-                  onChange={handleImageChange}
-                  accept="image/*"
-                  className="mb-2"
-                />
-                {imagePreview && (
-                  <img src={imagePreview} alt="Preview" className="max-h-48 mx-auto" />
-                )}
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
-              >
-                {formData.achievementId ? 'Update' : 'Add'} Achievement
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Table */}
-      <table className="w-4/5 mx-auto border-collapse">
-        <thead>
-          <tr>
-            <th className="border p-2 bg-black bg-opacity-60 text-white">Achievement Name</th>
-            <th className="border p-2 bg-black bg-opacity-60 text-white">Description</th>
-            <th className="border p-2 bg-black bg-opacity-60 text-white">Image</th>
-            <th className="border p-2 bg-black bg-opacity-60 text-white">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="max-w-7xl mx-auto p-5">
+        <div className="flex flex-wrap justify-center gap-6">
           {achievements.map((achievement) => (
-            <tr key={achievement._id} className="even:bg-gray-100">
-              <td className="border p-2">{achievement.achievementName}</td>
-              <td className="border p-2">{achievement.achievementDescription}</td>
-              <td className="border p-2">
-                <img src={achievement.achievementImage} alt={achievement.achievementName} className="max-w-[100px]" />
-              </td>
-              <td className="border p-2">
-                <button
-                  onClick={() => editAchievement(achievement._id)}
-                  className="bg-blue-500 text-white px-2 py-1 rounded mr-2"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => deleteAchievement(achievement._id)}
-                  className="bg-red-500 text-white px-2 py-1 rounded"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <div key={achievement._id} className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg w-[300px]">
+              <div className="flex justify-between items-start mb-4">
+                <img
+                  src={achievement.achievementImage}
+                  alt={achievement.achievementName}
+                  className="w-32 h-32 object-cover rounded-lg"
+                />
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => editAchievement(achievement._id)}
+                    className="text-white hover:text-blue-500 transition"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => deleteAchievement(achievement._id)}
+                    className="text-red-500 hover:text-red-600 transition"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="text-white">
+                <h3 className="text-lg font-semibold mb-2">{achievement.achievementName}</h3>
+                <p className="text-gray-400 text-sm">{achievement.achievementDescription}</p>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
-
-      <button
-        onClick={() => setShowModal(true)}
-        className="block mx-auto mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-      >
-        Add Achievement
-      </button>
-
-      {/* Loading Spinner */}
-      {loading && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
-      )}
+
+        <div className="text-center mt-8">
+          <button
+            onClick={() => {
+              setFormData({
+                achievementId: '',
+                achievementName: '',
+                achievementDescription: '',
+                achievementImage: null,
+                oldAchievementImage: ''
+              });
+              setImagePreview(null);
+              setShowModal(true);
+            }}
+            className="px-5 py-2.5 bg-green-600 text-white rounded text-base hover:bg-green-700 transition"
+          >
+            Add Achievement
+          </button>
+        </div>
+
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg w-full max-w-xl">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold">
+                  {formData.achievementId ? 'Edit Achievement' : 'Add Achievement'}
+                </h2>
+                <button 
+                  onClick={() => setShowModal(false)}
+                  className="text-gray-400 text-2xl font-bold hover:text-black"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block font-bold mb-1">
+                    Achievement Name<span className="text-red-500">*</span>:
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.achievementName}
+                    onChange={(e) => setFormData(prev => ({ ...prev, achievementName: e.target.value }))}
+                    className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold mb-1">
+                    Achievement Description<span className="text-red-500">*</span>:
+                  </label>
+                  <textarea
+                    value={formData.achievementDescription}
+                    onChange={(e) => setFormData(prev => ({ ...prev, achievementDescription: e.target.value }))}
+                    className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                    rows="4"
+                    required
+                  />
+                </div>
+
+                <div className="border-2 border-dashed border-gray-300 p-4 rounded">
+                  <label className="block font-bold mb-2">
+                    Achievement Image<span className="text-red-500">*</span>:
+                  </label>
+                  <input
+                    type="file"
+                    onChange={handleImageChange}
+                    accept="image/*"
+                    className="w-full"
+                  />
+                  {imagePreview && (
+                    <div className="mt-4 flex justify-center">
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="max-w-[200px] max-h-[200px] object-cover rounded-lg"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition disabled:opacity-50"
+                  disabled={loading}
+                >
+                  {loading ? 'Processing...' : (formData.achievementId ? 'Update' : 'Add')}
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Loading Spinner */}
+        {loading && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="w-20 h-20 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

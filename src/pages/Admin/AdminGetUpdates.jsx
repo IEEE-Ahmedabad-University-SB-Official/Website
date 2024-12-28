@@ -49,46 +49,52 @@ function AdminGetUpdatesPage() {
     };
 
     return (
-        <div>
-            <div className="flex items-center justify-center relative mt-4 lg:flex-row flex-col">
+        <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212]">
+            <div className="flex items-center justify-center relative py-4">
                 <button 
-                    className="bg-black text-white px-5 py-2.5 rounded-md cursor-pointer text-base hover:bg-gray-600 lg:absolute lg:left-0 lg:ml-[10%]"
+                    className="absolute left-[10%] px-5 py-2.5 bg-black text-white rounded border border-gray-400 hover:bg-gray-700 transition"
                     onClick={() => window.location.href = '/admin/dashboard'}
                 >
                     Admin Page
                 </button>
-                <h1 className="flex-grow text-center">Updates Table</h1>
+                <h1 className="text-center text-white text-2xl">Updates Table</h1>
             </div>
 
-            <table className="w-4/5 border-collapse mx-auto my-5" id="member-data-table">
-                <thead>
-                    <tr>
-                        <th className="border border-gray-300 p-2 text-left bg-black/60 text-white">Id</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/60 text-white">Name</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/60 text-white">Email</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/60 text-white">Date</th>
-                        <th className="border border-gray-300 p-2 text-left bg-black/60 text-white">Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {updates.map((update, index) => (
-                        <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-100'}>
-                            <td className="border border-gray-300 p-2 text-left">{update.rowCount}</td>
-                            <td className="border border-gray-300 p-2 text-left">{update.name}</td>
-                            <td className="border border-gray-300 p-2 text-left">{update.email}</td>
-                            <td className="border border-gray-300 p-2 text-left">{formatDate(update.date)}</td>
-                            <td className="border border-gray-300 p-2 text-left">{update.time}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div className="max-w-5xl mx-auto p-5">
+                <div className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg">
+                    <table className="w-full border-collapse" id="member-data-table">
+                        <thead>
+                            <tr>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Id</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Name</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Email</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Date</th>
+                                <th className="border border-gray-600 bg-black/60 text-white p-3">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {updates.map((update, index) => (
+                                <tr key={index} className="text-gray-300">
+                                    <td className="border border-gray-600 p-3">{update.rowCount}</td>
+                                    <td className="border border-gray-600 p-3">{update.name}</td>
+                                    <td className="border border-gray-600 p-3">{update.email}</td>
+                                    <td className="border border-gray-600 p-3">{formatDate(update.date)}</td>
+                                    <td className="border border-gray-600 p-3">{update.time}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
 
-            <button 
-                className="block mx-auto my-5 px-5 py-2.5 bg-green-600 text-white text-base rounded-md cursor-pointer hover:bg-green-700"
-                onClick={downloadExcel}
-            >
-                Download Excel
-            </button>
+                    <div className="text-center mt-6">
+                        <button 
+                            className="px-5 py-2.5 bg-green-600 text-white rounded text-base hover:bg-green-700 transition"
+                            onClick={downloadExcel}
+                        >
+                            Download Excel
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
