@@ -227,10 +227,10 @@ const AdminEventPage = () => {
   };
 
   return (
-    <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212]">
-      <div className="flex items-center justify-center relative py-4">
+    <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212] flex-col justify-center">
+      <div className="max-w-7xl mx-auto px-5 flex items-center justify-center relative py-4 ">
         <button 
-          className="absolute left-[10%] px-5 py-2.5 bg-black text-white rounded border border-gray-400 hover:bg-gray-700 transition"
+          className="absolute left-[0] px-5 py-2.5 bg-black text-white rounded border border-gray-400 hover:bg-gray-700 transition"
           onClick={() => navigate('/admin/dashboard')}
         >
           Admin Page
@@ -271,7 +271,7 @@ const AdminEventPage = () => {
             <div key={event.id} className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg hover:shadow-xl transition">
               <div className="flex gap-6">
                 <img
-                  className="w-40 h-40 object-cover rounded-lg shadow-md"
+                  className="w-40 h-full object-cover rounded-lg shadow-md"
                   src={event.eventPoster || "https://via.placeholder.com/150"}
                   alt="Event"
                 />
@@ -336,14 +336,14 @@ const AdminEventPage = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 ">
                     <a 
                       href={event.registrationLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-blue-500 hover:text-blue-400 text-sm bg-[#2d2d2d] px-3 py-1 rounded-full"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
                       </svg>
                       Register
@@ -353,7 +353,7 @@ const AdminEventPage = () => {
                         href={event.instaPostLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-pink-500 hover:text-pink-400 text-sm bg-[#2d2d2d] px-3 py-1 rounded-full"
+                        className=" flex items-center gap-1 text-pink-500 hover:text-pink-400 text-sm bg-[#2d2d2d] px-3 py-1 rounded-full"
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -371,8 +371,8 @@ const AdminEventPage = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-full max-w-xl max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">
                 {formData.eventId ? 'Edit Event' : 'Add Event'}
@@ -559,7 +559,7 @@ const AdminEventPage = () => {
       {/* Add this modal for event details */}
       {selectedEvent && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          className="z-[1000] fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center  p-4"
           onClick={closeEventDetail}
         >
           <div 
@@ -579,11 +579,11 @@ const AdminEventPage = () => {
               <div className="p-6">
                 <div className="flex gap-6 mb-6">
                   <img
-                    className="w-64 h-64 object-cover rounded-lg shadow-md"
+                    className="w-64 h-full object-cover rounded-lg shadow-md"
                     src={selectedEvent.eventPoster || "https://via.placeholder.com/150"}
                     alt="Event"
                   />
-                  <div className="flex-1">
+                  <div className="flex-1 ">
                     <h2 className="text-2xl font-bold text-white mb-4">{selectedEvent.eventName}</h2>
                     <p className="text-gray-300 mb-6 leading-relaxed">{selectedEvent.eventDescription}</p>
                     
@@ -615,7 +615,7 @@ const AdminEventPage = () => {
                       </div>
                     </div>
 
-                    <div className="flex gap-4 mt-6">
+                    <div className="flex gap-4 mt-6 ">
                       <a 
                         href={selectedEvent.registrationLink}
                         target="_blank"
