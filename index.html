@@ -1,13 +1,575 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/Images/ieee-favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSSTJK4LLK"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QSSTJK4LLK');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/Images/ieee-favicon.ico">
     <title>IEEE AU SB</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="./CSS/footerSection.css">
+    <link rel="stylesheet" href="./CSS/upcoming-event.css">
+    <link rel="stylesheet" href="./CSS/past-event.css">
+    <link rel="stylesheet" href="./CSS/mediaQuery.css">
+    <link rel="stylesheet" href="./CSS/mediaQuery.-Laptop.css">
+    <link rel="stylesheet" href="./CSS/backgroundAnimation.css">
+    <link rel="stylesheet" href="CSS/au-slider.css">
+    <link rel="stylesheet" href="./CSS/image-gallery-mobil.css">
+    <link rel="stylesheet" href="./CSS/image-slider.css">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Mobile image gallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+    <!-- sweet alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- axios api -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Swiper JS - past events -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Link Swiper's CSS - past events -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        
+
+    </style>
+</head>
+
+<body>  
+
+    <!--Hero Section  -->
+    <section class="heroSection" id="Home" >
+        <div class="HerogridContainer">
+            <div class="Section" id="heroSection">
+
+                <div class="videoHeroSection">
+                    <canvas id="myCanvas"></canvas>
+                    <img class="imageBackGround" src="./Images/pattern.png">
+                </div>
+
+                <div class="navSection" id="navBar">
+                    <nav>
+                        <div class="navClass" id="IEEE-LOGO">
+                            <a href="index.html">
+                                <img src="Images/IEEE-LOGO-WHITE.png" alt="ieee-logo" id="default-logo">
+                                <img src="https://res.cloudinary.com/dub5rms8i/image/upload/v1721140813/Logo_ttvlys.png" alt="ieee-logo" id="scrolled-logo" style="display: none;">
+                            </a>
+                        </div>
+                        
+
+                        <div class="navAnchors">
+                            <a href="#Home"><i class="fa-solid fa-house"></i>Home</a>
+                            <!-- <a href="./pages/achivement-page.html"><i class="fa-solid fa-trophy"></i>Achievements</a> -->
+                            <a href="./pages/event-page.html"><i class="fa-solid fa-calendar-days"></i>Events</a>
+                            <a href="./pages/commitee-page.html"><i class="fa-solid fa-users"></i>Committee</a>
+                            <a href="#contactUs"><i class="fa-solid fa-phone"></i>Contact
+                                Us</a>
+                            <div class="dropdown">
+                                <button class="dropbtn" id="theme-button">
+                                    <img class="theme-icon" src="Images/theme.png" alt="theme-icon">
+                                    <span id="theme-text">Theme</span>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content" id="theme-dropdown">
+                                    <a href="#" id="dark-theme">
+                                        <img src="./Images/moon-icon.svg" alt="Dark Theme Icon"
+                                            style="width: 16px; height: 16px;"> 
+                                            <p>Dark</p>
+                                        <span class="tick-mark" id="tick-dark">&#10003;</span>
+                                    </a>
+                                    <a href="#" id="light-theme">
+                                        <img src="./Images/sun-icon.svg" alt="Light Theme Icon"
+                                            style="width: 16px; height: 16px;"> Light
+                                        <span class="tick-mark" id="tick-light">&#10003;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+
+                <div class="Verticalline">
+                    <div class="vl">
+                    </div>
+                </div>
+                <div class="circles">
+                    <div class="circle" id="circle1"></div>
+                    <div class="circle" id="circle2"></div>
+                    <div class="circle" id="circle3"></div>
+                    <div class="circle" id="circle4"></div>
+                    <div class="circle" id="circle5"></div>
+                </div>
+                <div class="heroContent">
+                    <div class="Heading">
+                        <div class="ieee-ausb-div">
+                            <div id="headingTextIEEE" class="letter-heading">
+                                <span class="letter" style="animation-delay: 0s;">I</span>
+                                <span class="letter" style="animation-delay: 0.1s;">E</span>
+                                <span class="letter" style="animation-delay: 0.2s;">E</span>
+                                <span class="letter" style="animation-delay: 0.3s;">E</span>
+                            </div>
+                            <div id="headingTextAUSB" class="letter-heading">
+                                <span class="letter" style="animation-delay: 0.5s;">A</span>
+                                <span class="letter" style="animation-delay: 0.6s;">U</span>
+                                <span class="letter" style="animation-delay: 0.7s;">S</span>
+                                <span class="letter" style="animation-delay: 0.8s;">B</span>
+                            </div>
+                        </div>
+                        <p id="subheadingText">Institute of Electrical and Electronics Engineers<br>
+                        <div class="typing-container">
+                            <span id="typing-text"></span>
+                            <span id="cursor">|</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--about Section  -->
+    <section class="aboutSection" id="aboutUs" style="background-image: url('/Images/pattern.png') ;background-size:contain; background-repeat: no-repeat; background-position: center;">
+
+        <div class="aboutCard">
+            <div class="aboutImage">
+                <img id="aboutImage" src="./Images/aboutAu7.jpg">
+            </div>
+            <div class="aboutText">
+                <div class="aboutSectionHeadingText">
+                    <p>About Us</p>
+                </div>
+                <div class="aboutWelcomeText">
+                    <p>Welcome To IEEE Ahmedabad University!</p>
+                </div>
+                <div class="aboutDescriptionText">
+                    <p>Ahmedabad University is a private, non-profit research university that offers students a liberal education focused on interdisciplinary learning and research thinking. Our liberal arts education molds independent thinkers and compassionate leaders who go on to engage innovatively with the complex challenges of our societies. As a research university, we are committed to the discovery of new ideas, and to the belief that good theory results in good practice. Our academic environment offers students, researchers and faculty the opportunity to participate in a unique learning process, mediated by fieldwork and projects that enable deep creative insight, rigorous analytical experimentation, and fulfilling careers. Ahmedabad University was established in 2009 by the Ahmedabad Education Society to offer a world-class academic experience in one of India’s most vibrant and livable cities. With a centrally located campus and internationally renowned faculty, it offers one of the most stimulating academic environments in the country. As a comprehensive university, Ahmedabad University offers undergraduate, graduate and doctoral studies in areas such as engineering, humanities, management, natural sciences, and social sciences.
+                    </p>
+                </div>
+            </div>
+            <div class="designCircle" id="designcircle1">
+                <img src="./Images/designCircle.png" alt="">
+            </div>
+        </div>
+
+    </section>
+
+    <!--Achievements Section  -->
+    <section class="achievementsSection" id="achievement" >
+        <div class="Section" id="achievementsSection">
+            <div class="head">
+
+                <!-- <h1>Our Achievements</h1> -->
+            </div>
+            <div class="Achievements-Bar">
+
+                <!-- <a href="./pages/achivement-page.html"> -->
+                    <div class="flex-card">
+                        <div class="flex-item" id="circle1">
+                            <img src="./Images/Acheivement.png" alt="">
+                            <h2>12+</h2>
+                        </div>
+                        <h3>ACHIEVEMENTS</h3>
+                    </div>
+                <!-- </a> -->
+                <a href="./pages/commitee-page.html">
+                    <div class="flex-card">
+                        <div class="flex-item" id="circle1">
+                            <img src="./Images/members.png" alt="">
+                            <h2>33</h2>
+                        </div>
+                        <h3>MEMBERS</h3>
+                    </div>
+                </a>
+                <a href="./pages/event-page.html">
+                    <div class="flex-card">
+                        <div class="flex-item" id="circle1">
+                            <img src="./Images/conferences.png" alt="">
+                            <h2>34+</h2>
+                        </div>
+                        <h3>EVENTS</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+        
+    <!-- join us section -->
+    <div style="margin-bottom: 4rem; margin-top: 5rem;">
+        <div class="head">
+            <h1 class="join-us-head">Why Join Us?</h1>
+        </div>
+        <div class="join-us-div">
+            <div class="join-us-card-light">
+                <img width="350px" src="./Images/1.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/02.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/03.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/04.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/05.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/06.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/07.png" alt="" loading="lazy">
+            </div>
+            <div class="join-us-card-dark">   
+                <img width="350px" src="./Images/01b.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/02b.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/03b.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/04b.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/05b.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/06b.png" alt="" loading="lazy">
+                <img width="350px" src="./Images/07b.png" alt="" loading="lazy">
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <!-- Video-image section -->
+    <section class="laptop-gallery-video-section">
+        <div class="head">
+            <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; margin-top: 5rem;">Glimpse of Ahmedabad University</h1>
+        </div>
+        <div class="laptop-main-gallery">
+            <div class="au-video">
+                <video class="laptop-gallery-video" src="./Images/au video.mp4" type="video/mp4" autoplay loop muted>
+                    
+                </video>
+                <a target="_blank" href="https://ahduni.edu.in/virtual-tour/">
+                <div class="tour-tag-div">
+                    <p class="virtual-tour-tag" >Virtual Tour</p>
+                    <img src="./Images/tour-arrow.png" alt="">
+                </div>
+                </a>
+            </div>
+            <div class="laptop-gallery-images">
+                <figure>
+                    <img src="./Images/seas.png" alt="SEAS">
+                    <figcaption>School of Engineering & Applied Sciences</figcaption>
+                </figure>
+                <figure>
+                    <img src="./Images/sas.jpeg" alt="SAS">
+                    <figcaption>School of Arts & Sciences</figcaption>
+                </figure>
+                <figure>
+                    <img src="./Images/amsom.jpeg" alt="AMSOM">
+                    <figcaption>Amrut Mody School of Management</figcaption>
+                </figure>
+                <figure>
+                    <img src="./Images/uc.jpg" alt="UC">
+                    <figcaption>University Centre</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+    
+    <!-- image gallery for mobile tablet -->
+    <section class="mobile-tablet-image-section">
+        <div class="head">
+            <h1>Our University</h1>
+        </div>
+        <section class="mobile-wrapper">
+            <i class="fa-solid fa-arrow-left carousel-button" id="prev"></i>
+            <div class="image-container">
+                <div class="carousel">
+                    <figure class="carousel-figure">
+                        <img src="/Images/seas.png" alt="Building 1" loading="lazy"/>
+                        <figcaption>SEAS</figcaption>
+                    </figure >
+                    <figure class="carousel-figure">
+                        <img src="/Images/sas.jpeg" alt="Building 2" />
+                        <figcaption>SAS</figcaption>
+                    </figure>
+                    <figure class="carousel-figure">
+                        <img src="/Images/amsom.jpeg" alt="Building 3" />
+                        <figcaption>AMSOM</figcaption>
+                    </figure>
+                    <figure class="carousel-figure">
+                        <img src="/Images/uc.jpg" alt="Building 4" />
+                        <figcaption>UC</figcaption>
+                    </figure>
+                    <figure class="carousel-figure">
+                        <img src="/Images/au campus.png" alt="Building 5" />
+                        <figcaption>CAMPUS</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <i class="fa-solid fa-arrow-right carousel-button" id="next"></i>
+        </section>
+    </section>
+
+    <!--Upcoming Event  -->
+    <div class="wrapper" style="margin-bottom: 4rem;" id="upcomingEvents" >
+        <h1 class="upcomingEventText">Upcoming Events</h1>
+        <div class="eventContainer">
+            <div class="arrow left"><img src="/Images/left-arrow.png" alt="Left Arrow"></div>
+            <div class="card-container" id="upcoming-card-container">
+                <!-- Loader for Upcoming Events -->
+                <div class="event-loader" id="upcoming-loader"></div>
+                <!-- Upcoming events will be dynamically added here -->
+            </div>
+            <div class="arrow right"><img src="/Images/right-arrow.png" alt="Right Arrow"></div>
+        </div>
+    </div>
+
+    <!-- Past Event -->
+    <div class="past-event-container" id="pastEvents">
+        <div class="container">
+            <div class="head">
+                <h1 class="past-event-head">Past Events</h1>
+            </div>
+            <div class="past-content">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper" id="swiper-wrapper">
+                        <!-- Loader for Past Events -->
+                        <div class="event-loader" id="past-loader"></div>
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                </div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next" id="swiper-btn"></div>
+                <div class="swiper-button-prev" id="swiper-btn"></div>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="eventModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-inner">
+                    <img id="modal-image" src="" alt="Event Image">
+                    <div id="modal-detail" class="modal-detail"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us -->
+    <section class="contactUsSection" id="contactUs">
+        <div class="contactUsMainClass">
+            <div class="MapSection">
+
+                <!-- Loader -->
+                <!-- <div class="mapLoader" id="mapLoader"></div> -->
+
+                <!-- Map will be loaded dynamically here through JavaScript -->
+                <div class="contactUsCard">
+                    <div class="userFormContactUs">
+                        <div id="loader" class="loader"></div>
+                        <form action="" class="contactUsForm" id="contactForm">
+                            <div id="HeaderFormContactus">We'd Love To Hear From You!</div>
+                            <div id="nameInput">
+                                <p>Full name</p>
+                                <input type="text" id="fullName" required>
+                            </div>
+                            <div id="mailInput">
+                                <p>Email address</p>
+                                <input type="text" id="emailAddress" required>
+                            </div>
+                            <div id="writeUsMessage">
+                                <p>Message</p>
+                                <textarea type="text" id="messageText" required></textarea>
+                            </div>
+                            <div id="sendButton">
+                                <button type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                    <img class="ourDetailsImage" src="./Images/auContactUs1.jpg" alt="">
+                    <div class="ourDetailsSection">
+                        <div class="headerOurDetails">
+                            <p>Contact Us</p>
+                        </div>
+                        <div class="contentOurDetails">
+                            <ul id="ourDetailsList">
+                                <li id="emailOurDetail">
+                                    <a target="_blank" href="mailto:ieee.sb@ahduni.edu.in">
+                                        <i class="fas fa-envelope" style="color: #ffffff;"></i>
+                                        <p>ieee.sb@ahduni.edu.in</p>
+                                    </a>
+                                </li>
+                                <li id="linkedInOurDetail">
+                                    <a target="_blank" href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/">
+                                        <i class="fab fa-linkedin" style="color: #ffffff;"></i>
+                                        <p>ahmedabad-university-ieee-sb</p>
+                                    </a>
+                                </li>
+                                <li id="InstagramOurDetail">
+                                    <a target="_blank" href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                                        <i class="fab fa-instagram" style="color: #ffffff;"></i>
+                                        <p>ieee_ausb</p>
+                                    </a>
+                                </li>
+                                <li id="addressOurDetail">
+                                    <a target="_blank" href="https://maps.app.goo.gl/bpwXyhJ7oC5nqqLH6">
+                                        <i class="fas fa-map-marker-alt" style="color: #ffffff;"></i>
+                                        <p>Ahmedabad University</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- background animation -->
+    <div class="area">
+        <ul class="animatedcircles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    
+    <!--footer Section  -->
+    <section class="FooterSection">
+        <div class="textContent">
+            <div class="footerSection" id="footer">
+                <div class="footerClass">
+                    <div class="OurGoalsSection">
+                        <div id="headerOurGoals">
+                            <p>Our Goals</p>
+                        </div>
+                        <div id="OurGoalsDescription">
+                            <p>At IEEE Ahmedabad University Student Branch (IEEE AU SB), we are dedicated to fostering a vibrant community of innovators, engineers, and tech enthusiasts by promoting technological excellence, facilitating professional growth, building a collaborative network, enhancing learning opportunities, fostering innovation and creativity, and engaging with the community.
+                            </p>
+                        </div>
+                        <div id="socialLinks">
+                            <a target="_blank" href="mailto:ieee.sb@ahduni.edu.in"><i class="fas fa-envelope"
+                                    style="color: #ffffff;"></i></a>
+                            <a target="_blank"
+                                href="https://www.instagram.com/ieee_ausb?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+                                    class="fab fa-instagram" style="color: #ffffff;"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/company/ahmedabad-university-ieee-sb/"><i
+                                    class="fab fa-linkedin" style="color: #ffffff;"></i></a>
+                        </div>
+                    </div>
+                    <div class="VerticallineFooter">
+                        <div></div>
+                    </div>
+                    <div class="siteMap">
+                        <div id="SiteMapHeader">
+                            <p>Site map</p>
+                        </div>
+                        <div id="SiteMapContent">
+                            <a href="#Home">Home</a>
+                            <a href="#aboutUs">About Us</a>
+                            <!-- <a href="/pages/achivement-page.html">Achievements</a> -->
+                            <a href="/pages/event-page.html">Events</a>
+                            <a href="./pages/commitee-page.html">Committee</a>
+                            <a href="#contactUs">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="ContactUsSection">
+                        <div class="ContactUsHeader">
+                            <p>Contact Us</p>
+                        </div>
+                        <div class="ContactUsContent">
+                            <div id="emailSection">
+                                <i class="fas fa-envelope" style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <a target="_blank" href="mailto:ieee.sb@ahduni.edu.in">Email:
+                                    ieee.sb@ahduni.edu.in</a>
+                            </div>
+                            <div id="addressSection">
+                                <i class="fas fa-map-marker-alt" style="color: rgba(255, 255, 255, 0.754);"></i>
+                                <p>Address:<br>Ahmedabad
+                                    University<br>Navrangpura<br>Ahmedabad-380009
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="GetUpdates">
+                        <div id="loader" class="loader" style="display: none;"></div>
+
+                        <div class="GetUpdatesHeader">
+                            <p>Get Updates</p>
+                        </div>
+                        <div class="GetUpdatesContent">
+                            <div id="yourNameButton">
+                                <form>
+                                    <div><i class="fas fa-user" style="color: #2f2f2f;"></i></div>
+                                    <input type="text" placeholder="Your name">
+                                </form>
+                            </div>
+                            <div id="yourEmailButton">
+                                <form>
+                                    <div><i class="fas fa-envelope" style="color: #2f2f2f;"></i></div>
+                                    <input type="email" placeholder="Your email">
+                                </form>
+                            </div>
+                            <div id="Submitbutton">
+                                <button type="button" onclick="submitForm()">Get Updates &#x2192;</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="imgs">
+                <a href="index.html">
+                    <img class="ieee-footer" src="./Images/IEEE-LOGO-WHITE.png" alt="">
+                </a>
+                <a target="_blank" href="https://ahduni.edu.in/">
+                    <img class="au-footer" src="./Images/AU_logo.webp" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="copyrightSection">
+            <hr class="nav-line3">
+            <div class="bottom-div">
+                <h4>&copy; IEEE AU SB 2024. All Rights Reserved | Developed by 
+                    <a target="_blank" href="https://www.linkedin.com/in/vishv-boda-806ab5289/">Vishv Boda</a> & 
+                    <a target="_blank" href="https://www.linkedin.com/in/deeppatelDW1631/">Deep Patel</a>, IEEE AU SB
+                </h4> 
+                <!-- <div class="theme-div">
+                    <img id="theme-icon" src="./Images/moon-icon.svg" alt="Theme Icon">
+                    <button id="theme-toggle">dark</button>
+                </div> -->
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="js/event-front.js"></script>
+    <script src="js/get-updates.js"></script>
+    <script src="js/contact-us.js"></script>
+    <script src="js/navbar-scroll.js"></script>
+
+    <script src="js/past-vishv.js"></script>
+    <script src="js/theme-logic.js"></script>
+
+    <!-- <script src="js/au-slider.js"></script> -->
+    <script src="js/typing.js"></script>
+
+    <script src="js/image-gallery-mobile.js"></script>
+
+    <script src="js/bg_matrix_rain.js"></script>
+
+</body>
+
 </html>

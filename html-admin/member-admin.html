@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../Images/ieee-favicon.ico">
+  <title>Member Upload</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="../CSS/member-admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+
+
+</head>
+
+
+<body>
+  <div class="header-container">
+    <button class="adminbtn" onclick="window.location.href='admin.html'">Admin page</button>
+    <h1>Member-admin Page</h1>
+  </div>
+
+  <div id="loader" class="loader"></div>
+
+  <div id="member-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="member-form" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="memberId" id="memberId">
+
+        <label for="name">Name<span style="color: red;">*</span> :</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email<span style="color: red;">*</span> :</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="enrollment_number">Enrollment Number<span style="color: red;">*</span> :</label>
+        <input type="text" name="enrollment_number" id="enrollment_number" required>
+
+        <label for="contact_number">Contact Number<span style="color: red;">*</span> :</label>
+        <input type="number" name="contact_number" id="contact_number" >
+
+        <label for="join_year">Join Year<span style="color: red;">*</span> :</label>
+        <input type="number" name="join_year" id="join_year" required min="2000" max="2100">
+
+        <label for="programme">programme<span style="color: red;">*</span> :</label>
+        <input type="text" name="programme" id="programme">
+
+        <label for="department">Department<span style="color: red;">*</span> :</label>
+        <select id="department" name="department" required>
+            <option value="CSE">CSE</option>
+            <option value="Logistics">Logistics</option>
+            <option value="Socialmedia">Social Media</option>
+            <option value="RAS">Robotics</option>
+            <option value="Technical">Technical</option>
+            <option value="Content">Content</option>
+            <option value="Graphics">Graphics</option>
+            <option value="OBs">OBs</option>
+        </select>
+
+        <label for="position">Position<span style="color: red;">*</span> :</label>
+        <select id="position" name="position" required>
+            <option value="Head">Head</option>
+            <option value="Member">Member</option>
+        </select>
+
+        <label for="instagram">Instagram Profile<span style="color: red;">*</span> :</label>
+        <input type="url" name="instagramProfile" id="instagramProfile">
+
+        <label for="linkedin">LinkedIn Profile<span style="color: red;">*</span> :</label>
+        <input type="url" name="linkedinProfile" id="linkedinProfile">
+
+        <label for="leave_date">Leave Date:</label>
+        <input type="date" name="leave_date" id="leave_date">
+
+
+        <div id="image-upload">
+          <label for="profile_image">Profile Image<span style="color: red;">*</span> :</label>
+          <input type="file" name="profile_image" id="profile_image" accept="image/*">
+          <input type="hidden" name="oldProfileImage" id="oldProfileImage">
+          <div id="image-preview"></div>
+        </div>
+
+        <button type="submit">Upload Member</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="member-count-div">
+    <div class="div1">
+      <p>Number of members:</p>
+      <p id="member-count"></p>
+    </div>
+  </div>
+
+  <div id="member-data-container">
+    <!-- <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Enrollment number</th>
+        <th>Contact Number</th>
+        <th>Join Year</th>
+        <th>programme</th>
+        <th>Department</th>
+        <th>Position</th>
+        <th style="text-align: center; font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></th>
+        <th style="text-align: center; font-size: 1.5rem;"><i class="fa-brands fa-linkedin"></i></th>
+        <th class="leave_date">Leave date</th>
+        <th>Profile Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody> -->
+  </div>
+
+  <div class="member-instructions">
+    <p>
+      "Add Member" - fill form to add new member/faculty details
+    </p>
+    <p>
+      "Edit" - fill form to edit existing member's details
+    </p>  
+    <p>
+      "Delete" - delete member details from list
+    </p>
+    <p>
+      If there is no "linkedinProfile" of any member then add "instagramProfile" in linkedinProfile section
+    </p>
+    <p>
+      for Faculty,<br>
+      - You need to select "Department" as "CSE" and "Position" as "Faculty"<br>
+      - In "instagramProfile" and "linkedinProfile" of Faculty ypu need to enter faculty's profile page or resume or professor's University profile link
+    </p>
+  </div>
+
+  
+  <div class="add-button">
+    <button id="add-member-button">Add Member</button>
+  </div>
+  <!-- <button class="clientbtn" onclick="window.location.href='member-front.html'">Client Page</button> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="../js/members.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script>
+    if (!sessionStorage.getItem('ieee-login-userId')) {
+      window.location.href = './login.html';
+    }
+  </script>
+</body>
+
+</html>

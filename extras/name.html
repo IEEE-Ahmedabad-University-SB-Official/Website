@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Text Animation</title>
+    <style>
+        .container {
+            display: inline-block;
+            font-size: 20vh;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            overflow: hidden;
+            letter-spacing: -0.05em; 
+            /* Adjust this value to control the space between letters */
+        }
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: floatUp 1s forwards;
+        }
+        .space {
+            display: inline-block;
+            width: 0.5em; /* Adjust this value to control the space width */
+        }
+        @keyframes floatUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="text-container">
+        <span class="letter" style="animation-delay: 0s;">I</span>
+        <span class="letter" style="animation-delay: 0.1s;">E</span>
+        <span class="letter" style="animation-delay: 0.2s;">E</span>
+        <span class="letter" style="animation-delay: 0.3s;">E</span>
+        <span class="space"></span>
+        <span class="letter" style="animation-delay: 0.5s;">A</span>
+        <span class="letter" style="animation-delay: 0.6s;">U</span>
+        <span class="letter" style="animation-delay: 0.7s;">S</span>
+        <span class="letter" style="animation-delay: 0.8s;">B</span>
+    </div>
+</body>
+</html>

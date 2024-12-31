@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat;
+}
+
+.page-container{
+    min-height: 100vh;
+}
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.heading a {
+    margin: 0;
+    margin-left: 2rem;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.heading a::after {
+    /* text-decoration: underline; */
+    /* border-bottom: solid black; */
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s, left 0.3s;
+    width: 0;
+}
+
+.heading a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.heading h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.achievement-div {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.achi-img img {
+    width: 360px;
+    margin: 0;
+    border-radius: 0px 20px 0px 20px;
+}
+
+.achi-text {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 2rem;
+}
+
+.head {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.achievement-div:nth-of-type(odd) {
+    flex-direction: row;
+}
+
+/* Styles for alternating divs */
+.achievement-div:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+
+.achievement-div:nth-child(even) .achi-img img {
+    border-radius: 20px 0px 20px 0px;
+    margin-left: 2rem;
+    margin-right: 0;
+}
+
+.achievement-div:nth-child(odd) .achi-img img {
+    border-radius: 0px 20px 0px 20px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 2rem 0;
+}
+
+.error-message, .no-achievements{
+    width: 100%;
+    height: 100px;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background-size: auto;
+    border: 1px solid black;
+}
+
+.navSection {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    background-color: #2f2f2f;
+    transition: background 0.3s, backdrop-filter 0.3s;
+    z-index: 1000;
+}
+
+nav {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10%;
+}
+
+.navAnchors {
+    height: 100%;
+    /* width: 55%; */
+    width: 45%;
+    margin-left: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: auto 0;
+    margin-right: 2rem;
+}
+
+.navAnchors a {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+    text-decoration-color: white;
+    color: white;
+    font-size: 0.9rem;
+    font-family: Montserrat;
+    font-weight: 400;
+    padding-bottom: 5px;
+    transition: border-bottom 0s;
+    transition: transform 0.2s;
+    border-bottom: 2.4px solid transparent;
+
+}
+
+.navAnchors a i {
+    color: white;
+}
+
+.navAnchors a:hover {
+    border-bottom: solid white;
+    transform: scale(1.06);
+}
+
+.navAnchors a.active {
+    border-bottom: solid white;
+    transform: scale(1.06);
+    /* font-weight: bold; */
+}
+
+#IEEE-LOGO {
+    height: 100%;
+    width: 20%;
+    margin-left: 1rem;
+
+}
+
+#IEEE-LOGO img {
+    height: 100%;
+    width: 80%;
+}
+
+#IEEE-LOGO-phone {
+    display: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown button {
+    color: white;
+    padding-bottom: 5px;
+}
+
+.fa-caret-down {
+    padding-left: 5px;
+    filter: invert(100);
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    font-family: Montserrat;
+}
+
+.theme-icon {
+    width: 24px;
+    filter: invert(100);
+    padding-right: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    /* min-width: 160px; */
+    /* padding: 0.5rem; */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    flex-direction: column;
+    /* color: black; */
+
+    margin-top: 1.25rem;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 100%; */
+    transition: 0.1s;
+}
+
+
+.dropdown-content a:hover {
+    /* border-bottom: none; */
+    transform: scale(1.0);
+}
+
+.tick-mark {
+    visibility: hidden;
+    margin-left: 5px;
+    font-weight: bolder;
+}
+
+.tick-mark.show {
+    visibility: visible;
+}
+
+#light-theme img {
+    filter: invert(100);
+}
+
+
+/* Blurred background effect on scroll */
+.navSection.scrolled {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.2);
+    /* Slightly more opaque background when scrolled */
+    /* color: black; */
+}
+
+.navSection.scrolled a,
+.navSection.scrolled i {
+    color: black;
+}
+
+.fa-solid {
+    color: black;
+}
+
+.navSection.scrolled .navAnchors a:hover {
+    border-bottom: solid black;
+}
+
+.navSection.scrolled .navAnchors a.active {
+    border-bottom: solid black;
+    transform: scale(1.06);
+}
+
+.navSection.scrolledwhite .dropdown-content a {
+    color: black;
+}
+
+.navSection.scrolled a,
+.navSection.scrolled i {
+    color: black;
+}
+
+.navSection.scrolled .dropbtn {
+    color: black;
+}
+
+.navSection.scrolled .dropbtn img {
+    filter: invert(0);
+}
+
+.dropdown-content a:hover {
+    border-bottom: solid black;
+    transform: scale(1);
+}
+
+body.darkTheme .dropdown-content a:hover {
+    border-bottom: solid black;
+    transform: scale(1);
+}
+
+body.darkTheme .au-slider h1 {
+    color: white;
+}
+
+body.darkTheme .dropdown .dropdown-content a {
+    color: black;
+}
+
+body.darkTheme .dropdown .dropbtn {
+    color: white;
+}
+
+body.darkTheme .dropdown .dropbtn img {
+    filter: invert(100);
+}
+
+body.darkTheme .navSection.scrolled .dropdown-content a {
+    color: black;
+}
+
+.navSection.scrolled .fa-caret-down {
+    filter: invert(0);
+}
+
+.bottom-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.bottom-div h4 {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* for black logo */
+/* .navSection.scrolled #IEEE-LOGO img {
+    filter: invert(1);
+} */
+
+body.darkTheme {
+    background-color: black;
+}
+
+body.darkTheme .navSection {
+    background-color: transparent;
+}
+
+body.darkTheme .container {
+    color: white;
+}
+
+body.darkTheme .container img {
+    border: 1px solid white;
+}
+
+body.darkTheme .paragraph {
+    color: rgba(255, 255, 255, 0.553);
+    transition: 0.2s;
+}
+
+body.darkTheme .paragraph:hover {
+    color: rgba(255, 255, 255, 0.853);
+}
+
+body.darkTheme .navSection.scrolled .navAnchors a:hover {
+    border-bottom: solid white;
+}
+
+body.darkTheme .navSection.scrolled .navAnchors a.active {
+    border-bottom: solid white;
+}
+
+body.darkTheme .navSection.scrolled a,
+body.darkTheme .navSection.scrolled i {
+    color: white;
+}
+
+body.darkTheme .footerSection {
+    background-color: black;
+    border-top: 1px solid white;
+}
+
+body.darkTheme .footerClass {
+    background-color: black;
+}
+
+body.darkTheme .imgs,
+body.darkTheme .copyrightSection {
+    background-color: black;
+}
+
+body.darkTheme #socialLinks a {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.darkTheme .theme-div {
+    background-color: black;
+    border: 1px solid white;
+}
+
+body.darkTheme .theme-div button {
+    color: white;
+    cursor: pointer;
+}
+
+body.darkTheme h1{
+    color: white;
+}
+
+body.darkTheme .error-message, body.darkTheme .no-achievements{
+    border: 1px solid white;
+}
+
+@media (max-width: 1024px) {
+
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .container h1{
+        margin: 1.5rem 0;
+    }
+    .achievement-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .achievement-div:nth-of-type(odd) {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Styles for alternating divs */
+    .achievement-div:nth-of-type(even) {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .achi-text {
+        /* text-align: center; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* margin-left: 0; */
+        width: 90%;
+        margin-top: 0.5rem;
+        text-align: justify;
+    }
+
+    .achi-text .head{
+        margin-bottom: 0.5rem;
+    }
+
+    .achievement-div:nth-child(even) .achi-img img{
+        margin-left: 0;
+    }
+
+    .navSection{
+        padding: 0;
+    }
+
+    .navAnchors a.active{
+        transform: scale(1);
+        font-weight: bolder;
+    }
+
+    .error-message, .no-achievements{
+        width: 80%;
+        margin: auto;
+        font-size: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+}
+
+@media (min-width : 769px) and (max-width : 1023px) {
+
+    .navSection{
+        height: 10%;
+    }
+
+    .navAnchors a i{
+        font-size: 150%;
+    }
+
+    .navAnchors a.active{
+        transform: scale(1);
+        font-weight: bolder;
+    }
+    .error-message, .no-achievements{
+        width: 80%;
+        margin: auto;
+        font-size: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+
+/* //Scrollbar */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    position: absolute;
+    background: black;
+    z-index: -1000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #047bb3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #f3f3f3;
+}
+
