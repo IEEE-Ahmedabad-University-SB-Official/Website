@@ -32,6 +32,11 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 * Modal window to display event details
 * Filtering and sorting options for events
 
+### Achievements Section
+
+* Showcase of achievements and awards won by the student branch
+* Filtering and sorting options for achievements
+
 ### Committee Section
 
 * List of committee members with their roles and contact information
