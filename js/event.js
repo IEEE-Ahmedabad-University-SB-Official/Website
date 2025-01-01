@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function fetchData() {
-    axios.get('https://ieee-au-sb-website.onrender.com/api/events')
+    axios.get('https://ieeeausb.onrender.com/api/events')
       .then(response => {
         renderData(response.data);
       })
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.editEvent = function (id) {
-    axios.post(`https://ieee-au-sb-website.onrender.com/api/events/update/${id}`)
+    axios.post(`https://ieeeausb.onrender.com/api/events/update/${id}`)
       .then(response => {
         const event = response.data.event; // Assuming response.data has a structure like { message: 'Event updated successfully', event: updatedEvent }
         let dateString = '';
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loader.style.display = 'block';
         document.body.classList.add('disable-interaction');
   
-        axios.delete(`https://ieee-au-sb-website.onrender.com/api/event/${id}`)
+        axios.delete(`https://ieeeausb.onrender.com/api/event/${id}`)
           .then(response => {
             fetchData();
             // Hide loader and enable interactions
@@ -252,11 +252,11 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   
     if (eventId) {
-      axios.post(`https://ieee-au-sb-website.onrender.com/api/events/update/${eventId}`, formData, config)
+      axios.post(`https://ieeeausb.onrender.com/api/events/update/${eventId}`, formData, config)
         .then(handleResponse)
         .catch(handleError);
     } else {
-      axios.post('https://ieee-au-sb-website.onrender.com/api/events/upload', formData, config)
+      axios.post('https://ieeeausb.onrender.com/api/events/upload', formData, config)
         .then(handleResponse)
         .catch(handleError);
     }

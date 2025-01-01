@@ -170,7 +170,7 @@
 
         // Fetch and display updates data
         async function displayUpdates() {
-            const response = await fetch('https://ieee-au-sb-website.onrender.com/api/updates');
+            const response = await fetch('https://ieeeausb.onrender.com/api/updates');
             const data = await response.json();
             const tableBody = document.getElementById('member-data-body');
             tableBody.innerHTML = '';

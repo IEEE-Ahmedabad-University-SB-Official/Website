@@ -20,7 +20,7 @@ async function submitForm() {
     getUpdatesContent.style.opacity = '0.3';  // Adjust the opacity for the form
 
     try {
-        const response = await fetch('https://ieee-au-sb-website.onrender.com/api/updates/enroll', {
+        const response = await fetch('https://ieeeausb.onrender.com/api/updates/enroll', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
