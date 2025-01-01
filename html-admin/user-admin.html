@@ -146,7 +146,7 @@
   
         // Function to fetch and display all admins
         function getAllAdmins() {
-          fetch('https://ieee-au-sb-website.onrender.com/api/getAllAdmins')
+          fetch('https://ieeeausb.onrender.com/api/getAllAdmins')
             .then(response => response.json())
             .then(data => {
               // Check if data is an array
@@ -199,7 +199,7 @@
           addAdminForm.reset();
   
           // Send data to server via fetch API
-          fetch('https://ieee-au-sb-website.onrender.com/api/addAdmin', {
+          fetch('https://ieeeausb.onrender.com/api/addAdmin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
@@ -244,7 +244,7 @@
 
       // Function to delete admin by ID
       function deleteAdmin(adminId) {
-        fetch(`https://ieee-au-sb-website.onrender.com/api/deleteAdmin/${adminId}`, {
+        fetch(`https://ieeeausb.onrender.com/api/deleteAdmin/${adminId}`, {
           method: 'DELETE'
         })
         .then(response => {
