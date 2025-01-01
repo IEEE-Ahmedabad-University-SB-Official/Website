@@ -228,17 +228,17 @@ const AdminEventPage = () => {
 
   return (
     <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212] flex-col justify-center">
-      <div className="max-w-7xl mx-auto px-5 flex items-center justify-center relative py-4 ">
+      <div className="max-w-screen-2xl mx-auto px-5 flex items-center justify-center relative py-4 ">
         <button 
           className="absolute left-[0] px-5 py-2.5 bg-black text-white rounded border border-gray-400 hover:bg-gray-700 transition"
           onClick={() => navigate('/admin/dashboard')}
         >
           Admin Page
         </button>
-        <h1 className="text-center text-white text-2xl">Event Admin Page</h1>
+        <h1 className="text-center font-bold text-white text-3xl">Event Admin Page</h1>
       </div>
 
-      <div className="max-w-7xl mx-auto px-5 py-4">
+      <div className="max-w-screen-2xl mx-auto px-5 py-4">
         <div className="flex justify-between items-center bg-[#1f1f1f] rounded-lg p-4 shadow-lg">
           <div className="flex items-center gap-4">
             <span className="text-white">Filter by Year:</span>
@@ -265,7 +265,7 @@ const AdminEventPage = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto p-5">
+      <div className="max-w-screen-2xl mx-auto p-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredEvents.map((event) => (
             <div key={event.id} className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg hover:shadow-xl transition">
@@ -372,9 +372,9 @@ const AdminEventPage = () => {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[1000]">
-          <div className="bg-white p-6 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#323232] p-6 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">
+              <h2 className="text-gray-300 text-xl font-bold">
                 {formData.eventId ? 'Edit Event' : 'Add Event'}
               </h2>
               <button 
@@ -385,9 +385,9 @@ const AdminEventPage = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 text-gray-300">
               {/* Event Name */}
-              <div>
+              <div >
                 <label className="block font-bold mb-1">
                   Event Name<span className="text-red-500">*</span>:
                 </label>
@@ -396,7 +396,7 @@ const AdminEventPage = () => {
                   name="eventName"
                   value={formData.eventName}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                   required
                 />
               </div>
@@ -410,7 +410,7 @@ const AdminEventPage = () => {
                   name="eventDescription"
                   value={formData.eventDescription}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                   rows="4"
                   required
                 />
@@ -424,7 +424,7 @@ const AdminEventPage = () => {
                   name="speaker"
                   value={formData.speaker}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -438,7 +438,7 @@ const AdminEventPage = () => {
                   name="eventDate"
                   value={formData.eventDate}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                   required
                 />
               </div>
@@ -454,7 +454,7 @@ const AdminEventPage = () => {
                     name="startTime"
                     value={formData.startTime}
                     onChange={handleInputChange}
-                    className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                    className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                     required
                   />
                 </div>
@@ -467,7 +467,7 @@ const AdminEventPage = () => {
                     name="endTime"
                     value={formData.endTime}
                     onChange={handleInputChange}
-                    className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                    className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                     required
                   />
                 </div>
@@ -483,7 +483,7 @@ const AdminEventPage = () => {
                   name="venue"
                   value={formData.venue}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                   required
                 />
               </div>
@@ -498,7 +498,7 @@ const AdminEventPage = () => {
                   name="registrationLink"
                   value={formData.registrationLink}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                   required
                 />
               </div>
@@ -510,7 +510,7 @@ const AdminEventPage = () => {
                   name="instaPostLink"
                   value={formData.instaPostLink}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="bg-[#434343] w-full p-2 border border-gray-500 rounded focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -524,7 +524,7 @@ const AdminEventPage = () => {
                   name="eventPoster"
                   onChange={handleInputChange}
                   accept="image/*"
-                  className="w-full"
+                  className=" bg-[#434343]w-full"
                 />
                 {imagePreview && (
                   <div className="mt-4 flex justify-center">
