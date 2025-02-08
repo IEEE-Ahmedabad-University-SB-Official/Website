@@ -1,0 +1,226 @@
+.heroSection {
+    height: 100vh;
+    width: 100%;
+}
+
+.Section {
+    height: 100vh;
+    width: 100%;
+}
+
+.Section img {
+    position: relative;
+}
+
+.Section video {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.imageBackGround {
+    display: none;
+    z-index: -999;
+}
+
+.typing-container {
+    font-size: 1.75rem;
+    font-family: Poppins;
+    font-weight: 400;
+    letter-spacing: 0.125em;
+}
+
+.subheadingText{
+    font-size: 1.75rem;
+    letter-spacing: 0.125em;
+}
+
+.cursor {
+    animation: cursor-blink 0.7s infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.videoHeroSection {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+.myCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+}
+
+.heroContent{
+    height          : 85%;
+    width           : 93%;
+    /* background-color: aqua; */
+    position        : absolute;
+    top             : 5%;
+    left            : 6.2%; 
+    display: flex;
+    /* justify-content: space-around; */
+    gap : 0%;
+
+}
+.Heading{
+    position        : absolute;
+    /* top             : 0%; */
+    /* background-color: black; */
+    color           : white;
+    /* height          : 100%; */
+    width           : 100%;
+    display         : flex;
+    position: relative;
+    flex-direction  : column;
+    justify-content : center;
+
+}
+
+.Heading #subheadingText span {
+    border-right    : 4px solid white;
+    display: inline-block;
+    width:min-content;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: 
+         4s steps(35) infinite alternate typing ,
+        .75s step-end infinite alternate cursor;
+}
+
+.Heading .ieee-ausb-div{
+    display: flex;
+    flex-direction: row;
+}
+.letter-heading {
+    display: flex;
+    flex-direction: row;
+    font-size: 10vw;
+    font-family: Montserrat, sans-serif;
+    font-weight: 850;
+    /* letter-spacing: -0.05em; */
+    width: fit-content;
+}
+
+#headingTextIEEE{
+    margin-right: 4%;
+}
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: floatUp 1s forwards;
+}
+@keyframes floatUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* #headingText span:nth-child(4) {
+    margin-right: 5%;
+} */
+
+.normal-text{
+    position        : -webkit-sticky;
+}
+
+.imageCard{
+    height          : 100%   ;
+    /* background-color: blue; */
+    display         : flex    ;
+    flex-direction  : column  ;
+    gap             : 25px    ;
+}
+.imageSlider{
+    height          : 100%    ;
+    width           : 50%     ;
+    /* background-color: blue; */
+    position        : absolute;
+    left            : 50%     ;
+
+}
+.imageDescription{
+    color           : white;
+    height          : 1.7em  ;
+    font-size       : 1.2em  ;
+    display         : flex   ;
+    flex-direction  : column ;
+    gap             : 14px   ;
+    padding-left    : 10px   ;
+
+}
+.circlesImageSlider{
+    display         : flex   ;
+    flex-direction  : row    ;
+    gap             : 4px    ;
+}
+#circleImageCard{
+    height          : 7px    ; 
+    width           : 7px    ;
+    border-radius   : 50%    ;
+    background-color: white;
+}
+.image{
+    height          : 73%    ;
+    width           : 45%    ;
+}
+.image img{
+    height          : 100%   ;
+    border-radius   : 1.15em ;
+}
+
+.spacer {
+    width: 4em;  /* Adjust this value to control space width */
+    display: inline-block;
+}
+
+.Verticalline{
+    height: 70vh;
+    width : 25px;
+    position: absolute;
+    left    : 3.2%;
+    top     : 20%;
+    
+
+}
+.vl{
+    border-left: 2px solid rgba(255, 255, 255, 0.514);
+    height: 100%;
+} 
+
+.circles{
+    height: 35vw;
+    position: absolute;
+    top     : 20%;
+    left    : 2.8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.circle{
+    height  : 16px;
+    width   : 16px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255,1);
+    transition: all 0.2s;
+}
+.circle:hover{
+    transform:scale(0.8);
+}
+.circle:active{
+    background-color: rgb(155, 155, 155);
+}

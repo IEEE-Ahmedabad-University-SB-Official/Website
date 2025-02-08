@@ -3,15 +3,15 @@ import React from 'react';
 import DesktopNavbar from '../../components/DesktopNavbar';
 import MobileNavbar from '../../components/MobileNavbar';
 import Footer from '../../components/Footer';
+import Hero from '../../components/homePage/Hero/Hero';
+import styles from  './HomePage.module.css';
 
 function HomePage() {
   return (
-    <div className='h-[2000px] bg-red-500'>
-      <h1>Welcome to the HomePage</h1>
-      <p>This is the homepage content.</p>
+    <div className='h-screen'>
       <DesktopNavbar />
       <MobileNavbar />
-
+      <Hero />
       <Footer />
     </div>
   );
