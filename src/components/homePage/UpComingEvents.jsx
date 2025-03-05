@@ -1,34 +1,53 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import React, { useRef } from 'react';
+import useEvents from '../../hooks/useEvents';
 import { FaArrowLeft, FaArrowRight, FaMicrophone, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 
 const EventSkeleton = () => (
-  <div className="min-w-full animate-pulse">
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div className="flex flex-col md:flex-row h-full">
-        {/* Image Skeleton */}
-        <div className="md:w-1/2 aspect-[4/3] bg-gray-200"></div>
+  <div className="py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
+    <div className="max-w-6xl mx-auto px-4">
+      {/* Header Skeleton */}
+      <div className="text-center mb-16">
+        <div className="h-10 w-64 bg-gray-200 rounded-lg mx-auto mb-4"></div>
+        <div className="w-24 h-1 bg-gray-200 mx-auto rounded-full"></div>
+      </div>
 
-        {/* Content Skeleton */}
-        <div className="md:w-1/2 p-8">
-          {/* Title Skeleton */}
-          <div className="h-8 bg-gray-200 rounded-lg w-3/4 mb-4"></div>
-          
-          {/* Description Skeleton */}
-          <div className="space-y-2 mb-6">
-            <div className="h-4 bg-gray-200 rounded w-full"></div>
-            <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-            <div className="h-4 bg-gray-200 rounded w-4/6"></div>
-          </div>
+      {/* Card Skeleton */}
+      <div className="relative">
+        <div className="min-w-full animate-pulse">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="flex flex-col md:flex-row h-full">
+              {/* Image Skeleton */}
+              <div className="md:w-1/2 aspect-[4/3] bg-gray-200"></div>
 
-          {/* Details Skeleton */}
-          <div className="space-y-4">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-200"></div>
-                <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+              {/* Content Skeleton */}
+              <div className="md:w-1/2 p-8">
+                {/* Date Badge Skeleton */}
+                <div className="w-32 h-8 bg-gray-200 rounded-lg mb-4"></div>
+                
+                {/* Title Skeleton */}
+                <div className="h-8 bg-gray-200 rounded-lg w-3/4 mb-4"></div>
+                
+                {/* Description Skeleton */}
+                <div className="space-y-2 mb-6">
+                  <div className="h-4 bg-gray-200 rounded w-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                  <div className="h-4 bg-gray-200 rounded w-4/6"></div>
+                </div>
+
+                {/* Details Skeleton */}
+                <div className="space-y-4 mb-8">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+                      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Button Skeleton */}
+                <div className="w-40 h-12 bg-gray-200 rounded-lg"></div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
@@ -37,34 +56,22 @@ const EventSkeleton = () => (
 );
 
 const UpComingEvents = () => {
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { events, loading, error } = useEvents();
   const cardContainerRef = useRef(null);
 
-  useEffect(() => {
-    fetchEvents();
-  }, []);
+  if (loading) {
+    return <EventSkeleton />;
+  }
 
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get("https://ieeeausb.onrender.com/api/events");
-      const allEvents = response.data;
-      const currentDate = new Date();
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-red-600">{error}</p>
+      </div>
+    );
+  }
 
-      // Filter and sort upcoming events
-      const upcomingEvents = allEvents
-        .filter(event => new Date(event.eventDate) >= currentDate)
-        .sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
-
-      setEvents(upcomingEvents);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching events:", error);
-      setError("Failed to load events");
-      setLoading(false);
-    }
-  };
+  const upcomingEvents = events.upcoming || [];
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -83,23 +90,7 @@ const UpComingEvents = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center py-20">
-        <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-20">
-        <p className="text-red-600">{error}</p>
-      </div>
-    );
-  }
-
-  if (events.length === 0) {
+  if (upcomingEvents.length === 0) {
     return (
       <div className="text-center py-20">
         <div className="no-event-div">
@@ -129,7 +120,7 @@ const UpComingEvents = () => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Navigation Arrows */}
-          {!loading && events.length > 0 && (
+          {!loading && upcomingEvents.length > 0 && (
             <>
               <button 
                 onClick={() => handleScroll(-1)}
@@ -155,8 +146,8 @@ const UpComingEvents = () => {
           >
             {loading ? (
               <EventSkeleton />
-            ) : events.length > 0 ? (
-              events.map((event, index) => (
+            ) : upcomingEvents.length > 0 ? (
+              upcomingEvents.map((event, index) => (
                 <div 
                   key={index}
                   className="min-w-full snap-center"

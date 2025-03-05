@@ -1,37 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import useEvents from '../../hooks/useEvents';
 import { FaTimes, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
+const EventCardSkeleton = () => (
+  <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden relative animate-pulse">
+      <div className="aspect-[3/4] relative">
+        {/* Skeleton for image */}
+        <div className="w-full h-full bg-gray-200"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+        {/* Know More Button Skeleton */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-10 bg-gray-200 rounded-full"></div>
+      </div>
+    </div>
+  </div>
+);
+
+const PastEventsSkeleton = () => (
+  <div className="py-20 bg-white overflow-hidden">
+    <div className="mx-auto px-4">
+      <div className="flex flex-col md:flex-row gap-12">
+        {/* Left side - Large "PAST EVENTS" text skeleton */}
+        <div className="md:w-[25%] flex items-center justify-center md:justify-start">
+          <div className="text-center">
+            <div className="w-64 h-32 bg-gray-200 rounded-lg"></div>
+          </div>
+        </div>
+
+        {/* Right side - Stacked cards skeleton */}
+        <div className="md:w-2/3 relative h-[500px] flex items-center justify-center perspective-1000">
+          <div className="relative w-full h-full preserve-3d">
+            {/* Show 3 skeleton cards */}
+            {[...Array(3)].map((_, index) => (
+              <EventCardSkeleton key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const PastEvents = () => {
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { events, loading, error } = useEvents();
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    fetchEvents();
-  }, []);
-
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get("https://ieeeausb.onrender.com/api/events");
-      const allEvents = response.data;
-      const currentDate = new Date();
-
-      // Filter and sort past events
-      const pastEvents = allEvents
-        .filter(event => new Date(event.eventDate) < currentDate)
-        .sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
-
-      setEvents(pastEvents);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching events:", error);
-      setError("Failed to load events");
-      setLoading(false);
-    }
-  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -39,16 +53,16 @@ const PastEvents = () => {
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % events.past.length);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + events.length) % events.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + events.past.length) % events.past.length);
   };
 
   const getCardStyle = (index) => {
-    const diff = (index - currentIndex + events.length) % events.length;
-    const zIndex = events.length - diff;
+    const diff = (index - currentIndex + events.past.length) % events.past.length;
+    const zIndex = events.past.length - diff;
     
     if (diff === 0) { // Current card
       return {
@@ -62,7 +76,7 @@ const PastEvents = () => {
         zIndex,
         opacity: 0.3
       };
-    } else if (diff === events.length - 1) { // Previous card
+    } else if (diff === events.past.length - 1) { // Previous card
       return {
         transform: 'translateX(-25%) scale(0.85) rotate(-5deg)',
         zIndex,
@@ -131,11 +145,7 @@ const PastEvents = () => {
   );
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center py-20">
-        <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
+    return <PastEventsSkeleton />;
   }
 
   if (error) {
@@ -146,6 +156,8 @@ const PastEvents = () => {
     );
   }
 
+  const pastEvents = events.past || [];
+
   return (
     <div className="py-20 bg-white overflow-hidden">
       <div className=" mx-auto px-4">
@@ -153,10 +165,16 @@ const PastEvents = () => {
           {/* Left side - Large "PAST EVENTS" text */}
           <div className="md:w-[25%] flex items-center justify-center md:justify-start">
             <div className="text-center">
-              <h1 className="text-[10rem] text-left ml-8 font-bold text-gray-900 leading-[0.8] tracking-tight">
-                PAST
+              <h1 className="text-[10rem] text-left ml-8 font-bold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head"
+                  style={{
+                    textShadow: `
+                      8px 8px rgba(128, 128, 128, 0.4),
+                      16px 16px rgba(128, 128, 128, 0.2)
+                    `
+                  }}>
+                Past
                 <br />
-                EVENTS
+                Events
               </h1>
             </div>
           </div>
@@ -165,7 +183,7 @@ const PastEvents = () => {
           <div className="md:w-2/3 relative h-[500px] flex items-center justify-center perspective-1000">
             {/* Cards Stack */}
             <div className="relative w-full h-full preserve-3d">
-              {events.map((event, index) => (
+              {pastEvents.map((event, index) => (
                 <div
                   key={event._id}
                   className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm transition-all duration-500 ease-in-out"
