@@ -45,10 +45,17 @@ const WhyJoinUs = () => {
             <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                        Why Join Us?
-                    </h2>
-                    <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+                <h1
+                    className="text-5xl text-center font-extrabold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head mb-16"
+                    style={{
+                    textShadow: `
+                        5px 5px rgba(128, 128, 128, 0.4),
+                        10px 10px rgba(128, 128, 128, 0.2)
+                    `
+                    }}
+                >
+                    Why join us?
+                </h1>
                 </div>
 
                 {/* Benefits Grid */}

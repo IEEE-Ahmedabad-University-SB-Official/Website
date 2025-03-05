@@ -12,7 +12,15 @@ const AuGlimpes = () => {
   return (
     <section className="relative py-20">
       {/* Heading */}
-      <h1 className="text-4xl font-bold text-center mb-16">
+      <h1
+        className="text-5xl text-center font-extrabold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head mb-16"
+        style={{
+          textShadow: `
+            5px 5px rgba(128, 128, 128, 0.4),
+            10px 10px rgba(128, 128, 128, 0.2)
+          `
+        }}
+      >
         Glimpse of Ahmedabad University
       </h1>
 

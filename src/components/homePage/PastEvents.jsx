@@ -165,17 +165,19 @@ const PastEvents = () => {
           {/* Left side - Large "PAST EVENTS" text */}
           <div className="md:w-[25%] flex items-center justify-center md:justify-start">
             <div className="text-center">
-              <h1 className="text-[10rem] text-left ml-8 font-bold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head"
-                  style={{
-                    textShadow: `
-                      8px 8px rgba(128, 128, 128, 0.4),
-                      16px 16px rgba(128, 128, 128, 0.2)
-                    `
-                  }}>
-                Past
-                <br />
-                Events
-              </h1>
+            <h1
+              className="text-[10rem] text-left ml-8 font-extrabold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head"
+              style={{
+                textShadow: `
+                  8px 8px rgba(128, 128, 128, 0.4),
+                  16px 16px rgba(128, 128, 128, 0.2)
+                `
+              }}
+            >
+              <span className="block mb-8">Past</span>
+              <span className="block">Events</span>
+            </h1>
+
             </div>
           </div>
 

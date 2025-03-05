@@ -17,10 +17,10 @@ const EventSkeleton = () => (
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="flex flex-col md:flex-row h-full">
               {/* Image Skeleton */}
-              <div className="md:w-1/2 aspect-[4/3] bg-gray-200"></div>
+              <div className="md:w-1/3 aspect-[4/3] bg-gray-200"></div>
 
               {/* Content Skeleton */}
-              <div className="md:w-1/2 p-8">
+              <div className="md:w-2/3 p-8">
                 {/* Date Badge Skeleton */}
                 <div className="w-32 h-8 bg-gray-200 rounded-lg mb-4"></div>
                 
@@ -97,7 +97,7 @@ const UpComingEvents = () => {
           <p className="text-xl font-semibold mb-4">No Upcoming Events</p>
           <div className="flex items-center justify-center gap-2">
             <p>Explore Our</p>
-            <a href="./pages/event-page.html" className="text-blue-600 hover:underline">
+            <a href="./pages/event-page.html" className="text-[#0088cc] hover:underline">
               Completed Events &gt;&gt;
             </a>
           </div>
@@ -111,10 +111,17 @@ const UpComingEvents = () => {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Upcoming Events
+          <h1
+              className="text-5xl text-center font-extrabold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head"
+              style={{
+                textShadow: `
+                  5px 5px rgba(128, 128, 128, 0.4),
+                  10px 10px rgba(128, 128, 128, 0.2)
+                `
+              }}
+            >
+              Upcoming Events
           </h1>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
         </div>
 
         {/* Carousel Container */}
@@ -124,14 +131,14 @@ const UpComingEvents = () => {
             <>
               <button 
                 onClick={() => handleScroll(-1)}
-                className="arrow left absolute -left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center group z-10 transition-all hover:scale-110"
+                className="arrow left absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center group z-10 transition-all hover:scale-110"
               >
                 <FaArrowLeft className="w-5 h-5 text-gray-600 transition-transform group-hover:-translate-x-1" />
               </button>
 
               <button 
                 onClick={() => handleScroll(1)}
-                className="arrow right absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center group z-10 transition-all hover:scale-110"
+                className="arrow right absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center group z-10 transition-all hover:scale-110"
               >
                 <FaArrowRight className="w-5 h-5 text-gray-600 transition-transform group-hover:translate-x-1" />
               </button>
@@ -169,7 +176,7 @@ const UpComingEvents = () => {
                         {/* Date Badge */}
                         <div className="mb-4">
                           <div className="inline-block bg-blue-100 px-4 py-2 rounded-lg">
-                            <p className="text-blue-600 font-medium">
+                            <p className="text-[#0088cc] font-medium">
                               {formatDate(event.eventDate)}
                             </p>
                           </div>
@@ -187,7 +194,7 @@ const UpComingEvents = () => {
                           {event.speaker && (
                             <div className="flex items-center gap-4 text-gray-700">
                               <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
-                                <FaMicrophone className="w-5 h-5 text-blue-600" />
+                                <FaMicrophone className="w-5 h-5 text-[#0088cc]" />
                               </div>
                               <p>{event.speaker}</p>
                             </div>
@@ -195,7 +202,7 @@ const UpComingEvents = () => {
 
                           <div className="flex items-center gap-4 text-gray-700">
                             <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
-                              <FaClock className="w-5 h-5 text-blue-600" />
+                              <FaClock className="w-5 h-5 text-[#0088cc]" />
                             </div>
                             <p>
                               {event.startTime === event.endTime 
@@ -206,7 +213,7 @@ const UpComingEvents = () => {
 
                           <div className="flex items-center gap-4 text-gray-700">
                             <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
-                              <FaMapMarkerAlt className="w-5 h-5 text-blue-600" />
+                              <FaMapMarkerAlt className="w-5 h-5 text-[#0088cc]" />
                             </div>
                             <p>{event.venue}</p>
                           </div>
@@ -216,7 +223,7 @@ const UpComingEvents = () => {
                           href={event.registrationLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-auto inline-flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-6 rounded-lg text-lg font-medium transition-all hover:bg-blue-700 active:scale-95"
+                          className="mt-auto inline-flex items-center justify-center gap-2 bg-[#0088cc] text-white py-3 px-6 rounded-lg text-lg font-medium transition-all hover:bg-[#0171a9] active:scale-95 z-0"
                         >
                           Register Now
                           <FaArrowRight className="w-5 h-5" />
@@ -231,7 +238,7 @@ const UpComingEvents = () => {
                 <p className="text-xl font-semibold mb-4">No Upcoming Events</p>
                 <div className="flex items-center justify-center gap-2">
                   <p>Explore Our</p>
-                  <a href="./pages/event-page.html" className="text-blue-600 hover:underline">
+                  <a href="./pages/event-page.html" className="text-[#0088cc] hover:underline">
                     Completed Events &gt;&gt;
                   </a>
                 </div>

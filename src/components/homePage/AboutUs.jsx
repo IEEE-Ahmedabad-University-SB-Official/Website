@@ -11,9 +11,9 @@ const AboutUs = () => {
                 <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
                     {/* Image Section */}
                     <div className="relative aspect-square mb-16 lg:mb-0 max-w-[600px] mx-auto">
-                        <div className="absolute inset-0 bg-blue-600/20 transform -rotate-6 rounded-3xl z-0" />
+                        <div className="absolute inset-0 bg-[#0088cc]/20 transform -rotate-6 rounded-3xl z-0" />
                         <div className="absolute inset-0 bg-gray-100 transform rotate-3 rounded-3xl z-0" />
-                        <div className="relative h-full w-full overflow-hidden rounded-3xl border-4 border-blue-700/30">
+                        <div className="relative h-full w-full overflow-hidden rounded-3xl border-4 border-[#0088cc]/30">
                             <img 
                                 id="aboutImage" 
                                 src={aboutImage} 
@@ -27,13 +27,13 @@ const AboutUs = () => {
                     {/* Content Section */}
                     <div className="relative">
                         
-                        <h2 className="text-xl font-semibold text-blue-600 tracking-wider uppercase mb-0 relative">
+                        <h2 className="text-xl font-semibold text-[#0088cc] tracking-wider uppercase mb-0 relative">
                             About Us
                         </h2>
                         
                         <h3 className="text-5xl font-bold text-gray-900 mb-0 relative leading-tight">
                             Welcome To IEEE 
-                            <span className="block text-blue-700 mb-4">Ahmedabad University!</span>
+                            <span className="block text-[#0088cc] mb-4">Ahmedabad University!</span>
                         </h3>
 
                         <div className="space-y-4 text-gray-600">
