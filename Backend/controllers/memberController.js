@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
 import Members from '../models/members.js';
 import { uploadImageToCloudinary } from '../utils/imageUploader.js';
-
+const apiKey = process.env.API_KEY;
 
 // POST: Create a new member with image upload
 export const uploadMember = async (req, res) => {
@@ -163,6 +163,10 @@ export const deleteMember = async (req, res) => {
 
 // GET: Fetch all members
 export const getMembers = async (req, res) => {
+    const apiKey = req.headers['x-api-key'];
+    if (apiKey !== process.env.API_KEY) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
     try {
         const members = await Members.find();
 

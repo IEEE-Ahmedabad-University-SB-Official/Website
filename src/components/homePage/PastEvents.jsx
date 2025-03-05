@@ -2,20 +2,48 @@ import React, { useState } from 'react';
 import useEvents from '../../hooks/useEvents';
 import { FaTimes, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-const EventCardSkeleton = () => (
-  <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm">
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden relative animate-pulse">
-      <div className="aspect-[3/4] relative">
-        {/* Skeleton for image */}
-        <div className="w-full h-full bg-gray-200"></div>
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
-        {/* Know More Button Skeleton */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-10 bg-gray-200 rounded-full"></div>
+const EventCardSkeleton = ({ index }) => {
+  // Mimic the same positioning logic as actual cards
+  const getSkeletonStyle = (index) => {
+    if (index === 0) { // Current card
+      return {
+        transform: 'translateX(0) scale(1) rotate(0deg)',
+        zIndex: 3,
+        opacity: 1
+      };
+    } else if (index === 1) { // Next card
+      return {
+        transform: 'translateX(25%) scale(0.85) rotate(5deg)',
+        zIndex: 2,
+        opacity: 0.3
+      };
+    } else if (index === 2) { // Previous card
+      return {
+        transform: 'translateX(-25%) scale(0.85) rotate(-5deg)',
+        zIndex: 1,
+        opacity: 0.3
+      };
+    }
+  };
+
+  return (
+    <div
+      className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm transition-all duration-500 ease-in-out"
+      style={getSkeletonStyle(index)}
+    >
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden relative animate-pulse">
+        <div className="aspect-[3/4] relative">
+          {/* Skeleton for image */}
+          <div className="w-full h-full bg-gray-200"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+          {/* Know More Button Skeleton */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-10 bg-gray-200 rounded-full"></div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PastEventsSkeleton = () => (
   <div className="py-20 bg-white overflow-hidden">
@@ -24,17 +52,24 @@ const PastEventsSkeleton = () => (
         {/* Left side - Large "PAST EVENTS" text skeleton */}
         <div className="md:w-[25%] flex items-center justify-center md:justify-start">
           <div className="text-center">
-            <div className="w-64 h-32 bg-gray-200 rounded-lg"></div>
+            <div className="animate-pulse">
+              <div className="h-32 w-[10rem] bg-gray-200 mb-8"></div>
+              <div className="h-32 w-[10rem] bg-gray-200"></div>
+            </div>
           </div>
         </div>
 
         {/* Right side - Stacked cards skeleton */}
         <div className="md:w-2/3 relative h-[500px] flex items-center justify-center perspective-1000">
           <div className="relative w-full h-full preserve-3d">
-            {/* Show 3 skeleton cards */}
-            {[...Array(3)].map((_, index) => (
-              <EventCardSkeleton key={index} />
+            {/* Show 3 skeleton cards with proper positioning */}
+            {[0, 1, 2].map((index) => (
+              <EventCardSkeleton key={index} index={index} />
             ))}
+
+            {/* Skeleton Navigation buttons */}
+            <div className="absolute left-96 top-1/2 -translate-y-1/2 z-50 w-12 h-12 bg-gray-200 rounded-full animate-pulse"></div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 z-50 w-12 h-12 bg-gray-200 rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>

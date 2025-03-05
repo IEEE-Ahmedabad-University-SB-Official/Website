@@ -6,6 +6,7 @@ const useEvents = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     fetchEvents();
@@ -13,7 +14,11 @@ const useEvents = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/events`);
+      const response = await axios.get(`${backendUrl}/api/events`, {
+        headers: {
+          'x-api-key': apiKey
+        }
+      });
       const allEvents = response.data;
       const currentDate = new Date();
 
@@ -30,7 +35,13 @@ const useEvents = () => {
       setLoading(false);
     } catch (error) {
       console.error("Error fetching events:", error);
-      setError("Failed to load events");
+      if (error.response?.status === 403) {
+        setError("Invalid API key");
+      } else if (error.code === 'ERR_NETWORK') {
+        setError("Network error - Please check your connection");
+      } else {
+        setError("Failed to load events");
+      }
       setLoading(false);
     }
   };

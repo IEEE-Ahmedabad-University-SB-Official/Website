@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
 import Event from '../models/events.js';
 import { uploadImageToCloudinary } from '../utils/imageUploader.js';
+const apiKey = process.env.API_KEY;
 
 // POST: Create a new event with image upload
 export const uploadEvent = async (req, res) => {
@@ -134,6 +135,10 @@ export const deleteEvent = async (req, res) => {
 
 // GET: Fetch all events
 export const getEvents = async (req, res) => {
+    const apiKey = req.headers['x-api-key'];
+    if (apiKey !== process.env.API_KEY) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
     try {
         const events = await Event.find();
 

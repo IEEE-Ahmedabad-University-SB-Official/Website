@@ -1,6 +1,7 @@
 import Achievements from '../models/achivements.js'; 
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
+const apiKey = process.env.API_KEY;
 
 dotenv.config();
 
@@ -121,6 +122,10 @@ export const deleteAchievement = async (req, res) => {
 
 // GET: Fetch all achievements
 export const getAchievements = async (req, res) => {
+    const apiKey = req.headers['x-api-key'];
+    if (apiKey !== process.env.API_KEY) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
     try {
         const achievements = await Achievements.find();
 
