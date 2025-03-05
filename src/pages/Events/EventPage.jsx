@@ -3,7 +3,6 @@ import React from 'react';
 import DesktopNavbar from '../../components/common/DesktopNavbar'
 import MobileNavbar from '../../components/common/MobileNavbar'
 import Footer from '../../components/common/Footer';
-import styles from './EventPage.module.css';
 
 function EventPage() {
   return (
