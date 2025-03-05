@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import DesktopNavbar from '../../components/DesktopNavbar'
-import MobileNavbar from '../../components/MobileNavbar'
-import Footer from '../../components/Footer'
+import DesktopNavbar from '../../components/common/DesktopNavbar'
+import MobileNavbar from '../../components/common/MobileNavbar'
+import Footer from '../../components/common/Footer'
 import './CommitteePage.css';
 
 const CommitteePage = () => {

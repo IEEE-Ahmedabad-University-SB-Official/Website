@@ -6,6 +6,7 @@ import EventPage from './pages/Events/EventPage';
 import AchievementPage from './pages/Achievements/AchievementPage';
 import CommitteePage from './pages/Committee/CommitteePage';
 import NotFoundPage from './pages/NotFound/NotFoundPage';
+
 import AdminDashboardPage from './pages/Admin/Admin Dashboard/AdminDashboardPage';
 import AdminEventPage from './pages/Admin/AdminEventPage';
 import AdminCommitteePage from './pages/Admin/AdminCommitteePage';

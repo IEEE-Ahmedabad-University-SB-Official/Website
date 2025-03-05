@@ -66,21 +66,16 @@
 .heroContent{
     height          : 85%;
     width           : 93%;
-    /* background-color: aqua; */
     position        : absolute;
     top             : 5%;
     left            : 6.2%; 
     display: flex;
-    /* justify-content: space-around; */
     gap : 0%;
 
 }
 .Heading{
     position        : absolute;
-    /* top             : 0%; */
-    /* background-color: black; */
     color           : white;
-    /* height          : 100%; */
     width           : 100%;
     display         : flex;
     position: relative;
@@ -110,7 +105,6 @@
     font-size: 10vw;
     font-family: Montserrat, sans-serif;
     font-weight: 850;
-    /* letter-spacing: -0.05em; */
     width: fit-content;
 }
 
@@ -129,9 +123,6 @@
         transform: translateY(0);
     }
 }
-/* #headingText span:nth-child(4) {
-    margin-right: 5%;
-} */
 
 .normal-text{
     position        : -webkit-sticky;

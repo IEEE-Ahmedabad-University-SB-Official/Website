@@ -6,8 +6,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
-import auLogo from "../assets/Images/AU_logo.webp"
-import ieeelogo from "../assets/Images/IEEE-LOGO-WHITE.png"
+import auLogo from "../../assets/Images/AU_logo.webp"
+import ieeelogo from "../../assets/Images/IEEE-LOGO-WHITE.png"
 
 const Footer = () => {
     const [formData, setFormData] = useState({

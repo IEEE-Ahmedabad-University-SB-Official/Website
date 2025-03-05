@@ -6,8 +6,8 @@ import './DesktopNavbar.css';
 import { LuSun } from "react-icons/lu";
 import { IoMoonOutline } from "react-icons/io5";
 import { TbPercentage50 } from "react-icons/tb";
-import ieee_white from "../assets/Images/IEEE-LOGO-WHITE.png";
-import ieee_blue from "../assets/Images/Logo.png";
+import ieee_white from "../../assets/Images/IEEE-LOGO-WHITE.png";
+import ieee_blue from "../../assets/Images/Logo.png";
 
 const DesktopNavbar = () => {
   const [scrollClass, setScrollClass] = useState('');

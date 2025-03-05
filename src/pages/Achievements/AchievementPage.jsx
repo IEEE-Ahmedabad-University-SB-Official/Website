@@ -1,6 +1,6 @@
 import React from 'react'
-import DesktopNavbar from '../../components/DesktopNavbar'
-import MobileNavbar from '../../components/MobileNavbar'
+import DesktopNavbar from '../../components/common/DesktopNavbar'
+import MobileNavbar from '../../components/common/MobileNavbar'
 
 const AchievementPage = () => {
   return (
