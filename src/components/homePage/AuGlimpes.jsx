@@ -48,7 +48,7 @@ const AuGlimpes = () => {
         </div>
 
         {/* Images Grid Container - Separate from video */}
-        <div className="absolute bottom-[225px] left-1/2 transform -translate-x-1/2 w-[80%] z-10">
+        <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-[80%] z-10">
           <div className="flex justify-between">
             {[
               { src: seas, title: "School of Engineering & Applied Sciences" },
@@ -79,7 +79,7 @@ const AuGlimpes = () => {
         </div>
 
         {/* Spacer div to push content below */}
-        <div className="h-[275px]"></div>
+        {/* <div className="h-[275px]"></div> */}
       </div>
     </section>
   );

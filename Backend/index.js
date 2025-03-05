@@ -13,7 +13,12 @@ const app = express();
 // Middleware
 app.use(express.json()); // Body parser middleware to parse JSON body
 app.use(express.urlencoded({ extended: true })); // Body parser middleware to parse URL-encoded bodies
-app.use(cors()); // Enable CORS for all routes
+app.use(cors({
+    origin: ['http://localhost:5173', 'https://ieeeausb.onrender.com'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(fileUpload({
     useTempFiles : true,

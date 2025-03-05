@@ -8,6 +8,9 @@ import About from '../../components/homePage/AboutUs';
 import NumberData from '../../components/homePage/NumberData';
 import WhyJoinUs from '../../components/homePage/WhyJoinUs';
 import AuGlimpes from '../../components/homePage/AuGlimpes';
+import UpComingEvents from '../../components/homePage/UpComingEvents';
+import PastEvents from '../../components/homePage/PastEvents';
+import ContactUs from '../../components/homePage/ContactUs';
 
 function HomePage() {
   return (
@@ -19,6 +22,9 @@ function HomePage() {
       <NumberData />
       <WhyJoinUs />
       <AuGlimpes />
+      <UpComingEvents />
+      <PastEvents />
+      <ContactUs />
       {/* <Footer /> */}
     </div>
   );

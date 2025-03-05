@@ -26,3 +26,30 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background: #f3f3f3; 
 }
+
+.writing-vertical-lr {
+  writing-mode: vertical-lr;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-zoomIn {
+  animation: zoomIn 0.3s ease-out forwards;
+}
+
+/* .perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+} */
