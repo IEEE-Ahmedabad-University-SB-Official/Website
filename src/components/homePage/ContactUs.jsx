@@ -96,7 +96,7 @@ const ContactUs = () => {
       </div>
 
       {/* Contact Form Container */}
-      <div className="container mx-auto px-4 w-[80%] max-w-[1400px]">
+      <div className="container mx-auto px-4 w-full md:w-[80%] max-w-[1400px]">
         <div className="relative top-[40vh]">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-0 bg-white rounded-lg shadow-[-1px_10px_20px_rgba(0,0,0,_0.7)] overflow-hidden w-full">
             {/* Form Section */}
@@ -169,7 +169,7 @@ const ContactUs = () => {
             </div>
 
             {/* Contact Details Section */}
-            <div className="relative min-h-[300px] lg:min-h-full">
+            <div className="hidden lg:block relative min-h-[300px] lg:min-h-full">
               <img
                 src={auContactUs1}
                 alt="Contact"
@@ -219,6 +219,7 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
+            <div className='h-[400px]'></div>
       </div>
     </section>
   );

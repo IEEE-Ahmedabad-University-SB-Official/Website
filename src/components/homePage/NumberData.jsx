@@ -58,18 +58,18 @@ const NumberData = () => {
 
     const stats = [
         {
-            icon: <FaChartLine className="w-12 h-12" />,
+            icon: <FaChartLine className="w-8 h-8 md:w-12 md:h-12" />,
             number: animatedNumbers.achievements,
             label: "ACHIEVEMENTS",
             suffix: "+"
         },
         {
-            icon: <FaUsers className="w-12 h-12" />,
+            icon: <FaUsers className="w-8 h-8 md:w-12 md:h-12" />,
             number: animatedNumbers.members,
             label: "MEMBERS"
         },
         {
-            icon: <MdEvent className="w-12 h-12" />,
+            icon: <MdEvent className="w-8 h-8 md:w-12 md:h-12" />,
             number: animatedNumbers.events,
             label: "EVENTS",
             suffix: "+"
@@ -79,7 +79,7 @@ const NumberData = () => {
     return (
         <section 
             id="achievements" 
-            className="py-24 bg-white"
+            className="py-8 md:py-24 bg-white"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -89,12 +89,12 @@ const NumberData = () => {
                             className="flex flex-col items-center"
                         >
                             {/* Circular Progress */}
-                            <div className="relative w-48 h-48 mb-6">
+                            <div className="relative w-36 h-36 md:w-48 md:h-48 mb-6">
                                 {/* Outer Circle */}
                                 <div className="absolute inset-0 rounded-full border-[5px] border-gray-100" />
                                 
                                 {/* Blue Progress Circle */}
-                                <div className="absolute inset-0 rounded-full border-[5px] border-[#0088cc] border-l-transparent border-r-transparent transform -rotate-45 border-b-[8px] border-t-[8px]" />
+                                <div className="absolute inset-0 rounded-full border-[5px] border-[#0088cc] border-l-transparent border-r-transparent transform -rotate-45 md:border-b-[8px] md:border-t-[8px]" />
                                 
                                 {/* Inner Content */}
                                 <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -118,7 +118,7 @@ const NumberData = () => {
                             </div>
                             
                             {/* Label */}
-                            <h3 className="text-2xl font-medium text-gray-600 tracking-wide">
+                            <h3 className="text-base md:text-2xl font-medium text-gray-600 tracking-wide">
                                 {stat.label}
                             </h3>
                         </div>

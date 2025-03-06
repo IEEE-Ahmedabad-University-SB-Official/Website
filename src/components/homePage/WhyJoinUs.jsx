@@ -41,12 +41,12 @@ const WhyJoinUs = () => {
     ];
 
     return (
-        <section className="py-14 bg-gray-50">
+        <section className="py-4 pb-8 md:py-14 bg-gray-50">
             <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-8 md:mb-16">
                 <h1
-                    className="text-5xl text-center font-extrabold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head mb-16"
+                    className="text-3xl md:text-5xl text-center font-extrabold text-gray-900 leading-[0.8] tracking-tight uppercase past-event-head mb-8 md:mb-16"
                     style={{
                     textShadow: `
                         5px 5px rgba(128, 128, 128, 0.4),

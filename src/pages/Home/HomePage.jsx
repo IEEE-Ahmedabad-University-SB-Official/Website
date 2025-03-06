@@ -15,7 +15,7 @@ import ContactUs from '../../components/homePage/ContactUs';
 function HomePage() {
   return (
     <div className='h-screen'>
-      {/* <DesktopNavbar /> */}
+      <DesktopNavbar />
       <MobileNavbar />
       <Hero />
       <About />
@@ -25,7 +25,7 @@ function HomePage() {
       <UpComingEvents />
       <PastEvents />
       <ContactUs />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

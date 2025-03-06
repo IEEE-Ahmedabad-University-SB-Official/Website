@@ -50,7 +50,7 @@ const MobileNavbar = () => {
   ];
 
   return (
-    <nav className={`mobile-navbar ${visible ? 'visible' : 'hidden'}`}>
+    <nav className={`mobile-navbar ${visible ? 'visible' : 'hidden'} block md:hidden`}>
       {navItems.map((item) => (
         <Link
           key={item.path}

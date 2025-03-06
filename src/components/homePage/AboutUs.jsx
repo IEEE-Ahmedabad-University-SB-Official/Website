@@ -5,7 +5,7 @@ const AboutUs = () => {
     return (
         <section 
             id="aboutUs" 
-            className="relative py-32 bg-gradient-to-br from-gray-50 to-gray-100"
+            className="relative pt-16 pb-8 md:py-32 bg-gradient-to-br from-gray-50 to-gray-100"
         >
             <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
@@ -27,20 +27,20 @@ const AboutUs = () => {
                     {/* Content Section */}
                     <div className="relative">
                         
-                        <h2 className="text-xl font-semibold text-[#0088cc] tracking-wider uppercase mb-0 relative">
+                        <h2 className="text-base md:text-xl font-semibold text-[#0088cc] tracking-wider uppercase mb-0 relative">
                             About Us
                         </h2>
                         
-                        <h3 className="text-5xl font-bold text-gray-900 mb-0 relative leading-tight">
+                        <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-0 relative leading-tight">
                             Welcome To IEEE 
                             <span className="block text-[#0088cc] mb-4">Ahmedabad University!</span>
                         </h3>
 
                         <div className="space-y-4 text-gray-600">
-                            <p className="text-xl leading-relaxed">
+                            <p className="text-base md:text-xl leading-relaxed">
                                 Ahmedabad University is a private, non-profit research university that offers students a liberal education focused on interdisciplinary learning and research thinking. Our liberal arts education molds independent thinkers and compassionate leaders who go on to engage innovatively with the complex challenges of our societies.
                             </p>
-                            <p className="text-xl leading-relaxed">
+                            <p className="text-base md:text-xl leading-relaxed">
                                 Ahmedabad University was established in 2009 by the Ahmedabad Education Society to offer a world-class academic experience in one of India's most vibrant and livable cities. With a centrally located campus and internationally renowned faculty, it offers one of the most stimulating academic environments in the country.
                             </p>
                         </div>
