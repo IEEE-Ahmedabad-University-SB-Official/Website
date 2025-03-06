@@ -9,6 +9,7 @@ const AdminUsersPage = () => {
   const [isAdding, setIsAdding] = useState(false); // Adding admin loader
   const [deletingId, setDeletingId] = useState(null); // ID of admin being deleted
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const apikey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     fetchAdmins();
@@ -16,7 +17,11 @@ const AdminUsersPage = () => {
   
   const fetchAdmins = () => {
     setIsLoading(true);
-    fetch(`${backendUrl}/api/getAllAdmins`)
+    fetch(`${backendUrl}/api/getAllAdmins`, {
+        headers: {
+            'x-api-key': apikey
+        }
+    })
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -41,7 +46,7 @@ const AdminUsersPage = () => {
 
     fetch(`${backendUrl}/api/addAdmin`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", 'x-api-key': apikey },
       body: JSON.stringify({ username, password }),
     })
       .then((response) => response.json())
@@ -58,7 +63,12 @@ const AdminUsersPage = () => {
   const handleDeleteAdmin = (adminId) => {
     if (window.confirm("Are you sure you want to delete this admin?")) {
       setDeletingId(adminId); // Start deleting loader for this admin
-      fetch(`${backendUrl}/api/deleteAdmin/${adminId}`, { method: "DELETE" })
+      fetch(`${backendUrl}/api/deleteAdmin/${adminId}`, 
+        { method: "DELETE",
+          headers: {
+            'x-api-key': apikey
+          }
+        })
         .then((response) => {
           if (response.ok) {
             setAdmins((prevAdmins) => prevAdmins.filter((admin) => admin._id !== adminId));

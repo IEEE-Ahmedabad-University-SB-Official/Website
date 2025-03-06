@@ -7,24 +7,9 @@ const apiKey = process.env.API_KEY;
 export const uploadMember = async (req, res) => {
     try {
         const { name, email, contact_number, join_year, programme, department, position, enrollment_number, instagramProfile, linkedinProfile, leave_date } = req.body;
-
-        // if (!req.files || !req.files.profile_image) {
-        //     return res.status(400).json({ error: 'No file uploaded' });
-        // }
-
-        // console.log(req);
-        
-        // Handle file upload using express-fileupload
         const file = req.files.profile_image;
 
         const uploadedFile = await uploadImageToCloudinary(file, "Members" , 80 );
-
-        // const options = {
-        //     folder:"Members", 
-        //     quality: 90,
-        //     resource_type: "auto"
-        // };
-        // const uploadedFile = await cloudinary.uploader.upload(file.tempFilePath, options);
 
         // Create member in database
         const newMember = new Members({
@@ -163,10 +148,6 @@ export const deleteMember = async (req, res) => {
 
 // GET: Fetch all members
 export const getMembers = async (req, res) => {
-    const apiKey = req.headers['x-api-key'];
-    if (apiKey !== process.env.API_KEY) {
-        return res.status(401).json({ error: "Unauthorized" });
-    }
     try {
         const members = await Members.find();
 

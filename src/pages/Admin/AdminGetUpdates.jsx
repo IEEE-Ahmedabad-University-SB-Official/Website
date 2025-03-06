@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 function AdminGetUpdatesPage() {
     const [updates, setUpdates] = useState([]);
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const apikey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
         fetchUpdates();
@@ -10,7 +11,11 @@ function AdminGetUpdatesPage() {
 
     const fetchUpdates = async () => {
         try {
-            const response = await fetch(`${backendUrl}/api/updates`);
+            const response = await fetch(`${backendUrl}/api/updates`, {
+                headers: {
+                    'x-api-key': apikey
+                }
+            });
             const data = await response.json();
             setUpdates(data);
         } catch (error) {

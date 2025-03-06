@@ -5,6 +5,7 @@ import dbConnect from './config/database.js';
 import { cloudinaryConnect } from './config/cloudinary.js';
 import allRoutes from './routes/routes.js';
 import fileUpload from 'express-fileupload';
+import authMiddleware from './middleware/authMiddleware.js';
 
 dotenv.config();
 
@@ -30,7 +31,7 @@ dbConnect();
 cloudinaryConnect();
 
 // Routes
-app.use('/api', allRoutes);
+app.use('/api', authMiddleware, allRoutes);
 
 app.get("/" , (req,res) => {
     return res.json({

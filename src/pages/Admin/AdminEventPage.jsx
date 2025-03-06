@@ -14,6 +14,7 @@ const AdminEventPage = () => {
   const [filterYear, setFilterYear] = useState("all");
   const [availableYears, setAvailableYears] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const apikey = import.meta.env.VITE_API_KEY;
 
   // Form state
   const [formData, setFormData] = useState({
@@ -41,7 +42,11 @@ const AdminEventPage = () => {
   // Fetch events data
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/events`);
+      const response = await axios.get(`${backendUrl}/api/events`, {
+        headers: {
+            'x-api-key': apikey
+        }
+    });
       setEvents(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -128,7 +133,11 @@ const AdminEventPage = () => {
         ? `${backendUrl}/api/events/update/${formData.eventId}`
         : `${backendUrl}/api/events/upload`;
 
-      await axios.post(url, submitFormData, config);
+      await axios.post(url, submitFormData, {
+        headers: {
+            'x-api-key': apikey
+        }
+    });
 
       Swal.fire({
         title: formData.eventId ? "Updated!" : "Added!",
@@ -164,7 +173,11 @@ const AdminEventPage = () => {
   const handleEdit = async (id) => {
     try {
       const response = await axios.post(
-        `${backendUrl}/api/events/update/${id}`
+        `${backendUrl}/api/events/update/${id}`, {
+          headers: {
+            'x-api-key': apikey
+          }
+        }
       );
       const event = response.data.event;
 
@@ -214,7 +227,11 @@ const AdminEventPage = () => {
     if (result.isConfirmed) {
       setLoading(true);
       try {
-        await axios.delete(`${backendUrl}/api/event/${id}`);
+        await axios.delete(`${backendUrl}/api/event/${id}`, {
+          headers: {
+            'x-api-key': apikey
+          }
+        });
         await fetchData();
         Swal.fire("Deleted!", "Your event has been deleted.", "success");
       } catch (error) {

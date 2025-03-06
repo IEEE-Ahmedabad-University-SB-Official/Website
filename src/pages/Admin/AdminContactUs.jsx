@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const AdminContactUsPage = () => {
     const [contactDetails, setContactDetails] = useState([]);
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const apikey = import.meta.env.VITE_API_KEY;
 
     // Function to format date in "DD-MM-YYYY" format
     const formatDate = (dateString) => {
@@ -16,7 +17,11 @@ const AdminContactUsPage = () => {
     // Fetch and display contact us details data
     const displayContactDetails = async () => {
         try {
-            const response = await fetch(`${backendUrl}/api/contact-us`);
+            const response = await fetch(`${backendUrl}/api/contact-us`, {
+                headers: {
+                    'x-api-key': apikey
+                }
+            });
             const data = await response.json();
             setContactDetails(data);
         } catch (error) {

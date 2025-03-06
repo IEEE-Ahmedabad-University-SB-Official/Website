@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 const AdminLoginPage = () => {
   const navigate = useNavigate();
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const apikey = import.meta.env.VITE_API_KEY;
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e) => {
@@ -15,7 +16,7 @@ const AdminLoginPage = () => {
     try {
       const response = await fetch(`${backendUrl}/api/login`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-api-key': apikey },
         body: JSON.stringify({ username, password }),
       });
 

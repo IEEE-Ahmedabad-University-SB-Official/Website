@@ -26,6 +26,7 @@ const AdminCommitteePage = () => {
   });
   const [currentProfileImage, setCurrentProfileImage] = useState(null);
   const [loaderVisible, setLoaderVisible] = useState(false);
+  const apikey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     fetchData();
@@ -33,7 +34,11 @@ const AdminCommitteePage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/members`);
+      const response = await axios.get(`${backendUrl}/api/members`, {
+        headers: {
+          'x-api-key': apikey
+        }
+      });
       setMembers(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -73,7 +78,11 @@ const AdminCommitteePage = () => {
 
     setLoaderVisible(true);
     try {
-      await axios.post(url, data);
+      await axios.post(url, data, {
+        headers: {
+          'x-api-key': apikey
+        }
+      });
       Swal.fire('Success!', 'Member has been saved.', 'success');
       setModalVisible(false);
       fetchData();
@@ -122,7 +131,11 @@ const AdminCommitteePage = () => {
     if (result.isConfirmed) {
       setLoaderVisible(true);
       try {
-        await axios.delete(`${backendUrl}/api/member/${id}`);
+        await axios.delete(`${backendUrl}/api/member/${id}`, {
+          headers: {
+            'x-api-key': apikey
+          }
+        });
         Swal.fire('Deleted!', 'Your member has been deleted.', 'success');
         fetchData();
       } catch (error) {

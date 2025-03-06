@@ -10,6 +10,7 @@ const AdminAchievementPage = () => {
   const [loading, setLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const apikey = import.meta.env.VITE_API_KEY;
 
   const [formData, setFormData] = useState({
     achievementId: '',
@@ -26,7 +27,11 @@ const AdminAchievementPage = () => {
 
   const fetchAchievements = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/achievements`);
+      const response = await axios.get(`${backendUrl}/api/achievements`, {
+        headers: {
+            'x-api-key': apikey
+        }
+    });
       setAchievements(response.data);
     } catch (error) {
       console.error('Error fetching achievements:', error);
@@ -56,9 +61,17 @@ const AdminAchievementPage = () => {
 
     try {
       if (formData.achievementId) {
-        await axios.post(`${backendUrl}/api/achievements/update/${formData.achievementId}`, submitFormData);
+        await axios.post(`${backendUrl}/api/achievements/update/${formData.achievementId}`, submitFormData, {
+          headers: {
+            'x-api-key': apikey
+          }
+        });
       } else {
-        await axios.post(`${backendUrl}/api/achievements/upload`, submitFormData);
+        await axios.post(`${backendUrl}/api/achievements/upload`, submitFormData, {
+          headers: {
+            'x-api-key': apikey
+          }
+        });
       }
       
       Swal.fire({
@@ -78,7 +91,11 @@ const AdminAchievementPage = () => {
 
   const editAchievement = async (id) => {
     try {
-      const response = await axios.post(`${backendUrl}/api/achievements/update/${id}`);
+      const response = await axios.post(`${backendUrl}/api/achievements/update/${id}`, {
+        headers: {
+            'x-api-key': apikey
+        }
+    });
       const achievement = response.data.achievement;
       
       setFormData({
@@ -111,7 +128,11 @@ const AdminAchievementPage = () => {
     if (result.isConfirmed) {
       setLoading(true);
       try {
-        await axios.delete(`${backendUrl}/api/achievement/${id}`);
+        await axios.delete(`${backendUrl}/api/achievement/${id}`, {
+          headers: {
+            'x-api-key': apikey
+          }
+        });
         fetchAchievements();
         Swal.fire('Deleted!', 'Achievement has been deleted.', 'success');
       } catch (error) {
