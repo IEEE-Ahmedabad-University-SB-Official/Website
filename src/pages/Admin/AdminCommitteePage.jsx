@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { FaEdit, FaTrash, FaEnvelope, FaPhone, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaEnvelope, FaPhoneAlt, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const AdminCommitteePage = () => {
@@ -170,6 +170,27 @@ const AdminCommitteePage = () => {
       profile_image: null
     });
     setCurrentProfileImage('');
+  };
+
+  const extractUsername = (url, platform) => {
+    if (!url) return '';
+    try {
+      const urlObj = new URL(url);
+      let username = '';
+      
+      if (platform === 'instagram') {
+        username = '@' + urlObj.pathname.replace('/', '');
+      } else if (platform === 'linkedin') {
+        username = urlObj.pathname.replace(/^\/|\/$/g, '').replace('in/', '');
+      } else {
+        username = url;
+      }
+
+      // Limit username length to 30 chars and add ellipsis if longer
+      return username.length > 30 ? username.substring(0, 30) + '...' : username;
+    } catch {
+      return url.length > 30 ? url.substring(0, 30) + '...' : url;
+    }
   };
 
   return (
@@ -378,26 +399,30 @@ const AdminCommitteePage = () => {
                 </div>
               </div>
 
-              <div className="mt-2 space-y-1">
+              <div className="mt-2 space-y-2">
                 <p className="flex items-center text-gray-400">
                   <FaEnvelope className="mr-2" />
                   {member.email}
                 </p>
                 <p className="flex items-center text-gray-400">
-                  <FaPhone className="mr-2" />
+                  <FaPhoneAlt className="mr-2" />
                   {member.contact_number}
                 </p>
-              </div>
+              {/* </div> */}
 
-              <div className="flex gap-4 mt-2">
+              {/* <div className="flex flex-col gap-4 mt-2"> */}
                 {member.instagramProfile && (
                   <a
                     href={member.instagramProfile}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white text-xl"
+                    className="text-gray-400 hover:text-white flex items-center gap-2 transition-colors"
+                    title="Visit Instagram Profile"
                   >
                     <FaInstagram />
+                    <span className="text-sm">
+                      {extractUsername(member.instagramProfile, 'instagram')}
+                    </span>
                   </a>
                 )}
                 {member.linkedinProfile && (
@@ -405,9 +430,13 @@ const AdminCommitteePage = () => {
                     href={member.linkedinProfile}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white text-xl"
+                    className="text-gray-400 hover:text-white flex items-center gap-2 transition-colors"
+                    title="Visit LinkedIn Profile"
                   >
                     <FaLinkedin />
+                    <span className="text-sm">
+                      {extractUsername(member.linkedinProfile, 'linkedin')}
+                    </span>
                   </a>
                 )}
               </div>

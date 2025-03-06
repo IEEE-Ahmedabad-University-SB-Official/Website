@@ -251,6 +251,16 @@ const AdminEventPage = () => {
     setSelectedEvent(null);
   };
 
+  // Add this date formatting function at the top of your component
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  };
+
   return (
     <div className="font-poppins m-0 p-0 min-h-screen bg-[#121212] flex-col justify-center">
       <div className="max-w-screen-2xl mx-auto px-5 flex flex-col items-center justify-center relative py-4 ">
@@ -394,7 +404,7 @@ const AdminEventPage = () => {
                           />
                         </svg>
                         <span className="text-gray-300">
-                          {new Date(event.eventDate).toLocaleDateString()}
+                          {formatDate(event.eventDate)}
                         </span>
                       </div>
                       <div className="flex items-center gap-2 bg-[#2d2d2d] p-2 rounded-lg">
@@ -773,7 +783,7 @@ const AdminEventPage = () => {
                         />
                       </svg>
                       <span className="text-white">
-                        {new Date(selectedEvent.eventDate).toLocaleDateString()}
+                        {formatDate(selectedEvent.eventDate)}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
