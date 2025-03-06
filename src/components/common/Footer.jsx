@@ -4,10 +4,13 @@ import { FaInstagram, FaLinkedin, FaMapMarkerAlt, FaUser } from "react-icons/fa"
 import Swal from 'sweetalert2';
 import auLogo from "../../assets/Images/AU_logo.webp";
 import ieeelogo from "../../assets/Images/IEEE-LOGO-WHITE.png";
+import ieeeBlueLogo from "../../assets/Images/Logo.png";
+import { useTheme } from '../../context/ThemeContext';
 
 const Footer = () => {
     const [formData, setFormData] = useState({ name: '', email: '' });
     const [loading, setLoading] = useState(false);
+    const { theme } = useTheme();
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
     const validateEmail = (email) => {
@@ -74,18 +77,47 @@ const Footer = () => {
         }
     };
 
+    const themeStyles = {
+        light: {
+            background: 'bg-gray-200',
+            text: 'text-gray-800',
+            subtext: 'text-gray-600 hover:text-gray-900',
+            border: 'border-gray-300',
+            socialBg: 'bg-gray-300 hover:border-gray-600 text-gray-600',
+            inputBg: 'bg-white',
+            inputText: 'text-gray-800',
+            buttonBg: 'bg-[#0088cc] hover:bg-[#0171a9]',
+            buttonText: 'text-white',
+            divider: 'bg-gray-400/60'
+        },
+        dark: {
+            background: 'bg-[#1c1c1c]',
+            text: 'text-[#f8f8f8db]',
+            subtext: 'text-[rgba(255,255,255,0.754)]',
+            border: 'border-[rgba(255,255,255,0.631)]',
+            socialBg: 'bg-[#404040] hover:border-white text-gray-100',
+            inputBg: 'bg-white',
+            inputText: 'text-[#2f2f2f]',
+            buttonBg: 'bg-white hover:bg-transparent hover:border-2 hover:border-white',
+            buttonText: 'text-[#2f2f2f] hover:text-white',
+            divider: 'bg-[rgba(255,255,255,0.209)]'
+        }
+    };
+
+    const styles = themeStyles[theme];
+
     return (
         <section className="w-full overflow-x-hidden">
-            <div className="bg-[#1c1c1c] text-[#f8f8f8db] pt-8 md:pt-0">
+            <div className={`${styles.background} ${styles.text} pt-8 md:pt-0`}>
                 <div className="flex flex-col justify-center items-center w-full">
                     {/* Main content grid */}
                     <div className="flex flex-col md:flex-row gap-12 md:gap-[6%] mx-[5%] mt-[2.5%]">
                         {/* Our Goals Section */}
                         <div className="flex flex-col h-full md:w-[30%] gap-4">
-                            <div className="text-[1.25rem] font-semibold text-[rgba(255,255,255,0.818)] pb-[3px] relative after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b after:border-[rgba(255,255,255,0.631)]">
+                            <div className={`text-[1.25rem] font-semibold pb-[3px] relative after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b ${styles.border}`}>
                                 <p className="text-center md:text-left">Our Goals</p>
                             </div>
-                            <div className="text-center md:text-justify text-[0.9rem] font-light text-[rgba(255,255,255,0.754)]">
+                            <div className={`text-center md:text-justify text-[0.9rem] font-light ${styles.subtext}`}>
                                 <p>At IEEE Ahmedabad University Student Branch (IEEE AU SB), we are dedicated to fostering a vibrant community of innovators, engineers, and tech enthusiasts by promoting technological excellence, facilitating professional growth, building a collaborative network, enhancing learning opportunities, fostering innovation and creativity, and engaging with the community.</p>
                             </div>
                             <div className="flex flex-row justify-center md:justify-start gap-[1%]">
@@ -95,7 +127,7 @@ const Footer = () => {
                                         href={link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="h-[2.5em] w-[2.5em] bg-[#404040] transition-all duration-200 flex justify-center items-center border-b-2 border-transparent hover:border-white hover:scale-110"
+                                        className={`h-[2.5em] w-[2.5em] transition-all duration-200 flex justify-center items-center border-b-2 border-transparent ${styles.socialBg}`}
                                     >
                                         {index === 0 ? <MdEmail size={18}/> : index === 1 ? <FaInstagram size={18}/> : <FaLinkedin size={18}/>}
                                     </a>
@@ -103,13 +135,13 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        {/* Vertical Line - Only visible on md and up */}
-                        <div className="hidden md:block w-[1px] bg-[rgba(255,255,255,0.604)]" />
+                        {/* Vertical Line */}
+                        <div className={`hidden md:block w-[1px] ${styles.divider}`} />
 
                         {/* Site Map */}
-                        <div className="flex flex-col h-full w-full md:w-[150px] gap-[8%] text-[rgba(255,255,255,0.754)]">
+                        <div className="flex flex-col h-full w-full md:w-[150px] gap-[8%]">
                             <div className="relative mb-4">
-                                <p className="text-[1.25rem] font-semibold text-[rgba(255,255,255,0.818)] pb-[3px] text-center md:text-left after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b after:border-[rgba(255,255,255,0.631)]">
+                                <p className={`text-[1.25rem] font-semibold pb-[3px] text-center md:text-left after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b ${styles.border}`}>
                                     Site map
                                 </p>
                             </div>
@@ -118,7 +150,7 @@ const Footer = () => {
                                     <a
                                         key={index}
                                         href={`#${item.toLowerCase().replace(' ', '')}`}
-                                        className="text-[1rem] transition-all duration-300 hover:text-white"
+                                        className={`text-[1rem] transition-all duration-300 ${styles.subtext} hover:${styles.text}`}
                                     >
                                         {item}
                                     </a>
@@ -129,20 +161,20 @@ const Footer = () => {
                         {/* Contact Us Section */}
                         <div className="flex flex-col gap-[8%] items-center md:items-start">
                             <div className="relative">
-                                <p className="text-[1.25rem] font-semibold text-[rgba(255,255,255,0.818)] pb-[3px] text-center md:text-left after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b after:border-[rgba(255,255,255,0.631)]">
+                                <p className={`text-[1.25rem] font-semibold pb-[3px] text-center md:text-left after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b ${styles.border}`}>
                                     Contact Us
                                 </p>
                             </div>
                             <div className="flex flex-col gap-[0.6em] text-[1rem] items-center md:items-start">
                                 <div className="flex items-center gap-4">
                                     <MdEmail />
-                                    <a href="mailto:ieee.sb@ahduni.edu.in" className="hover:text-white transition-all duration-300">
+                                    <a href="mailto:ieee.sb@ahduni.edu.in" className={`${styles.subtext} hover:${styles.text} transition-all duration-300`}>
                                         Email: ieee.sb@ahduni.edu.in
                                     </a>
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <FaMapMarkerAlt className="mt-1" />
-                                    <p className="text-[rgba(255,255,255,0.518)] hover:text-[rgba(255,255,255,0.818)]">
+                                    <p className={`${styles.subtext} hover:${styles.text}`}>
                                         Address:<br />
                                         Ahmedabad University<br />
                                         Navrangpura<br />
@@ -155,7 +187,7 @@ const Footer = () => {
                         {/* Get Updates Section */}
                         <div className="flex flex-col gap-[8%] w-full md:w-[23.5em] items-center md:items-start">
                             <div className="relative w-full">
-                                <p className="text-[1.25rem] font-semibold text-[rgba(255,255,255,0.818)] pb-[3px] text-center md:text-left after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b after:border-[rgba(255,255,255,0.631)]">
+                                <p className={`text-[1.25rem] font-semibold pb-[3px] text-center md:text-left after:content-[''] after:absolute after:pb-[3px] after:w-[1.5em] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0 after:bottom-0 after:border-b ${styles.border}`}>
                                     Get Updates
                                 </p>
                             </div>
@@ -169,7 +201,7 @@ const Footer = () => {
                                         placeholder="Your name"
                                         value={formData.name}
                                         onChange={(e) => setFormData({...formData, name: e.target.value})}
-                                        className="w-full h-[3em] pl-1 text-[#2f2f2f] outline-none text-base"
+                                        className={`w-full h-[3em] pl-1 ${styles.inputText} outline-none text-base`}
                                     />
                                 </div>
                                 <div className="flex w-full">
@@ -181,12 +213,12 @@ const Footer = () => {
                                         placeholder="Your email"
                                         value={formData.email}
                                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                        className="w-full h-[3em] pl-1 text-[#2f2f2f] outline-none text-base"
+                                        className={`w-full h-[3em] pl-1 ${styles.inputText} outline-none text-base`}
                                     />
                                 </div>
                                 <button
                                     onClick={handleSubmit}
-                                    className="h-[3.7em] w-full text-[0.84rem] font-semibold bg-white text-[#2f2f2f] transition-all duration-200 hover:bg-transparent hover:border-2 hover:border-white hover:text-white"
+                                    className={`h-[3.7em] w-full ${styles.buttonBg} ${styles.buttonText} transition-all duration-200`}
                                 >
                                     Get Updates →
                                 </button>
@@ -197,7 +229,7 @@ const Footer = () => {
                     {/* Logos */}
                     <div className="flex flex-col md:flex-row justify-center items-center pt-12 md:pt-8 pb-4 md:pb-8 gap-8 md:gap-4">
                         <a href="/">
-                            <img src={ieeelogo} alt="IEEE Logo" className="w-[250px] cursor-pointer" />
+                            <img src={theme === 'dark' ? ieeelogo : ieeeBlueLogo} alt="IEEE Logo" className="w-[250px] cursor-pointer" />
                         </a>
                         <a href="https://ahduni.edu.in/" target="_blank" rel="noopener noreferrer">
                             <img src={auLogo} alt="AU Logo" className="w-[200px] bg-white cursor-pointer" />
@@ -207,17 +239,17 @@ const Footer = () => {
             </div>
 
             {/* Copyright Section */}
-            <div className="flex justify-center items-center flex-col bg-[#1c1c1c] text-[0.9rem] p-4">
-                <hr className="w-[92%] my-[0.4rem] h-[1px] bg-[rgba(255,255,255,0.209)]" />
-                <h4 className="m-[5px] pt-2 font-normal text-[rgba(255,255,255,0.80)] text-center px-4">
+            <div className={`flex justify-center items-center flex-col ${styles.background} text-[0.9rem] p-4`}>
+                <hr className={`w-[92%] my-[0.4rem] border-0 h-[1px] ${styles.divider}`} />
+                <h4 className={`m-[5px] pt-2 font-normal ${styles.text} text-center px-4`}>
                     © IEEE AU SB 2024. All Rights Reserved | Developed by{' '}
                     <a href="https://www.linkedin.com/in/vishv-boda-806ab5289/" target="_blank" rel="noopener noreferrer" 
-                       className="text-[rgba(255,255,255,0.4)] underline hover:text-[rgba(255,255,255,0.75)]">
+                       className={`${styles.subtext} underline hover:${styles.text}`}>
                         Vishv Boda
                     </a>
                     {' '}&{' '}
                     <a href="https://www.linkedin.com/in/deeppatelDW1631/" target="_blank" rel="noopener noreferrer"
-                       className="text-[rgba(255,255,255,0.4)] underline hover:text-[rgba(255,255,255,0.75)]">
+                       className={`${styles.subtext} underline hover:${styles.text}`}>
                         Deep Patel
                     </a>
                     , IEEE AU SB

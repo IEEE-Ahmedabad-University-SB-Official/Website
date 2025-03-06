@@ -6,7 +6,7 @@ function contactUsUser(name) {
 		<title>Contact Us - IEEE AUSB</title>
 		<style>
 			body {
-				font-family: Arial, sans-serif;
+				font-family: 'Montserrat', sans-serif;
 				margin: 0;
 				padding: 0;
 			}

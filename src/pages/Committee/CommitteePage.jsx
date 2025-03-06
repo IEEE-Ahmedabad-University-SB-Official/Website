@@ -1,284 +1,267 @@
-import React, { useEffect, useRef } from 'react'
-import DesktopNavbar from '../../components/common/DesktopNavbar'
-import MobileNavbar from '../../components/common/MobileNavbar'
-import Footer from '../../components/common/Footer'
-import './CommitteePage.css';
+import React, { useState } from 'react';
+import DesktopNavbar from '../../components/common/DesktopNavbar';
+import MobileNavbar from '../../components/common/MobileNavbar';
+import Footer from '../../components/common/Footer';
+import useMembers from '../../hooks/useMembers';
+import { motion } from 'framer-motion';
+import { FaInstagram, FaLinkedin, FaFileAlt } from 'react-icons/fa';
+
+// Skeleton loader for member card
+const MemberCardSkeleton = () => (
+  <div className="relative w-[250px] h-[300px] bg-gray-200 animate-pulse rounded-lg">
+    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
+  </div>
+);
+
+// Skeleton loader for section
+const SectionSkeleton = () => (
+  <section className="py-8">
+    <div className="flex flex-col items-center">
+      <div className="h-8 w-48 bg-gray-200 rounded mb-6 animate-pulse"></div>
+      <div className="flex flex-wrap justify-center gap-6">
+        {[1, 2, 3, 4].map(i => (
+          <MemberCardSkeleton key={i} />
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const MemberCard = ({ member }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="relative w-[225px] h-[300px] cursor-pointer overflow-hidden group"
+  >
+    <div className="absolute inset-0 transition-all duration-600 ease-bezier group-hover:scale-85 group-hover:brightness-45">
+      <img 
+        src={member.profile_image} 
+        alt={member.name} 
+        className="w-[250px] h-[300px] object-contain"
+        loading="lazy"
+      />
+    </div>
+    
+    {/* Grid container for hover boxes */}
+    <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
+      {/* Top-left info box */}
+      <div className="col-start-1 row-start-1 p-2 bg-black/45 backdrop-blur-md transition-all duration-500 opacity-0 flex flex-col justify-center items-center text-white transform -translate-x-full -translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
+        <h3 className="text-center font-bold">{member.name}</h3>
+        <div className="pt-3 text-center">{member.position}</div>
+        {/* {member.leaveDate && (
+          <div className="mt-2 text-sm text-red-400">
+            Not currently part of IEEE
+          </div>
+        )} */}
+      </div>
+      
+      {/* Bottom-right socials box */}
+      <div className="col-start-2 row-start-2 p-2 bg-black/45 backdrop-blur-md transition-all duration-500 opacity-0 flex flex-col items-center justify-center text-white transform translate-x-full translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
+        <h3 className="font-bold mb-2">Socials</h3>
+        <div className="flex justify-center gap-4">
+          {member.instagramProfile && member.position !== "Faculty" && (
+            <a 
+              href={member.instagramProfile} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-[#E4405F] transition-colors"
+            >
+              <FaInstagram size={24} />
+            </a>
+          )}
+          {member.linkedinProfile && member.position !== "Faculty" && (
+            <a 
+              href={member.linkedinProfile} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-[#0a66c2] transition-colors"
+            >
+              <FaLinkedin size={24} />
+            </a>
+          )}
+          {/* Resume link for faculty members */}
+          {member.position === "Faculty" && member.linkedinProfile && (
+            <a 
+              href={member.linkedinProfile} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-green-400 transition-colors"
+            >
+              <FaFileAlt size={24} />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
 
 const CommitteePage = () => {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
-  const facultyFetched = useRef(false); // Flag to track if faculty has been fetched
+  const { members, loading, error } = useMembers();
+  const [selectedYear, setSelectedYear] = useState("2024");
 
-  useEffect(() => {
-    // Fetch and render all members data asynchronously
-    fetchAllMembers();
-
-    // Fetch and render faculty data asynchronously only once
-    if (!facultyFetched.current) {
-      fetchFaculty('OBs', 'Faculty', 'obsFaculty');
-      facultyFetched.current = true; // Set the flag to true after fetching
-    }
-  }, []);
-
-  async function fetchAllMembers() {
-    try {
-      const response = await fetch(`${backendUrl}/api/members`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const members = await response.json();
-      const categorizedMembers = categorizeMembers(members);
-      renderMembers(categorizedMembers);
-    } catch (error) {
-      console.error('Error fetching all members:', error);
-    }
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+        <DesktopNavbar />
+        <MobileNavbar />
+        <div className="container mx-auto px-4 py-12 pt-32">
+          <div className="h-12 w-96 bg-gray-200 rounded mb-16 mx-auto animate-pulse"></div>
+          <div className="flex justify-center gap-4 mb-8">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="h-10 w-24 bg-gray-200 rounded animate-pulse"></div>
+            ))}
+          </div>
+          <div className="flex flex-col items-center">
+            <SectionSkeleton />
+            <SectionSkeleton />
+          </div>
+        </div>
+      </div>
+    );
   }
 
-  function categorizeMembers(members) {
-    const categorized = {
-        obsChairperson: [],
-        obsCoChairperson: [],
-        obsSecretary: [],
-        obsJointSecretary: [],
-        obsTreasurer: [],
-        cseTeam: [],
-        contentTeam: [],
-        graphicsTeam: [],
-        logisticsTeam: [],
-        rasTeam: [],
-        socialmediaTeam: [],
-        technicalTeam: []
-    };
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
+        <div className="text-red-500 text-xl">{error}</div>
+      </div>
+    );
+  }
 
-    members.forEach(member => {
-        if (member.department === 'OBs') {
-            if (member.position === 'Chairperson') categorized.obsChairperson.push(member);
-            else if (member.position === 'Co - Chairperson') categorized.obsCoChairperson.push(member);
-            else if (member.position === 'Secretary') categorized.obsSecretary.push(member);
-            else if (member.position === 'Joint - Secretary') categorized.obsJointSecretary.push(member);
-            else if (member.position === 'Treasurer') categorized.obsTreasurer.push(member);
-        } else if (member.position !== 'Faculty') {
-            const teamKey = `${member.department.toLowerCase()}Team`;
-            if (categorized[teamKey]) {
-                categorized[teamKey].push(member);
-            } else {
-                console.warn(`Unexpected department: ${member.department}`);
-            }
-        }
+  // Filter members by selected year
+  const filterMembersByYear = (membersList) => {
+    if (!membersList) return [];
+    return membersList.filter(member => {
+      const joinYear = member.join_year.toString();
+      return joinYear === selectedYear;
     });
+  };
 
-    // Custom sorting logic to place "Head" before "Member" in teams
-    for (let key in categorized) {
-        if (key.endsWith('Team')) {
-            categorized[key].sort((a, b) => {
-                if (a.position === "Head") return -1; // "Head" comes before "Member"
-                if (b.position === "Head") return 1;  // "Member" comes after "Head"
-                return 0; // Leave the order unchanged for other cases
-            });
-        }
-    }
+  // Get filtered members
+  const filteredFaculty = filterMembersByYear(members.faculty);
+  const filteredOfficeBearers = [
+    ...filterMembersByYear(members.obsChairperson),
+    ...filterMembersByYear(members.obsCoChairperson),
+    ...filterMembersByYear(members.obsSecretary),
+    ...filterMembersByYear(members.obsJointSecretary),
+    ...filterMembersByYear(members.obsTreasurer)
+  ];
 
-    return categorized;
-}
-
-function renderMembers(categorized) {
-  for (let category in categorized) {
-      const container = document.getElementById(category);
-      if (container) {
-          container.innerHTML = ''; // Clear previous content
-          const fragment = document.createDocumentFragment();
-
-          categorized[category].forEach(member => {
-              const card = document.createElement('div');
-              card.classList.add('card');
-              card.innerHTML = `
-                  <div class="card-img">
-                      <img src="${member.profile_image}" alt="${member.name}" loading="lazy">
-                  </div>
-                  <div class="card-content">
-                      <div class="card-box box-1">
-                          <h3>${member.name}</h3>
-                          <div class="position">${member.position}</div>
-                      </div>
-                      <div class="card-box2 box-4">
-                          <h3>Socials</h3>
-                          <div class="social">
-                              <a href="${member.instagramProfile}" target="_blank" class="icon" id="instagram">
-                                  <i class="fab fa-instagram"></i>
-                              </a>
-                              <a href="${member.linkedinProfile}" target="_blank" class="icon" id="linkedin">
-                                  <i class="fab fa-linkedin"></i>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-              `;
-              fragment.appendChild(card);
-          });
-          container.appendChild(fragment);
-      }
-  }
-}
-
-async function fetchFaculty(department, position, elementId) {
-  const container = document.getElementById(elementId);
-  container.innerHTML = ''; // Clear previous content
-
-  try {
-      const response = await fetch(`${backendUrl}/api/members-front?department=${department}&position=${position}`);
-      if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const members = await response.json();
-
-      const fragment = document.createDocumentFragment();
-      members.forEach(member => {
-          const card = document.createElement('div');
-          card.classList.add('card');
-          card.innerHTML = `
-              <div class="card-img">
-                  <img src="${member.profile_image}" alt="${member.name}" loading="lazy">
-              </div>
-              <div class="card-content">
-                  <div class="card-box box-1">
-                      <h3>${member.name}</h3>
-                      <div class="position">${member.position}</div>
-                  </div>
-                  <div class="card-box2 box-4">
-                      <div class="faculty-card">
-                          <a class="fac-know-more" href="${member.instagramProfile}" >Know more
-                          </a>
-                          <a href="${member.instagramProfile}">
-                          <img src="../Images/browser.png"></img>
-                          </a>
-                      </div>    
-                  </div>
-              </div>
-          `;
-          fragment.appendChild(card);
-      });
-      container.appendChild(fragment);
-  } catch (error) {
-      console.error(`Error fetching members for ${department} ${position}:`, error);
-      container.innerHTML = '<p>Failed to load members. Please try again later.</p>';
-  }
-}
+  const teams = [
+    { id: 'computersociety', title: 'Computer Society', data: filterMembersByYear(members.cseTeam) },
+    { id: 'content', title: 'Content Team', data: filterMembersByYear(members.contentTeam) },
+    { id: 'graphics', title: 'Graphics Team', data: filterMembersByYear(members.graphicsTeam) },
+    { id: 'logistics', title: 'Logistics Team', data: filterMembersByYear(members.logisticsTeam) },
+    { id: 'roboticsandautomationsociety', title: 'Robotics and Automation Society', data: filterMembersByYear(members.rasTeam) },
+    { id: 'socialmedia', title: 'Social Media Team', data: filterMembersByYear(members.socialmediaTeam) },
+    { id: 'technical', title: 'Technical Team', data: filterMembersByYear(members.technicalTeam) },
+  ].filter(team => team.data?.length > 0);
 
   return (
-    <div className=''>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <DesktopNavbar />
       <MobileNavbar />
 
-      <div className='full-page'>
-      <div className="heading">
-        <h1>IEEE committee Members</h1>
-      </div>
+      <div className="container mx-auto px-4 py-16 pt-32">
+        <h1 className="text-4xl md:text-5xl text-center font-extrabold text-gray-900 mb-12 uppercase"
+            style={{
+              textShadow: `
+                5px 5px rgba(128, 128, 128, 0.4),
+                10px 10px rgba(128, 128, 128, 0.2)
+              `
+            }}>
+          IEEE Committee Members
+        </h1>
 
-      <hr className="nav-line1" />
+        {/* Year Selection */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex justify-center gap-4 mb-12 flex-wrap px-4"
+        >
+          {[2024, 2023, 2022].map(year => (
+            <button
+              key={year}
+              onClick={() => setSelectedYear(year.toString())}
+              className={`px-8 py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95 ${
+                selectedYear === year.toString()
+                ? 'bg-[#0088cc] text-white shadow-lg'
+                : 'bg-gray-200 hover:bg-gray-300'
+              }`}
+            >
+              {year}
+            </button>
+          ))}
+        </motion.div>
 
-      <div className="navbar">
-        <a href="#obs">Office Bearers</a>
-        <a href="#cse">Computer Society</a>
-        <a href="#content">Content</a>
-        <a href="#graphics">Graphics</a>
-        <a href="#logistics">Logistics</a>
-        <a href="#ras">Robotics and Automation Society</a>
-        <a href="#socialmedia">Social Media</a>
-        <a href="#technical">Technical</a>
-      </div>
-      <hr className="nav-line2" />
-
-      <div className="page-container">
-        {/* <div className="option"> */}
-          <div id="ieeeSection" className="ieee">
-            <hr className="nav-line4" />
-
-            {/* OBs Section */}
-            <div className="obs" id="obs">
-              <h1>Faculty</h1>
-              <div className="faculty">
-                <div id="obsFaculty"></div>
-              </div>
-            </div>
-
-            <hr className="nav-line4" />
-
-            <div className="obs" id="obs">
-              <h1>Office Bearers</h1>
-              <div className="obscard">
-                <div className="frow">
-                  <div id="obsChairperson"></div>
-                  <div id="obsCoChairperson"></div>
+        <div className="relative">
+          {/* Content */}
+          <div className="space-y-16">
+            {/* Faculty Section */}
+            {filteredFaculty?.length > 0 && (
+              <motion.section 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="relative"
+              >
+                <div className="">
+                  <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">Faculty</h2>
+                  <div className="flex flex-wrap justify-center gap-6">
+                    {filteredFaculty.map(member => (
+                      <MemberCard key={`faculty-${member._id}`} member={member} />
+                    ))}
+                  </div>
                 </div>
-                <div className="srow">
-                  <div id="obsSecretary"></div>
-                  <div id="obsJointSecretary"></div>
-                  <div id="obsTreasurer"></div>
+              </motion.section>
+            )}
+
+            {/* Office Bearers Section */}
+            {filteredOfficeBearers.length > 0 && (
+              <motion.section 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="relative"
+                id="officebearers"
+              >
+                <div className="">
+                  <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">Office Bearers</h2>
+                  <div className="flex flex-wrap justify-center gap-6">
+                    {filteredOfficeBearers.map(member => (
+                      <MemberCard key={`obs-${member._id}-${member.role}`} member={member} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
+              </motion.section>
+            )}
 
-            <hr className="nav-line4" />
-
-            {/* CSE Team */}
-            <div id="cse" className="team">
-              <h1>Computer Society</h1>
-              <div className="team-data" id="cseTeam"></div>
-            </div>
-
-            <hr className="nav-line4" />
-
-            {/* Content Team */}
-            <div id="content" className="team">
-              <h1>Content Team</h1>
-              <div className="team-data" id="contentTeam"></div>
-            </div>
-
-            <hr className="nav-line4" />
-
-            {/* Graphics Team */}
-            <div id="graphics" className="team">
-              <h1>Graphics Team</h1>
-              <div className="team-data" id="graphicsTeam"></div>
-            </div>
-
-            <hr className="nav-line4" />
-
-            {/* Logistics Team */}
-            <div id="logistics" className="team">
-              <h1>Logistics Team</h1>
-              <div className="team-data" id="logisticsTeam"></div>
-            </div>
-
-            <hr className="nav-line4" />
-
-            {/* RAS Team */}
-            <div id="ras" className="team">
-              <h1>Robotics and Automation Society</h1>
-              <div className="team-data" id="rasTeam"></div>
-            </div>
-
-            <hr className="nav-line4" />
-
-            {/* Social Media Team */}
-            <div id="socialmedia" className="team">
-              <h1>Social Media Team</h1>
-              <div className="team-data" id="socialmediaTeam"></div>
-            </div>
-
-            <hr className="nav-line4" />
-
-            {/* Technical Team */}
-            <div id="technical" className="team">
-              <h1>Technical Team</h1>
-              <div className="team-data" id="technicalTeam"></div>
-            </div>
+            {/* Teams Sections */}
+            {teams.map(team => (
+              <motion.section 
+                key={team.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="relative"
+                id={team.id}
+              >
+                <div className="text-center max-w-6xl mx-auto">
+                  <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">{team.title}</h2>
+                  <div className="flex flex-wrap justify-center gap-6">
+                    {team.data.map(member => (
+                      <MemberCard key={`${team.id}-${member._id}`} member={member} />
+                    ))}
+                  </div>
+                </div>
+              </motion.section>
+            ))}
           </div>
         </div>
       </div>
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default CommitteePage
+export default CommitteePage;

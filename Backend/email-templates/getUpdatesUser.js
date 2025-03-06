@@ -6,7 +6,7 @@ function getUpdatesUser(name) {
         <title>Get Updates - IEEE AUSB</title>
         <style>
             body {
-                font-family: Arial, sans-serif;
+                font-family: 'Montserrat', sans-serif;
                 margin: 0;
                 padding: 0;
             }

@@ -81,7 +81,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen" id="contactUs">
+    <section className="relative w-full min-h-screen scroll-mt-20" id="contactUs">
       {/* Map Background */}
       <div className="absolute inset-0 w-[95%] h-[70vh] mx-auto">
         <iframe
