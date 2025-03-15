@@ -91,7 +91,6 @@ const Hero = () => {
                 <div className={styles.Section} id="heroSection">
                     <div className={styles.videoHeroSection}>
                         <canvas id="myCanvas" className={styles.myCanvas}></canvas>
-                        <img className={styles.imageBackGround} src="./Images/pattern.png" alt="background pattern" />
                     </div>
 
                     <div className={styles.Verticalline}>
