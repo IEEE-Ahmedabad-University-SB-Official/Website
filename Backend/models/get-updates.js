@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const getUpdatesSchema = new mongoose.Schema(
     {
@@ -25,4 +25,4 @@ const getUpdatesSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model("GetUpdates", getUpdatesSchema);
+export default mongoose.model("GetUpdates", getUpdatesSchema);

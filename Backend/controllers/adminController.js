@@ -1,6 +1,6 @@
-const User = require('../models/user');
+import User from '../models/user.js';
 
-exports.adminLogin = async (req, res) => {
+export const adminLogin = async (req, res) => {
     const { username, password } = req.body;
     console.log(`Login attempt: ${username}, ${password}`); // Log login attempt
   
@@ -18,7 +18,7 @@ exports.adminLogin = async (req, res) => {
 };
 
 // Route to get all admins
-exports.getAllAdmins = async (req, res) => {
+export const getAllAdmins = async (req, res) => {
     try {
       const admins = await User.find();
       res.status(200).json(admins);
@@ -29,7 +29,7 @@ exports.getAllAdmins = async (req, res) => {
 };
 
 // Route to add new admin
-exports.addAdmin = async (req, res) => {
+export const addAdmin = async (req, res) => {
     const { username, password } = req.body;
     try {
       const newAdmin = await User.create({ username, password });
@@ -41,7 +41,7 @@ exports.addAdmin = async (req, res) => {
 };
 
 // Route to delete admin by ID
-exports.deleteAdmin = async (req, res) => {
+export const deleteAdmin = async (req, res) => {
     const { id } = req.params;
 
      // Check the number of admins in the collection

@@ -1,9 +1,10 @@
-const cloudinary = require('cloudinary').v2;
-const Event = require('../models/events');
-const {uploadImageToCloudinary} = require('../utils/imageUploader');
+import { v2 as cloudinary } from 'cloudinary';
+import Event from '../models/events.js';
+import { uploadImageToCloudinary } from '../utils/imageUploader.js';
+const apiKey = process.env.API_KEY;
 
 // POST: Create a new event with image upload
-exports.uploadEvent = async (req, res) => {
+export const uploadEvent = async (req, res) => {
     try {
         const { eventName, eventDescription, eventDate, startTime, endTime , registrationLink, venue,  speaker, instaPostLink } = req.body;
 
@@ -42,7 +43,7 @@ exports.uploadEvent = async (req, res) => {
 };
 
 // POST: Update an event by ID with image upload
-exports.updateEvent = async (req, res) => {
+export const updateEvent = async (req, res) => {
     const { id } = req.params;
     const { eventName, eventDescription, eventDate, startTime, endTime, speaker, registrationLink, venue, instaPostLink } = req.body;
 
@@ -108,7 +109,7 @@ exports.updateEvent = async (req, res) => {
 };
 
 // DELETE: Delete an event by ID
-exports.deleteEvent = async (req, res) => {
+export const deleteEvent = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -133,7 +134,11 @@ exports.deleteEvent = async (req, res) => {
 };
 
 // GET: Fetch all events
-exports.getEvents = async (req, res) => {
+export const getEvents = async (req, res) => {
+    const apiKey = req.headers['x-api-key'];
+    if (apiKey !== process.env.API_KEY) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
     try {
         const events = await Event.find();
 
