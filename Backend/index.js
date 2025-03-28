@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json()); // Body parser middleware to parse JSON body
 app.use(express.urlencoded({ extended: true })); // Body parser middleware to parse URL-encoded bodies
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://ieeeausb.onrender.com', 'http://localhost:3000'],
+    origin: ['http://localhost:5173', process.env.BACKEND_URL, 'http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
