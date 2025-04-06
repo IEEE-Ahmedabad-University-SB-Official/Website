@@ -5,6 +5,7 @@ import Footer from '../../components/common/Footer';
 import useMembers from '../../hooks/useMembers';
 import { motion } from 'framer-motion';
 import { FaInstagram, FaLinkedin, FaFileAlt } from 'react-icons/fa';
+import whiteBg from '../../assets/Images/white-bg.jpg';
 
 // Skeleton loader for member card
 const MemberCardSkeleton = () => (
@@ -22,9 +23,10 @@ const MemberCardSkeleton = () => (
       </div>
     </div>
 
-    {/* Desktop Layout Skeleton - Hidden on Mobile */}
-    <div className="hidden md:block relative w-[225px] h-[300px]">
-      <div className="w-full h-full bg-gray-200 animate-pulse rounded-lg">
+    {/* Desktop Layout Skeleton */}
+    <div className="hidden md:block relative w-[225px] h-[300px] bg-white rounded-lg shadow-lg overflow-hidden">
+      {/* Image skeleton */}
+      <div className="w-full h-full bg-gray-200 animate-pulse">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
       </div>
     </div>
@@ -36,7 +38,7 @@ const SectionSkeleton = () => (
   <section className="py-8">
     <div className="flex flex-col items-center">
       <div className="h-8 w-48 bg-gray-200 rounded mb-6 animate-pulse"></div>
-      <div className="flex flex-wrap justify-center gap-4 md:gap-6 w-full md:w-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full">
         {[1, 2, 3, 4].map(i => (
           <MemberCardSkeleton key={i} />
         ))}
@@ -164,7 +166,7 @@ const CommitteePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="min-h-screen" style={{ backgroundImage: `url(${whiteBg})` }}>
         <DesktopNavbar />
         <MobileNavbar />
         <div className="container mx-auto px-4 py-12 pt-8 md:pt-32">
@@ -174,18 +176,20 @@ const CommitteePage = () => {
               <div key={i} className="h-10 w-24 bg-gray-200 rounded animate-pulse"></div>
             ))}
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center space-y-16">
+            <SectionSkeleton />
             <SectionSkeleton />
             <SectionSkeleton />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundImage: `url(${whiteBg})` }}>
         <div className="text-red-500 text-xl">{error}</div>
       </div>
     );
@@ -221,7 +225,7 @@ const CommitteePage = () => {
   ].filter(team => team.data?.length > 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen" style={{ backgroundImage: `url(${whiteBg})` }}>
       <DesktopNavbar />
       <MobileNavbar />
 

@@ -6,6 +6,7 @@ import Footer from '../../components/common/Footer';
 import { motion } from 'framer-motion';
 import useEvents from '../../hooks/useEvents';
 import { FaMicrophone, FaClock, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
+import whiteBg from '../../assets/Images/white-bg.jpg';
 
 // Skeleton loader for event card
 const EventCardSkeleton = () => (
@@ -79,7 +80,7 @@ function EventPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="min-h-screen" style={{ backgroundImage: `url(${whiteBg})` }}>
         <DesktopNavbar />
         <MobileNavbar />
         
@@ -105,7 +106,7 @@ function EventPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundImage: `url(${whiteBg})` }}>
         <div className="text-red-500 text-xl">{error}</div>
       </div>
     );
@@ -171,7 +172,7 @@ function EventPage() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-gray-50 to-white'>
+    <div className='min-h-screen' style={{ backgroundImage: `url(${whiteBg})` }}>
       <DesktopNavbar />
       <MobileNavbar />
 
@@ -209,9 +210,9 @@ function EventPage() {
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.2 }}
-                      className={`bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden ${
+                      className={`bg-white rounded-xl md:rounded-2xl overflow-hidden ${
                         isEventPast(event.eventDate, event.endTime) ? 'opacity-75' : ''
-                      }`}
+                      } shadow-[0_-8px_15px_-3px_rgba(0,0,0,0.1),0_8px_15px_-3px_rgba(0,0,0,0.1)]`}
                     >
                       <div className="flex flex-col md:flex-row">
                         {/* Image Section */}

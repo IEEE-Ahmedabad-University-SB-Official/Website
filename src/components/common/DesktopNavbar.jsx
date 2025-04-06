@@ -53,7 +53,8 @@ const DesktopNavbar = () => {
     }
   };
 
-  const isLinkActive = (path) => {
+  const isLinkActive = (path, isContact = false) => {
+    if (isContact) return false;
     return path === '/' ? location.pathname === '/' : location.pathname === path;
   };
 
@@ -139,21 +140,26 @@ const DesktopNavbar = () => {
                 hash: 'contactUs',
                 icon: FaPhone, 
                 label: 'Contact Us',
+                isContact: true,
                 onClick: (e) => {
                   e.preventDefault();
                   if (location.pathname === '/') {
-                    document.getElementById('contactUs')?.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('contactUs')?.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start',
+                      inline: 'nearest',
+                    });
                   } else {
                     navigate('/?scrollTo=contactUs');
                   }
                 }
               }
-            ].map(({ path, icon: Icon, label, onClick }) => (
+            ].map(({ path, icon: Icon, label, onClick, isContact }) => (
               <a 
                 key={path + label}
                 href={path}
                 onClick={handleNavigation(path, onClick)}
-                className={`${linkClasses} ${getLinkStyles(isLinkActive(path))} ${isLinkActive(path) ? activeLinkClasses : ''}`}
+                className={`${linkClasses} ${getLinkStyles(isLinkActive(path, isContact))} ${isLinkActive(path, isContact) ? activeLinkClasses : ''}`}
               >
                 <Icon className="h-4 w-4" />
                 <span>{label}</span>
