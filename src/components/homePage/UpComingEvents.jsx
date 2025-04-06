@@ -3,7 +3,7 @@ import useEvents from '../../hooks/useEvents';
 import { FaArrowLeft, FaArrowRight, FaMicrophone, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 
 const EventSkeleton = () => (
-  <div className="py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
+  <div className="py-10 md:py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
     <div className="max-w-6xl mx-auto px-4">
       {/* Header Skeleton */}
       <div className="text-center mb-16">
@@ -179,7 +179,7 @@ const UpComingEvents = () => {
   }
 
   return (
-    <div className="py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
+    <div className="pt-20 pb-0 md:py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8 md:mb-16">

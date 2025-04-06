@@ -46,7 +46,7 @@ const MobileNavbar = () => {
     // { path: '/achievements', icon: <FaTrophy />, label: 'Achievements' },
     { path: '/events', icon: <FaCalendarDays />, label: 'Events' },
     { path: '/committee', icon: <FaUsers />, label: 'Committee' },
-    { path: '/contact', icon: <FaPhone />, label: 'Contact' },
+    { path: '/#contact', icon: <FaPhone />, label: 'Contact' },
   ];
 
   return (
