@@ -32,42 +32,28 @@ const MemberCard = ({ member }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="relative w-[225px] h-[300px] cursor-pointer overflow-hidden group"
+    className="relative md:w-[225px] md:h-[300px] w-full cursor-pointer overflow-hidden group"
   >
-    <div className="absolute inset-0 transition-all duration-600 ease-bezier group-hover:scale-85 group-hover:brightness-45">
+    {/* Mobile/Tablet Layout */}
+    <div className="flex md:hidden items-center w-full bg-white rounded-lg shadow-sm p-3 gap-4">
       <img 
         src={member.profile_image} 
         alt={member.name} 
-        className="w-[250px] h-[300px] object-contain"
+        className="w-[90px] object-cover rounded-lg"
         loading="lazy"
       />
-    </div>
-    
-    {/* Grid container for hover boxes */}
-    <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
-      {/* Top-left info box */}
-      <div className="col-start-1 row-start-1 p-2 bg-black/45 backdrop-blur-md transition-all duration-500 opacity-0 flex flex-col justify-center items-center text-white transform -translate-x-full -translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
-        <h3 className="text-center font-bold">{member.name}</h3>
-        <div className="pt-3 text-center">{member.position}</div>
-        {/* {member.leaveDate && (
-          <div className="mt-2 text-sm text-red-400">
-            Not currently part of IEEE
-          </div>
-        )} */}
-      </div>
-      
-      {/* Bottom-right socials box */}
-      <div className="col-start-2 row-start-2 p-2 bg-black/45 backdrop-blur-md transition-all duration-500 opacity-0 flex flex-col items-center justify-center text-white transform translate-x-full translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
-        <h3 className="font-bold mb-2">Socials</h3>
-        <div className="flex justify-center gap-4">
+      <div className="flex flex-col flex-1 min-w-0">
+        <h3 className="font-bold text-left text-xl text-gray-900 truncate">{member.name}</h3>
+        <p className="text-sm text-left text-gray-600 mb-2">{member.position}</p>
+        <div className="flex gap-3">
           {member.instagramProfile && member.position !== "Faculty" && (
             <a 
               href={member.instagramProfile} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-white hover:text-[#E4405F] transition-colors"
+              className="text-gray-600 hover:text-[#E4405F] transition-colors"
             >
-              <FaInstagram size={24} />
+              <FaInstagram size={20} />
             </a>
           )}
           {member.linkedinProfile && member.position !== "Faculty" && (
@@ -75,22 +61,79 @@ const MemberCard = ({ member }) => (
               href={member.linkedinProfile} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-white hover:text-[#0a66c2] transition-colors"
+              className="text-gray-600 hover:text-[#0a66c2] transition-colors"
             >
-              <FaLinkedin size={24} />
+              <FaLinkedin size={20} />
             </a>
           )}
-          {/* Resume link for faculty members */}
           {member.position === "Faculty" && member.linkedinProfile && (
             <a 
               href={member.linkedinProfile} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-white hover:text-green-400 transition-colors"
+              className="text-gray-600 hover:text-green-400 transition-colors"
             >
-              <FaFileAlt size={24} />
+              <FaFileAlt size={20} />
             </a>
           )}
+        </div>
+      </div>
+    </div>
+
+    {/* Desktop Layout - Hidden on Mobile */}
+    <div className="hidden md:block">
+      <div className="absolute inset-0 transition-all duration-600 ease-bezier group-hover:scale-85 group-hover:brightness-45">
+        <img 
+          src={member.profile_image} 
+          alt={member.name} 
+          className="w-[250px] h-[300px] object-contain"
+          loading="lazy"
+        />
+      </div>
+      
+      {/* Grid container for hover boxes */}
+      <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
+        {/* Top-left info box */}
+        <div className="col-start-1 row-start-1 p-2 bg-black/45 backdrop-blur-md transition-all duration-500 opacity-0 flex flex-col justify-center items-center text-white transform -translate-x-full -translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
+          <h3 className="text-center font-bold">{member.name}</h3>
+          <div className="pt-3 text-center">{member.position}</div>
+        </div>
+        
+        {/* Bottom-right socials box */}
+        <div className="col-start-2 row-start-2 p-2 bg-black/45 backdrop-blur-md transition-all duration-500 opacity-0 flex flex-col items-center justify-center text-white transform translate-x-full translate-y-full group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
+          <h3 className="font-bold mb-2">Socials</h3>
+          <div className="flex justify-center gap-4">
+            {member.instagramProfile && member.position !== "Faculty" && (
+              <a 
+                href={member.instagramProfile} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-[#E4405F] transition-colors"
+              >
+                <FaInstagram size={24} />
+              </a>
+            )}
+            {member.linkedinProfile && member.position !== "Faculty" && (
+              <a 
+                href={member.linkedinProfile} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-[#0a66c2] transition-colors"
+              >
+                <FaLinkedin size={24} />
+              </a>
+            )}
+            {member.position === "Faculty" && member.linkedinProfile && (
+              <a 
+                href={member.linkedinProfile} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-green-400 transition-colors"
+              >
+                <FaFileAlt size={24} />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -164,7 +207,7 @@ const CommitteePage = () => {
       <DesktopNavbar />
       <MobileNavbar />
 
-      <div className="container mx-auto px-4 py-16 pt-32">
+      <div className="container mx-auto px-4 py-16 pt-16">
         <h1 className="text-4xl md:text-5xl text-center font-extrabold text-gray-900 mb-12 uppercase"
             style={{
               textShadow: `
@@ -198,7 +241,7 @@ const CommitteePage = () => {
 
         <div className="relative">
           {/* Content */}
-          <div className="space-y-16">
+          <div className="space-y-8">
             {/* Faculty Section */}
             {filteredFaculty?.length > 0 && (
               <motion.section 
@@ -208,7 +251,7 @@ const CommitteePage = () => {
               >
                 <div className="">
                   <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">Faculty</h2>
-                  <div className="flex flex-wrap justify-center gap-6">
+                  <div className="flex flex-wrap justify-center gap-6 md:gap-6">
                     {filteredFaculty.map(member => (
                       <MemberCard key={`faculty-${member._id}`} member={member} />
                     ))}
@@ -227,7 +270,7 @@ const CommitteePage = () => {
               >
                 <div className="">
                   <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">Office Bearers</h2>
-                  <div className="flex flex-wrap justify-center gap-6">
+                  <div className="flex flex-wrap justify-center gap-4 md:gap-6">
                     {filteredOfficeBearers.map(member => (
                       <MemberCard key={`obs-${member._id}-${member.role}`} member={member} />
                     ))}
@@ -246,8 +289,8 @@ const CommitteePage = () => {
                 id={team.id}
               >
                 <div className="text-center max-w-6xl mx-auto">
-                  <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">{team.title}</h2>
-                  <div className="flex flex-wrap justify-center gap-6">
+                  <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center">{team.title}</h2>
+                  <div className="flex flex-wrap justify-center gap-4 md:gap-6">
                     {team.data.map(member => (
                       <MemberCard key={`${team.id}-${member._id}`} member={member} />
                     ))}
