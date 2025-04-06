@@ -167,7 +167,7 @@ const DesktopNavbar = () => {
             ))}
 
             {/* Theme Selector */}
-            <div className="relative">
+            {/* <div className="relative">
               <button
                 onClick={() => setIsThemeOpen(!isThemeOpen)}
                 className={`${linkClasses} ${getLinkStyles(false)}`}
@@ -218,7 +218,7 @@ const DesktopNavbar = () => {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>
