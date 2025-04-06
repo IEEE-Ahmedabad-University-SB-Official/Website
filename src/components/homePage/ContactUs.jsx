@@ -81,9 +81,9 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen scroll-mt-20" id="contactUs">
+    <section className="relative w-full min-h-screen scroll-mt-20 px-4" id="contactUs">
       {/* Map Background */}
-      <div className="absolute inset-0 w-[95%] h-[70vh] mx-auto">
+      <div className="absolute inset-0 w-[90%] h-[70vh] mx-auto">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.6085372802418!2d72.55180577602258!3d23.03814131574564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848d5f86040f%3A0x7a0cc8b624851642!2sAhmedabad%20University!5e0!3m2!1sen!2sin!4v1715959567993!5m2!1sen!2sin"
           width="100%"
