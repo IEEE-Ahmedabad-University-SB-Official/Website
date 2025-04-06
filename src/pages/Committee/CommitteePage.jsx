@@ -8,8 +8,26 @@ import { FaInstagram, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 
 // Skeleton loader for member card
 const MemberCardSkeleton = () => (
-  <div className="relative w-[250px] h-[300px] bg-gray-200 animate-pulse rounded-lg">
-    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
+  <div className="relative w-full">
+    {/* Mobile/Tablet Layout Skeleton */}
+    <div className="flex md:hidden items-center w-full bg-white rounded-lg shadow-sm p-3 gap-4">
+      <div className="w-[90px] h-[120px] bg-gray-200 rounded-lg animate-pulse" />
+      <div className="flex flex-col flex-1 min-w-0 space-y-2">
+        <div className="h-6 w-3/4 bg-gray-200 rounded animate-pulse" />
+        <div className="h-4 w-1/2 bg-gray-200 rounded animate-pulse" />
+        <div className="flex gap-3">
+          <div className="w-5 h-5 bg-gray-200 rounded animate-pulse" />
+          <div className="w-5 h-5 bg-gray-200 rounded animate-pulse" />
+        </div>
+      </div>
+    </div>
+
+    {/* Desktop Layout Skeleton - Hidden on Mobile */}
+    <div className="hidden md:block relative w-[225px] h-[300px]">
+      <div className="w-full h-full bg-gray-200 animate-pulse rounded-lg">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
+      </div>
+    </div>
   </div>
 );
 
@@ -18,7 +36,7 @@ const SectionSkeleton = () => (
   <section className="py-8">
     <div className="flex flex-col items-center">
       <div className="h-8 w-48 bg-gray-200 rounded mb-6 animate-pulse"></div>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-6 w-full md:w-auto">
         {[1, 2, 3, 4].map(i => (
           <MemberCardSkeleton key={i} />
         ))}
@@ -39,7 +57,7 @@ const MemberCard = ({ member }) => (
       <img 
         src={member.profile_image} 
         alt={member.name} 
-        className="w-[90px] object-cover rounded-lg"
+        className="w-[90px] object-cover rounded-lg"gap-8
         loading="lazy"
       />
       <div className="flex flex-col flex-1 min-w-0">
@@ -149,10 +167,10 @@ const CommitteePage = () => {
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         <DesktopNavbar />
         <MobileNavbar />
-        <div className="container mx-auto px-4 py-12 pt-32">
+        <div className="container mx-auto px-4 py-12 pt-8 md:pt-32">
           <div className="h-12 w-96 bg-gray-200 rounded mb-16 mx-auto animate-pulse"></div>
           <div className="flex justify-center gap-4 mb-8">
-            {[1, 2, 3].map(i => (
+            {[1, 2].map(i => (
               <div key={i} className="h-10 w-24 bg-gray-200 rounded animate-pulse"></div>
             ))}
           </div>
@@ -207,8 +225,8 @@ const CommitteePage = () => {
       <DesktopNavbar />
       <MobileNavbar />
 
-      <div className="container mx-auto px-4 py-16 pt-16">
-        <h1 className="text-4xl md:text-5xl text-center font-extrabold text-gray-900 mb-12 uppercase"
+      <div className="container mx-auto px-4 py-16 pt-8 md:pt-32">
+        <h1 className="text-4xl md:text-5xl text-center font-extrabold text-gray-900 mb-8 uppercase"
             style={{
               textShadow: `
                 5px 5px rgba(128, 128, 128, 0.4),
@@ -222,13 +240,13 @@ const CommitteePage = () => {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center gap-4 mb-12 flex-wrap px-4"
+          className="flex justify-center gap-4 mb-8 md:mb-12 flex-wrap px-4"
         >
-          {[2024, 2023, 2022].map(year => (
+          {[2024, 2023].map(year => (
             <button
               key={year}
               onClick={() => setSelectedYear(year.toString())}
-              className={`px-8 py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95 ${
+              className={`px-4 py-2 rounded-lg transition-all transform hover:scale-105 active:scale-95 ${
                 selectedYear === year.toString()
                 ? 'bg-[#0088cc] text-white shadow-lg'
                 : 'bg-gray-200 hover:bg-gray-300'

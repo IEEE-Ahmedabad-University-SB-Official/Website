@@ -10,7 +10,7 @@ import uc from '../../assets/Images/uc.jpg';
 
 const AuGlimpes = () => {
   return (
-    <section className="relative pt-2 pb-8 md:py-20">
+    <section className="relative pt-8 pb-8 md:py-20">
       {/* Heading */}
       <h1
         className="text-3xl md:text-5xl text-center font-extrabold text-gray-900 leading-[1.2] md:leading-[0.8] tracking-tight uppercase past-event-head mb-8 md:mb-16"
@@ -49,7 +49,7 @@ const AuGlimpes = () => {
             className="absolute top-4 right-4 md:top-6 md:right-6 flex items-center gap-2 bg-white/90 hover:bg-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 z-10"
           >
             <span className="font-medium text-[0.65rem] md:text-lg text-gray-800">Virtual Tour</span>
-            <FaArrowRight className="text-blue-600" />
+            <FaArrowRight className="text-blue-600 text-sm" />
           </a>
 
           

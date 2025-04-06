@@ -16,6 +16,11 @@ const DesktopNavbar = () => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
+  // Add effect to scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!isHomePage) return;
@@ -38,6 +43,15 @@ const DesktopNavbar = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomePage]);
+
+  const handleNavigation = (path, onClick) => (e) => {
+    if (onClick) {
+      onClick(e);
+    } else {
+      e.preventDefault();
+      navigate(path);
+    }
+  };
 
   const isLinkActive = (path) => {
     return path === '/' ? location.pathname === '/' : location.pathname === path;
@@ -102,13 +116,17 @@ const DesktopNavbar = () => {
       <nav className="w-full px-6 lg:px-12">
         <div className="w-full flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
+            <a 
+              href="/"
+              onClick={handleNavigation('/')} 
+              className="flex items-center"
+            >
               <img 
                 src={getLogoSrc()} 
                 alt="ieee-logo" 
                 className="h-14 w-auto transition-all duration-300"
               />
-            </Link>
+            </a>
           </div>
 
           <div className="hidden md:flex items-center space-x-10">
@@ -131,15 +149,15 @@ const DesktopNavbar = () => {
                 }
               }
             ].map(({ path, icon: Icon, label, onClick }) => (
-              <Link 
+              <a 
                 key={path + label}
-                to={path}
-                onClick={onClick}
+                href={path}
+                onClick={handleNavigation(path, onClick)}
                 className={`${linkClasses} ${getLinkStyles(isLinkActive(path))} ${isLinkActive(path) ? activeLinkClasses : ''}`}
               >
                 <Icon className="h-4 w-4" />
                 <span>{label}</span>
-              </Link>
+              </a>
             ))}
 
             {/* Theme Selector */}

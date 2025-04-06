@@ -5,30 +5,48 @@ import { FaTimes, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 const EventCardSkeleton = ({ index }) => {
   // Mimic the same positioning logic as actual cards
   const getSkeletonStyle = (index) => {
-    if (index === 0) { // Current card
-      return {
-        transform: 'translateX(0) scale(1) rotate(0deg)',
-        zIndex: 3,
-        opacity: 1
-      };
-    } else if (index === 1) { // Next card
-      return {
-        transform: 'translateX(25%) scale(0.85) rotate(5deg)',
-        zIndex: 2,
-        opacity: 0.3
-      };
-    } else if (index === 2) { // Previous card
-      return {
-        transform: 'translateX(-25%) scale(0.85) rotate(-5deg)',
-        zIndex: 1,
-        opacity: 0.3
-      };
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile) {
+      if (index === 0) { // Current card
+        return {
+          transform: 'translateX(0) scale(1)',
+          zIndex: 3,
+          opacity: 1
+        };
+      } else {
+        return {
+          transform: `translateX(${index > 0 ? '100%' : '-100%'}) scale(0.9)`,
+          zIndex: 2,
+          opacity: 0
+        };
+      }
+    } else {
+      if (index === 0) { // Current card
+        return {
+          transform: 'translateX(0) scale(1) rotate(0deg)',
+          zIndex: 3,
+          opacity: 1
+        };
+      } else if (index === 1) { // Next card
+        return {
+          transform: 'translateX(25%) scale(0.85) rotate(5deg)',
+          zIndex: 2,
+          opacity: 0.3
+        };
+      } else if (index === 2) { // Previous card
+        return {
+          transform: 'translateX(-25%) scale(0.85) rotate(-5deg)',
+          zIndex: 1,
+          opacity: 0.3
+        };
+      }
     }
   };
 
   return (
     <div
-      className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm transition-all duration-500 ease-in-out"
+      className="absolute md:-translate-x-1/2 -translate-y-1/2 w-full max-w-[280px] md:max-w-sm transition-all duration-500 ease-in-out"
       style={getSkeletonStyle(index)}
     >
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden relative animate-pulse">
@@ -38,7 +56,7 @@ const EventCardSkeleton = ({ index }) => {
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
           {/* Know More Button Skeleton */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-10 bg-gray-200 rounded-full"></div>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-24 h-8 md:w-32 md:h-10 bg-gray-200 rounded-full"></div>
         </div>
       </div>
     </div>
@@ -46,30 +64,40 @@ const EventCardSkeleton = ({ index }) => {
 };
 
 const PastEventsSkeleton = () => (
-  <div className="py-20 bg-white overflow-hidden">
+  <div className="py-10 md:py-20 bg-white overflow-hidden">
     <div className="mx-auto px-4">
-      <div className="flex flex-col md:flex-row gap-12">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-12">
         {/* Left side - Large "PAST EVENTS" text skeleton */}
         <div className="md:w-[25%] flex items-center justify-center md:justify-start">
           <div className="text-center">
-            <div className="animate-pulse">
-              <div className="h-32 w-[10rem] bg-gray-200 mb-8"></div>
-              <div className="h-32 w-[10rem] bg-gray-200"></div>
+            <div className="animate-pulse flex flex-row md:flex-col gap-4 md:gap-8 justify-center items-center md:items-start">
+              <div className="h-12 md:h-32 w-[8rem] md:w-[10rem] bg-gray-200"></div>
+              <div className="h-12 md:h-32 w-[8rem] md:w-[10rem] bg-gray-200"></div>
             </div>
           </div>
         </div>
 
         {/* Right side - Stacked cards skeleton */}
-        <div className="md:w-2/3 relative h-[500px] flex items-center justify-center perspective-1000">
-          <div className="relative w-full h-full preserve-3d">
+        <div className="md:w-2/3 relative h-[400px] md:h-[500px] flex items-center justify-center perspective-1000">
+          <div className="relative w-full h-full preserve-3d flex items-center justify-center">
             {/* Show 3 skeleton cards with proper positioning */}
             {[0, 1, 2].map((index) => (
               <EventCardSkeleton key={index} index={index} />
             ))}
 
             {/* Skeleton Navigation buttons */}
-            <div className="absolute left-96 top-1/2 -translate-y-1/2 z-50 w-12 h-12 bg-gray-200 rounded-full animate-pulse"></div>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 z-50 w-12 h-12 bg-gray-200 rounded-full animate-pulse"></div>
+            <div className="absolute left-0 md:left-96 top-1/2 -translate-y-1/2 z-50 w-8 h-8 md:w-12 md:h-12 bg-gray-200 rounded-full mx-2 md:mx-0 animate-pulse"></div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 z-50 w-8 h-8 md:w-12 md:h-12 bg-gray-200 rounded-full mx-2 md:mx-0 animate-pulse"></div>
+
+            {/* Mobile Pagination Dots Skeleton */}
+            <div className="flex md:hidden justify-center items-center gap-2 absolute -bottom-2 left-0 right-0">
+              {[0, 1, 2].map((index) => (
+                <div
+                  key={index}
+                  className={`h-2 rounded-full bg-gray-200 ${index === 0 ? 'w-8' : 'w-2'}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -242,9 +270,9 @@ const PastEvents = () => {
   const pastEvents = events.past || [];
 
   return (
-    <div className="py-10 md:py-20 bg-white overflow-hidden">
+    <div className="pt-8 pb-16 md:py-20 bg-white overflow-hidden">
       <div className="mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-12">
           {/* Left side - Large "PAST EVENTS" text */}
           <div className="md:w-[25%] flex items-center justify-center md:justify-start">
             <div className="text-center">
@@ -305,7 +333,7 @@ const PastEvents = () => {
               <div className="block">
                 <button
                   onClick={handlePrev}
-                  className="absolute left-0 md:left-96 top-1/2 -translate-y-1/2 z-50 bg-white/90 md:bg-white rounded-full p-2 md:p-3 shadow-lg hover:scale-110 transition-transform mx-2 md:mx-0"
+                  className="absolute -left-3 md:left-96 top-1/2 -translate-y-1/2 z-50 bg-white/90 md:bg-white rounded-full p-2 md:p-3 shadow-lg hover:scale-110 transition-transform mx-2 md:mx-0"
                   aria-label="Previous event"
                 >
                   <FaArrowLeft className="w-4 h-4 md:w-6 md:h-6 text-gray-600" />
@@ -313,7 +341,7 @@ const PastEvents = () => {
                 
                 <button
                   onClick={handleNext}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-white/90 md:bg-white rounded-full p-2 md:p-3 shadow-lg hover:scale-110 transition-transform mx-2 md:mx-0"
+                  className="absolute -right-3 top-1/2 -translate-y-1/2 z-50 bg-white/90 md:bg-white rounded-full p-2 md:p-3 shadow-lg hover:scale-110 transition-transform mx-2 md:mx-0"
                   aria-label="Next event"
                 >
                   <FaArrowRight className="w-4 h-4 md:w-6 md:h-6 text-gray-600" />

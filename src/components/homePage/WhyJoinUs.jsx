@@ -41,7 +41,7 @@ const WhyJoinUs = () => {
     ];
 
     return (
-        <section className="py-4 pb-8 md:py-14 bg-gray-50">
+        <section className="py-8 pb-8 md:py-14 bg-gray-50">
             <div className="max-w-[95%] mx-auto px-4 pl-8 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-8 md:mb-16">

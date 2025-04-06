@@ -341,7 +341,7 @@ const UpComingEvents = () => {
 
         {/* Pagination Dots with improved sync */}
         {upcomingEvents.length > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-8">
+          <div className="flex justify-center items-center gap-2 mt-4">
             {upcomingEvents.map((_, index) => (
               <div
                 key={index}

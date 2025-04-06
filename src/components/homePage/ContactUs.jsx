@@ -83,7 +83,7 @@ const ContactUs = () => {
   return (
     <section className="relative w-full min-h-screen scroll-mt-20 px-4" id="contactUs">
       {/* Map Background */}
-      <div className="absolute inset-0 w-full h-[70vh] mx-auto">
+      <div className="absolute inset-0 w-[90%] h-[70vh] mx-auto">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.6085372802418!2d72.55180577602258!3d23.03814131574564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848d5f86040f%3A0x7a0cc8b624851642!2sAhmedabad%20University!5e0!3m2!1sen!2sin!4v1715959567993!5m2!1sen!2sin"
           width="100%"
@@ -96,7 +96,7 @@ const ContactUs = () => {
       </div>
 
       {/* Contact Form Container */}
-      <div className="container mx-auto px-4 w-full md:w-[80%] max-w-[1400px]">
+      <div className="container mx-auto px-4 w-[90%] md:w-[80%] max-w-[1400px]">
         <div className="relative top-[40vh]">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-0 bg-white rounded-lg shadow-[-1px_10px_20px_rgba(0,0,0,_0.7)] overflow-hidden w-full">
             {/* Form Section */}
