@@ -242,8 +242,8 @@ const Footer = () => {
             <div className={`flex justify-center items-center flex-col ${styles.background} text-[0.9rem] p-4`}>
                 <hr className={`w-[92%] my-[0.4rem] border-0 h-[1px] ${styles.divider}`} />
                 <h4 className={`m-[5px] pt-2 font-normal ${styles.text} text-center px-4`}>
-                    © IEEE AU SB 2024. All Rights Reserved | Developed by{' '}
-                    <a href="https://www.linkedin.com/in/vishv-boda-806ab5289/" target="_blank" rel="noopener noreferrer" 
+                    © IEEE AU SB 2025. All Rights Reserved | Developed by{' '}
+                    <a href="https://www.linkedin.com/in/vishvboda/" target="_blank" rel="noopener noreferrer" 
                        className={`${styles.subtext} underline hover:${styles.text}`}>
                         Vishv Boda
                     </a>
