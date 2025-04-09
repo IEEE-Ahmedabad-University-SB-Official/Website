@@ -1,8 +1,8 @@
 # IEEE AU SB Website
 
-[![Ahmedabd University Logo](/Images/AU_logo.webp "Ahmedabad University")](https://ahduni.edu.in/)
+[![Ahmedabd University Logo](src/assets/Images/AU_logo.webp "Ahmedabad University")](https://ahduni.edu.in/)
   
-![IEEE Ahmedabad University Student Chapter Logo](/Images/Logo.png "IEEE Ahmedabad University Student Chapter")
+![IEEE Ahmedabad University Student Chapter Logo](src/assets/Images/Logo.png "IEEE Ahmedabad University Student Chapter")
 
 **Owner** :- [IEEE Ahmedabad University Student Branch](https://github.com/IEEE-Ahmedabad-University-SB-Official)  
 
