@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const achievementSchema = new mongoose.Schema(
     {
@@ -23,4 +23,4 @@ const achievementSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model("achievements", achievementSchema);
+export default mongoose.model("achievements", achievementSchema);

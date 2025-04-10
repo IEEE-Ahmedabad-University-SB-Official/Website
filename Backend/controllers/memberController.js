@@ -1,30 +1,15 @@
-const cloudinary = require('cloudinary').v2;
-const Members = require('../models/members');
-const {uploadImageToCloudinary} = require('../utils/imageUploader');
-
+import { v2 as cloudinary } from 'cloudinary';
+import Members from '../models/members.js';
+import { uploadImageToCloudinary } from '../utils/imageUploader.js';
+const apiKey = process.env.API_KEY;
 
 // POST: Create a new member with image upload
-exports.uploadMember = async (req, res) => {
+export const uploadMember = async (req, res) => {
     try {
         const { name, email, contact_number, join_year, programme, department, position, enrollment_number, instagramProfile, linkedinProfile, leave_date } = req.body;
-
-        // if (!req.files || !req.files.profile_image) {
-        //     return res.status(400).json({ error: 'No file uploaded' });
-        // }
-
-        // console.log(req);
-        
-        // Handle file upload using express-fileupload
         const file = req.files.profile_image;
 
         const uploadedFile = await uploadImageToCloudinary(file, "Members" , 80 );
-
-        // const options = {
-        //     folder:"Members", 
-        //     quality: 90,
-        //     resource_type: "auto"
-        // };
-        // const uploadedFile = await cloudinary.uploader.upload(file.tempFilePath, options);
 
         // Create member in database
         const newMember = new Members({
@@ -53,7 +38,7 @@ exports.uploadMember = async (req, res) => {
 };
 
 // POST: Update a member by ID with image upload
-exports.updateMember = async (req, res) => {
+export const updateMember = async (req, res) => {
     const { id } = req.params;
 
     // console.log(req);
@@ -122,7 +107,7 @@ exports.updateMember = async (req, res) => {
     }
 };
 
-exports.memberFront = async (req, res) => {
+export const memberFront = async (req, res) => {
     const { department, position } = req.query;
     try {
     const results = await Members.find({
@@ -138,7 +123,7 @@ exports.memberFront = async (req, res) => {
 };
 
 // DELETE: Delete a member by ID
-exports.deleteMember = async (req, res) => {
+export const deleteMember = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -162,7 +147,7 @@ exports.deleteMember = async (req, res) => {
 };
 
 // GET: Fetch all members
-exports.getMembers = async (req, res) => {
+export const getMembers = async (req, res) => {
     try {
         const members = await Members.find();
 

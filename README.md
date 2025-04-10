@@ -1,8 +1,8 @@
 # IEEE AU SB Website
 
-[![Ahmedabd University Logo](/Images/AU_logo.webp "Ahmedabad University")](https://ahduni.edu.in/)
+[![Ahmedabd University Logo](src/assets/Images/AU_logo.webp "Ahmedabad University")](https://ahduni.edu.in/)
   
-![IEEE Ahmedabad University Student Chapter Logo](/Images/Logo.png "IEEE Ahmedabad University Student Chapter")
+![IEEE Ahmedabad University Student Chapter Logo](src/assets/Images/Logo.png "IEEE Ahmedabad University Student Chapter")
 
 **Owner** :- [IEEE Ahmedabad University Student Branch](https://github.com/IEEE-Ahmedabad-University-SB-Official)  
 
@@ -32,11 +32,6 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 * Modal window to display event details
 * Filtering and sorting options for events
 
-### Achievements Section
-
-* Showcase of achievements and awards won by the student branch
-* Filtering and sorting options for achievements
-
 ### Committee Section
 
 * List of committee members with their roles and contact information
@@ -55,14 +50,12 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 
 ## Technologies Used
 
-* HTML5
-* CSS3
-* JavaScript (ES6+)
+* ReactJs
+* TailwindCSS
 * Fetch API for data fetching
 * Axios for API requests
 * SweetAlert2 for modal windows
-* Font Awesome for icons
-* Bootstrap for UI components
+* React icons for icons
 * NodeJs
 * ExpressJs
 * Cloudinary
