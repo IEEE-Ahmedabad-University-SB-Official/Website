@@ -50,14 +50,12 @@ The IEEE AU SB website is a platform for the student branch to showcase its acti
 
 ## Technologies Used
 
-* HTML5
-* CSS3
-* JavaScript (ES6+)
+* ReactJs
+* TailwindCSS
 * Fetch API for data fetching
 * Axios for API requests
 * SweetAlert2 for modal windows
-* Font Awesome for icons
-* Bootstrap for UI components
+* React icons for icons
 * NodeJs
 * ExpressJs
 * Cloudinary
