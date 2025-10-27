@@ -224,7 +224,7 @@ const CommitteePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="flex justify-center gap-4 mb-12 flex-wrap px-4"
         >
-          {[2024, 2023, 2022].map(year => (
+          {[2025, 2024, 2023, 2022].map(year => (
             <button
               key={year}
               onClick={() => setSelectedYear(year.toString())}
