@@ -162,7 +162,7 @@ const MemberCard = ({ member }) => (
 
 const CommitteePage = () => {
   const { members, loading, error } = useMembers();
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState("2025");
 
   if (loading) {
     return (
@@ -246,7 +246,7 @@ const CommitteePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="flex justify-center gap-4 mb-8 md:mb-12 flex-wrap px-4"
         >
-          {[2024, 2023].map(year => (
+          {[2025,2024,2023].map(year => (
             <button
               key={year}
               onClick={() => setSelectedYear(year.toString())}
