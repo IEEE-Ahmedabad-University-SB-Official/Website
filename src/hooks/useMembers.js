@@ -11,15 +11,31 @@ const useMembers = () => {
 
   useEffect(() => {
     // fetchMembers();
-    const processedMembers = committeeData.map(member => ({
-      name: member['Full Name'],
-      position: member.Position,
-      profile_image: member['One Professional Photo'],
-      linkedinProfile: member['Linkedin Profile'],
-      join_year: member.join_year,
-      team: member.Team,
-      _id: member['Enrollment number '] + member['Full Name'], // create a unique id
-    }));
+    const processedMembers = committeeData.map(member => {
+      // Get first name in lowercase for image matching
+      const firstName = member['Full Name'].split(' ')[0].toLowerCase();
+      // Try to find matching image in Photos folder
+      let profileImage = '';
+      try {
+        // Try to import the image dynamically
+        const imagePath = `../assets/Photos/${firstName}.JPG`;
+        // This will be handled by the bundler at build time
+        profileImage = new URL(`../assets/Photos/${firstName}.JPG`, import.meta.url).href;
+      } catch (e) {
+        // If image not found, fall back to the original URL
+        profileImage = member['One Professional Photo'];
+      }
+      
+      return {
+        name: member['Full Name'],
+        position: member.Position,
+        profile_image: profileImage,
+        linkedinProfile: member['Linkedin Profile'],
+        join_year: member.join_year,
+        team: member.Team,
+        _id: member['Enrollment number '] + member['Full Name'],
+      };
+    });
     const categorizedMembers = categorizeMembers(processedMembers);
     setMembers(categorizedMembers);
     setLoading(false);

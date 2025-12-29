@@ -81,12 +81,15 @@ const MemberCard = ({ member }) => {
     >
       {/* Mobile/Tablet Layout */}
       <div className="flex md:hidden items-center w-full bg-white rounded-lg shadow-sm p-3 gap-4">
-        <img 
-          src={member.profile_image} 
-          alt={member.name} 
-          className="w-[90px] object-cover rounded-lg"
-          loading="lazy"
-        />
+        <div className="w-[90px] h-[120px] overflow-hidden rounded-lg">
+          <img 
+            src={member.profile_image} 
+            alt={member.name} 
+            className="w-full h-full object-cover transform hover:rotate-0 transition-transform duration-300"
+            style={{ transform: 'rotate(-90deg)' }}
+            loading="lazy"
+          />
+        </div>
         <div className="flex flex-col flex-1 min-w-0">
           <h3 className="font-bold text-left text-xl text-gray-900 truncate">{member.name}</h3>
           <p className="text-sm text-left text-gray-600 mb-2">{member.position}</p>
@@ -128,12 +131,15 @@ const MemberCard = ({ member }) => {
       {/* Desktop Layout - Hidden on Mobile */}
       <div className="hidden md:block">
         <div className="absolute inset-0 transition-all duration-600 ease-bezier group-hover:scale-85 group-hover:brightness-45">
-          <img
-            src={member.profile_image}
-            alt={member.name}
-            className="w-[250px] h-[300px] object-contain"
-            loading="lazy"
-          />
+          <div className="w-[250px] h-[300px] overflow-hidden">
+            <img
+              src={member.profile_image}
+              alt={member.name}
+              className="w-full h-full object-contain transform hover:rotate-0 transition-transform duration-300"
+              style={{ transform: 'rotate(-90deg)' }}
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* Grid container for hover boxes */}

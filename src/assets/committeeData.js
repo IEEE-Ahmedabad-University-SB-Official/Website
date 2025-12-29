@@ -133,25 +133,6 @@ export const committeeData = [
     "join_year": 2025
   },
   {
-    "Timestamp": "9/10/2025 12:25:15",
-    "Email Address": "jiya.p@ahduni.edu.in",
-    "Full Name": "Jiya Patel",
-    "AU Mail ID": "Jiya.p@ahduni.edu.in",
-    "Personal Mail ID": "Jiyapatel070703@gmail.com",
-    "Enrollment number ": "AU2540116",
-    "Major": "BTech CSE",
-    "Semester": 1,
-    "Mobile Number": 9510501036,
-    "Position": "Committee Members",
-    "Team": "CS Team",
-    "Date of Birth": "7/3/2007",
-    "Native City": "Unjha, Mehsana",
-    "Food preferance": "Vegeterian",
-    "One Professional Photo": "https://drive.google.com/open?id=14kbiJ6uMnRLE_eV2HOoTKh_j9UBfk53b",
-    "Linkedin Profile": "https://www.linkedin.com/in/jiya-patel-575429378",
-    "join_year": 2025
-  },
-  {
     "Timestamp": "9/10/2025 12:39:06",
     "Email Address": "maitri.p@ahduni.edu.in",
     "Full Name": "Maitri Parekh ",
