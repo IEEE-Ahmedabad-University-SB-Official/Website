@@ -69,6 +69,7 @@ The IEEE AU SB Website is licensed under the ***GNU GPL V3 License***. See [**LI
 
 * [Vishv Boda](https://www.linkedin.com/in/vishv-boda-806ab5289/)
 * [Deep Patel](https://www.linkedin.com/in/deeppatelDW1631/)
+* [Manas Doshi](https://www.linkedin.com/in/manas-doshi-644751363/)
 
 ## Acknowledgments
 
