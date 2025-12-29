@@ -3,7 +3,7 @@ import useEvents from '../../hooks/useEvents';
 import { FaArrowLeft, FaArrowRight, FaMicrophone, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 
 const EventSkeleton = () => (
-  <div className="py-10 md:py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
+  <div className="py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
     <div className="max-w-6xl mx-auto px-4">
       {/* Header Skeleton */}
       <div className="text-center mb-16">
@@ -56,115 +56,73 @@ const EventSkeleton = () => (
 );
 
 const UpComingEvents = () => {
+  // 1. All useState hooks first
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // 2. All custom hooks
   const { events, loading, error } = useEvents();
+  
+  // 3. useRef hooks
   const cardContainerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Handle scroll position updates
+  // 4. All useEffect hooks
   useEffect(() => {
     const container = cardContainerRef.current;
     if (!container) return;
 
     const handleScrollUpdate = () => {
-      const cardWidth = container.offsetWidth;
+      const cardWidth = container.firstChild?.offsetWidth || 0;
       const scrollPosition = container.scrollLeft;
       const newIndex = Math.round(scrollPosition / cardWidth);
       
+      // Only update if the index has actually changed
       if (newIndex !== currentIndex && newIndex >= 0 && newIndex < (events.upcoming?.length || 0)) {
         setCurrentIndex(newIndex);
       }
     };
 
-    const debounceScroll = () => {
-      clearTimeout(container.scrollTimeout);
-      container.scrollTimeout = setTimeout(handleScrollUpdate, 50);
-    };
+    // Add both scroll and touchend event listeners
+    container.addEventListener('scroll', handleScrollUpdate);
+    container.addEventListener('touchend', () => {
+      // Small delay to ensure scroll position has settled
+      setTimeout(handleScrollUpdate, 100);
+    });
 
-    container.addEventListener('scroll', debounceScroll);
     return () => {
-      container.removeEventListener('scroll', debounceScroll);
-      if (container.scrollTimeout) {
-        clearTimeout(container.scrollTimeout);
-      }
+      container.removeEventListener('scroll', handleScrollUpdate);
+      container.removeEventListener('touchend', handleScrollUpdate);
     };
   }, [currentIndex, events.upcoming?.length]);
 
-  // Mouse drag handlers
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - cardContainerRef.current.offsetLeft);
-    setScrollLeft(cardContainerRef.current.scrollLeft);
-  };
+  // Add touch handling state
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - cardContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    cardContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    if (!cardContainerRef.current) return;
-    
-    const cardWidth = cardContainerRef.current.offsetWidth;
-    const currentScroll = cardContainerRef.current.scrollLeft;
-    const targetIndex = Math.round(currentScroll / cardWidth);
-    
-    cardContainerRef.current.scrollTo({
-      left: targetIndex * cardWidth,
-      behavior: 'smooth'
-    });
-  };
-
-  // Touch handlers
+  // Handle touch events
   const handleTouchStart = (e) => {
-    setIsDragging(true);
-    setStartX(e.touches[0].clientX - cardContainerRef.current.offsetLeft);
-    setScrollLeft(cardContainerRef.current.scrollLeft);
+    setTouchStart(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
-    if (!isDragging) return;
-    const x = e.touches[0].clientX - cardContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    if (cardContainerRef.current) {
-      cardContainerRef.current.scrollLeft = scrollLeft - walk;
-    }
+    setTouchEnd(e.touches[0].clientX);
   };
 
   const handleTouchEnd = () => {
-    setIsDragging(false);
-    if (!cardContainerRef.current) return;
-    
-    const cardWidth = cardContainerRef.current.offsetWidth;
-    const currentScroll = cardContainerRef.current.scrollLeft;
-    const targetIndex = Math.round(currentScroll / cardWidth);
-    
-    cardContainerRef.current.scrollTo({
-      left: targetIndex * cardWidth,
-      behavior: 'smooth'
-    });
-  };
+    if (!touchStart || !touchEnd) return;
 
-  const handleScroll = (direction) => {
-    if (!cardContainerRef.current) return;
-    
-    const cardWidth = cardContainerRef.current.offsetWidth;
-    let newIndex = currentIndex + direction;
-    
-    if (newIndex < 0) newIndex = events.upcoming.length - 1;
-    if (newIndex >= events.upcoming.length) newIndex = 0;
-    
-    setCurrentIndex(newIndex);
-    cardContainerRef.current.scrollTo({
-      left: newIndex * cardWidth,
-      behavior: 'smooth'
-    });
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      handleScroll(1);
+    } else if (isRightSwipe) {
+      handleScroll(-1);
+    }
+
+    // Reset touch values
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   if (loading) {
@@ -186,6 +144,24 @@ const UpComingEvents = () => {
     return `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`;
   };
 
+  const handleScroll = (direction) => {
+    if (cardContainerRef.current) {
+      const cardWidth = cardContainerRef.current.firstChild?.offsetWidth || 0;
+      const remInPixels = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      const totalCardWidth = cardWidth + remInPixels;
+      
+      let newIndex = currentIndex + direction;
+      if (newIndex < 0) newIndex = upcomingEvents.length - 1;
+      if (newIndex >= upcomingEvents.length) newIndex = 0;
+      
+      setCurrentIndex(newIndex);
+      cardContainerRef.current.scrollTo({
+        left: newIndex * totalCardWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   if (upcomingEvents.length === 0) {
     return (
       <div className="text-center py-20">
@@ -203,7 +179,7 @@ const UpComingEvents = () => {
   }
 
   return (
-    <div className="pt-20 pb-0 md:py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
+    <div className="py-20 bg-gradient-to-b from-gray-50 to-white font-montserrat">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8 md:mb-16">
@@ -244,20 +220,28 @@ const UpComingEvents = () => {
           {/* Cards Container with enhanced scroll snapping */}
           <div 
             ref={cardContainerRef}
-            className={`flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+            className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x"
             style={{ 
               scrollbarWidth: 'none', 
               msOverflowStyle: 'none',
               scrollSnapType: 'x mandatory',
-              WebkitOverflowScrolling: 'touch'
+              WebkitOverflowScrolling: 'touch' // Smooth scrolling on iOS
             }}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+            onScroll={(e) => {
+              // Debounce scroll updates
+              clearTimeout(e.target.scrollTimeout);
+              e.target.scrollTimeout = setTimeout(() => {
+                const cardWidth = e.target.firstChild?.offsetWidth || 0;
+                const scrollPosition = e.target.scrollLeft;
+                const newIndex = Math.round(scrollPosition / cardWidth);
+                if (newIndex !== currentIndex) {
+                  setCurrentIndex(newIndex);
+                }
+              }, 50);
+            }}
           >
             {loading ? (
               <EventSkeleton />
@@ -357,7 +341,7 @@ const UpComingEvents = () => {
 
         {/* Pagination Dots with improved sync */}
         {upcomingEvents.length > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-4">
+          <div className="flex justify-center items-center gap-2 mt-8">
             {upcomingEvents.map((_, index) => (
               <div
                 key={index}
