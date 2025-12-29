@@ -190,6 +190,21 @@ const CommitteePage = () => {
   const { members, loading, error } = useMembers();
   const [selectedYear, setSelectedYear] = useState("2025");
 
+  const getMemberKey = (member, fallback) => {
+    if (!member) return fallback;
+    return (
+      member._id ||
+      member.id ||
+      member.Timestamp ||
+      member.timestamp ||
+      member.email ||
+      member.enrollment_number ||
+      member.enrollmentNumber ||
+      (member.name && member.join_year ? `${member.name}-${member.join_year}` : null) ||
+      fallback
+    );
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen" style={{ backgroundImage: `url(${whiteBg})` }}>
@@ -294,8 +309,11 @@ const CommitteePage = () => {
                 <div className="">
                   <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">Faculty</h2>
                   <div className="flex flex-wrap justify-center gap-6 md:gap-6">
-                    {filteredFaculty.map(member => (
-                      <MemberCard key={`faculty-${member._id}`} member={member} />
+                    {filteredFaculty.map((member, index) => (
+                      <MemberCard 
+                        key={`faculty-${getMemberKey(member, index)}-${index}`}
+                        member={member} 
+                      />
                     ))}
                   </div>
                 </div>
@@ -313,8 +331,11 @@ const CommitteePage = () => {
                 <div className="">
                   <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">Office Bearers</h2>
                   <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-                    {filteredOfficeBearers.map(member => (
-                      <MemberCard key={`obs-${member._id}-${member.role}`} member={member} />
+                    {filteredOfficeBearers.map((member, index) => (
+                      <MemberCard 
+                        key={`obs-${getMemberKey(member, index)}-${member.role || ''}-${index}`} 
+                        member={member} 
+                      />
                     ))}
                   </div>
                 </div>
@@ -333,8 +354,11 @@ const CommitteePage = () => {
                 <div className="text-center max-w-6xl mx-auto">
                   <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center">{team.title}</h2>
                   <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-                    {team.data.map(member => (
-                      <MemberCard key={`${team.id}-${member._id}`} member={member} />
+                    {team.data.map((member, index) => (
+                      <MemberCard 
+                        key={`${team.id}-${getMemberKey(member, index)}-${index}`}
+                        member={member} 
+                      />
                     ))}
                   </div>
                 </div>
