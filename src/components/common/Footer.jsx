@@ -254,7 +254,7 @@ const Footer = () => {
             </a>
             <a href="https://www.linkedin.com/in/manas-doshi-644751363/" target="_blank" rel="noopener noreferrer"
                className={`${styles.subtext} underline hover:${styles.text}`}>
-                 Manas Foshi
+                 Manas Doshi
     </a>
 
                     , IEEE AU SB
