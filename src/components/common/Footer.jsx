@@ -36,9 +36,9 @@ const Footer = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ 
-                    name: formData.name, 
-                    email: formData.email 
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email
                 })
             });
 
@@ -243,7 +243,7 @@ const Footer = () => {
                 <hr className={`w-[92%] my-[0.4rem] border-0 h-[1px] ${styles.divider}`} />
                 <h4 className={`m-[5px] pt-2 font-normal ${styles.text} text-center px-4`}>
                     © IEEE AU SB 2024. All Rights Reserved | Developed by{' '}
-                    <a href="https://www.linkedin.com/in/vishv-boda-806ab5289/" target="_blank" rel="noopener noreferrer" 
+                    <a href="https://www.linkedin.com/in/vishv-boda-806ab5289/" target="_blank" rel="noopener noreferrer"
                        className={`${styles.subtext} underline hover:${styles.text}`}>
                         Vishv Boda
                     </a>
@@ -251,7 +251,12 @@ const Footer = () => {
                     <a href="https://www.linkedin.com/in/deeppatelDW1631/" target="_blank" rel="noopener noreferrer"
                        className={`${styles.subtext} underline hover:${styles.text}`}>
                         Deep Patel
-                    </a>
+            </a>
+            <a href="https://www.linkedin.com/in/manas-doshi-644751363/" target="_blank" rel="noopener noreferrer"
+               className={`${styles.subtext} underline hover:${styles.text}`}>
+                 Manas Doshi
+    </a>
+
                     , IEEE AU SB
                 </h4>
             </div>
@@ -260,4 +265,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
