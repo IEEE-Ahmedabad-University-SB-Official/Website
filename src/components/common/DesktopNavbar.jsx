@@ -16,11 +16,6 @@ const DesktopNavbar = () => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
-  // Add effect to scroll to top on route change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   useEffect(() => {
     const handleScroll = () => {
       if (!isHomePage) return;
@@ -44,17 +39,7 @@ const DesktopNavbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomePage]);
 
-  const handleNavigation = (path, onClick) => (e) => {
-    if (onClick) {
-      onClick(e);
-    } else {
-      e.preventDefault();
-      navigate(path);
-    }
-  };
-
-  const isLinkActive = (path, isContact = false) => {
-    if (isContact) return false;
+  const isLinkActive = (path) => {
     return path === '/' ? location.pathname === '/' : location.pathname === path;
   };
 
@@ -117,17 +102,13 @@ const DesktopNavbar = () => {
       <nav className="w-full px-6 lg:px-12">
         <div className="w-full flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <a 
-              href="/"
-              onClick={handleNavigation('/')} 
-              className="flex items-center"
-            >
+            <Link to="/" className="flex items-center">
               <img 
                 src={getLogoSrc()} 
                 alt="ieee-logo" 
                 className="h-14 w-auto transition-all duration-300"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-10">
@@ -140,34 +121,29 @@ const DesktopNavbar = () => {
                 hash: 'contactUs',
                 icon: FaPhone, 
                 label: 'Contact Us',
-                isContact: true,
                 onClick: (e) => {
                   e.preventDefault();
                   if (location.pathname === '/') {
-                    document.getElementById('contactUs')?.scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start',
-                      inline: 'nearest',
-                    });
+                    document.getElementById('contactUs')?.scrollIntoView({ behavior: 'smooth' });
                   } else {
                     navigate('/?scrollTo=contactUs');
                   }
                 }
               }
-            ].map(({ path, icon: Icon, label, onClick, isContact }) => (
-              <a 
+            ].map(({ path, icon: Icon, label, onClick }) => (
+              <Link 
                 key={path + label}
-                href={path}
-                onClick={handleNavigation(path, onClick)}
-                className={`${linkClasses} ${getLinkStyles(isLinkActive(path, isContact))} ${isLinkActive(path, isContact) ? activeLinkClasses : ''}`}
+                to={path}
+                onClick={onClick}
+                className={`${linkClasses} ${getLinkStyles(isLinkActive(path))} ${isLinkActive(path) ? activeLinkClasses : ''}`}
               >
                 <Icon className="h-4 w-4" />
                 <span>{label}</span>
-              </a>
+              </Link>
             ))}
 
             {/* Theme Selector */}
-            {/* <div className="relative">
+            <div className="relative">
               <button
                 onClick={() => setIsThemeOpen(!isThemeOpen)}
                 className={`${linkClasses} ${getLinkStyles(false)}`}
@@ -218,7 +194,7 @@ const DesktopNavbar = () => {
                   </div>
                 </div>
               )}
-            </div> */}
+            </div>
           </div>
         </div>
       </nav>
