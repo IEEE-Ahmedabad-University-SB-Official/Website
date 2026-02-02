@@ -19,16 +19,17 @@ const useEvents = () => {
           'x-api-key': apiKey
         }
       });
-      const allEvents = response.data;
+      const eventsPayload = response?.data?.events ?? response?.data?.data ?? response?.data;
+      const allEvents = Array.isArray(eventsPayload) ? eventsPayload : [];
       const currentDate = new Date();
 
       // Split events into upcoming and past
       const upcomingEvents = allEvents
-        .filter(event => new Date(event.eventDate) >= currentDate)
+        .filter(event => event && event.eventDate && new Date(event.eventDate) >= currentDate)
         .sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
 
       const pastEvents = allEvents
-        .filter(event => new Date(event.eventDate) < currentDate)
+        .filter(event => event && event.eventDate && new Date(event.eventDate) < currentDate)
         .sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
 
       setEvents({ upcoming: upcomingEvents, past: pastEvents });
